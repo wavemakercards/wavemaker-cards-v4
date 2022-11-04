@@ -32,7 +32,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/wavemakercards/wavemaker-cards">
+  <a href="https://github.com/wavemakercards/wavemaker-cards-v4">
     <img src="src/assets/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -41,16 +41,16 @@
   <p align="center">
     Novel Writing Software
     <br />
-    <a href="https://github.com/wavemakercards/wavemaker-cards/releases"><strong>Latest Release (WIN/MAC/LINUX)</strong></a>
+    <a href="https://github.com/wavemakercards/wavemaker-cards-v4/releases"><strong>Latest Release (WIN/MAC/LINUX)</strong></a>
 <br/>
 <a href="https://wavemakercards.com"><strong>Web Version</strong></a>
     <br />
     <br />
-    <a href="https://github.com/wavemakercards/wavemaker-cards">View Demo</a>
+    <a href="https://github.com/wavemakercards/wavemaker-cards-v4">View Demo</a>
     ·
-    <a href="https://github.com/wavemakercards/wavemaker-cards/issues">Report Bug</a>
+    <a href="https://github.com/wavemakercards/wavemaker-cards-v4/issues">Report Bug</a>
     ·
-    <a href="https://github.com/wavemakercards/wavemaker-cards/issues">Request Feature</a>
+    <a href="https://github.com/wavemakercards/wavemaker-cards-v4/issues">Request Feature</a>
   </p>
 </p>
 
@@ -161,15 +161,15 @@ Project Link: [https://github.com/wavemakercards/wavemaker-cards-v4](https://git
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/wavemakercards/wavemaker-cards.svg?style=for-the-badge
-[contributors-url]: https://github.com/wavemakercards/wavemaker-cards/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/wavemakercards/wavemaker-cards.svg?style=for-the-badge
-[forks-url]: https://github.com/wavemakercards/wavemaker-cards/network/members
-[stars-shield]: https://img.shields.io/github/stars/wavemakercards/wavemaker-cards.svg?style=for-the-badge
-[stars-url]: https://github.com/wavemakercards/wavemaker-cards/stargazers
-[issues-shield]: https://img.shields.io/github/issues/wavemakercards/wavemaker-cards.svg?style=for-the-badge
-[issues-url]: https://github.com/wavemakercards/wavemaker-cards/issues
-[license-shield]: https://img.shields.io/github/license/wavemakercards/wavemaker-cards.svg?style=for-the-badge
-[license-url]: https://github.com/wavemakercards/wavemaker-cards/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/wavemakercards/wavemaker-cards-v4.svg?style=for-the-badge
+[contributors-url]: https://github.com/wavemakercards/wavemaker-cards-v4/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/wavemakercards/wavemaker-cards-v4.svg?style=for-the-badge
+[forks-url]: https://github.com/wavemakercards/wavemaker-cards-v4/network/members
+[stars-shield]: https://img.shields.io/github/stars/wavemakercards/wavemaker-cards-v4.svg?style=for-the-badge
+[stars-url]: https://github.com/wavemakercards/wavemaker-cards-v4/stargazers
+[issues-shield]: https://img.shields.io/github/issues/wavemakercards/wavemaker-cards-v4.svg?style=for-the-badge
+[issues-url]: https://github.com/wavemakercards/wavemaker-cards-v4/issues
+[license-shield]: https://img.shields.io/github/license/wavemakercards/wavemaker-cards-v4.svg?style=for-the-badge
+[license-url]: https://github.com/wavemakercards/wavemaker-cards-v4/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/wavemakercards
