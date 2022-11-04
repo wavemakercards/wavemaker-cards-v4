@@ -3,14 +3,10 @@
 <button @click="clear">Clear Database</button>
 <div>
 <h4>Themes</h4>
-<select v-model="$root.shadowDB.Settings[Object.keys($root.shadowDB.Settings)[0]].settings.theme" @change="switchTheme">
-  <option value="default">Default</option>
-  <option value="light">Light</option>
+<select v-model="$root.theme" @change="$root.switchTheme">
+  <option  v-for="(theme, index) in $root.themeList" :key="index"   :value="theme.file">{{theme.name}}</option>
 </select>
 
-<pre>
-  {{$root.shadowDB.Settings[Object.keys($root.shadowDB.Settings)[0]].settings}}
-</pre>
 </div>
 
 </template>
@@ -19,24 +15,16 @@
 export default {
   name: 'SettingsPopup',
   methods:{
-    switchTheme(){
-      document.getElementById("themeSwitch").href = "themes/"+this.$root.shadowDB.Settings[Object.keys(this.$root.shadowDB.Settings)[0]].settings.theme+".css";
-    },
     async clear(){
-        this.$root.$data.session={}
-        this.$root.$data.popup={}
-         this.$root.$data.dbloaded=false
+        this.$root.session={}
+        this.$root.popup={}
+         this.$root.dbloaded=false
 
-         this.$root.$data.shadowDB={Settings:{}}
-        await this.$root.$data.db.delete()
+         this.$root.shadowDB={Settings:{}}
+        await this.$root.db.delete()
                location.reload()
        
     }
-  },
-  mounted(){
-   if(!this.$root.shadowDB.Settings[Object.keys(this.$root.shadowDB.Settings)[0]].settings.theme){
-    this.$root.shadowDB.Settings[Object.keys(this.$root.shadowDB.Settings)[0]].settings.theme = "default"
-   }
   }
 }
 </script>

@@ -58,6 +58,12 @@ export default {
   */
   data(){
     return{
+      theme : "default",
+      themeList :[
+        {name : "Default Wavemaker", file : "default"},
+        {name : "Light Theme", file : "light"},
+        {name : "Blue Sky", file : "bluesky"}
+      ],
       lhspin:true,
       rhspin:true,
       show : false,
@@ -109,10 +115,18 @@ export default {
       }
       */
     },
+    switchTheme(){
+      document.getElementById("themeSwitch").href = "themes/"+this.theme+".css";
+      localStorage.setItem("wmTheme", this.theme)
+    },
   },
   mounted(){
 
-      window.addEventListener("keydown", this.SpecialKeys);
+    if (localStorage.getItem("wmTheme")) {
+        this.theme = localStorage.getItem("wmTheme")
+        this.switchTheme()
+    }
+    window.addEventListener("keydown", this.SpecialKeys);
     // set the text direction  on load - this looks like it might be a bit buggy for rtl  - will need to run tests
     document.body.dir=this.language[this.lang].textdirection
 this.screensizefixes() 
