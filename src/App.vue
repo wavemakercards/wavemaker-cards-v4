@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import '@/css/wavemaker.css'
+//import '@/css/wavemaker.css'
 import '@/css/wavemakerInterface.css'
 import '@/css/transitions.css'
 import apitool from '@/mixins/apitool.js'

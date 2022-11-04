@@ -1,3 +1,61 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+
+}
+
+html,
+body {
+  background-color: var(--window);
+  color: var(--window-f);
+  padding: 0px;
+  margin: 0px;
+  font-size: 12px;
+  font-family: var(--sysfont);
+
+}
+
+.wavemaker_logo-top {
+fill: var(--logo-top);
+}
+
+.wavemaker_logo-bottom {
+fill: var(--logo-bottom);
+}
+
+svg {
+position: relative;
+}
+input{
+background-color: inherit;
+color: inherit;
+}
+
+::-webkit-scrollbar-button {
+display: block;
+height: 0px;
+border-radius: 0px;
+background-color: var(--webkit-scrollbar-button)
+}
+
+::-webkit-scrollbar-thumb {
+background-color: var(--webkit-scrollbar-thumb);
+}
+
+::-webkit-scrollbar-track {
+background-color: var(--webkit-scrollbar-track);
+}
+
+::-webkit-scrollbar {
+width: 5px;
+}
+
 .wavemakerPopupBlackout {
   position: absolute;
   background-color: var(--popup-block);
