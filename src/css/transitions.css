@@ -1,0 +1,93 @@
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/*
+  Enter and leave animations can use different
+  durations and timing functions.
+*/
+.slide-fade-enter-active {
+  transition: all 0.2s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translate(0,-200px);
+
+  opacity: 0;
+}
+
+/*
+  Enter and leave animations can use different
+  durations and timing functions.
+*/
+.h-slide-fade-enter-active {
+  transition: all 0.2s ease-out;
+}
+
+.h-slide-fade-leave-active {
+  transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.h-slide-fade-enter-from,
+.h-slide-fade-leave-to {
+  transform: translate(-200,0);
+
+  opacity: 0;
+}
+
+
+
+.rollup-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.rollup-leave-active {
+  transition: all 0.5s  ease-out;
+}
+
+.rollup-enter-from,
+.rollup-leave-to {
+  opacity: 0;
+}
+
+
+
+
+.bounce-enter-active {
+  animation: bounce-in 0.3s;
+}
+.bounce-leave-active {
+  animation: bounce-in 0.3s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

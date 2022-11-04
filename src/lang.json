@@ -1,0 +1,27 @@
+{
+    "en":{
+        "name" : "English",
+        "textdirection" : "ltr",
+        "welcome"  : {
+            "version" : "Version 4",
+            "loadfile" : "Load a file from your device",
+            "sync" : "Sync your database to this device",
+            "start" : "Get Started",
+            "email" : "your@email.com",
+            "password" : "Password",
+            "account" : "Account",
+            "login" : "Login",
+            "download" : "Download",
+            "nofile" :"You do not have a file on the server",
+            "loginerror" : "There was a problem logging you in"
+         },
+         "projectmanager" :{
+             "title" : "Your Wavemaker Projects",
+             "description" : "You can create multiple projects, each can hold multiple manuscripts.  A project shares it's 'cards' within that projects tools",
+             "buttontext" : "Create",
+             "placeholder" : "New Project Name",
+             "alertwarning" : "You must provide a project name",
+             "noprojects" : "You do not have any projects, you need to create one."
+         }
+    }
+}
