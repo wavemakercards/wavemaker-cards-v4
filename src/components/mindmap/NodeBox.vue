@@ -214,13 +214,13 @@ export default {
 #deleteButton:hover,
 #deleteButton:focus,
 #deleteButton:active {
-  background-color: var(--accent)
+  background-color: var(--button-hover)
 }
 
 #deleteButton:hover svg,
 #deleteButton:focus svg,
 #deleteButton:active  svg{
-  fill:var(--accent-f);
+  fill:var(--button-hover-f);
 
 }
 
@@ -231,8 +231,8 @@ export default {
   bottom: -15px;
   width: 24px;
   height: 24px;
-  background-color: var(--accent);
-  color: var(--accent-f);
+  background-color: var(--button);
+  color: var(--button-f);
   font-weight: bold;
   border-radius: 15px;
   border: 0px;
@@ -241,7 +241,7 @@ export default {
   margin: 0px;
 }
 #linkButton svg{
-  fill:var(--accent-f);
+  fill:var(--button-f);
   width:100%;
   padding:4px;
 }
@@ -249,7 +249,7 @@ export default {
 #linkButton:hover,
 #linkButton:focus,
 #linkButton:active {
-  background-color: darkblue;
+  background-color: var(--button-hover)
 }
 
 .activeClass .drag-handle {
@@ -272,15 +272,16 @@ export default {
   left: 0px;
   top: 0px;
   height: 30px;
-  background-color: var(--primary);
-  color: #fff;
+  background-color: var(--mm-handle-bar);
+  color: var(--mm-handle-bar-f);
 }
 .drag-handle svg{
-  fill:var(--primary-f)
+  fill:var(--mm-handle-bar-f);
 }
 .card {
   padding: 0px;
-  background-color: var(--primary);
+  background-color: var(--mm-node);
+  color: var(--mm-node-f);
   white-space: pre-line;
   cursor: move;
 }

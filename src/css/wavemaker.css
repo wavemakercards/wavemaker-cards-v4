@@ -11,7 +11,7 @@
     --c8: #424242;
     --c9: #212121;
     --c10: #191a19;
-
+/*
       --c0: #fff;
       --c1: #cfd8dc;
       --c2: #b0bec5;
@@ -23,7 +23,7 @@
       --c8: #37474f;
       --c9: #263238;
       --c10 :#13191c;
-  
+  */
   
   
     --c0-f: #000;
@@ -96,15 +96,15 @@
 
   --box-shadow : rgba(255,255,255,0.5);
   
-  --logo-top :  var(--c6);
-  --logo-bottom :  var(--c7);
+  --logo-top :  var(--c3);
+  --logo-bottom :  var(--c5);
 
   --webkit-scrollbar-button : var(--c10);
   --webkit-scrollbar-thumb : var(--c7);
   --webkit-scrollbar-track  : var(--c10);
 
   --button : var(--primary);
- --button-f: var(--primary-f);
+  --button-f: var(--primary-f);
   --button-hover : var(--accent);
   --button-hover-f :var(--accent-f);
 
@@ -156,6 +156,19 @@
    --tl-date-f : var(--c10-f);
    --tl-card : var(--c2);
    --tl-card-f : var(--c2-f);
+
+   --mm-title-bar :var(--c8);
+   --mm-title-bar-f :var(--c8-f);
+
+   --mm-background : var(--c9);
+   --mm-background-f : var(--c9-f);
+
+   --mm-handle-bar :var(--accent);
+   --mm-handle-bar-f :var(--accent-f);
+
+   --mm-node : var(--c10-f);
+   --mm-node-f : var(--c10);
+
 }
   
   @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,400&family=Montserrat:wght@100;300;400;500;600;700&family=Open+Sans:wght@300;400;700&family=Quicksand:wght@300;400;500;600;700&family=Raleway&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tiro+Devanagari+Hindi&display=swap');
@@ -196,7 +209,10 @@
 svg {
   position: relative;
 }
-
+input{
+  background-color: inherit;
+  color: inherit;
+}
 
 ::-webkit-scrollbar-button {
   display: block;

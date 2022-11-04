@@ -45,7 +45,7 @@ export default {
   top:50px;
   height: 40px;
   width: 100%;
-  background-color: var(--c9);
+  background-color: var(--mm-title-bar);
 text-align: right;
 }
 
@@ -53,28 +53,28 @@ text-align: right;
   height:40px;
 padding: 10px;
   border:0px;
-  color:var(--c10-f);
-  background-color: var(--c10);
+  color:var(--button-f);
+  background-color: var(--mm-title-bar);
   cursor: pointer;
   margin-left : 5px
   }
 
   .toolbutton svg{
-    fill:var(--c10-f);
+    fill:var(--mm-title-bar-f);
     width:100%;
   }
 
 .toolbutton:hover,
 .toolbutton:active,
 .toolbutton:focus{
-  color:var(--c9-f);
-  background-color: var(--c9);
+  color:var(--button-hover-f);
+  background-color: var(--button-hover);
 }
 
 .toolbutton:hover svg,
 .toolbutton:active svg,
 .toolbutton:focus svg{
-   fill:var(--c9-f);
+   fill:var(--button-hover-f);
 }
 
 
@@ -85,8 +85,8 @@ padding: 10px;
   height:40px;
   padding:10px;
   font-weight: bold;
-  background-color: var(--c10);
-  color: var(--c10-f);
+  background-color: var(--mm-title-bar);
+  color: var(--mm-title-bar-f);
   border:0px;
   outline: none;
 }

@@ -46,19 +46,19 @@ this.$root.shadowDB.Mindmap[this.$root.session.mindmap.selected].content.links.s
 <style scoped >
 .solid{
   stroke-width:4px;
-  stroke:rgb(0,0,0);
+  stroke:var(--mm-background-f)
 }
 
 .dotted{
      stroke-dasharray: 2;
   stroke-width:4px;
-  stroke:rgb(0,0,0);
+  stroke:var(--mm-background-f)
 }
 
 .dashed{
     stroke-dasharray: 5;
   stroke-width:4px;
-  stroke:rgb(0,0,0);
+  stroke:var(--mm-background-f)
 
 }
 

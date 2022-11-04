@@ -30,30 +30,18 @@
 </svg>
 </div>
            <input class="timeText" tabindex="1" placeholder="Date/Event" v-model="element.event">
-       
-      
         </div>
         <div class="content">
           <input class="title" placeholder="Event Title" tabindex="1" v-model="element.title">
           <p>
-            <TimelineEditor :IndexKey="index"  tabindex="1" @change="ListChanged" />
+            <TimelineEditor v-model="element.text"  tabindex="1" />
           </p>
         </div>
-      
       </li>
-      
-
-        </template>
+    </template>
 
 </VueDraggableNext>
 
-
-     
-    
-    
-
-
-    
       <div style="clear:both;"></div>
 
   </div>

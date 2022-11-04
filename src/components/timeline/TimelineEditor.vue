@@ -22,9 +22,10 @@ export default {
     EditorContent,
   },
   props: {
-    IndexKey: {
-      type: Number
-    }
+    modelValue: {
+      type: String,
+      default: "",
+    },
   },
 
   data() {
@@ -56,18 +57,23 @@ export default {
         TaskList,
         CustomTaskItem
       ],
-      content: this.$root.$data.shadowDB.Timeline[this.$root.session.timeline.selected].content[this.IndexKey].text,
+      content: this.modelValue,
       onUpdate: () => {
        // console.log(this.editor.getHTML())
         // HTML
-      //this.$emit('update:modelValue', this.editor.getHTML())
+        this.$emit('update:modelValue', this.editor.getHTML())
          ///  this.$root.$data.shadowDB.Cards[this.cardid].content =  this.editor.getHTML()
          //  this.$root.UpdateRecord("Cards", this.cardid, this.$root.$data.shadowDB.Cards[this.cardid])
         // JSON
         // this.$emit('update:modelValue', this.editor.getJSON())
+        this.$root.UpdateRecord(
+        "Timeline",
+        this.$root.$data.session.timeline.selected,
+        this.$root.$data.shadowDB.Timeline[
+          this.$root.$data.session.timeline.selected
+        ]
+      );
 
-        this.$root.$data.shadowDB.Timeline[this.$root.session.timeline.selected].content[this.IndexKey].text =this.editor.getHTML()
-        this.$emit('change')
       },
     })
   },
