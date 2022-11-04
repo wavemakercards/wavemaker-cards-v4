@@ -1,16 +1,16 @@
 <template>
-  <div class="menu" v-bind:class="$root.$data.rhspin ? 'rhspinned' : ''">
+  <div class="menu" v-bind:class="$root.rhspin ? 'rhspinned' : ''">
     <!--<div class="title">
       <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
         <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
       </svg>
     </div>
     -->
-    <button class="pinBtn" @click="$root.$data.rhspin = !$root.$data.rhspin">
+    <button class="pinBtn" @click="$root.rhspin = !$root.rhspin">
       <svg
         style="width: 18px; height: 18px"
         viewBox="0 0 24 24"
-        v-if="$root.$data.rhspin"
+        v-if="$root.rhspin"
       >
         <path d="M16,12V4H17V2H7V4H8V12L6,14V16H11.2V22H12.8V16H18V14L16,12Z" />
       </svg>
@@ -18,21 +18,22 @@
       <svg
         style="width: 18px; height: px"
         viewBox="0 0 24 24"
-        v-if="!$root.$data.rhspin"
+        v-if="!$root.rhspin"
       >
         <path
           d="M2,5.27L3.28,4L20,20.72L18.73,22L12.8,16.07V22H11.2V16H6V14L8,12V11.27L2,5.27M16,12L18,14V16H17.82L8,6.18V4H7V2H17V4H16V12Z"
         />
       </svg>
     </button>
-    <div class="scrollpanel scroll-lhs">
+    <div class="scrollpanel scroll-lhs">      
       <div class="scroll-inside">
- <div  v-if="!$root.$data.session.writer.file">
+     
+ <div  v-if="!$root.session.writer.file">
  </div>
 
-      <div  v-if="$root.$data.session.writer.file">
+      <div  v-if="$root.session.writer.file">
       <VueDraggableNext
-        :list="$root.$data.session.writer.file.notes"
+        :list="this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === $root.session.writer.file.uuid).notes"
         tag="transition-group"
         handle=".handle"
         :component-data="{
@@ -46,7 +47,7 @@
         item-key="order"
         @change="changelist"
       >
-        <template v-for="(element, index) in $root.$data.session.writer.file.notes" :key="index">
+        <template v-for="(element, index) in this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === $root.session.writer.file.uuid).notes" :key="index">
           <div
             class="list-group-item"
             tabindex="0"
@@ -55,7 +56,7 @@
       
   
 
-   <CardViewer :cardid="element.uuid" :allowlink="true" :updateelement="element" />
+   <CardViewer :cardid="element.uuid" :allowlink="true" :updateelement="element"   @linkcard="ListChanged" />
 
 <div class="handle">
   <svg viewBox="0 0 24 24">
@@ -76,7 +77,7 @@
       </div>
     </div>
      </div>
-     <div class="addbar" v-if="$root.$data.session.writer.file">
+     <div class="addbar" v-if="$root.session.writer.file">
         <button @click="addCard">
 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
     <path  d="M13.09 20H4C2.9 20 2 19.11 2 18V6C2 4.89 2.9 4 4 4H20C21.11 4 22 4.89 22 6V13.81C21.12 13.3 20.09 13 19 13C15.69 13 13 15.69 13 19C13 19.34 13.04 19.67 13.09 20M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
@@ -105,7 +106,6 @@ export default {
     };
   },
   methods: {
-
     changelist(){
       console.log("Changed")
          this.ListChanged() 
@@ -113,7 +113,8 @@ export default {
 
     deleteNote(index){
      if(confirm("delete this note?")){
-       this.$root.$data.session.writer.file.notes.splice(index,1)
+      this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === this.$root.session.writer.file.uuid).notes.splice(index,1)
+     //  this.$root.session.writer.file.notes.splice(index,1)
      //this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.notes.splice(index,1)
       this.ListChanged();
      }
@@ -121,7 +122,7 @@ export default {
       addCard() {
         let obj = {}
         obj.uuid = this.$root.uuid()
-        this.$root.$data.session.writer.file.notes.push(obj)
+        this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === this.$root.session.writer.file.uuid).notes.push(obj)
        // this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.notes.push(obj)
         this.ListChanged();
     },
@@ -129,9 +130,9 @@ export default {
       console.log("list changed");
       this.$root.UpdateRecord(
         "Writer",
-        this.$root.$data.session.writer.selected,
-        this.$root.$data.shadowDB.Writer[
-          this.$root.$data.session.writer.selected
+        this.$root.session.writer.selected,
+        this.$root.shadowDB.Writer[
+          this.$root.session.writer.selected
         ]
       );
     },

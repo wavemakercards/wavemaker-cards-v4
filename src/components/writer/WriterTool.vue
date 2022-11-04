@@ -50,7 +50,7 @@ $root.$data.rhspin ? 'rhspin' : ''
     </div>
 </transition>
      <div class="titleBar" v-if="$root.$data.session.writer.file">
-    <input type="text" v-model="$root.$data.session.writer.file.name" @change="changed" placeholder="New File"  />
+    <input type="text" v-model="this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === this.$root.session.writer.file.uuid).name" @change="changed" placeholder="New File"  />
 </div>
 </div>
 

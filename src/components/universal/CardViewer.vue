@@ -64,7 +64,7 @@ export default {
   components:{
     DescriptionEditor
   },
-    emits: ["cardChange"],
+  emits: ["linkcard"],
   props: {
     cardid: {
       type: String,
@@ -135,7 +135,7 @@ export default {
     sendCardChange(){
       console.log("Link to card selected" , this.updateelement)
       this.updateelement.uuid = this.cardChange
-     // this.$emit("cardChange")
+      this.$emit("linkcard")
     }
   },
   mounted() {
