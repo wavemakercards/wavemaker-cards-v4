@@ -103,46 +103,6 @@
       </button>
 </span>
 
-
-
-<!--
-      <button @click="$root.popup.name = 'ApiForm'" class="toolbarButton" v-if="!$root.api_credentials.loggedin">
-      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path  d="M14.2 14.5V14.74C13.5 15.34 13 16.24 13 17.2V20H6.5C5 20 3.69 19.5 2.61 18.43C1.54 17.38 1 16.09 1 14.58C1 13.28 1.39 12.12 2.17 11.1S4 9.43 5.25 9.15C5.67 7.62 6.5 6.38 7.75 5.43S10.42 4 12 4C13.95 4 15.6 4.68 16.96 6.04C18.08 7.16 18.73 8.5 18.93 10C16.36 10.04 14.2 12.08 14.2 14.5M23 17.3V20.8C23 21.4 22.4 22 21.7 22H16.2C15.6 22 15 21.4 15 20.7V17.2C15 16.6 15.6 16 16.2 16V14.5C16.2 13.1 17.6 12 19 12S21.8 13.1 21.8 14.5V16C22.4 16 23 16.6 23 17.3M20.5 14.5C20.5 13.7 19.8 13.2 19 13.2S17.5 13.7 17.5 14.5V16H20.5V14.5Z" />
-</svg>
-      </button>
-
-
-
-<span v-if="$root.api_credentials.loggedin">
- <button @click="this.$root.api_set()" class="toolbarButton" v-if="!$root.api_credentials.loading">
-       <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path d="M13 19C13 19.34 13.04 19.67 13.09 20H6.5C5 20 3.69 19.5 2.61 18.43C1.54 17.38 1 16.09 1 14.58C1 13.28 1.39 12.12 2.17 11.1S4 9.43 5.25 9.15C5.67 7.62 6.5 6.38 7.75 5.43S10.42 4 12 4C13.95 4 15.6 4.68 16.96 6.04C18.32 7.4 19 9.05 19 11C20.15 11.13 21.1 11.63 21.86 12.5C22.37 13.07 22.7 13.71 22.86 14.42C21.82 13.54 20.5 13 19 13C15.69 13 13 15.69 13 19M16 18H18V22H20V18H22L19 15L16 18Z" />
-</svg>
-      </button>
-
-
-
-
-
- <button  class="toolbarButton" v-if="$root.api_credentials.loading">
-  <svg  version="1.1"   viewBox="0 0 100 100" width="24px" height="24px">
-    <path  d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
-      <animateTransform 
-         attributeName="transform" 
-         attributeType="XML" 
-         type="rotate"
-         dur="1s" 
-         from="0 50 50"
-         to="360 50 50" 
-         repeatCount="indefinite" />
-  </path>
-</svg>
-      </button>
-</span>
--->
-
-
     </div>
   </div>
 </template>

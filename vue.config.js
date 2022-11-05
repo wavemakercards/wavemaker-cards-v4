@@ -18,7 +18,7 @@ module.exports = defineConfig({
       "name": "Wavemaker Cards",
       "short_name": "Wavemaker",
       "theme_color": "#f00",
-      "background_color": "#f00",
+      "background_color": "#424242",
       "display": "standalone",
       "scope": "./",
       "start_url": "./"

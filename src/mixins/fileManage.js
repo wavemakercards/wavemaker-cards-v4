@@ -30,7 +30,7 @@ const fileManage = {
 
        async file_downloadDB() {
             if (
-              !confirm("This will download a copy of your database to your device")
+              !confirm("This will download a copy of your project to your device")
             ) {
               return false;
             }
@@ -40,8 +40,10 @@ const fileManage = {
             var yyyy = today.getFullYear();
             var time =
               today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
-      
-            let filename = "WMDB-" + yyyy + "-" + mm + "-" + dd + "-" + time + ".wm4";
+
+             let tempname =  this.$root.shadowDB.Settings[Object.keys(this.$root.shadowDB.Settings)[0]].settings.ProjectName
+             tempname = tempname.replace(/[\W_]+/g,"-");
+            let filename = tempname  +"[" + yyyy + "-" + mm + "-" + dd + "-" + time + "].wm4";
 
             let blob = await this.$root.databaseExport()
            

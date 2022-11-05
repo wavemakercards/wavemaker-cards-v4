@@ -3,25 +3,29 @@
         "name" : "English",
         "textdirection" : "ltr",
         "welcome"  : {
-            "version" : "Version 4",
             "loadfile" : "Load a file from your device",
-            "sync" : "Sync your database to this device",
-            "start" : "Get Started",
-            "email" : "your@email.com",
-            "password" : "Password",
-            "account" : "Account",
-            "login" : "Login",
-            "download" : "Download",
-            "nofile" :"You do not have a file on the server",
-            "loginerror" : "There was a problem logging you in"
+			"loadgoogle" : "Load a file from Google Drive",
+            "info" : "Create a new file, or load an exiting one",
+			"projectinput" : "New Project Name",
+			"projectwarn" : "You must provide a project name"
          },
-         "projectmanager" :{
-             "title" : "Your Wavemaker Projects",
-             "description" : "You can create multiple projects, each can hold multiple manuscripts.  A project shares it's 'cards' within that projects tools",
-             "buttontext" : "Create",
-             "placeholder" : "New Project Name",
-             "alertwarning" : "You must provide a project name",
-             "noprojects" : "You do not have any projects, you need to create one."
-         }
+		 "google" :{
+			 "info": "Login to Google Drive",
+			 "saveinfo" : "Save Current Project",
+			 "files" : "Your Files",
+			 "save" : "Save File",
+			 "search" : "Search for Files",
+			 "logout" : "Log Out",
+			 "close" :"Close window"
+		 },
+		 "settings" : {
+			 "title" : "Settings",
+			 "close" : "Close this file",
+			 "themes" : "Choose a Theme",
+			 "clear" :"This will clear the project"
+ 			 
+			 
+			 
+		 }
     }
 }

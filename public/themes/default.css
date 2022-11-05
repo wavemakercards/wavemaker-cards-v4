@@ -41,7 +41,7 @@
   --window : var(--c9);
   --window-f :  var(--c9-f);
 
-  --sysfont: "Mulish", sans-serif;
+  --sysfont: "Open Sans", "Mulish", sans-serif;
   --pagefont: "Merriweather",'Times New Roman', Times, serif;
 
   --paper :  var(--c0);
@@ -49,6 +49,9 @@
  
   --card : var(--c0);
   --card-f :var(--c0-f);
+
+  --forminput : var(--card);
+  --forminput-f : var(--card-f);
 
   --box-shadow : rgba(255,255,255,0.5);
   
@@ -59,8 +62,8 @@
   --webkit-scrollbar-thumb : var(--c7);
   --webkit-scrollbar-track  : var(--c10);
 
-  --button : var(--primary);
-  --button-f: var(--primary-f);
+  --button : #c7c7c7;
+  --button-f: #6e6e6e;
   --button-hover : var(--accent);
   --button-hover-f :var(--accent-f);
 
