@@ -1,5 +1,5 @@
 <template>
-  <div id="ToolHome" v-if="!$root.$data.session.writer.selected">
+  <div id="ToolHome" v-if="!$root.session.writer.selected">
     <div class="wavemaker_info_box">
       <table style="width: 100%">
         <tr>

@@ -78,7 +78,14 @@
     </div>
      </div>
      <div class="addbar" v-if="$root.session.writer.file">
-        <button @click="addCard">
+
+      <button @click="$root.openInNew('planningboard')">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path  d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+</svg>
+        </button>
+
+      <button @click="addCard" class="addBtn">
 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
     <path  d="M13.09 20H4C2.9 20 2 19.11 2 18V6C2 4.89 2.9 4 4 4H20C21.11 4 22 4.89 22 6V13.81C21.12 13.3 20.09 13 19 13C15.69 13 13 15.69 13 19C13 19.34 13.04 19.67 13.09 20M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
 </svg>
@@ -356,7 +363,7 @@ color: var(--button-hover-f);
    height:40px;
 
 }
-.addbar button{
+.addBtn {
   position: absolute;
   right:0px;
   border: 0px;
@@ -366,19 +373,19 @@ color: var(--button-hover-f);
   height:40px;
   background-color: var(--writer-side-nav);
 }
-.addbar button svg {
+.addBtn  svg {
   fill: var(--writer-side-nav-f);
 }
 
-.addbar button:hover,
-.addbar button:active,
-.addbar button:focus {
+.addBtn:hover,
+.addBtn:active,
+.addBtn:focus {
 background-color: var(--accent);
 color: var(--accent-f);
 }
-.addbar button:hover svg,
-.addbar button:active svg,
-.addbar button:focus svg {
+.addBtn:hover svg,
+.addBtn:active svg,
+.addBtn:focus svg {
   fill:  var(--accent-f);
 }
 </style>

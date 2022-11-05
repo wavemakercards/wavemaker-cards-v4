@@ -78,6 +78,11 @@ export default {
     }
   },
   methods:{
+    openInNew(d){
+        if(d==="planningboard"){
+          window.open("/?sc="+d+"&sel="+this.$root.session.writer.selected, "PlanningBoard", "width=500px,height=500px");
+        }    
+    },
     wordCounter(str) {
       str = str.replace(/(<([^>]+)>)/gi, " ");
       return str.split(" ").filter(function (n) {
