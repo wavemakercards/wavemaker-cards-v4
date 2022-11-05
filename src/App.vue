@@ -79,8 +79,11 @@ export default {
   },
   methods:{
     openInNew(d){
+      var w = window.innerWidth;
+var h = window.innerHeight;
+
         if(d==="planningboard"){
-          window.open("/?sc="+d+"&sel="+this.$root.session.writer.selected, "PlanningBoard", "width=500px,height=500px");
+          window.open("/?sc="+d+"&sel="+this.$root.session.writer.selected, "PlanningBoard", "width="+w+"px,height="+h+"px");
         }    
     },
     wordCounter(str) {

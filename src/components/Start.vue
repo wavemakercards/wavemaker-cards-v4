@@ -38,6 +38,22 @@ export default {
   },
   methods: {},
   mounted() {
+
+    let params = new URLSearchParams(document.location.search);
+    let sc = params.get("sc"); 
+    let sel = params.get("sel"); 
+ // hide em away
+    params.delete("sc"); 
+    params.delete("sel"); 
+    if(sc==="planningboard"){
+      console.log(sc, sel)
+      this.$root.session.writer = {}
+      this.$root.session.writer.selected = sel
+      this.$root.session.selectedTool = sc;
+    }
+
+
+
     // only for dev
     if (localStorage.getItem("wmDev")) {
       this.session = JSON.parse(localStorage.getItem("wmDev"));

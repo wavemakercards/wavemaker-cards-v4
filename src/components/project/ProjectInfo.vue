@@ -7,10 +7,7 @@
       </button>
 
    <input class="projectName" v-model="this.$root.$data.shadowDB.Settings[Object.keys(this.$root.$data.shadowDB.Settings)[0]].settings.ProjectName" @change="update" />
-<pre>
-  {{    this.$root.shadowDB.Settings[Object.keys(this.$root.shadowDB.Settings)[0]]}}
 
-</pre>
 
   </div>
 </template>

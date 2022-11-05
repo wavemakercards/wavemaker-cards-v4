@@ -79,7 +79,7 @@
      </div>
      <div class="addbar" v-if="$root.session.writer.file">
 
-      <button @click="$root.openInNew('planningboard')">
+      <button @click="$root.openInNew('planningboard')" class="popBtn">
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
     <path  d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
 </svg>
@@ -363,6 +363,53 @@ color: var(--button-hover-f);
    height:40px;
 
 }
+
+
+
+
+
+.popBtn {
+  position: absolute;
+  right:40px;
+  border: 0px;
+  padding: 5px;
+  cursor: pointer;
+ width:40px;
+  height:40px;
+  background-color: var(--writer-side-nav);
+}
+.popBtn  svg {
+  fill: var(--writer-side-nav-f);
+}
+
+.popBtn:hover,
+.popBtn:active,
+.popBtn:focus {
+background-color: var(--accent);
+color: var(--accent-f);
+}
+.popBtn:hover svg,
+.popBtn:active svg,
+.popBtn:focus svg {
+  fill:  var(--accent-f);
+}
+
+
+@media only screen and (max-width: 1000px) {
+ .popBtn{
+  display:none;
+ }
+
+}
+
+
+
+
+
+
+
+
+
 .addBtn {
   position: absolute;
   right:0px;
