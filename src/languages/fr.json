@@ -1,0 +1,75 @@
+{
+   "fr":{
+      "info":{
+         "name":"Français (French)",
+         "textdirection":"ltr"
+      },
+      "welcome":{
+         "loadfile":"Chargez un fichier à partir de votre appareil",
+         "loadgoogle":"Chargez un fichier à partir de Google Drive",
+         "info":"Créez un nouveau fichier ou chargez un existant",
+         "projectinput":"Nouveau projet nom",
+         "projectwarn":"Vous devez fournir un nom de projet"
+      },
+      "google":{
+         "info":"Connectez-vous à Google Drive",
+         "saveinfo":"Économiser le projet actuel",
+         "files":"Vos fichiers",
+         "save":"Enregistrer le fichier",
+         "search":"Rechercher des fichiers",
+         "logout":"Se déconnecter",
+         "close":"Fermer la fenêtre"
+      },
+      "settings":{
+         "title":"Réglages",
+         "close":"Fermez ce fichier",
+         "themes":"Choisissez un thème",
+         "lang":"Choisissez une langue",
+         "clear":"Cela effacera le projett"
+      },
+      "tools":{
+         "writer":"Votre manuscrits",
+         "planningboard":"Vos panneaux de planification",
+         "mindmap":"Vos Mindmaps",
+         "snowflake":"Tes flocons de neige",
+         "timeline":"Votre calendriere",
+         "gridplanner":"Vos planificateurs de grille",
+         "name":"Nom",
+         "description":"description (facultatif)",
+         "warn":"Veuillez fournir un nom"
+      },
+      "writer":{
+         "settings":"Paramètres manuscrits",
+         "newfile": "Nouvelle section",
+         "deletewarn": "Voulez-vous supprimer cet élément? Toutes les cartes que vous avez créées resteront dans la base de données",
+         "intro": "C'est la page principale de votre document. Les options sont ci-dessous.",
+         "docdownload": "Exporter un fichier .doc de ce manuscrit",
+         "words":"Mots"
+      },
+      "mindmap":{
+         "deletenodewarn": "Voulez-vous supprimer ce nœud?"
+      },
+      "snowflake":{
+         "title":"Titre",
+         "deletewarn": "Êtes-vous sûr de vouloir supprimer cette carte?",
+         "replacewarn": "Cela remplacera votre carte par les trois nouveaux."
+      },
+      "timeline":{
+         "date": "Date / Heure",
+         "title":"Titre"
+      },
+      "gridplanner":{
+         "newrow": "New Row",
+         "newcol": "Nouvelle colonne"
+      },
+      "db":{
+         "search": "Rechercher par mots clés",
+         "clear": "Clear Tags",
+         "deletecolwarn": "Supprimer cette colonne?",
+         "deleterowwarn": "Supprimer cette ligne?"
+      },
+      "cards":{
+         
+      }
+   }
+}

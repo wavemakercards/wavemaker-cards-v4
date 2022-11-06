@@ -1,0 +1,73 @@
+{
+   "es": {
+      "info": {
+         "name": "Español (Spanish)",
+         "textdirection": "LTR"
+      },
+      "welcome": {
+         "loadfile": "Cargar un archivo desde su dispositivo",
+         "loadgoogle": "Cargue un archivo en Google Drive",
+         "info": "Crear un archivo nuevo o cargar uno existente",
+         "projectinput": "Nombre del nuevo proyecto",
+         "projectwarn": "Debe proporcionar un nombre de proyecto"
+      },
+      "google": {
+         "info": "Iniciar sesión en Google Drive",
+         "saveinfo": "Guardar el proyecto actual",
+         "files": "Tus archivos",
+         "save": "Guardar el archivo",
+         "search": "Buscar archivos",
+         "logout": "Cerrar sesión",
+         "close": "Cerrar ventana"
+      },
+      "settings": {
+         "title": "Ajustes",
+         "close": "Cierre este archivo",
+         "themes": "Elige un tema",
+         "lang": "Elige un idioma",
+         "clear": "Esto borrará el proyecto"
+      },
+      "tools": {
+         "writer": "Tus manuscritos",
+         "planningboard": "Tus tableros de planificación",
+         "mindmap": "Tus mapas mental",
+         "snowflake": "Tus copos de nieve",
+         "timeline": "Tu línea de tiempo",
+         "gridplanner": "Tus planificadores de cuadrícula",
+         "name": "Nombre",
+         "description": "Descripción (opcional)",
+         "warn": "Proporcione un nombre"
+      },
+      "writer": {
+         "settings": "Configuración del manuscrito",
+         "newfile": "Nueva sección",
+         "deletewarn": "¿Quieres eliminar este elemento? Cualquier tarjetas que hayas creado permanecerán en la base de datos",
+         "intro": "Esta es la página principal de su documento. Las opciones están a continuación",
+         "docdownload": "Exportar un archivo .doc de este manuscrito",
+         "words": "Palabras"
+      },
+      "mindmap": {
+         "deletenodewarn": "¿Quieres eliminar este nodo?"
+      },
+      "snowflake": {
+         "title": "Título",
+         "deletewarn": "¿Estás seguro de que quieres eliminar esta tarjeta?",
+         "replacewarn": "Esto reemplazará su tarjeta por las tres nuevas",
+      },
+      "timeline": {
+         "date": "Fecha y hora",
+         "title": "Título"
+      },
+      "gridplanner": {
+         "newrow": "Nueva fila",
+         "newcol": "Nueva columna"
+      },
+      "db": {
+         "search": "Buscar por palabras clave",
+         "clear": "Etiquetas claras",
+         "deletecolwarn": "¿Eliminar esta columna?",
+         "deleterowwarn": "¿Eliminar esta fila?"
+      },
+      "cards": {}
+   }
+}

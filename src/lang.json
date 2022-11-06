@@ -1,144 +1,217 @@
 {
-    "en":{
-		"info" :{
-        "name" : "English",
-        "textdirection" : "ltr"
-		},
-        "welcome"  : {
-            "loadfile" : "Load a file from your device",
-			"loadgoogle" : "Load a file from Google Drive",
-            "info" : "Create a new file, or load an exiting one",
-			"projectinput" : "New Project Name",
-			"projectwarn" : "You must provide a project name"
-         },
-		 "google" :{
-			 "info": "Login to Google Drive",
-			 "saveinfo" : "Save Current Project",
-			 "files" : "Your Files",
-			 "save" : "Save File",
-			 "search" : "Search for Files",
-			 "logout" : "Log Out",
-			 "close" :"Close window"
-		 },
-		 "settings" : {
-			 "title" : "Settings",
-			 "close" : "Close this file",
-			 "themes" : "Choose a Theme",
-			 "clear" :"This will clear the project"
-		 },
-		 "tools" : {
-			 "writer" :"Your Manuscripts",
-			 "planningboard" :"Your Planning Boards",
-			 "mindmap" :"Your Mindmaps",
-			 "snowflake" :"Your Snowflakes",
-			 "timeline" :"Your Timeline",
-			 "gridplanner" : "Your Grid Planners",
-			 "name" :"Name",
-			 "description" :"Description (optional)",
-			 "warn" : "Please provide a Name"
-		 },
-		 "writer": {
-			 "settings" : "Manuscript Settings",
-			 "newfile"  : "New Section",
-			 "deletewarn" : "Do you want to delete this item? Any cards you have created will remain in the database",
-			 "intro" : "This is the main page for your document. Options are below.",
-			 "docdownload" : "Export a .doc file of this manuscript",
-			 "words" : "Words"
-		 },
-		 "mindmap" : {
-			 "deletenodewarn" :"Do you want to delete this node?"
-		 },
-		 "snowflake" : {
-			 "title" : "Title",
-			 "deletewarn" : "Are You sure you want to delete this card?",
-			 "replacewarn" : "This will replace your card with the three new ones."
-		 },
-		 "timeline" :{
-			 "date" :"Date/Time",
-			 "title" :"Title"
-		 },
-		 "gridplanner" : {
-			 "newrow" : "New Row",
-			 "newcol" : "New Column"
-		 },
-		 "db" : {
-			 "search" : "Search by keywords",
-			 "clear" : "Clear Tags",
-			 "deletecolwarn" : "Delete this column?",
-			 "deleterowwarn" : "Delete this row?"
-		 },
-		 "cards" : {
-			 
-		 }
-    },
-	"fr": {
-		"info" :{
-    "name": "français(French)",
-    "textdirection": "ltr"
-		},
-    "welcome": {
-      "loadfile": "Charger un fichier depuis votre appareil",
-      "loadgoogle": "Charger un fichier depuis Google Drive",
-      "info": "Créer un nouveau fichier ou en charger un existant",
-      "projectinput": "Nom du nouveau projet",
-      "projectwarn": "Vous devez fournir un nom de projet"
-    },
-    "google": {
-      "info": "Connexion à Google Drive",
-      "saveinfo": "Enregistrer le projet actuel",
-      "files": "Vos fichiers",
-      "save": "ltr0",
-      "search": "ltr1",
-      "logout": "ltr2",
-      "close": "ltr3"
-    },
-    "settings": {
-      "title": "ltr4",
-      "close": "ltr5",
-      "themes": "ltr6",
-      "clear": "ltr7"
-    },
-    "tools": {
-      "writer": "ltr8",
-      "planningboard": "ltr9",
-      "mindmap": "Charger un fichier depuis votre appareil0",
-      "snowflake": "Charger un fichier depuis votre appareil1",
-      "timeline": "Charger un fichier depuis votre appareil2",
-      "gridplanner": "Charger un fichier depuis votre appareil3",
-      "name": "Charger un fichier depuis votre appareil4",
-      "description": "Charger un fichier depuis votre appareil5",
-      "warn": "Charger un fichier depuis votre appareil6"
-    },
-    "writer": {
-      "settings": "Charger un fichier depuis votre appareil7",
-      "newfile": "Charger un fichier depuis votre appareil8",
-      "deletewarn": "Charger un fichier depuis votre appareil9",
-      "intro": "Charger un fichier depuis Google Drive0",
-      "docdownload": "Charger un fichier depuis Google Drive1",
-      "words": "Charger un fichier depuis Google Drive2"
-    },
-    "mindmap": {
-      "deletenodewarn": "Charger un fichier depuis Google Drive3"
-    },
-    "snowflake": {
-      "title": "Charger un fichier depuis Google Drive4",
-      "deletewarn": "Charger un fichier depuis Google Drive5",
-      "replacewarn": "Charger un fichier depuis Google Drive6"
-    },
-    "timeline": {
-      "date": "Charger un fichier depuis Google Drive7",
-      "title": "Charger un fichier depuis Google Drive4"
-    },
-    "gridplanner": {
-      "newrow": "Charger un fichier depuis Google Drive8",
-      "newcol": "Charger un fichier depuis Google Drive9"
-    },
-    "db": {
-      "search": "Créer un nouveau fichier ou en charger un existant0",
-      "clear": "Créer un nouveau fichier ou en charger un existant1",
-      "deletecolwarn": "Créer un nouveau fichier ou en charger un existant2",
-      "deleterowwarn": "Créer un nouveau fichier ou en charger un existant3"
-    },
-    "cards": {}
-  }
+    "en": {
+        "info": {
+           "name": "English",
+           "textdirection": "ltr"
+        },
+        "welcome": {
+           "loadfile": "Load a file from your device",
+           "loadgoogle": "Load a file from Google Drive",
+           "info": "Create a new file, or load an existing one",
+           "projectinput": "New Project Name",
+           "projectwarn": "You must provide a project name"
+        },
+        "google": {
+           "info": "Login to Google Drive",
+           "saveinfo": "Save Current Project",
+           "files": "Your Files",
+           "save": "Save File",
+           "search": "Search for Files",
+           "logout": "Log Out",
+           "close": "Close window"
+        },
+        "settings": {
+           "title": "Settings",
+           "close": "Close this file",
+           "themes": "Choose a Theme",
+           "lang": "Choose a Language",
+           "clear": "This will clear the project"
+        },
+        "tools": {
+           "writer": "Your Manuscripts",
+           "planningboard": "Your Planning Boards",
+           "mindmap": "Your Mindmaps",
+           "snowflake": "Your Snowflakes",
+           "timeline": "Your Timeline",
+           "gridplanner": "Your Grid Planners",
+           "name": "Name",
+           "description": "Description (optional)",
+           "warn": "Please provide a Name"
+        },
+        "writer": {
+           "settings": "Manuscript Settings",
+           "newfile": "New Section",
+           "deletewarn": "Do you want to delete this item? Any cards you have created will remain in the database",
+           "intro": "This is the main page for your document. Options are below.",
+           "docdownload": "Export a .doc file of this manuscript",
+           "words": "Words"
+        },
+        "mindmap": {
+           "deletenodewarn": "Do you want to delete this node?"
+        },
+        "snowflake": {
+           "title": "Title",
+           "deletewarn": "Are You sure you want to delete this card?",
+           "replacewarn": "This will replace your card with the three new ones."
+        },
+        "timeline": {
+           "date": "Date/Time",
+           "title": "Title"
+        },
+        "gridplanner": {
+           "newrow": "New Row",
+           "newcol": "New Column"
+        },
+        "db": {
+           "search": "Search by keywords",
+           "clear": "Clear Tags",
+           "deletecolwarn": "Delete this column?",
+           "deleterowwarn": "Delete this row?"
+        },
+        "cards": {}
+     },
+     "fr":{
+        "info":{
+           "name":"Français (French)",
+           "textdirection":"ltr"
+        },
+        "welcome":{
+           "loadfile":"Chargez un fichier à partir de votre appareil",
+           "loadgoogle":"Chargez un fichier à partir de Google Drive",
+           "info":"Créez un nouveau fichier ou chargez un existant",
+           "projectinput":"Nouveau projet nom",
+           "projectwarn":"Vous devez fournir un nom de projet"
+        },
+        "google":{
+           "info":"Connectez-vous à Google Drive",
+           "saveinfo":"Économiser le projet actuel",
+           "files":"Vos fichiers",
+           "save":"Enregistrer le fichier",
+           "search":"Rechercher des fichiers",
+           "logout":"Se déconnecter",
+           "close":"Fermer la fenêtre"
+        },
+        "settings":{
+           "title":"Réglages",
+           "close":"Fermez ce fichier",
+           "themes":"Choisissez un thème",
+           "lang":"Choisissez une langue",
+           "clear":"Cela effacera le projett"
+        },
+        "tools":{
+           "writer":"Votre manuscrits",
+           "planningboard":"Vos panneaux de planification",
+           "mindmap":"Vos Mindmaps",
+           "snowflake":"Tes flocons de neige",
+           "timeline":"Votre calendriere",
+           "gridplanner":"Vos planificateurs de grille",
+           "name":"Nom",
+           "description":"description (facultatif)",
+           "warn":"Veuillez fournir un nom"
+        },
+        "writer":{
+           "settings":"Paramètres manuscrits",
+           "newfile": "Nouvelle section",
+           "deletewarn": "Voulez-vous supprimer cet élément? Toutes les cartes que vous avez créées resteront dans la base de données",
+           "intro": "C'est la page principale de votre document. Les options sont ci-dessous.",
+           "docdownload": "Exporter un fichier .doc de ce manuscrit",
+           "words":"Mots"
+        },
+        "mindmap":{
+           "deletenodewarn": "Voulez-vous supprimer ce nœud?"
+        },
+        "snowflake":{
+           "title":"Titre",
+           "deletewarn": "Êtes-vous sûr de vouloir supprimer cette carte?",
+           "replacewarn": "Cela remplacera votre carte par les trois nouveaux."
+        },
+        "timeline":{
+           "date": "Date / Heure",
+           "title":"Titre"
+        },
+        "gridplanner":{
+           "newrow": "New Row",
+           "newcol": "Nouvelle colonne"
+        },
+        "db":{
+           "search": "Rechercher par mots clés",
+           "clear": "Clear Tags",
+           "deletecolwarn": "Supprimer cette colonne?",
+           "deleterowwarn": "Supprimer cette ligne?"
+        },
+        "cards":{
+           
+        }
+     },
+     "es": {
+        "info": {
+           "name": "Español (Spanish)",
+           "textdirection": "LTR"
+        },
+        "welcome": {
+           "loadfile": "Cargar un archivo desde su dispositivo",
+           "loadgoogle": "Cargue un archivo en Google Drive",
+           "info": "Crear un archivo nuevo o cargar uno existente",
+           "projectinput": "Nombre del nuevo proyecto",
+           "projectwarn": "Debe proporcionar un nombre de proyecto"
+        },
+        "google": {
+           "info": "Iniciar sesión en Google Drive",
+           "saveinfo": "Guardar el proyecto actual",
+           "files": "Tus archivos",
+           "save": "Guardar el archivo",
+           "search": "Buscar archivos",
+           "logout": "Cerrar sesión",
+           "close": "Cerrar ventana"
+        },
+        "settings": {
+           "title": "Ajustes",
+           "close": "Cierre este archivo",
+           "themes": "Elige un tema",
+           "lang": "Elige un idioma",
+           "clear": "Esto borrará el proyecto"
+        },
+        "tools": {
+           "writer": "Tus manuscritos",
+           "planningboard": "Tus tableros de planificación",
+           "mindmap": "Tus mapas mental",
+           "snowflake": "Tus copos de nieve",
+           "timeline": "Tu línea de tiempo",
+           "gridplanner": "Tus planificadores de cuadrícula",
+           "name": "Nombre",
+           "description": "Descripción (opcional)",
+           "warn": "Proporcione un nombre"
+        },
+        "writer": {
+           "settings": "Configuración del manuscrito",
+           "newfile": "Nueva sección",
+           "deletewarn": "¿Quieres eliminar este elemento? Cualquier tarjetas que hayas creado permanecerán en la base de datos",
+           "intro": "Esta es la página principal de su documento. Las opciones están a continuación",
+           "docdownload": "Exportar un archivo .doc de este manuscrito",
+           "words": "Palabras"
+        },
+        "mindmap": {
+           "deletenodewarn": "¿Quieres eliminar este nodo?"
+        },
+        "snowflake": {
+           "title": "Título",
+           "deletewarn": "¿Estás seguro de que quieres eliminar esta tarjeta?",
+           "replacewarn": "Esto reemplazará su tarjeta por las tres nuevas"
+        },
+        "timeline": {
+           "date": "Fecha y hora",
+           "title": "Título"
+        },
+        "gridplanner": {
+           "newrow": "Nueva fila",
+           "newcol": "Nueva columna"
+        },
+        "db": {
+           "search": "Buscar por palabras clave",
+           "clear": "Etiquetas claras",
+           "deletecolwarn": "¿Eliminar esta columna?",
+           "deleterowwarn": "¿Eliminar esta fila?"
+        },
+        "cards": {}
+     }
 }

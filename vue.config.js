@@ -17,7 +17,7 @@ module.exports = defineConfig({
     manifestOptions :{
       "name": "Wavemaker Cards",
       "short_name": "Wavemaker",
-      "theme_color": "#f00",
+      "theme_color": "#424242",
       "background_color": "#424242",
       "display": "standalone",
       "scope": "./",

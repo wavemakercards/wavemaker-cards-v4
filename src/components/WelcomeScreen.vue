@@ -1,5 +1,5 @@
 <template>
-  <div class="wavemaker_welcome">
+  <div class="wavemaker_welcome" v-if="this.$root.setlang">
     <div class="wavemakerForm">
       <div style="text-align:center">
         <svg id="wavemaker_logo" version="1.1" viewBox="0 0 24 24" height="50" width="50">
@@ -14,12 +14,12 @@
           </g>
         </svg>
         <div class="softwareName">Wavemaker Cards</div>
-<div>{{$root.language[$root.lang].welcome.info}}</div>
+<div>{{this.$root.setlang.welcome.info}}</div>
       </div>
 
       <table style="width:100%">
         <tr>
-          <td><input v-model="projname" class="formInput" :placeholder="$root.language[$root.lang].welcome.projectinput" /></td>
+          <td><input v-model="projname" class="formInput" :placeholder="this.$root.setlang.welcome.projectinput" /></td>
           <td style="width:50px;"><button class="interfaceBtn" @click="MakeSettings">
               <svg  viewBox="0 0 24 24">
                 <path
@@ -31,23 +31,23 @@
 
     
    
-            <button @click="$root.$data.popup.name = 'GoogleDrive'" class="interfaceBtn fullw " :title="$root.language[$root.lang].welcome.loadgoogle">
+            <button @click="$root.$data.popup.name = 'GoogleDrive'" class="interfaceBtn fullw " :title="this.$root.setlang.welcome.loadgoogle">
         <svg  viewBox="0 0 24 24">
           <path
             d="M13.75,9H16.14L19,14H16.05L13.5,9.46M18.3,17H12.75L14.15,14.5H19.27L19.53,14.96M11.5,17L10.4,14.86L13.24,9.9L14.74,12.56L12.25,17M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z" />
         </svg>
 
-        <span>{{$root.language[$root.lang].welcome.loadgoogle}}</span>
+        <span>{{this.$root.setlang.welcome.loadgoogle}}</span>
       </button>
 
    
       
-      <button @click="$root.file_loadDB" class="interfaceBtn fullw" :title="$root.language[$root.lang].welcome.loadfile">
+      <button @click="$root.file_loadDB" class="interfaceBtn fullw" :title="this.$root.setlang.welcome.loadfile">
         <svg  viewBox="0 0 24 24">
           <path
             d="M19,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4H10L12,6H19A2,2 0 0,1 21,8H21L4,8V18L6.14,10H23.21L20.93,18.5C20.7,19.37 19.92,20 19,20Z" />
         </svg>
-        <span>{{$root.language[$root.lang].welcome.loadfile}}</span>
+        <span>{{this.$root.setlang.welcome.loadfile}}</span>
       </button>
 
    
