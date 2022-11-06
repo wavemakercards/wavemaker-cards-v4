@@ -1,7 +1,9 @@
 <template>
 <div class="scroller">
- <h1>{{this.$root.shadowDB.Timeline[this.$root.session.timeline.selected].title}}<div>{{this.$root.shadowDB.Timeline[this.$root.session.timeline.selected].description}}</div></h1>
- 
+ <input class="topinput" :placeholder="this.$root.setlang.tools.name" v-model="this.$root.shadowDB.Timeline[this.$root.session.timeline.selected].title" @change="ListChanged" />
+ <input class="topinput sub"  :placeholder="this.$root.setlang.tools.description" v-model="this.$root.shadowDB.Timeline[this.$root.session.timeline.selected].description" @change="ListChanged" />
+
+
   <div class="timeline">
 
      <VueDraggableNext
@@ -17,7 +19,7 @@
         v-bind="dragOptions"
         @start="drag = true"
         @end="drag = false"
-          :emptyInsertThreshold="90"
+        :emptyInsertThreshold="90"
         @change="ListChanged"
 
       >
@@ -29,10 +31,10 @@
     <path  d="M13,6V11H18V7.75L22.25,12L18,16.25V13H13V18H16.25L12,22.25L7.75,18H11V13H6V16.25L1.75,12L6,7.75V11H11V6H7.75L12,1.75L16.25,6H13Z" />
 </svg>
 </div>
-           <input class="timeText" tabindex="1" placeholder="Date/Event" v-model="element.event">
+           <input class="timeText" tabindex="1" :placeholder="this.$root.setlang.timeline.date" v-model="element.event">
         </div>
         <div class="content">
-          <input class="title" placeholder="Event Title" tabindex="1" v-model="element.title">
+          <input class="title" :placeholder="this.$root.setlang.timeline.title" tabindex="1" v-model="element.title">
           <p>
             <TimelineEditor v-model="element.text"  tabindex="1" />
           </p>
@@ -118,6 +120,16 @@ export default {
 </script>
 
 <style scoped>
+.topinput{
+  width:100%;
+  font-size: 4rem;
+  border:0px;
+  text-align: center;
+  outline: none;
+}
+.sub{
+  font-size: 2rem;
+}
 .handle{
   position:absolute;
   cursor: grabbing;

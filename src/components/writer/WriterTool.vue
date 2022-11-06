@@ -32,12 +32,17 @@ $root.$data.rhspin ? 'rhspin' : ''
         ].description" 
         @change="changed"/>
 <h4>
-  {{calcWordCount}} Words in this manuscript
+  {{calcWordCount}}  {{this.$root.setlang.writer.words}}
 </h4>
 <p>
-  More settings will be on the way - most will be  styling and so on
+ {{this.$root.setlang.writer.intro}}
 </p>
-        <button @click="exportDoc" class="formButton">Export to word (back up regularly folks - this is an Alpha)</button>
+        <button @click="exportDoc" class="interfaceBtn">
+          
+          <svg  viewBox="0 0 24 24">
+    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M15.2,20H13.8L12,13.2L10.2,20H8.8L6.6,11H8.1L9.5,17.8L11.3,11H12.6L14.4,17.8L15.8,11H17.3L15.2,20M13,9V3.5L18.5,9H13Z" />
+</svg>
+{{this.$root.setlang.writer.docdownload}}</button>
 
 
 
@@ -50,7 +55,7 @@ $root.$data.rhspin ? 'rhspin' : ''
     </div>
 </transition>
      <div class="titleBar" v-if="$root.$data.session.writer.file">
-    <input type="text" v-model="this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === this.$root.session.writer.file.uuid).name" @change="changed" placeholder="New File"  />
+    <input type="text" :placeholder="this.$root.setlang.writer.newfile"  v-model="this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === this.$root.session.writer.file.uuid).name" @change="changed"  />
 </div>
 </div>
 
@@ -83,7 +88,7 @@ export default {
       },
       methods:{
         exportDoc(){
-          if(confirm("Do you want to download a doc file of this Manuscript?")){
+          if(confirm(this.$root.setlang.writer.docdownload)){
             let html ="";
             
             this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.forEach(page => {

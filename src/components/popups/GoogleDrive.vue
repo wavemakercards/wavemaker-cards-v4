@@ -10,20 +10,20 @@
       />
     </svg>
 
-    {{this.$root.language[this.$root.lang].google.info}}
+    {{this.$root.setlang.google.info}}
   </button>
 
   <div v-if="$root.$data.GoogleDriveApi.loggedin" style="text-align:left">
 
 
     <div v-if="Object.keys($root.shadowDB.Settings).length">
-<h3>{{this.$root.language[this.$root.lang].google.saveinfo}}</h3>
+<h3>{{this.$root.setlang.google.saveinfo}}</h3>
 <h4>{{this.$root.$data.shadowDB.Settings[Object.keys(this.$root.$data.shadowDB.Settings)[0]].settings.ProjectName}}</h4>
 <button @click="$root.GoogleDriveWriteFile()" class="interfaceBtn">
   <svg  viewBox="0 0 24 24">
     <path d="M13 19C13 19.34 13.04 19.67 13.09 20H6.5C5 20 3.69 19.5 2.61 18.43C1.54 17.38 1 16.09 1 14.58C1 13.28 1.39 12.12 2.17 11.1S4 9.43 5.25 9.15C5.67 7.62 6.5 6.38 7.75 5.43S10.42 4 12 4C13.95 4 15.6 4.68 16.96 6.04C18.32 7.4 19 9.05 19 11C20.15 11.13 21.1 11.63 21.86 12.5C22.37 13.07 22.7 13.71 22.86 14.42C21.82 13.54 20.5 13 19 13C15.69 13 13 15.69 13 19M16 18H18V22H20V18H22L19 15L16 18Z" />
 </svg>
-  {{this.$root.language[this.$root.lang].google.save}}</button>
+  {{this.$root.setlang.google.save}}</button>
     </div>
 
 
@@ -33,7 +33,7 @@
 
 
 
-     <h3>{{this.$root.language[this.$root.lang].google.files}}</h3>
+     <h3>{{this.$root.setlang.google.files}}</h3>
 <div >
 <button @click="$root.$data.GoogleDriveApi.files=[];$root.GoogleDriveListFiles();" class="interfaceBtn filebutton" style="width:auto;">
     <svg style="width:24px;height:24px" viewBox="0 0 24 24" v-if="!$root.GoogleDriveApi.searching">>
@@ -54,7 +54,7 @@
 </svg>
 
 
-{{this.$root.language[this.$root.lang].google.search}}
+{{this.$root.setlang.google.search}}
 </button>
 </div>
    
@@ -103,7 +103,7 @@
             d="M10 4A4 4 0 0 0 6 8A4 4 0 0 0 10 12A4 4 0 0 0 14 8A4 4 0 0 0 10 4M17.5 13C15 13 13 15 13 17.5C13 20 15 22 17.5 22C20 22 22 20 22 17.5C22 15 20 13 17.5 13M10 14C5.58 14 2 15.79 2 18V20H11.5A6.5 6.5 0 0 1 11 17.5A6.5 6.5 0 0 1 11.95 14.14C11.32 14.06 10.68 14 10 14M17.5 14.5C19.16 14.5 20.5 15.84 20.5 17.5C20.5 18.06 20.35 18.58 20.08 19L16 14.92C16.42 14.65 16.94 14.5 17.5 14.5M14.92 16L19 20.08C18.58 20.35 18.06 20.5 17.5 20.5C15.84 20.5 14.5 19.16 14.5 17.5C14.5 16.94 14.65 16.42 14.92 16Z"
           />
         </svg>
-        {{this.$root.language[this.$root.lang].google.logout}}
+        {{this.$root.setlang.google.logout}}
       </button>
 
 
@@ -111,7 +111,7 @@
       <svg style="width:24px;height:24px" viewBox="0 0 24 24">
     <path d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
 </svg>
-{{this.$root.language[this.$root.lang].google.close}}
+{{this.$root.setlang.google.close}}
     </button>
     </div>
 

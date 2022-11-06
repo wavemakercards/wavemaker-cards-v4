@@ -31,7 +31,7 @@
 </svg>
 </div>
 
-  <input type="text" class="titleBarInput" v-model="col.name" placeholder="New File" @change="ListChanged" />
+  <input type="text" class="titleBarInput" v-model="col.name" :placeholder="this.$root.setlang.writer.newfile" @change="ListChanged" />
   </div>
 
   </div>
@@ -79,7 +79,7 @@ export default {
   },
   methods: {
       deleteFile(index, element){
-     if(confirm("delete this file?")){
+     if(confirm(this.$root.setlang.writer.deletewarn)){
        if(this.$root.$data.session.writer.file === element){
         this.$root.$data.session.writer.file = null
       }
@@ -92,7 +92,7 @@ export default {
         let obj = JSON.parse(JSON.stringify(
           {
         type: "file",
-        name: "New File",
+        name: this.$root.setlang.writer.newfile,
         notes:[],
         content: null
       }

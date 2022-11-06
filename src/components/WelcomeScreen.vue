@@ -51,7 +51,13 @@
       </button>
 
    
-      
+      <div class="languages">
+        <select v-model="this.$root.lang" @change="this.$root.switchLang()">
+  <option v-for="(k,i) in Object.keys(this.$root.language)" :key="i" :value="k">{{ k }}</option>
+
+</select>
+
+      </div>
       
     </div>
   </div>
@@ -70,7 +76,7 @@ export default {
     async MakeSettings() {
 
       if (!this.projname) {
-        alert(this.$root.language[this.$root.lang].welcome.projectwarn)
+        alert(this.$root.setlang.welcome.projectwarn)
         return false
       }
       await this.$root.createDatabase()
@@ -95,6 +101,14 @@ export default {
 
 .softwareName {
   font-size: 2em;
+}
+.languages{
+  padding:10px;
+  text-align: center;
+}
+
+select {
+  padding:5px
 }
 
 </style>

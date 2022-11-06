@@ -72,12 +72,27 @@ export default {
         },
       lang: "en",
       language: Languages,
+      setlang: null,
       uuid,
        session: {},
        navshow:true
     }
   },
   methods:{
+    switchLang(){
+      localStorage.setItem("wmLang", this.lang)
+      console.log("swltched to", this.lang)
+      this.updateLang()
+    },
+    updateLang(){
+      this.setlang =this.$root.language["en"]
+      Object.keys(this.$root.language[this.$root.lang]).forEach((section)=>{
+        Object.keys(section).forEach(item =>{
+          this.setlang[section][item] = this.$root.language[this.$root.lang][section][item]
+        })
+      })
+    },
+
     openInNew(d){
       var w = window.innerWidth;
 var h = window.innerHeight;
@@ -129,14 +144,18 @@ var h = window.innerHeight;
     },
   },
   mounted(){
-
+    this.updateLang()
     if (localStorage.getItem("wmTheme")) {
         this.theme = localStorage.getItem("wmTheme")
         this.switchTheme()
     }
+
+    if (localStorage.getItem("wmLang")) {
+        this.lang = localStorage.getItem("wmLang")
+    }
     window.addEventListener("keydown", this.SpecialKeys);
     // set the text direction  on load - this looks like it might be a bit buggy for rtl  - will need to run tests
-    document.body.dir=this.language[this.lang].textdirection
+    document.body.dir=this.$root.setlang.textdirection
 this.screensizefixes() 
   },
   created() {

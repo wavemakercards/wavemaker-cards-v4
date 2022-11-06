@@ -25,24 +25,24 @@
     <path  d="M8,2H16A2,2 0 0,1 18,4V20A2,2 0 0,1 16,22H8A2,2 0 0,1 6,20V4A2,2 0 0,1 8,2M8,10V14H16V10H8M8,16V20H16V16H8M8,4V8H16V4H8Z" />
 </svg>
             </button>
-                <input class="title"  v-model="flake.title" placeholder="Title" @change="ListChanged" />
+                <input class="title"  v-model="flake.title" :placeholder="this.$root.setlang.snowflake.title" @change="ListChanged" />
                   <SnowflakeEditor :snowFlake="flake" :modelValue="flake.text" @change="ListChanged" />
           </div>
         </div>
 <Transition name="h-slide-fade" >
         <div class="column" v-if="flake.open">
           <div class="card">
-            <input class="title"  v-model="flake.children[0].title " placeholder="Title" @change="ListChanged" />
+            <input class="title"  v-model="flake.children[0].title " :placeholder="this.$root.setlang.snowflake.title" @change="ListChanged" />
                <SnowflakeEditor :snowFlake="flake.children[0]" :modelValue="flake.children[0].text" @change="ListChanged" />
           </div>
 
           <div class="card">
-              <input class="title"  v-model="flake.children[1].title " placeholder="Title" @change="ListChanged" />
+              <input class="title"  v-model="flake.children[1].title " :placeholder="this.$root.setlang.snowflake.title" @change="ListChanged" />
                  <SnowflakeEditor :snowFlake="flake.children[1]"  :modelValue="flake.children[1].text" @change="ListChanged" />
           </div>
 
           <div class="card">
-               <input class="title"  v-model="flake.children[2].title " placeholder="Title" @change="ListChanged" />
+               <input class="title"  v-model="flake.children[2].title " :placeholder="this.$root.setlang.snowflake.title" @change="ListChanged" />
                   <SnowflakeEditor :snowFlake="flake.children[2]" :modelValue="flake.children[2].text"  @change="ListChanged" />
           </div>
 
@@ -90,14 +90,14 @@ export default {
        this.ListChanged()
       },
 deleteFlake(index){
-    if(confirm("This will delete this card and any children")){
+    if(confirm(this.$root.setlang.snowflake.deletewarn)){
       this.$root.shadowDB.Snowflake[this.$root.session.snowflake.selected].content.splice(index,1)
         this.startFlake()
         this.ListChanged()
     }
 },
     replace(flake,index){
-        if(confirm("This will replace your card with the three new ones")){
+        if(confirm(this.$root.setlang.snowflake.replacewarn)){
           let f0={...flake.children[0]}
           let f1={...flake.children[1]}
           let f2={...flake.children[2]}
@@ -131,7 +131,7 @@ deleteFlake(index){
         .content.length
     ) {
       let obj = {};
-      obj.title = "Start Flake";
+      obj.title = "";
       obj.level = 0;
       obj.content = "";
       obj.open = false;

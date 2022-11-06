@@ -155,7 +155,7 @@ export default {
       this.savechange();
     },
     deleteNode(u) {
-      if (confirm("Do you want to delete this node")) {
+      if (confirm(this.$root.setlang.mindmap.deletenodewarn)) {
         // remove any links with this UUID in
 
         this.$root.shadowDB.Mindmap[

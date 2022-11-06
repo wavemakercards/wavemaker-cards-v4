@@ -5,8 +5,8 @@ module.exports = defineConfig({
   productionSourceMap: false, // disable large source map files
   pwa : {
     name: 'My App',
-    themeColor: '#611108',
-    msTileColor: '#611108',
+    themeColor: '#424242',
+    msTileColor: '#424242',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
     workboxOptions: {

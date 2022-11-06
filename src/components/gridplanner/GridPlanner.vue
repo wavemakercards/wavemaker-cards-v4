@@ -25,7 +25,7 @@
 
 <button class="deleteIconButton" tabindex="0" @click="deleteCol(index)" ><svg viewBox="0 0 24 24"  style="width: 18px; height: 18px;"><path d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" ></path></svg></button>
 
-               <input class="headerInput"  @change="Changed()" v-model="header.title" />
+               <input class="headerInput"  @change="Changed()" v-model="header.title" :placeholder="this.$root.setlang.gridplanner.newcol"/>
             </th>
         </template>
           </VueDraggableNext>
@@ -52,7 +52,7 @@
 
 <button class="deleteIconButton" tabindex="0" @click="deleteRow(index)" ><svg viewBox="0 0 24 24"  style="width: 18px; height: 18px;"><path d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" ></path></svg></button>
 
-                    <input class="rowInput" @change="Changed()" v-model="item.title" />
+                    <input class="rowInput" @change="Changed()" v-model="item.title" :placeholder="this.$root.setlang.gridplanner.newrow" />
                     </th>
             <td v-for="header in this.$root.shadowDB.Gridplanner[this.$root.session.gridplanner.selected].content.headers" :key="header">
                 <GridPlannerCell :parentList="item.cells[header.uuid]" @MakeChange="Changed()"/></td>
@@ -143,7 +143,7 @@ export default {
         addCol(){
             let obj = {}
             obj.uuid = this.$root.uuid()
-            obj.title  = "New Column"
+            obj.title  = ""
             this.$root.shadowDB.Gridplanner[this.$root.session.gridplanner.selected].content.headers.push(obj)
             this.$root.shadowDB.Gridplanner[this.$root.session.gridplanner.selected].content.rows.forEach((el)=>{
                     el.cells[obj.uuid] = []
@@ -152,7 +152,7 @@ export default {
         },
         addRow(){
             let obj = {}
-            obj.title  = "New Row"
+            obj.title  = ""
             obj.cells = {}
             this.$root.shadowDB.Gridplanner[this.$root.session.gridplanner.selected].content.headers.forEach((el)=>{
                 obj.cells[el.uuid] = []
@@ -161,7 +161,7 @@ export default {
             this.Changed();
         },
         deleteCol(i){
-            if(confirm("Delete this Column?")){
+            if(confirm(this.$root.setlang.gridplanner.deletecolwarn)){
                 console.log(i)
                 let delId = this.$root.shadowDB.Gridplanner[this.$root.session.gridplanner.selected].content.headers[i].uuid
                console.log(delId)
@@ -175,7 +175,7 @@ export default {
 
         },
         deleteRow(i){
-            if(confirm("Delete this Row?")){
+            if(confirm(this.$root.setlang.gridplanner.deleterowwarn)){
                this.$root.shadowDB.Gridplanner[this.$root.session.gridplanner.selected].content.rows.splice(i,1)
                this.Changed();
             }
