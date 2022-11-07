@@ -1,28 +1,20 @@
 <template>
- <div v-if="Object.keys($root.shadowDB.Settings).length">
+  <div v-if="Object.keys($root.shadowDB.Settings).length">
     <Start />
   </div>
-  <div v-if="!Object.keys($root.shadowDB.Settings).length" >
-  <WelcomeScreen />
+  <div v-if="!Object.keys($root.shadowDB.Settings).length">
+    <WelcomeScreen />
   </div>
-   <CardModal v-if="$root.$data.session.EditCard" />
-  <PopupManager/>
-<!--
+  <CardModal v-if="$root.$data.session.EditCard" />
+  <PopupManager />
+  <!--
   Hidden File open element
   this is used byt the fileManage.js to trigger a file open dialogue
  -->
- <input
-      type="file"
-      id="wavemakerHiddenPicker"
-      name="upload"
-      accept=".wm4"
-      @change="file_load"
-      style="display: none"
-    />
+  <input type="file" id="wavemakerHiddenPicker" name="upload" accept=".wm4" @change="file_load" style="display: none" />
 </template>
 
 <script>
-//import '@/css/wavemaker.css'
 import '@/css/wavemakerInterface.css'
 import '@/css/transitions.css'
 import apitool from '@/mixins/apitool.js'
@@ -38,8 +30,8 @@ import Languages from "./lang.json";
 import CardModal from "./components/universal/CardModal.vue"
 export default {
   name: 'App',
-  mixins: [apitool, fileManage ,shadowDatabase,dexieDB,GoogleDriveApi],
-  components:{
+  mixins: [apitool, fileManage, shadowDatabase, dexieDB, GoogleDriveApi],
+  components: {
     PopupManager,
     WelcomeScreen,
     Start,
@@ -56,55 +48,55 @@ export default {
     }
   },
   */
-  data(){
-    return{
-      theme : "default",
-      themeList :[
-        {name : "Default Wavemaker", file : "default"},
-        {name : "Light Theme", file : "light"},
-        {name : "Blue Sky", file : "bluesky"}
+  data() {
+    return {
+      theme: "default",
+      themeList: [
+        { name: "Default Wavemaker", file: "default" },
+        { name: "Light Theme", file: "light" },
+        { name: "Blue Sky", file: "bluesky" }
       ],
-      lhspin:true,
-      rhspin:true,
-      show : false,
-      popup :{
-        name :null
-        },
+      lhspin: true,
+      rhspin: true,
+      show: false,
+      popup: {
+        name: null
+      },
       lang: "en",
       language: Languages,
       setlang: null,
       uuid,
-       session: {},
-       navshow:true
+      session: {},
+      navshow: true
     }
   },
-  methods:{
-    switchLang(){
+  methods: {
+    switchLang() {
       localStorage.setItem("wmLang", this.lang)
       console.log("swltched to", this.lang)
       this.updateLang()
-    }, 
-    updateLang(){
+    },
+    updateLang() {
       console.log("updating", this.$root.language[this.$root.lang])
-      this.setlang =this.$root.language[this.$root.lang]
-/*
-      Object.keys(this.$root.language[this.$root.lang]).forEach((section)=>{
-        Object.keys(section).forEach(item =>{
-          this.setlang[section][item] = this.$root.language[this.$root.lang][section][item]
-        })
-      
-      })
-        */
+      this.setlang = this.$root.language[this.$root.lang]
+      /*
+            Object.keys(this.$root.language[this.$root.lang]).forEach((section)=>{
+              Object.keys(section).forEach(item =>{
+                this.setlang[section][item] = this.$root.language[this.$root.lang][section][item]
+              })
+            
+            })
+              */
       console.log(this.setlang)
     },
 
-    openInNew(d){
+    openInNew(d) {
       var w = window.innerWidth;
-var h = window.innerHeight;
+      var h = window.innerHeight;
 
-        if(d==="planningboard"){
-          window.open("/?sc="+d+"&sel="+this.$root.session.writer.selected, "PlanningBoard", "width="+w+"px,height="+h+"px");
-        }    
+      if (d === "planningboard") {
+        window.open("/?sc=" + d + "&sel=" + this.$root.session.writer.selected, "PlanningBoard", "width=" + w + "px,height=" + h + "px");
+      }
     },
     wordCounter(str) {
       str = str.replace(/(<([^>]+)>)/gi, " ");
@@ -112,21 +104,21 @@ var h = window.innerHeight;
         return n != "";
       }).length;
     },
-    niceDate(timestamp){
-      var d= new Date(timestamp)
-      return  d.getDate()+"/"+d.getMonth()+"/"+d.getFullYear()+" - "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()
+    niceDate(timestamp) {
+      var d = new Date(timestamp)
+      return d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
     },
-      screensizefixes() {
-        let w = window.innerWidth
-        if(w<720){
-          this.lhspin = false
-          this.rhspin = false
-        }
-           if(w>720){
-          this.lhspin = true
-          this.rhspin = true
-        }
-  },
+    screensizefixes() {
+      let w = window.innerWidth
+      if (w < 720) {
+        this.lhspin = false
+        this.rhspin = false
+      }
+      if (w > 720) {
+        this.lhspin = true
+        this.rhspin = true
+      }
+    },
     SpecialKeys(e) {
       /* */
       if (e.shiftKey && e.key === "Enter") {
@@ -143,36 +135,36 @@ var h = window.innerHeight;
       }
       */
     },
-    switchTheme(){
-      document.getElementById("themeSwitch").href = "themes/"+this.theme+".css";
+    switchTheme() {
+      document.getElementById("themeSwitch").href = "themes/" + this.theme + ".css";
       localStorage.setItem("wmTheme", this.theme)
     },
   },
-  mounted(){
+  mounted() {
 
     if (localStorage.getItem("wmTheme")) {
-        this.theme = localStorage.getItem("wmTheme")
-        this.switchTheme()
+      this.theme = localStorage.getItem("wmTheme")
+      this.switchTheme()
     }
 
-    if (localStorage.getItem("wmLang") && localStorage.getItem("wmLang")!="undefined") {
+    if (localStorage.getItem("wmLang") && localStorage.getItem("wmLang") != "undefined") {
 
-        this.lang = localStorage.getItem("wmLang")
-    }else{
-      this.lang ="en"
+      this.lang = localStorage.getItem("wmLang")
+    } else {
+      this.lang = "en"
     }
     this.updateLang();
     window.addEventListener("keydown", this.SpecialKeys);
     // set the text direction  on load - this looks like it might be a bit buggy for rtl  - will need to run tests
-    document.body.dir=this.$root.setlang.textdirection
-this.screensizefixes() 
+    document.body.dir = this.$root.setlang.textdirection
+    this.screensizefixes()
   },
   created() {
-  window.addEventListener("resize", this.screensizefixes);
-},
-unmount() {
-  window.removeEventListener("resize", this.screensizefixes);
-}
+    window.addEventListener("resize", this.screensizefixes);
+  },
+  unmount() {
+    window.removeEventListener("resize", this.screensizefixes);
+  }
 }
 </script>
 

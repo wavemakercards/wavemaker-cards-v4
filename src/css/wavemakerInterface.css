@@ -20,49 +20,51 @@ body {
 }
 
 .wavemaker_logo-top {
-fill: var(--logo-top);
+  fill: var(--logo-top);
 }
 
 .wavemaker_logo-bottom {
-fill: var(--logo-bottom);
+  fill: var(--logo-bottom);
 }
 
 svg {
-position: relative;
-fill:inherit;
+  position: relative;
+  fill: inherit;
 }
-input{
-background-color: inherit;
-color: inherit;
+
+input {
+  background-color: inherit;
+  color: inherit;
 }
-label{
+
+label {
   display: block;
 }
 
 ::-webkit-scrollbar-button {
-display: block;
-height: 0px;
-border-radius: 0px;
-background-color: var(--webkit-scrollbar-button)
+  display: block;
+  height: 0px;
+  border-radius: 0px;
+  background-color: var(--webkit-scrollbar-button)
 }
 
 ::-webkit-scrollbar-thumb {
-background-color: var(--webkit-scrollbar-thumb);
+  background-color: var(--webkit-scrollbar-thumb);
 }
 
 ::-webkit-scrollbar-track {
-background-color: var(--webkit-scrollbar-track);
+  background-color: var(--webkit-scrollbar-track);
 }
 
 ::-webkit-scrollbar {
-width: 5px;
+  width: 5px;
 }
 
 .wavemakerPopupBlackout {
   position: absolute;
   background-color: var(--popup-block);
   color: var(--popup-block-f);
-  opacity: 0.7;
+  opacity: 0.93;
   top: 0;
   bottom: 0;
   left: 0;
@@ -100,9 +102,10 @@ width: 5px;
   background-color: var(--display-window);
   color: var(--display-window-f);
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 0px;
 
 }
+
 .clearInterfaceIconButton {
   border: 0px;
   padding: 4px 4px 0px 4px;
@@ -111,78 +114,80 @@ width: 5px;
   border-radius: 50%;
   background: none;
   transition: all 0.3s ease;
+  fill: var(--window-f);
 }
 
 .clearInterfaceIconButton svg {
-  fill: var(--window-f);
+  width: 20px;
+  height: 20px;
 }
+
 
 .clearInterfaceIconButton:hover,
 .clearInterfaceIconButton:active,
 .clearInterfaceIconButton:focus {
   background: var(--button-hover) !important;
-}
-
-.clearInterfaceIconButton:hover svg,
-.clearInterfaceIconButton:active svg,
-.clearInterfaceIconButton:focus svg {
   fill: var(--button-hover-f) !important;
 }
 
-.formInput{
-  border:0px;
-  outline:0px;
-  height:40px;
+
+
+.formInput {
+  border: 0px;
+  outline: 0px;
+  height: 40px;
   border-radius: 0px;
   background-color: var(--paper);
   color: var(--paper-f);
   padding: 5px;
-  padding-left:15px;
-  width:100%;
-  margin-top:10px;
+  padding-left: 15px;
+  width: 100%;
+  margin-top: 10px;
 }
-.fullw{
-  width:100%;
+
+.fullw {
+  width: 100%;
 }
-.interfaceBtn{
+
+.interfaceBtn {
   position: relative;
-  background-color: var(--button) ;
-  color: var(--button-f) ;
-  fill: var(--button-f) ;
-  border:0px;
-  outline:0px;
-  height:40px;
+  background-color: var(--button);
+  color: var(--button-f);
+  fill: var(--button-f);
+  border: 0px;
+  outline: 0px;
+  height: 40px;
   border-radius: 0px;
-  padding-left:45px;
+  padding-left: 45px;
   padding-right: 10px;
-  cursor:pointer;
+  cursor: pointer;
   font-family: var(--sysfont);
-  margin-top:10px;
+  margin-top: 10px;
 }
-.interfaceBtn svg{
+
+.interfaceBtn svg {
   position: absolute;
-  left:15px;
-  top:10px;
-  width:20px;
-  height:20px;
+  left: 15px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
 }
 
 .interfaceBtn:hover,
 .interfaceBtn:focus,
-.interfaceBtn:active
-{
-  background-color: var(--button-hover) ;
-  color: var(--button-hover-f) ;
-  fill: var(--button-hover-f) ;
+.interfaceBtn:active {
+  background-color: var(--button-hover);
+  color: var(--button-hover-f);
+  fill: var(--button-hover-f);
 }
 
 .deleteIconButton {
-  position:absolute;
-  right:2px;
-  top:2px;
+  position: absolute;
+  right: 2px;
+  top: 2px;
   border: 0px;
-  width:18px;
-  height:18px;
+  width: 18px;
+  height: 18px;
   padding: 2px 2px 0px 2px;
   cursor: pointer;
   margin: 0px;
@@ -190,18 +195,18 @@ width: 5px;
   background: none;
   transition: all 0.3s ease;
   background-color: inherit;
-  display:none;
+  display: none;
 
 }
 
 .deleteIconButton svg {
-  width:18px;
-  height:18px;
-  position:absolute;
+  width: 18px;
+  height: 18px;
+  position: absolute;
   fill: var(--danger-f);
-  width:100%;
-  left:0px;
-  top:0px;
+  width: 100%;
+  left: 0px;
+  top: 0px;
 }
 
 .deleteIconButton:hover,
@@ -219,63 +224,78 @@ width: 5px;
 
 
 
-.writer  .ProseMirror{
+.writer .ProseMirror {
   background-color: var(--paper);
   color: var(--paper-f);
-  padding:50px;
+  padding: 50px;
 
- max-width:800px;
- margin:0 auto;
+  max-width: 800px;
+  margin: 0 auto;
   min-height: 900px;
   font-size: 1.5rem;
   font-family: var(--pagefont);
-  margin-bottom:10px;
-  margin-top:80px;
-  padding-bottom:100px
+  margin-bottom: 10px;
+  margin-top: 80px;
+  padding-bottom: 100px
 }
 
-.ProseMirror img{
- max-width:100%;
+.ProseMirror img {
+  max-width: 100%;
 }
 
 
-.cardDescription  .ProseMirror{
-  background-color: var(--paper);
-  color:var(--paper-f);
-   margin:0 auto;
+.cardDescription .ProseMirror {
+  background-color: inherit;
+  color: inherit;
+  margin: 0 auto;
   min-height: 100px;
   font-size: 1rem;
   font-family: var(--sysfont);
-  padding:0px;
+  padding: 0px;
   outline: none;
 }
 
-.wavemakerFolderPreview img{
+
+.advancedEditor .ProseMirror,
+.descriptionEditor .ProseMirror {
+  background-color: inherit;
+  color: inherit;
+  margin: 0 auto;
+  min-height: 100px;
+  font-size: 1rem;
+  font-family: var(--sysfont);
+  padding: 10px;
+  outline: none;
+}
+
+.wavemakerFolderPreview img {
   max-width: 100%;
 }
 
 .basiceditor .ProseMirror {
-min-height: 100px;
-outline: none;
-background: inherit;
-color: inherit;
-padding:10px;
-text-align:left;
+  min-height: 100px;
+  outline: none;
+  background: inherit;
+  color: inherit;
+  padding: 10px;
+  text-align: left;
 }
-.basiceditor .ProseMirror p{
-  margin:0px;
-  padding:0px;
+
+.basiceditor .ProseMirror p {
+  margin: 0px;
+  padding: 0px;
 }
 
 .snowflakeEditor .ProseMirror {
   min-height: 100px;
   outline: none;
   background: inherit;
-padding:10px;
-  text-align:left;
-  }
-  .snowflakeEditor .ProseMirror p{
-    margin:0px;
-    padding:0px;
-    padding-bottom:5px;
-  }
+  padding: 10px;
+  text-align: left;
+}
+
+.snowflakeEditor .ProseMirror p {
+  margin: 0px;
+  padding: 0px;
+  padding-bottom: 5px;
+}

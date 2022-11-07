@@ -6,9 +6,7 @@
           <td><h1>{{this.$root.setlang.tools.mindmap}}</h1></td>
           <td style="width: 100px">
             <button @click="showaddform = !showaddform" class="interfaceBtn">
-       <svg  viewBox="0 0 24 24">
-    <path  d="M14.25,12L16.27,11H23L22,9H18.03L20.42,5.83L19.43,3.83L15.37,9.2L13.35,10.21L13.75,8L17.83,2.62L15.64,2.22L12,7L8.4,2.2L6.2,2.6L10.26,8L10.66,10.21L8.82,9.29L8.66,9.21L4.6,3.8L3.6,5.8L6,9H2L1,11H7.77L9.75,12L7.73,13H1L2,15H5.97L3.58,18.17L4.57,20.17L8.63,14.8L10.65,13.79L10.25,16L6.17,21.38L8.36,21.79L12,17L15.6,21.8L17.8,21.4L13.74,16L13.34,13.79L15.34,14.79L19.4,20.2L20.4,18.2L18,15H22L23,13H16.23" />
-</svg>
+              <svg  version="1.1"  viewBox="0 0 24 24"><path d="M21 16V13C21 11.89 20.11 11 19 11H13V8H15V2H9V8H11V11H5C3.89 11 3 11.89 3 13V16H1V22H7V16H5V13H11V16H9V22H15V16H13V13H19V16H17V22H23V16H21M11 4H13V6H11V4M5 20H3V18H5V20M13 20H11V18H13V20M21 20H19V18H21V20Z" /></svg>
             </button>
           </td>
         </tr>
@@ -32,7 +30,7 @@
           <button
             @click="addItem"
             class="interfaceBtn"
-            style="width: 100px; display: inline"
+ 
           >
        <svg  viewBox="0 0 24 24">
     <path  d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />

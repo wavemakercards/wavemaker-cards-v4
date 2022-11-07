@@ -1,57 +1,51 @@
 <template>
-  <div class="card">
-    <div v-if="this.$root.$data.shadowDB.Cards[this.cardid]">
-      <input
-        class="cardTitle"
-        placeholder="Title"
-        v-model="this.$root.$data.shadowDB.Cards[this.cardid].title"
-        @change="updatecard"
-      />
+  <div v-if="this.$root.$data.shadowDB.Cards[this.cardid]">
+    <div class="card"
+      :style="'background-color: var(' + this.$root.$data.shadowDB.Cards[this.cardid].color + '); color : var(' + this.$root.$data.shadowDB.Cards[this.cardid].color + '-f); fill : var(' + this.$root.$data.shadowDB.Cards[this.cardid].color + '-f)'">
+
+      <input class="cardTitle" placeholder="Title" v-model="this.$root.$data.shadowDB.Cards[this.cardid].title"
+        @change="updatecard" />
       <div style="height:130px; overflow-y:scroll">
-        <!--
-        <textarea
-          class="cardDescription"
-          placeholder="Description"
-          v-model="this.$root.$data.shadowDB.Cards[this.cardid].description"
-          rows="5"
-          @change="updatecard"
-        ></textarea>
--->
-        <DescriptionEditor
-      v-model="
-        this.$root.$data.shadowDB.Cards[this.cardid]
-          .description
-      "
-      :cardid="
-        this.$root.$data.shadowDB.Cards[this.cardid].uuid
-      "
-      class="cardDescription"
-    />
+        <DescriptionEditor v-model="
+          this.$root.$data.shadowDB.Cards[this.cardid]
+            .description
+        " :cardid="
+  this.$root.$data.shadowDB.Cards[this.cardid].uuid
+" class="cardDescription" />
 
 
       </div>
+
+      <div class="tagbox" v-if="this.$root.$data.shadowDB.Cards[this.cardid].labels.length">
+        <span class="tag" v-for="(tag, i) in this.$root.$data.shadowDB.Cards[this.cardid].labels" :key="i">{{ tag
+        }}</span>
+
+      </div>
+
       <button class="clearInterfaceIconButton editButton" @click="$root.$data.session.EditCard = cardid">
-        <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
+        <svg version="1.1" viewBox="0 0 24 24">
           <path
-            d="M14.06,9L15,9.94L5.92,19H5V18.08L14.06,9M17.66,3C17.41,3 17.15,3.1 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18.17,3.09 17.92,3 17.66,3M14.06,6.19L3,17.25V21H6.75L17.81,9.94L14.06,6.19Z"
-          />
+            d="M14.06,9L15,9.94L5.92,19H5V18.08L14.06,9M17.66,3C17.41,3 17.15,3.1 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18.17,3.09 17.92,3 17.66,3M14.06,6.19L3,17.25V21H6.75L17.81,9.94L14.06,6.19Z" />
         </svg>
       </button>
     </div>
-    <div v-if="!this.$root.$data.shadowDB.Cards[this.cardid]">
-      <div v-if="chooser">
-        <button @click="createCard">Create New</button>
-<hr/>
-        <select style="width:100%" v-model="cardChange">
-          <option v-for="(opt, i) in currentProjectCards" :key="i" :value="opt.uuid">{{i +' - '+opt.title}}</option>
-        </select>
-        <br/>
-        <button @click="sendCardChange">Choose</button>
-
-      </div>
-      <div v-else>loading</div>
-    </div>
   </div>
+
+  <div class="card" v-if="!this.$root.$data.shadowDB.Cards[this.cardid]">
+    <div v-if="chooser">
+      <button @click="createCard">Create New</button>
+      <hr />
+      <select style="width:100%" v-model="cardChange">
+        <option v-for="(opt, i) in currentProjectCards" :key="i" :value="opt.uuid">{{ i + ' - ' + opt.title }}
+        </option>
+      </select>
+      <br />
+      <button @click="sendCardChange">Choose</button>
+
+    </div>
+    <div v-else>loading</div>
+  </div>
+
 
 
 </template>
@@ -61,7 +55,7 @@
 import DescriptionEditor from "@/components/universal/DescriptionEditor.vue";
 export default {
   name: "CardViewer",
-  components:{
+  components: {
     DescriptionEditor
   },
   emits: ["linkcard"],
@@ -74,17 +68,17 @@ export default {
       type: Boolean,
       default: false,
     },
-    updateelement :{
-      type : Object,
+    updateelement: {
+      type: Object,
       default: [],
       required: false,
     }
   },
-  computed:{
-    currentProjectCards(){
-      let data =[];
+  computed: {
+    currentProjectCards() {
+      let data = [];
       Object.keys(this.$root.$data.shadowDB.Cards).forEach(element => {
-        if(this.$root.$data.shadowDB.Cards[element].projectID === this.$root.$data.session.selectedProject && this.$root.$data.shadowDB.Cards[element].title !="" ){
+        if (this.$root.$data.shadowDB.Cards[element].projectID === this.$root.$data.session.selectedProject && this.$root.$data.shadowDB.Cards[element].title != "") {
           data.push(this.$root.$data.shadowDB.Cards[element])
         }
       });
@@ -96,7 +90,7 @@ export default {
       advancedEdit: false,
       tag: null,
       chooser: false,
-      cardChange : null
+      cardChange: null
     };
   },
   methods: {
@@ -124,16 +118,17 @@ export default {
       obj.uuid = this.cardid; // use the same uuid to link them
       obj.projectID = this.$root.$data.session.selectedProject;
       obj.title = "";
-      obj.description="";
+      obj.description = "";
       obj.content = "";
       obj.labels = [];
       obj.style = "";
       obj.options = {};
+      obj.color = "--card1"
       this.$root.$data.shadowDB.Cards[obj.uuid] = obj;
       this.$root.AddRecord("Cards", obj);
     },
-    sendCardChange(){
-      console.log("Link to card selected" , this.updateelement)
+    sendCardChange() {
+      console.log("Link to card selected", this.updateelement)
       this.updateelement.uuid = this.cardChange
       this.$emit("linkcard")
     }
@@ -148,7 +143,7 @@ export default {
         this.chooser = true;
       }
     }
-  },
+  }
 };
 </script>
 
@@ -182,27 +177,25 @@ export default {
   margin-bottom: 5px;
   outline: none;
   padding: 10px;
-    font-family: inherit;
-    font-weight:bold;
+  font-family: inherit;
+  font-weight: bold;
 }
 
 .cardTitle:active,
 .cardTitle:focus,
-.cardTitle:hover {
-
-}
+.cardTitle:hover {}
 
 .cardDescription {
   width: 100%;
   border: 0px;
 
   margin-bottom: 5px;
-    background-color: var(--card);
-  color: var(--card-f);
+  background-color: inherit;
+  color: inherit;
   outline: none;
   padding: 0px;
   resize: vertical;
-    font-family: inherit;
+  font-family: inherit;
 
 }
 
@@ -215,14 +208,15 @@ export default {
 .card:focus-within .editButton {
   display: block;
 }
+
 .editButton {
   display: none;
-  background-color: var(--primary);
-  color: var(--primary-f);
+  background-color: var(--button);
+  color: var(--button-f);
+  fill: var(--button-f);
 }
-.editButton svg{
-    fill: var(--primary-f);
-}
+
+
 
 
 #overlay {
@@ -235,29 +229,40 @@ export default {
   opacity: 0.97;
   z-index: 998;
 }
+
 .editorHolder {
   position: fixed;
   top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
-  margin: 5% auto; /* 15% from the top and centered */
+  margin: 5% auto;
+  /* 15% from the top and centered */
   padding: 20px;
-  background-color: var(--c1);
-  color: var(--c1-f);
-  width: 50%; /* Could be more or less, depending on screen size */
+  background-color: inherit;
+  color: inherit;
+  width: 50%;
+  /* Could be more or less, depending on screen size */
   z-index: 999;
   overflow-y: auto;
 }
+
+.tagbox {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .tag {
   position: relative;
   padding: 5px;
-  background-color: var(--primary);
+  background-color: var(--accent);
   color: var(--primary-f);
-  margin: 5px;
-  border-radius: 10px;
-  padding-right: 30px;
+  margin: 2px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+
 }
+
 .tag button {
   position: absolute;
   right: 5px;
@@ -271,15 +276,18 @@ export default {
   padding: 0px;
   cursor: pointer;
 }
+
 .tag button svg {
   height: 15px;
   fill: var(--primary-f);
 }
+
 .tag button svg:focus,
 .tag button svg:active,
 .tag button svg:hover {
   fill: var(--primary-f);
 }
+
 .tag button label {
   display: block;
 }
