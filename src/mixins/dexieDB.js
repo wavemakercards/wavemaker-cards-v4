@@ -49,13 +49,11 @@ const dexieDB = {
         .then(console.log("Delete Complete"));
     },
     createDatabase() {
+
+
       this.db = new Dexie("wavemakerv4");
-      /*
-                  this.db.on('blocked', event => {
-                    if (event.dataLoss !== 'none') {
-                      this.logger.error('Database is blocked', event);
-                    }
-                  });*/
+
+      //note this has to match in  dexieDB and db.js
 
       this.db.version(1).stores({
         Settings: `$$uuid, settings, lastupdated`,
@@ -64,11 +62,10 @@ const dexieDB = {
         Pages: `$$uuid, projectID, writerID ,content, notes ,lastupdated`,
         Cards: `$$uuid,projectID ,title,description,content,style,labels,options,lastupdated`,
         Snowflake: `$$uuid,projectID ,title, description,content,lastupdated`,
-        Planningboard: `$$uuid,projectID ,title, description,content,lastupdated`,
         Timeline: `$$uuid,projectID ,title, description,content,lastupdated`,
         Gridplanner: `$$uuid, projectID ,title, description,content,lastupdated`,
         Mindmap: `$$uuid, projectID ,title, description,content,lastupdated`,
-        _images: `$$uuid, title, base64`
+        ImageLibrary: `$$uuid, title, base64`
       });
 
       this.setupShadowDB();

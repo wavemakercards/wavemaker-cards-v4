@@ -62,7 +62,7 @@ export default {
 
         },
         async getImages() {
-            this.imagesArray = await this.$root.db._images.toArray()
+            this.imagesArray = await this.$root.db.ImageLibrary.toArray()
         },
         updateCanvasImage(e) {
             var self = this;
@@ -78,7 +78,7 @@ export default {
             reader.readAsDataURL(files[0]);
         },
         drawCanvasImage(img) {
-            console.log(img)
+
             var canvas = this.$refs.imageCanvas;
             canvas.width = 300;
             canvas.height = img.height / (img.width / 300);
@@ -99,7 +99,7 @@ export default {
             o.uuid = uuid
             o.title = this.newimage.title
             o.base64 = this.newimage.base64
-            await this.$root.AddRecord("_images", o)
+            await this.$root.AddRecord("ImageLibrary", o)
             this.newimage.title = null
             this.newimage.base64 = null
             this.getImages()
