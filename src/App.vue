@@ -5,7 +5,8 @@
   <div v-if="!Object.keys($root.shadowDB.Settings).length">
     <WelcomeScreen />
   </div>
-  <CardModal v-if="$root.$data.session.EditCard" />
+  <CardModal v-if="$root.session.EditCard" :key="$root.EditCardrefresh" />
+  <ImageManager v-if="$root.imagemanager" />
   <PopupManager />
   <!--
   Hidden File open element
@@ -28,6 +29,7 @@ import Start from '@/components/Start.vue'
 import { v4 as uuid } from "uuid";
 import Languages from "./lang.json";
 import CardModal from "./components/universal/CardModal.vue"
+import ImageManager from "./components/universal/ImageManager.vue"
 export default {
   name: 'App',
   mixins: [apitool, fileManage, shadowDatabase, dexieDB, GoogleDriveApi],
@@ -35,7 +37,8 @@ export default {
     PopupManager,
     WelcomeScreen,
     Start,
-    CardModal
+    CardModal,
+    ImageManager
   },
   /*
    watch: {  // for dev
@@ -50,6 +53,7 @@ export default {
   */
   data() {
     return {
+      EditCardrefresh: null,
       theme: "default",
       themeList: [
         { name: "Default Wavemaker", file: "default" },
@@ -67,7 +71,13 @@ export default {
       setlang: null,
       uuid,
       session: {},
-      navshow: true
+      navshow: true,
+      imagemanager: false,
+      imageUpdate: {
+        table: null,
+        targetuuid: null,
+        target: null
+      }
     }
   },
   methods: {
@@ -87,7 +97,7 @@ export default {
             
             })
               */
-      console.log(this.setlang)
+
     },
 
     openInNew(d) {

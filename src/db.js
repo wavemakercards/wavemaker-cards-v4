@@ -7,19 +7,19 @@ db.version(1).stores({
   Writer: `uuid, title, description, files, lastupdated`,
   Cards: `uuid, title,description,content,style,labels,options,lastupdated`,
   Snowflake: `uuid, title, description,content,lastupdated`,
-  Planningboard: `uuid, title, description,content,lastupdated`,
   Timeline: `uuid, title, description,content,lastupdated`,
   Gridplanner: `uuid, title, description,content,lastupdated`,
   Mindmap: `uuid, title, description,content,lastupdated`,
+  Images: `uuid, base64, title`
 });
 
 
-export const databaseImport = async (blob)=>{
-  await db.import(blob,{clearTablesBeforeImport: true})
+export const databaseImport = async (blob) => {
+  await db.import(blob, { clearTablesBeforeImport: true })
 }
 
-export const databaseExport = async ()=>{
-  const blob= await db.export()
+export const databaseExport = async () => {
+  const blob = await db.export()
   return blob
 }
 

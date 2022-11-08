@@ -3,9 +3,18 @@
     <div class="card"
       :style="'background-color: var(' + this.$root.$data.shadowDB.Cards[this.cardid].color + '); color : var(' + this.$root.$data.shadowDB.Cards[this.cardid].color + '-f); fill : var(' + this.$root.$data.shadowDB.Cards[this.cardid].color + '-f)'">
 
+
+
+      <div v-if="this.showimage">
+        <img :src="'data:image/png;base64,' + this.showimage.base64" />
+      </div>
+
+
+
+
       <input class="cardTitle" placeholder="Title" v-model="this.$root.$data.shadowDB.Cards[this.cardid].title"
         @change="updatecard" />
-      <div style="height:130px; overflow-y:scroll">
+      <div>
         <DescriptionEditor v-model="
           this.$root.$data.shadowDB.Cards[this.cardid]
             .description
@@ -15,13 +24,16 @@
 
 
       </div>
+      <!--
+
+
 
       <div class="tagbox" v-if="this.$root.$data.shadowDB.Cards[this.cardid].labels.length">
         <span class="tag" v-for="(tag, i) in this.$root.$data.shadowDB.Cards[this.cardid].labels" :key="i">{{ tag
         }}</span>
 
       </div>
-
+-->
       <button class="clearInterfaceIconButton editButton" @click="$root.$data.session.EditCard = cardid">
         <svg version="1.1" viewBox="0 0 24 24">
           <path
@@ -90,7 +102,8 @@ export default {
       advancedEdit: false,
       tag: null,
       chooser: false,
-      cardChange: null
+      cardChange: null,
+      showimage: null
     };
   },
   methods: {
@@ -133,7 +146,7 @@ export default {
       this.$emit("linkcard")
     }
   },
-  mounted() {
+  async mounted() {
     if (!this.allowlink) {
       if (!this.$root.$data.shadowDB.Cards[this.cardid] && this.cardid) {
         this.createCard();
@@ -141,6 +154,11 @@ export default {
     } else {
       if (!this.$root.$data.shadowDB.Cards[this.cardid]) {
         this.chooser = true;
+      }
+    }
+    if (this.$root.$data.shadowDB.Cards[this.cardid]) {
+      if (this.$root.$data.shadowDB.Cards[this.cardid].showimage) {
+        this.showimage = await this.$root.getImage(this.$root.$data.shadowDB.Cards[this.cardid].showimage)
       }
     }
   }
@@ -161,6 +179,10 @@ export default {
   min-height: 150px;
   border-radius: 0px;
   font-family: inherit;
+}
+
+.card img {
+  max-width: 100%;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -260,7 +282,7 @@ export default {
   margin: 2px;
   border-radius: 5px;
   font-size: 0.9rem;
-
+  display: inline;
 }
 
 .tag button {

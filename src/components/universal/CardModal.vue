@@ -10,6 +10,17 @@
         </svg>
       </button>
 
+      <div class="colorbox">
+        <button class="c1" @click="setCardColor(1)"></button>
+        <button class="c2" @click="setCardColor(2)"></button>
+        <button class="c3" @click="setCardColor(3)"></button>
+        <button class="c4" @click="setCardColor(4)"></button>
+        <button class="c5" @click="setCardColor(5)"></button>
+        <button class="c6" @click="setCardColor(6)"></button>
+        <button class="c7" @click="setCardColor(7)"></button>
+      </div>
+
+
       <div class="inputHolder">
         <input class="cardTitle" placeholder="Title"
           v-model="this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].title" @change="updatecard" />
@@ -24,8 +35,6 @@
 " />
       </div>
       <div class="inputHolder">
-        <label>tags</label>
-        <input placeholder="tag" @change="tagger" v-model="tag" class="tagInput" />
         <span class="tag" v-for="(tag, ti) in this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].labels"
           :key="ti">
           {{ tag }}
@@ -37,12 +46,11 @@
             </svg>
           </button>
         </span>
+        <input placeholder="#" @change="tagger" v-model="tag" class="tagInput"
+          :style="'width: ' + taginputwidth + 'ch'" />
       </div>
 
       <div class="inputHolder">
-
-
-        <label>Your Notes</label>
         <AdvancedEditor v-model="
           this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard]
             .content
@@ -52,15 +60,33 @@
       </div>
 
 
-      <div class="colorbox">
-        <button class="c1" @click="setCardColor(1)"></button>
-        <button class="c2" @click="setCardColor(2)"></button>
-        <button class="c3" @click="setCardColor(3)"></button>
-        <button class="c4" @click="setCardColor(4)"></button>
-        <button class="c5" @click="setCardColor(5)"></button>
-        <button class="c6" @click="setCardColor(6)"></button>
-        <button class="c7" @click="setCardColor(7)"></button>
+      <div class="inputHolder">
+        <button @click="addImage()" class="interfaceBtn" :title="this.$root.setlang.settings.title">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M7,15L11.5,9L15,13.5L17.5,10.5L21,15M22,4H14L12,2H6A2,2 0 0,0 4,4V16A2,2 0 0,0 6,18H22A2,2 0 0,0 24,16V6A2,2 0 0,0 22,4M2,6H0V11H0V20A2,2 0 0,0 2,22H20V20H2V6Z" />
+          </svg>
+
+        </button>
+
+        <div v-for="(image, key) in imageList" :key="key">
+          <div class="imgHolder">
+            <img :src="'data:image/png;base64,' + image.base64" style="height:100px;" />
+          </div>
+          <div>
+
+            <button v-if="this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].showimage !== image.uuid"
+              @click="chooseImage(image.uuid)">choose</button>
+            <button v-else @click="chooseImage(image.uuid)">Chosen</button>
+
+          </div>
+        </div>
+
+
+
       </div>
+
+
 
     </div>
 
@@ -80,9 +106,20 @@ export default {
     AdvancedEditor,
     DescriptionEditor
   },
+  computed: {
+    taginputwidth() {
+      if (this.tag) {
+        if (this.tag.length > 6) {
+          return this.tag.length
+        }
+      }
+      return 6
+    }
+  },
   data() {
     return {
       tag: null,
+      imageList: []
     };
   },
   methods: {
@@ -92,6 +129,16 @@ export default {
         this.$root.$data.session.EditCard,
         this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard]
       );
+    },
+    chooseImage(id) {
+      if (this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].showimage != id) {
+        this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].showimage = id
+      } else {
+        this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].showimage = null
+      }
+
+      console.log("image " + id)
+      this.updatecard()
     },
     tagger() {
       if (this.tag) {
@@ -107,7 +154,39 @@ export default {
     setCardColor(c) {
       this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].color = "--card" + c
       this.updatecard();
+    },
+
+    setupImages() {
+      this.imageList = []
+      console.log(this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images)
+      this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images.forEach(async (id) => {
+        let image = await this.$root.getImage(id)
+        if (image) {
+          this.imageList.push(image)
+        } else {
+          // if the image is not in the db remove them from the array
+          this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images =
+            this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images.filter(item => item !== id)
+        }
+      });
+
+    },
+    addImage() {
+      this.$root.imagemanager = true
+      this.$root.imageUpdate = {
+        table: "Cards",
+        targetuuid: this.$root.$data.session.EditCard,
+        target: this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images
+      }
     }
+
+  },
+  mounted() {
+    if (!this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images) {
+      this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images = []
+    }
+    this.setupImages()
+
   }
 };
 </script>
@@ -122,7 +201,7 @@ export default {
   right: 0px;
   background-color: var(--popup-block);
   opacity: 0.97;
-  z-index: 998;
+
 }
 
 .cardTitle {
@@ -145,7 +224,6 @@ export default {
   padding: 10px;
   border: 0px;
   font-family: inherit;
-  background-color: var(--c8);
   border-radius: 10px;
   resize: none;
 }
@@ -164,7 +242,7 @@ label {
   padding-bottom: 50px;
   bottom: 0px;
   overflow-y: auto;
-  z-index: 999;
+
 }
 
 .inputHolder {
@@ -196,14 +274,16 @@ label {
 }
 
 .tagInput {
-  padding: 5px;
+  padding: 7px;
   margin: 5px;
   border-radius: 0px;
   border: 0px;
   outline: none;
   display: inline-block;
   background-color: var(--accent);
-  color: var(--accent-f)
+  color: var(--accent-f);
+  border-radius: 10px;
+
 }
 
 .tag {
@@ -250,9 +330,10 @@ label {
 .colorbox button {
   width: 30px;
   height: 30px;
-  border: 1px solid var(--paper-f);
+  border: 2px solid var(--paper-f);
   cursor: pointer;
   margin: 5px;
+  border-radius: 15px;
 }
 
 .c1 {

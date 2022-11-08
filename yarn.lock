@@ -2100,6 +2100,11 @@
   resolved "https://registry.npmmirror.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
+"@yeger/vue-masonry-wall@^3.2.22":
+  version "3.2.22"
+  resolved "https://registry.yarnpkg.com/@yeger/vue-masonry-wall/-/vue-masonry-wall-3.2.22.tgz#7527d808fd7c0f0f498bc1972f86093fc6bef204"
+  integrity sha512-Bsx0JqTmgk3/W3//WfvoXoOkAeYGgEch3mMSgP7o8SOGE5F2c47A7WJJEOxE4vIVpgBw13wgQLAYXZs2/RMh3w==
+
 accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.8:
   version "1.3.8"
   resolved "https://registry.npmmirror.com/accepts/-/accepts-1.3.8.tgz#0bf0be125b67014adcb0b0921e62db7bffe16b2e"

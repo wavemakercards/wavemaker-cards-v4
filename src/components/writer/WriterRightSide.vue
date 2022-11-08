@@ -7,91 +7,76 @@
     </div>
     -->
     <button class="pinBtn" @click="$root.rhspin = !$root.rhspin">
-      <svg
-        style="width: 18px; height: 18px"
-        viewBox="0 0 24 24"
-        v-if="$root.rhspin"
-      >
+      <svg style="width: 18px; height: 18px" viewBox="0 0 24 24" v-if="$root.rhspin">
         <path d="M16,12V4H17V2H7V4H8V12L6,14V16H11.2V22H12.8V16H18V14L16,12Z" />
       </svg>
 
-      <svg
-        style="width: 18px; height: px"
-        viewBox="0 0 24 24"
-        v-if="!$root.rhspin"
-      >
+      <svg style="width: 18px; height: px" viewBox="0 0 24 24" v-if="!$root.rhspin">
         <path
-          d="M2,5.27L3.28,4L20,20.72L18.73,22L12.8,16.07V22H11.2V16H6V14L8,12V11.27L2,5.27M16,12L18,14V16H17.82L8,6.18V4H7V2H17V4H16V12Z"
-        />
+          d="M2,5.27L3.28,4L20,20.72L18.73,22L12.8,16.07V22H11.2V16H6V14L8,12V11.27L2,5.27M16,12L18,14V16H17.82L8,6.18V4H7V2H17V4H16V12Z" />
       </svg>
     </button>
-    <div class="scrollpanel scroll-lhs">      
+    <div class="scrollpanel scroll-lhs">
       <div class="scroll-inside">
-     
- <div  v-if="!$root.session.writer.file">
- </div>
 
-      <div  v-if="$root.session.writer.file">
-      <VueDraggableNext
-        :list="this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === $root.session.writer.file.uuid).notes"
-        tag="transition-group"
-        handle=".handle"
-        :component-data="{
-          tag: 'div',
-          type: 'transition-group',
-          name: !drag ? 'flip-list' : null,
-        }"
-        v-bind="dragOptions"
-        @start="drag = true"
-        @end="drag = false"
-        item-key="order"
-        @change="changelist"
-      >
-        <template v-for="(element, index) in this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === $root.session.writer.file.uuid).notes" :key="index">
-          <div
-            class="list-group-item"
-            tabindex="0"
-          >
- <div style="padding-left:0px;">
-      
-  
+        <div v-if="!$root.session.writer.file">
+        </div>
 
-   <CardViewer :cardid="element.uuid" :allowlink="true" :updateelement="element"   @linkcard="ListChanged" />
+        <div v-if="$root.session.writer.file">
+          <VueDraggableNext
+            :list="this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === $root.session.writer.file.uuid).notes"
+            tag="transition-group" handle=".handle" :component-data="{
+              tag: 'div',
+              type: 'transition-group',
+              name: !drag ? 'flip-list' : null,
+            }" v-bind="dragOptions" @start="drag = true" @end="drag = false" item-key="order" @change="changelist">
+            <template
+              v-for="(element, index) in this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === $root.session.writer.file.uuid).notes"
+              :key="index">
+              <div class="list-group-item" tabindex="0">
+                <div style="padding-left:0px;">
 
-<div class="handle">
-  <svg viewBox="0 0 24 24">
-    <path d="M1.88,0.46L0.46,1.88L5.59,7H2V9H9V2H7V5.59M11,7V9H21V15H23V9A2,2 0 0,0 21,7M7,11V21A2,2 0 0,0 9,23H15V21H9V11M15.88,14.46L14.46,15.88L19.6,21H17V23H23V17H21V19.59" />
-</svg>
-</div>
+                  <CardViewer :cardid="element.uuid" :allowlink="true" :updateelement="element" @linkcard="ListChanged"
+                    :key="(this.$root.shadowDB.Cards[element.uuid]) ? this.$root.shadowDB.Cards[element.uuid].lastupdated : $root.uuid()" />
 
-  
-                   <button class="deleteIconButton" @click="deleteNote(index, element)"  tabindex="0"  >
-<svg style="width:18px;height:18px" viewBox="0 0 24 24">
-    <path  d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
-</svg>
-          </button>
-          </div>
-          </div>
-        </template>
-      </VueDraggableNext>
+                  <div class="handle">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M1.88,0.46L0.46,1.88L5.59,7H2V9H9V2H7V5.59M11,7V9H21V15H23V9A2,2 0 0,0 21,7M7,11V21A2,2 0 0,0 9,23H15V21H9V11M15.88,14.46L14.46,15.88L19.6,21H17V23H23V17H21V19.59" />
+                    </svg>
+                  </div>
+
+
+                  <button class="deleteIconButton" @click="deleteNote(index, element)" tabindex="0">
+                    <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                      <path
+                        d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </template>
+          </VueDraggableNext>
+        </div>
       </div>
     </div>
-     </div>
-     <div class="addbar" v-if="$root.session.writer.file">
+    <div class="addbar" v-if="$root.session.writer.file">
 
       <button @click="$root.openInNew('planningboard')" class="popBtn">
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path  d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
-</svg>
-        </button>
+          <path
+            d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+        </svg>
+      </button>
 
       <button @click="addCard" class="addBtn">
-<svg style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path  d="M13.09 20H4C2.9 20 2 19.11 2 18V6C2 4.89 2.9 4 4 4H20C21.11 4 22 4.89 22 6V13.81C21.12 13.3 20.09 13 19 13C15.69 13 13 15.69 13 19C13 19.34 13.04 19.67 13.09 20M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
-</svg>
-        </button>
-      </div>
-   
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+          <path
+            d="M13.09 20H4C2.9 20 2 19.11 2 18V6C2 4.89 2.9 4 4 4H20C21.11 4 22 4.89 22 6V13.81C21.12 13.3 20.09 13 19 13C15.69 13 13 15.69 13 19C13 19.34 13.04 19.67 13.09 20M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
+        </svg>
+      </button>
+    </div>
+
   </div>
 </template>
 
@@ -113,33 +98,33 @@ export default {
     };
   },
   methods: {
-    changelist(){
+    changelist() {
       console.log("Changed")
-         this.ListChanged() 
+      this.ListChanged()
     },
 
-    deleteNote(index){
-     if(confirm("delete this note?")){
-      this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === this.$root.session.writer.file.uuid).notes.splice(index,1)
-     //  this.$root.session.writer.file.notes.splice(index,1)
-     //this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.notes.splice(index,1)
-      this.ListChanged();
-     }
-    },
-      addCard() {
-        let obj = {}
-        obj.uuid = this.$root.uuid()
-        this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === this.$root.session.writer.file.uuid).notes.push(obj)
-       // this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.notes.push(obj)
+    deleteNote(index) {
+      if (confirm("delete this note?")) {
+        this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === this.$root.session.writer.file.uuid).notes.splice(index, 1)
+        //  this.$root.session.writer.file.notes.splice(index,1)
+        //this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.notes.splice(index,1)
         this.ListChanged();
+      }
     },
-   ListChanged() {
+    addCard() {
+      let obj = {}
+      obj.uuid = this.$root.uuid()
+      this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === this.$root.session.writer.file.uuid).notes.push(obj)
+      // this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.notes.push(obj)
+      this.ListChanged();
+    },
+    ListChanged() {
       console.log("list changed");
       this.$root.UpdateRecord(
         "Writer",
         this.$root.session.writer.selected,
         this.$root.shadowDB.Writer[
-          this.$root.session.writer.selected
+        this.$root.session.writer.selected
         ]
       );
     },
@@ -166,22 +151,23 @@ export default {
   background: none;
   padding: 5px;
   cursor: pointer;
-  width:40px;
-  height:40px;
-  background-color: var(--writer-side-nav );
+  width: 40px;
+  height: 40px;
+  background-color: var(--writer-side-nav);
 
 }
+
 .pinBtn svg {
-  fill: var(--writer-side-nav-f );
+  fill: var(--writer-side-nav-f);
 }
 
-.chosen{
+.chosen {
   background-color: var(--accent);
   color: var(--accent-f);
 
 }
 
-.chosen svg{
+.chosen svg {
   fill: var(--accent-f);
 }
 
@@ -189,78 +175,86 @@ export default {
 .pinBtn:hover,
 .pinBtn:active,
 .pinBtn:focus {
-background-color: var(--button-hover);
-color: var(--button-hover-f);
+  background-color: var(--button-hover);
+  color: var(--button-hover-f);
 }
+
 .pinBtn:hover svg,
 .pinBtn:active svg,
 .pinBtn:focus svg {
-  fill:  var(--button-hover-f);
+  fill: var(--button-hover-f);
 }
 
 .itemTitle {
-    position: relative;
+  position: relative;
   font-weight: bold;
   padding-left: 0px;
-  padding-right:0px;
+  padding-right: 0px;
   margin-bottom: 10px;
 }
 
-.itemTitle input{
+.itemTitle input {
   font-family: inherit;
   background-color: inherit;
   color: inherit;
-  border:0px;
-  width:calc(100% -20px);
+  border: 0px;
+  width: calc(100% -20px);
   outline: none;
-  height:20px;
-  margin:0px;
+  height: 20px;
+  margin: 0px;
 
 }
 
-.itemTitle input{
+.itemTitle input {
   font-family: inherit;
   background-color: inherit;
   color: inherit;
-  border:0px;
-  width:100%;
+  border: 0px;
+  width: 100%;
 }
 
 .handle {
   position: absolute;
   left: 0px;
-  top:-4px;
+  top: -4px;
   margin-bottom: 5px;
   cursor: move;
 }
+
 .itemText {
   font-size: 0.9rem;
   font-style: italic;
   margin-bottom: 10px;
   padding-left: 10px;
 }
+
 .button {
   margin-top: 35px;
 }
+
 .flip-list-move {
   transition: transform 0.5s;
 }
+
 .no-move {
   transition: transform 0s;
 }
+
 .ghost {
   opacity: 0.5;
- background: var(--hover-ghost);
+  background: var(--hover-ghost);
 }
+
 .list-group {
   min-height: 20px;
 }
+
 .list-group-item {
   position: relative;
-  display:block;
+  display: block;
   cursor: pointer;
   padding: 5px;
-  padding-top:10px;
+  padding-top: 10px;
   min-height: 40px;
   background-color: var(--writer-side-panels);
 
@@ -269,8 +263,9 @@ color: var(--button-hover-f);
 
 
 .list-group-item svg {
- fill:var(--writer-side-panels-f);
+  fill: var(--writer-side-panels-f);
 }
+
 /*
 .list-group-item:hover,
 .list-group-item:focus,
@@ -282,36 +277,39 @@ color: var(--button-hover-f);
 
 .list-group-item:hover .deleteIconButton,
 .list-group-item:focus .deleteIconButton,
-.list-group-item:active .deleteIconButton  {
-  display:block
+.list-group-item:active .deleteIconButton {
+  display: block
 }
 
 
-.list-group-item .handle{
-  position:absolute;
-  top:0px;
-  left:0px;
+.list-group-item .handle {
+  position: absolute;
+  top: 0px;
+  left: 0px;
   display: none;
   background-color: var(--accent);
-  height:30px;
-  width:30px;
-  padding:5px;
-  border-radius: 15px;;
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+  border-radius: 15px;
+  ;
 }
-.list-group-item .handle svg{
-  width:18px;
-  fill:var(--accent-f)
+
+.list-group-item .handle svg {
+  width: 18px;
+  fill: var(--accent-f)
 }
+
 .list-group-item:hover .handle,
 .list-group-item:focus .handle,
-.list-group-item:active .handle  {
-  display:block
+.list-group-item:active .handle {
+  display: block
 }
 
 
 .menu {
   font-weight: 100;
-  background: var(--writer-side-panels );
+  background: var(--writer-side-panels);
   color: var(--writer-side-panels-f);
   width: 300px;
   height: 100%;
@@ -327,6 +325,7 @@ color: var(--button-hover-f);
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
 }
+
 .menu:hover,
 .menu:focus,
 .rhspinned {
@@ -341,26 +340,28 @@ color: var(--button-hover-f);
   position: absolute;
   top: 40px;
   bottom: 0px;
- width:100%;
+  width: 100%;
   padding: 0px;
-  padding-bottom:200px;
+  padding-bottom: 200px;
 
-   background-color: var(--writer-side-panels);
+  background-color: var(--writer-side-panels);
 }
-.scroll-lhs{
+
+.scroll-lhs {
   transform: rotateY(180deg);
 }
-.scroll-inside{
-   transform: rotateY(-180deg)
+
+.scroll-inside {
+  transform: rotateY(-180deg)
 }
 
-.addbar{
-  position:absolute;
-  top:0px;
-  right:0px;
+.addbar {
+  position: absolute;
+  top: 0px;
+  right: 0px;
   background-color: var(--writer-side-nav);
-   width:calc(100% - 40px);
-   height:40px;
+  width: calc(100% - 40px);
+  height: 40px;
 
 }
 
@@ -370,35 +371,37 @@ color: var(--button-hover-f);
 
 .popBtn {
   position: absolute;
-  right:40px;
+  right: 40px;
   border: 0px;
   padding: 5px;
   cursor: pointer;
- width:40px;
-  height:40px;
+  width: 40px;
+  height: 40px;
   background-color: var(--writer-side-nav);
 }
-.popBtn  svg {
+
+.popBtn svg {
   fill: var(--writer-side-nav-f);
 }
 
 .popBtn:hover,
 .popBtn:active,
 .popBtn:focus {
-background-color: var(--accent);
-color: var(--accent-f);
+  background-color: var(--accent);
+  color: var(--accent-f);
 }
+
 .popBtn:hover svg,
 .popBtn:active svg,
 .popBtn:focus svg {
-  fill:  var(--accent-f);
+  fill: var(--accent-f);
 }
 
 
 @media only screen and (max-width: 1000px) {
- .popBtn{
-  display:none;
- }
+  .popBtn {
+    display: none;
+  }
 
 }
 
@@ -412,27 +415,29 @@ color: var(--accent-f);
 
 .addBtn {
   position: absolute;
-  right:0px;
+  right: 0px;
   border: 0px;
   padding: 5px;
   cursor: pointer;
- width:40px;
-  height:40px;
+  width: 40px;
+  height: 40px;
   background-color: var(--writer-side-nav);
 }
-.addBtn  svg {
+
+.addBtn svg {
   fill: var(--writer-side-nav-f);
 }
 
 .addBtn:hover,
 .addBtn:active,
 .addBtn:focus {
-background-color: var(--accent);
-color: var(--accent-f);
+  background-color: var(--accent);
+  color: var(--accent-f);
 }
+
 .addBtn:hover svg,
 .addBtn:active svg,
 .addBtn:focus svg {
-  fill:  var(--accent-f);
+  fill: var(--accent-f);
 }
 </style>
