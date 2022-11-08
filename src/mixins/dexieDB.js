@@ -1,5 +1,5 @@
 import Dexie from "dexie";
-import db, { databaseImport, databaseExport } from "@/db.js"
+import db, { databaseImport, databaseExport, DBstores } from "@/db.js"
 import "dexie-observable";
 const dexieDB = {
   data() {
@@ -8,12 +8,13 @@ const dexieDB = {
       db,
       databaseImport,
       databaseExport,
+      DBstores,
       windowID: null
     }
   },
   methods: {
     async getImage(uuid) {
-      return await this.$root.db._images.get(uuid)
+      return await this.$root.db.ImageLibrary.get(uuid)
     },
     AddRecord(myTable, myData) {
       console.log("Add", myTable, myData);
@@ -55,18 +56,7 @@ const dexieDB = {
 
       //note this has to match in  dexieDB and db.js
 
-      this.db.version(1).stores({
-        Settings: `$$uuid, settings, lastupdated`,
-        Projects: `$$uuid, projectname, lastupdated`,
-        Writer: `$$uuid, projectID ,title, description, files, lastupdated`,
-        Pages: `$$uuid, projectID, writerID ,content, notes ,lastupdated`,
-        Cards: `$$uuid,projectID ,title,description,content,style,labels,options,lastupdated`,
-        Snowflake: `$$uuid,projectID ,title, description,content,lastupdated`,
-        Timeline: `$$uuid,projectID ,title, description,content,lastupdated`,
-        Gridplanner: `$$uuid, projectID ,title, description,content,lastupdated`,
-        Mindmap: `$$uuid, projectID ,title, description,content,lastupdated`,
-        ImageLibrary: `$$uuid, title, base64`
-      });
+      this.db.version(1).stores(this.DBstores);
 
       this.setupShadowDB();
     },
