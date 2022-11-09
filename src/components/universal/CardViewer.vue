@@ -15,6 +15,7 @@
       <input class="cardTitle" placeholder="Title" v-model="this.$root.$data.shadowDB.Cards[this.cardid].title"
         @change="updatecard" />
       <div>
+
         <DescriptionEditor v-model="
           this.$root.$data.shadowDB.Cards[this.cardid]
             .description
@@ -173,7 +174,11 @@ export default {
       }
     } else {
       if (!this.$root.$data.shadowDB.Cards[this.cardid]) {
-        this.chooser = true;
+        if (Object.keys(this.$root.$data.shadowDB.Cards).length) {
+          this.chooser = true;
+        } else {
+          this.$root.makeNewCard(this.cardid)
+        }
       }
     }
     if (this.$root.$data.shadowDB.Cards[this.cardid]) {

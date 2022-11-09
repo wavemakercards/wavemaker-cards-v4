@@ -1,6 +1,6 @@
 <template>
 
-  <EditorContent :editor="editor" class="descriptionEditor"  />
+  <EditorContent :editor="editor" class="descriptionEditor" />
 
 </template>
 
@@ -16,7 +16,7 @@ const CustomTaskItem = TaskItem.extend({
   content: 'inline*',
 })
 export default {
-  name:"AdvancedEditor",
+  name: "DescriptionEditor",
   components: {
     EditorContent,
   },
@@ -25,7 +25,7 @@ export default {
       type: String,
       default: '',
     },
-     cardid: {
+    cardid: {
       type: String,
       default: '',
     },
@@ -56,16 +56,16 @@ export default {
   mounted() {
     this.editor = new Editor({
       extensions: [
-        StarterKit,  
+        StarterKit,
         TaskList,
         CustomTaskItem
       ],
       content: this.$root.$data.shadowDB.Cards[this.cardid].description,
       onUpdate: () => {
         // HTML
-     //   this.$emit('update:modelValue', this.editor.getHTML())
-           this.$root.$data.shadowDB.Cards[this.cardid].description =  this.editor.getHTML()
-           this.$root.UpdateRecord("Cards", this.cardid, this.$root.$data.shadowDB.Cards[this.cardid])
+        //   this.$emit('update:modelValue', this.editor.getHTML())
+        this.$root.$data.shadowDB.Cards[this.cardid].description = this.editor.getHTML()
+        this.$root.UpdateRecord("Cards", this.cardid, this.$root.$data.shadowDB.Cards[this.cardid])
         // JSON
         // this.$emit('update:modelValue', this.editor.getJSON())
       },
@@ -79,8 +79,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 
 </style>
 
