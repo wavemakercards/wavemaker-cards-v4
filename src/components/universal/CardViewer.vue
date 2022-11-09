@@ -50,7 +50,7 @@
           <path
             d="M13.09 20H4C2.9 20 2 19.11 2 18V6C2 4.89 2.9 4 4 4H20C21.11 4 22 4.89 22 6V13.81C21.12 13.3 20.09 13 19 13C15.69 13 13 15.69 13 19C13 19.34 13.04 19.67 13.09 20M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
         </svg>
-        {{ this.$root.setlang.tools.cards.createnewbtn }}
+        {{ this.$root.setlang.cards.createnewbtn }}
       </button>
 
 
@@ -62,7 +62,7 @@
           <path
             d="M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M11,16H10C8.39,16 6,14.94 6,12C6,9.07 8.39,8 10,8H11V10H10C9.54,10 8,10.17 8,12C8,13.9 9.67,14 10,14H11V16M15,11V13H9V11H15M14,16H13V14H14C14.46,14 16,13.83 16,12C16,10.1 14.33,10 14,10H13V8H14C15.61,8 18,9.07 18,12C18,14.94 15.61,16 14,16Z" />
         </svg>
-        {{ this.$root.setlang.tools.cards.linkexisting }}
+        {{ this.$root.setlang.cards.linkexisting }}
       </button>
 
       <div v-if="showLinkBox" class="LinkBox">
