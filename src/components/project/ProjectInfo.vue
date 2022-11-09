@@ -2,9 +2,7 @@
   <div class="wavemaker_info_box">
 
 
-    <button @click="gettingStartedPopup">
-      Get started
-    </button>
+
 
 
     <label>{{ this.$root.setlang.start.projectlabel }}</label>
@@ -14,53 +12,66 @@
 
 
 
-    <button class="interfaceBtn homeLinkBtn" @click="setTool('writer')">
+    <button @click="gettingStartedPopup" class="interfaceBtn">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
+      </svg>
+      {{ this.$root.setlang.start.help }}
+    </button>
+
+    <hr />
+
+    <button class="interfaceBtn " @click="setTool('writer')">
       <svg version="1.1" viewBox="0 0 24 24">
         <path
           d="M19 2L14 6.5V17.5L19 13V2M6.5 5C4.55 5 2.45 5.4 1 6.5V21.16C1 21.41 1.25 21.66 1.5 21.66C1.6 21.66 1.65 21.59 1.75 21.59C3.1 20.94 5.05 20.5 6.5 20.5C8.45 20.5 10.55 20.9 12 22C13.35 21.15 15.8 20.5 17.5 20.5C19.15 20.5 20.85 20.81 22.25 21.56C22.35 21.61 22.4 21.59 22.5 21.59C22.75 21.59 23 21.34 23 21.09V6.5C22.4 6.05 21.75 5.75 21 5.5V19C19.9 18.65 18.7 18.5 17.5 18.5C15.8 18.5 13.35 19.15 12 20V6.5C10.55 5.4 8.45 5 6.5 5Z" />
       </svg>
-      {{ Object.keys(this.$root.shadowDB.Writer).length }}
+      {{ this.$root.setlang.tools.writer }}
     </button>
 
-    <button class="interfaceBtn homeLinkBtn" @click="setTool('mindmap')">
+    <button class="interfaceBtn " @click="setTool('mindmap')">
 
       <svg version="1.1" viewBox="0 0 24 24">
         <path
           d="M21 16V13C21 11.89 20.11 11 19 11H13V8H15V2H9V8H11V11H5C3.89 11 3 11.89 3 13V16H1V22H7V16H5V13H11V16H9V22H15V16H13V13H19V16H17V22H23V16H21M11 4H13V6H11V4M5 20H3V18H5V20M13 20H11V18H13V20M21 20H19V18H21V20Z" />
       </svg>
 
-      {{ Object.keys(this.$root.shadowDB.Mindmap).length }}
+      {{ this.$root.setlang.tools.mindmap }}
     </button>
-    <button class="interfaceBtn homeLinkBtn" @click="setTool('snowflake')">
+    <button class="interfaceBtn " @click="setTool('snowflake')">
 
       <svg version="1.1" viewBox="0 0 24 24">
         <path
           d="M14.25,12L16.27,11H23L22,9H18.03L20.42,5.83L19.43,3.83L15.37,9.2L13.35,10.21L13.75,8L17.83,2.62L15.64,2.22L12,7L8.4,2.2L6.2,2.6L10.26,8L10.66,10.21L8.82,9.29L8.66,9.21L4.6,3.8L3.6,5.8L6,9H2L1,11H7.77L9.75,12L7.73,13H1L2,15H5.97L3.58,18.17L4.57,20.17L8.63,14.8L10.65,13.79L10.25,16L6.17,21.38L8.36,21.79L12,17L15.6,21.8L17.8,21.4L13.74,16L13.34,13.79L15.34,14.79L19.4,20.2L20.4,18.2L18,15H22L23,13H16.23" />
       </svg>
-      {{ Object.keys(this.$root.shadowDB.Snowflake).length }}
+      {{ this.$root.setlang.tools.snowflake }}
     </button>
 
-    <button class="interfaceBtn homeLinkBtn" @click="setTool('timeline')">
+    <button class="interfaceBtn " @click="setTool('timeline')">
       <svg version="1.1" viewBox="0 0 24 24">
         <path
           d="M12,20A7,7 0 0,1 5,13A7,7 0 0,1 12,6A7,7 0 0,1 19,13A7,7 0 0,1 12,20M12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22A9,9 0 0,0 21,13A9,9 0 0,0 12,4M12.5,8H11V14L15.75,16.85L16.5,15.62L12.5,13.25V8M7.88,3.39L6.6,1.86L2,5.71L3.29,7.24L7.88,3.39M22,5.72L17.4,1.86L16.11,3.39L20.71,7.25L22,5.72Z" />
       </svg>
-      {{ Object.keys(this.$root.shadowDB.Timeline).length }}
+      {{ this.$root.setlang.tools.timeline }}
     </button>
-    <button class="interfaceBtn homeLinkBtn" @click="setTool('cardsdatabase')">
-      <svg version="1.1" viewBox="0 0 24 24">
-        <path
-          d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z" />
-      </svg>
-      {{ Object.keys(this.$root.shadowDB.Cards).length }}
-    </button>
-    <button class="interfaceBtn homeLinkBtn" @click="setTool('gridplanner')">
+
+    <button class="interfaceBtn " @click="setTool('gridplanner')">
       <svg version="1.1" viewBox="0 0 24 24">
         <path
           d="M10,4V8H14V4H10M16,4V8H20V4H16M16,10V14H20V10H16M16,16V20H20V16H16M14,20V16H10V20H14M8,20V16H4V20H8M8,14V10H4V14H8M8,8V4H4V8H8M10,14H14V10H10V14M4,2H20A2,2 0 0,1 22,4V20A2,2 0 0,1 20,22H4C2.92,22 2,21.1 2,20V4A2,2 0 0,1 4,2Z" />
       </svg>
-      {{ Object.keys(this.$root.shadowDB.Gridplanner).length }}
+      {{ this.$root.setlang.tools.gridplanner }}
     </button>
+
+    <button class="interfaceBtn " @click="setTool('cardsdatabase')">
+      <svg version="1.1" viewBox="0 0 24 24">
+        <path
+          d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z" />
+      </svg>
+      {{ this.$root.setlang.tools.cardsdatabase }}
+    </button>
+
 
     <!--
 
@@ -104,6 +115,12 @@ export default {
 </script>
 
 <style scoped>
+.interfaceBtn {
+  text-align: left;
+  width: 100%;
+}
+
+
 .projectName {
 
   font-size: 1.6rem;
@@ -131,27 +148,5 @@ export default {
 .projectName:active {
   background: var(--forminput);
   color: var(--forminput-f);
-}
-
-
-.homeLinkBtn {
-  font-size: 2em;
-  height: auto;
-  padding: 0px;
-  top: auto;
-  left: auto;
-  padding: 10px;
-  width: 30%;
-  margin: calc(10% / 6)
-}
-
-.homeLinkBtn svg {
-  width: 50px;
-  height: 50px;
-  top: auto;
-  left: auto;
-  margin: 0 auto;
-  position: relative;
-  display: block;
 }
 </style>

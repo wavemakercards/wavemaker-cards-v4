@@ -12,7 +12,8 @@
       },
       "start": {
          "projectlabel": "Your Project Name",
-         "welcome" : "Welcome to Wavemaker Version 4"
+         "welcome": "Welcome to Wavemaker Version 4",
+         "help": "Help & Guides on how to use Wavemaker"
       },
       "google": {
          "info": "Login to Google Drive",
@@ -37,6 +38,7 @@
          "snowflake": "Your Snowflakes",
          "timeline": "Your Timeline",
          "gridplanner": "Your Grid Planners",
+         "cardsdatabase": "Your Cards",
          "name": "Name",
          "description": "Description (optional)",
          "warn": "Please provide a Name"
@@ -71,114 +73,144 @@
          "deletecolwarn": "Delete this column?",
          "deleterowwarn": "Delete this row?"
       },
-      "cards": {}
+      "cards": {
+         "createnewbtn": "Create New",
+         "linkexisting": "Link Existing Card",
+         "cardtitle": "Card Title",
+         "cardnotes": "Card Notes",
+         "cardtags": "Card Tags",
+         "moredetail": "More Detail",
+         "images": "Images (click on an image to select it)",
+         "openimagemanager": "Open Image Manager",
+         "close": "Close"
+      }
    },
-   "fr": {
+   "de": {
       "info": {
-         "name": "Français (French)",
+         "name": "Deutsch",
          "textdirection": "ltr"
       },
       "welcome": {
-         "loadfile": "Chargez un fichier à partir de votre appareil",
-         "loadgoogle": "Chargez un fichier à partir de Google Drive",
-         "info": "Créez un nouveau fichier ou chargez un existant",
-         "projectinput": "Nouveau projet nom",
-         "projectwarn": "Vous devez fournir un nom de projet"
+         "getstarted": "Neues Projekt",
+         "loadfile": "Laden Sie eine Datei von Ihrem Gerät",
+         "loadgoogle": "Laden Sie eine Datei von Google Drive",
+         "info": "Erstellen Sie eine neue Datei oder laden Sie eine vorhandene"
+      },
+      "start": {
+         "projectlabel": "Ihr Projektname",
+         "welcome": "Willkommen bei Wavemaker Version 4",
+         "help": "Hilfe und Anleitungen zur Verwendung von Wavemaker"
       },
       "google": {
-         "info": "Connectez-vous à Google Drive",
-         "saveinfo": "Économiser le projet actuel",
-         "files": "Vos fichiers",
-         "save": "Enregistrer le fichier",
-         "search": "Rechercher des fichiers",
-         "logout": "Se déconnecter",
-         "close": "Fermer la fenêtre"
+         "info": "Bei Google Drive anmelden",
+         "saveinfo": "Aktuelles Projekt speichern",
+         "files": "Ihre Dateien",
+         "save": "Datei speichern",
+         "search": "Nach Dateien suchen",
+         "logout": "Abmelden",
+         "close": "Fenster schließen"
       },
       "settings": {
-         "title": "Réglages",
-         "close": "Fermez ce fichier",
-         "themes": "Choisissez un thème",
-         "lang": "Choisissez une langue",
-         "clear": "Cela effacera le projett"
+         "title": "Einstellungen",
+         "close": "Diese Datei schließen",
+         "themes": "Design auswählen",
+         "lang": "Sprache auswählen",
+         "clear": "Dadurch wird das Projekt gelöscht"
       },
       "tools": {
-         "writer": "Votre manuscrits",
-         "planningboard": "Vos panneaux de planification",
-         "mindmap": "Vos Mindmaps",
-         "snowflake": "Tes flocons de neige",
-         "timeline": "Votre calendriere",
-         "gridplanner": "Vos planificateurs de grille",
-         "name": "Nom",
-         "description": "description (facultatif)",
-         "warn": "Veuillez fournir un nom"
+         "writer": "Ihre Manuskripte",
+         "planningboard": "Ihre Plantafeln",
+         "mindmap": "Ihre Mindmaps",
+         "snowflake": "Ihre Schneeflocken",
+         "timeline": "Ihre Zeitleiste",
+         "gridplanner": "Ihre Rasterplaner",
+         "cardsdatabase": "Ihre Karten",
+         "name": "Name",
+         "description": "Beschreibung (optional)",
+         "warn": "Bitte geben Sie einen Namen ein"
       },
       "writer": {
-         "settings": "Paramètres manuscrits",
-         "newfile": "Nouvelle section",
-         "deletewarn": "Voulez-vous supprimer cet élément? Toutes les cartes que vous avez créées resteront dans la base de données",
-         "intro": "C'est la page principale de votre document. Les options sont ci-dessous.",
-         "docdownload": "Exporter un fichier .doc de ce manuscrit",
-         "words": "Mots"
+         "settings": "Manuskripteinstellungen",
+         "newfile": "Neuer Abschnitt",
+         "deletewarn": "Möchten Sie dieses Element löschen? Alle von Ihnen erstellten Karten bleiben in der Datenbank",
+         "intro": "Dies ist die Hauptseite für Ihr Dokument. Optionen sind unten.",
+         "docdownload": "Exportieren Sie eine .doc-Datei dieses Manuskripts",
+         "words": "Wörter"
       },
       "mindmap": {
-         "deletenodewarn": "Voulez-vous supprimer ce nœud?"
+         "deletenodewarn": "Möchten Sie diesen Knoten löschen?"
       },
       "snowflake": {
-         "title": "Titre",
-         "deletewarn": "Êtes-vous sûr de vouloir supprimer cette carte?",
-         "replacewarn": "Cela remplacera votre carte par les trois nouveaux."
+         "title": "Titel",
+         "deletewarn": "Möchten Sie diese Karte wirklich löschen?",
+         "replacewarn": "Dadurch wird Ihre Karte durch die drei neuen ersetzt."
       },
       "timeline": {
-         "date": "Date / Heure",
-         "title": "Titre"
+         "date": "Datum/Uhrzeit",
+         "title": "Titel"
       },
       "gridplanner": {
-         "newrow": "New Row",
-         "newcol": "Nouvelle colonne"
+         "newrow": "Neue Zeile",
+         "newcol": "Neue Spalte"
       },
       "db": {
-         "search": "Rechercher par mots clés",
-         "clear": "Clear Tags",
-         "deletecolwarn": "Supprimer cette colonne?",
-         "deleterowwarn": "Supprimer cette ligne?"
+         "search": "Suche nach Schlüsselwörtern",
+         "clear": "Tags löschen",
+         "deletecolwarn": "Diese Spalte löschen?",
+         "deleterowwarn": "Diese Zeile löschen?"
       },
-      "cards": {}
+      "cards": {
+         "createnewbtn": "Neu erstellen",
+         "linkexisting": "Vorhandene Karte verknüpfen",
+         "cardtitle": "Kartentitel",
+         "cardnotes": "Kartennotizen",
+         "cardtags": "Karten-Tags",
+         "moredetail": "Mehr Details",
+         "images": "Bilder (klicken Sie auf ein Bild, um es auszuwählen)",
+         "openimagemanager": "Bild-Manager öffnen",
+         "close": "Schließen"
+      }
    },
    "es": {
       "info": {
-         "name": "Español (Spanish)",
-         "textdirection": "LTR"
+         "name": "Español",
+         "textdirection": "ltr"
       },
       "welcome": {
+         "getstarted": "Proyecto nuevo",
          "loadfile": "Cargar un archivo desde su dispositivo",
-         "loadgoogle": "Cargue un archivo en Google Drive",
-         "info": "Crear un archivo nuevo o cargar uno existente",
-         "projectinput": "Nombre del nuevo proyecto",
-         "projectwarn": "Debe proporcionar un nombre de proyecto"
+         "loadgoogle": "Cargar un archivo desde Google Drive",
+         "info": "Crear un archivo nuevo o cargar uno existente"
+      },
+      "start": {
+         "projectlabel": "Nombre de su proyecto",
+         "welcome": "Bienvenido a la versión 4 de Wavemaker",
+         "help": "Ayuda y guías sobre cómo usar Wavemaker"
       },
       "google": {
          "info": "Iniciar sesión en Google Drive",
-         "saveinfo": "Guardar el proyecto actual",
-         "files": "Tus archivos",
-         "save": "Guardar el archivo",
+         "saveinfo": "Guardar proyecto actual",
+         "files": "Sus archivos",
+         "save": "Guardar archivo",
          "search": "Buscar archivos",
          "logout": "Cerrar sesión",
          "close": "Cerrar ventana"
       },
       "settings": {
-         "title": "Ajustes",
-         "close": "Cierre este archivo",
-         "themes": "Elige un tema",
-         "lang": "Elige un idioma",
+         "title": "Configuración",
+         "close": "Cerrar este archivo",
+         "themes": "Elegir un tema",
+         "lang": "Elegir un idioma",
          "clear": "Esto borrará el proyecto"
       },
       "tools": {
-         "writer": "Tus manuscritos",
-         "planningboard": "Tus tableros de planificación",
-         "mindmap": "Tus mapas mental",
-         "snowflake": "Tus copos de nieve",
-         "timeline": "Tu línea de tiempo",
-         "gridplanner": "Tus planificadores de cuadrícula",
+         "writer": "Sus manuscritos",
+         "planningboard": "Su Tableros de planificación",
+         "mindmap": "Sus mapas mentales",
+         "snowflake": "Sus copos de nieve",
+         "timeline": "Su línea de tiempo",
+         "gridplanner": "Sus planificadores de cuadrícula",
+         "cardsdatabase": "Sus tarjetas",
          "name": "Nombre",
          "description": "Descripción (opcional)",
          "warn": "Proporcione un nombre"
@@ -186,21 +218,21 @@
       "writer": {
          "settings": "Configuración del manuscrito",
          "newfile": "Nueva sección",
-         "deletewarn": "¿Quieres eliminar este elemento? Cualquier tarjetas que hayas creado permanecerán en la base de datos",
-         "intro": "Esta es la página principal de su documento. Las opciones están a continuación",
+         "deletewarn": "¿Desea eliminar este elemento? Todas las tarjetas que haya creado permanecerán en la base de datos",
+         "intro": "Esta es la página principal de su documento. Las opciones están abajo.",
          "docdownload": "Exportar un archivo .doc de este manuscrito",
          "words": "Palabras"
       },
       "mindmap": {
-         "deletenodewarn": "¿Quieres eliminar este nodo?"
+         "deletenodewarn": "¿Desea eliminar este nodo?"
       },
       "snowflake": {
          "title": "Título",
-         "deletewarn": "¿Estás seguro de que quieres eliminar esta tarjeta?",
-         "replacewarn": "Esto reemplazará su tarjeta por las tres nuevas"
+         "deletewarn": "¿Está seguro de que desea eliminar esta tarjeta?",
+         "replacewarn": "Esto reemplazará su tarjeta con las tres nuevas."
       },
       "timeline": {
-         "date": "Fecha y hora",
+         "date": "Fecha/hora",
          "title": "Título"
       },
       "gridplanner": {
@@ -209,10 +241,192 @@
       },
       "db": {
          "search": "Buscar por palabras clave",
-         "clear": "Etiquetas claras",
+         "clear": "Borrar etiquetas",
          "deletecolwarn": "¿Eliminar esta columna?",
          "deleterowwarn": "¿Eliminar esta fila?"
       },
-      "cards": {}
+      "cards": {
+         "createnewbtn": "Crear nueva",
+         "linkexisting": "Vincular tarjeta existente",
+         "cardtitle": "Título de tarjeta",
+         "cardnotes": "Notas de tarjeta",
+         "cardtags": "Etiquetas de tarjeta",
+         "moredetail": "Más detalles",
+         "images": "Imágenes (haga clic en una imagen para seleccionarla)",
+         "openimagemanager": "Abrir administrador de imágenes",
+         "close": "Cerrar\n"
+      }
+   },
+   "fr": {
+      "info": {
+         "name": "Français",
+         "textdirection": "ltr"
+      },
+      "welcome": {
+         "getstarted": "Nouveau projet",
+         "loadfile": "Chargez un fichier depuis votre appareil",
+         "loadgoogle": "Chargez un fichier depuis Google Drive",
+         "info": "Créez un nouveau fichier ou chargez-en un existant"
+      },
+      "start": {
+         "projectlabel": "Le nom de votre projet",
+         "welcome": "Bienvenue dans Wavemaker Version 4",
+         "help": "Aide et guides sur l'utilisation de Wavemaker"
+      },
+      "google": {
+         "info": "Se connecter à Google Drive",
+         "saveinfo": "Enregistrer le projet en cours",
+         "files": "Vos fichiers",
+         "save": "Enregistrer le fichier",
+         "search": "Rechercher des fichiers",
+         "logout": "Se déconnecter",
+         "close": "Fermer la fenêtre"
+      },
+      "settings": {
+         "title": "Paramètres",
+         "close": "Fermer ce fichier",
+         "themes": "Choisir un thème",
+         "lang": "Choisir une langue",
+         "clear": "Cela effacera le projet"
+      },
+      "tools": {
+         "writer": "Vos manuscrits",
+         "planningboard": "Vos Tableaux de planification",
+         "mindmap": "Vos cartes mentales",
+         "snowflake": "Vos flocons de neige",
+         "timeline": "Votre chronologie",
+         "gridplanner": "Vos planificateurs de grille",
+         "cardsdatabase": "Vos cartes",
+         "name": "Nom",
+         "description": "Description (facultatif)",
+         "warn": "Veuillez fournir un nom"
+      },
+      "writer": {
+         "settings": "Paramètres du manuscrit",
+         "newfile": "Nouvelle section",
+         "deletewarn": "Voulez-vous supprimer cet élément ? Toutes les cartes que vous avez créées resteront dans la base de données",
+         "intro": "Il s'agit de la page principale de votre document. Les options sont ci-dessous.",
+         "docdownload": "Exporter un fichier .doc de ce manuscrit",
+         "words": "Mots"
+      },
+      "mindmap": {
+         "deletenodewarn": "Voulez-vous supprimer ce nœud ?"
+      },
+      "snowflake": {
+         "title": "Titre",
+         "deletewarn": "Voulez-vous vraiment supprimer cette carte ?",
+         "replacewarn": "Cela remplacera votre carte par les trois nouvelles."
+      },
+      "timeline": {
+         "date": "Date/Heure",
+         "title": "Titre"
+      },
+      "gridplanner": {
+         "newrow": "Nouvelle ligne",
+         "newcol": "Nouvelle colonne"
+      },
+      "db": {
+         "search": "Recherche par mots clés",
+         "clear": "Effacer les balises",
+         "deletecolwarn": "Supprimer cette colonne ?",
+         "deleterowwarn": "Supprimer cette ligne ?"
+      },
+      "cards": {
+         "createnewbtn": "Créer un nouveau",
+         "linkexisting": "Lier une carte existante",
+         "cardtitle": "Titre de la carte",
+         "cardnotes": "Notes de la carte",
+         "cardtags": "Étiquettes de la carte",
+         "moredetail": "Plus de détails",
+         "images": "Images (cliquez sur une image pour la sélectionner)",
+         "openimagemanager": "Ouvrir le gestionnaire d'images",
+         "close": "Fermer"
+      }
+   },
+   "cy": {
+      "info": {
+         "name": "Cymraeg",
+         "textdirection": "ltr"
+      },
+      "welcome": {
+         "getstarted": "Prosiect Newydd",
+         "loadfile": "Llwytho ffeil o'ch dyfais",
+         "loadgoogle": "Llwytho ffeil o Google Drive",
+         "info": "Creu ffeil newydd, neu lwytho un sy'n bodoli"
+      },
+      "start": {
+         "projectlabel": "Enw eich Prosiect",
+         "welcome": "Croeso i Wavemaker Fersiwn 4",
+         "help": "Cymorth a Chanllawiau ar sut i ddefnyddio Wavemaker"
+      },
+      "google": {
+         "info": "Mewngofnodi i Google Drive",
+         "saveinfo": "Cadw Prosiect Cyfredol",
+         "files": "Eich Ffeiliau",
+         "save": "Cadw Ffeil",
+         "search": "Chwilio am Ffeiliau",
+         "logout": "Allgofnodi",
+         "close": "Cau ffenestr"
+      },
+      "settings": {
+         "title": "Gosodiadau",
+         "close": "Cau'r ffeil",
+         "themes": "Dewis Thema",
+         "lang": "Dewis Iaith",
+         "clear": "Bydd hyn yn clirio'r prosiect"
+      },
+      "tools": {
+         "writer": "Eich Llawysgrifau",
+         "planningboard": "Eich Byrddau Cynllunio",
+         "mindmap": "Eich Mapiau Meddwl",
+         "snowflake": "Eich plu eira",
+         "timeline": "Eich Llinell Amser",
+         "gridplanner": "Eich Cynllunwyr Grid",
+         "cardsdatabase": "Eich Cardiau",
+         "name": "Enw",
+         "description": "Disgrifiad (dewisol)",
+         "warn": "Rhowch Enw"
+      },
+      "writer": {
+         "settings": "Gosodiadau Llawysgrif",
+         "newfile": "Adran Newydd",
+         "deletewarn": "Ydych chi am ddileu'r eitem hon? Bydd unrhyw gardiau rydych wedi'u creu yn aros yn y gronfa ddata",
+         "intro": "Dyma brif dudalen eich dogfen. Mae'r opsiynau isod.",
+         "docdownload": "Allforio ffeil .doc o'r llawysgrif hon",
+         "words": "Geiriau"
+      },
+      "mindmap": {
+         "deletenodewarn": "Ydych chi am ddileu'r nod hwn?"
+      },
+      "snowflake": {
+         "title": "Teitl",
+         "deletewarn": "Ydych chi'n siŵr eich bod am ddileu'r cerdyn hwn?",
+         "replacewarn": "Bydd hwn yn disodli'ch cerdyn gyda'r tri pheth newydd."
+      },
+      "timeline": {
+         "date": "Dyddiad/Amser",
+         "title": "Teitl"
+      },
+      "gridplanner": {
+         "newrow": "Rhes Newydd",
+         "newcol": "Colofn Newydd"
+      },
+      "db": {
+         "search": "Chwilio yn ôl allweddeiriau",
+         "clear": "Clirio Tagiau",
+         "deletecolwarn": "Dileu’r golofn hon?",
+         "deleterowwarn": "Dileu'r rhes hon?"
+      },
+      "cards": {
+         "createnewbtn": "Creu Cyswllt Newydd",
+         "linkexisting": "Cerdyn Presennol",
+         "cardtitle": "Teitl y Cerdyn",
+         "cardnotes": "Nodiadau Cerdyn",
+         "cardtags": "Tagiau Cerdyn",
+         "moredetail": "Mwy o Fanylion",
+         "images": "Delweddau (cliciwch ar ddelwedd i'w ddewis)",
+         "openimagemanager": "Agor Rheolwr Delwedd",
+         "close": "Cau"
+      }
    }
 }

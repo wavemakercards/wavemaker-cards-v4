@@ -1,0 +1,127 @@
+<textarea id="eng"></textarea>
+
+<textarea id="translate"></textarea>
+<button onclick="makejson()">Make Json</button>
+
+<textarea id="output"></textarea>
+<pre id="pretag">
+
+</pre>
+<script>
+    let o = {
+        "en": {
+            "info": {
+                "name": "English",
+                "textdirection": "ltr"
+            },
+            "welcome": {
+                "getstarted": "New Project",
+                "loadfile": "Load a file from your device",
+                "loadgoogle": "Load a file from Google Drive",
+                "info": "Create a new file, or load an existing one"
+            },
+            "start": {
+                "projectlabel": "Your Project Name",
+                "welcome": "Welcome to Wavemaker Version 4",
+                "help": "Help & Guides on how to use Wavemaker"
+            },
+            "google": {
+                "info": "Login to Google Drive",
+                "saveinfo": "Save Current Project",
+                "files": "Your Files",
+                "save": "Save File",
+                "search": "Search for Files",
+                "logout": "Log Out",
+                "close": "Close window"
+            },
+            "settings": {
+                "title": "Settings",
+                "close": "Close this file",
+                "themes": "Choose a Theme",
+                "lang": "Choose a Language",
+                "clear": "This will clear the project"
+            },
+            "tools": {
+                "writer": "Your Manuscripts",
+                "planningboard": "Your Planning Boards",
+                "mindmap": "Your Mindmaps",
+                "snowflake": "Your Snowflakes",
+                "timeline": "Your Timeline",
+                "gridplanner": "Your Grid Planners",
+                "cardsdatabase": "Your Cards",
+                "name": "Name",
+                "description": "Description (optional)",
+                "warn": "Please provide a Name"
+            },
+            "writer": {
+                "settings": "Manuscript Settings",
+                "newfile": "New Section",
+                "deletewarn": "Do you want to delete this item? Any cards you have created will remain in the database",
+                "intro": "This is the main page for your document. Options are below.",
+                "docdownload": "Export a .doc file of this manuscript",
+                "words": "Words"
+            },
+            "mindmap": {
+                "deletenodewarn": "Do you want to delete this node?"
+            },
+            "snowflake": {
+                "title": "Title",
+                "deletewarn": "Are You sure you want to delete this card?",
+                "replacewarn": "This will replace your card with the three new ones."
+            },
+            "timeline": {
+                "date": "Date/Time",
+                "title": "Title"
+            },
+            "gridplanner": {
+                "newrow": "New Row",
+                "newcol": "New Column"
+            },
+            "db": {
+                "search": "Search by keywords",
+                "clear": "Clear Tags",
+                "deletecolwarn": "Delete this column?",
+                "deleterowwarn": "Delete this row?"
+            },
+            "cards": {
+                "createnewbtn": "Create New",
+                "linkexisting": "Link Existing Card",
+                "cardtitle": "Card Title",
+                "cardnotes": "Card Notes",
+                "cardtags": "Card Tags",
+                "moredetail": "More Detail",
+                "images": "Images (click on an image to select it)",
+                "openimagemanager": "Open Image Manager",
+                "close": "Close"
+            }
+        }
+    }
+
+    let list = []
+    Object.keys(o.en).forEach(no => {
+        Object.keys(o.en[no]).forEach(sub => {
+            list.push(o.en[no][sub])
+        })
+    })
+    document.getElementById("eng").value = list.join(" ¬ ")
+
+
+
+
+    function makejson() {
+        newo = { ...o }
+        let data = document.getElementById("translate").value
+        data = data.split(" ¬ ")
+
+        counter = 0
+        Object.keys(newo.en).forEach(no => {
+            Object.keys(newo.en[no]).forEach(sub => {
+                newo.en[no][sub] = data[counter]
+                counter++
+            })
+        })
+
+        document.getElementById("output").value = JSON.stringify(newo, null, 2)
+    }
+
+</script>

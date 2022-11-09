@@ -1,75 +1,88 @@
 {
-   "fr":{
-      "info":{
-         "name":"Français (French)",
-         "textdirection":"ltr"
-      },
-      "welcome":{
-         "loadfile":"Chargez un fichier à partir de votre appareil",
-         "loadgoogle":"Chargez un fichier à partir de Google Drive",
-         "info":"Créez un nouveau fichier ou chargez un existant",
-         "projectinput":"Nouveau projet nom",
-         "projectwarn":"Vous devez fournir un nom de projet"
-      },
-      "google":{
-         "info":"Connectez-vous à Google Drive",
-         "saveinfo":"Économiser le projet actuel",
-         "files":"Vos fichiers",
-         "save":"Enregistrer le fichier",
-         "search":"Rechercher des fichiers",
-         "logout":"Se déconnecter",
-         "close":"Fermer la fenêtre"
-      },
-      "settings":{
-         "title":"Réglages",
-         "close":"Fermez ce fichier",
-         "themes":"Choisissez un thème",
-         "lang":"Choisissez une langue",
-         "clear":"Cela effacera le projett"
-      },
-      "tools":{
-         "writer":"Votre manuscrits",
-         "planningboard":"Vos panneaux de planification",
-         "mindmap":"Vos Mindmaps",
-         "snowflake":"Tes flocons de neige",
-         "timeline":"Votre calendriere",
-         "gridplanner":"Vos planificateurs de grille",
-         "name":"Nom",
-         "description":"description (facultatif)",
-         "warn":"Veuillez fournir un nom"
-      },
-      "writer":{
-         "settings":"Paramètres manuscrits",
-         "newfile": "Nouvelle section",
-         "deletewarn": "Voulez-vous supprimer cet élément? Toutes les cartes que vous avez créées resteront dans la base de données",
-         "intro": "C'est la page principale de votre document. Les options sont ci-dessous.",
-         "docdownload": "Exporter un fichier .doc de ce manuscrit",
-         "words":"Mots"
-      },
-      "mindmap":{
-         "deletenodewarn": "Voulez-vous supprimer ce nœud?"
-      },
-      "snowflake":{
-         "title":"Titre",
-         "deletewarn": "Êtes-vous sûr de vouloir supprimer cette carte?",
-         "replacewarn": "Cela remplacera votre carte par les trois nouveaux."
-      },
-      "timeline":{
-         "date": "Date / Heure",
-         "title":"Titre"
-      },
-      "gridplanner":{
-         "newrow": "New Row",
-         "newcol": "Nouvelle colonne"
-      },
-      "db":{
-         "search": "Rechercher par mots clés",
-         "clear": "Clear Tags",
-         "deletecolwarn": "Supprimer cette colonne?",
-         "deleterowwarn": "Supprimer cette ligne?"
-      },
-      "cards":{
-         
-      }
-   }
+    "fr": {
+        "info": {
+            "name": "Français",
+            "textdirection": "ltr"
+        },
+        "welcome": {
+            "getstarted": "Nouveau projet",
+            "loadfile": "Chargez un fichier depuis votre appareil",
+            "loadgoogle": "Chargez un fichier depuis Google Drive",
+            "info": "Créez un nouveau fichier ou chargez-en un existant"
+        },
+        "start": {
+            "projectlabel": "Le nom de votre projet",
+            "welcome": "Bienvenue dans Wavemaker Version 4",
+            "help": "Aide et guides sur l'utilisation de Wavemaker"
+        },
+        "google": {
+            "info": "Se connecter à Google Drive",
+            "saveinfo": "Enregistrer le projet en cours",
+            "files": "Vos fichiers",
+            "save": "Enregistrer le fichier",
+            "search": "Rechercher des fichiers",
+            "logout": "Se déconnecter",
+            "close": "Fermer la fenêtre"
+        },
+        "settings": {
+            "title": "Paramètres",
+            "close": "Fermer ce fichier",
+            "themes": "Choisir un thème",
+            "lang": "Choisir une langue",
+            "clear": "Cela effacera le projet"
+        },
+        "tools": {
+            "writer": "Vos manuscrits",
+            "planningboard": "Vos Tableaux de planification",
+            "mindmap": "Vos cartes mentales",
+            "snowflake": "Vos flocons de neige",
+            "timeline": "Votre chronologie",
+            "gridplanner": "Vos planificateurs de grille",
+            "cardsdatabase": "Vos cartes",
+            "name": "Nom",
+            "description": "Description (facultatif)",
+            "warn": "Veuillez fournir un nom"
+        },
+        "writer": {
+            "settings": "Paramètres du manuscrit",
+            "newfile": "Nouvelle section",
+            "deletewarn": "Voulez-vous supprimer cet élément ? Toutes les cartes que vous avez créées resteront dans la base de données",
+            "intro": "Il s'agit de la page principale de votre document. Les options sont ci-dessous.",
+            "docdownload": "Exporter un fichier .doc de ce manuscrit",
+            "words": "Mots"
+        },
+        "mindmap": {
+            "deletenodewarn": "Voulez-vous supprimer ce nœud ?"
+        },
+        "snowflake": {
+            "title": "Titre",
+            "deletewarn": "Voulez-vous vraiment supprimer cette carte ?",
+            "replacewarn": "Cela remplacera votre carte par les trois nouvelles."
+        },
+        "timeline": {
+            "date": "Date/Heure",
+            "title": "Titre"
+        },
+        "gridplanner": {
+            "newrow": "Nouvelle ligne",
+            "newcol": "Nouvelle colonne"
+        },
+        "db": {
+            "search": "Recherche par mots clés",
+            "clear": "Effacer les balises",
+            "deletecolwarn": "Supprimer cette colonne ?",
+            "deleterowwarn": "Supprimer cette ligne ?"
+        },
+        "cards": {
+            "createnewbtn": "Créer un nouveau",
+            "linkexisting": "Lier une carte existante",
+            "cardtitle": "Titre de la carte",
+            "cardnotes": "Notes de la carte",
+            "cardtags": "Étiquettes de la carte",
+            "moredetail": "Plus de détails",
+            "images": "Images (cliquez sur une image pour la sélectionner)",
+            "openimagemanager": "Ouvrir le gestionnaire d'images",
+            "close": "Fermer"
+        }
+    }
 }

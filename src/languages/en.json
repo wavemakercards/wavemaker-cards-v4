@@ -5,13 +5,15 @@
          "textdirection": "ltr"
       },
       "welcome": {
-         "getstarted": "Get started!",
+         "getstarted": "New Project",
          "loadfile": "Load a file from your device",
          "loadgoogle": "Load a file from Google Drive",
          "info": "Create a new file, or load an existing one"
       },
       "start": {
-         "projectlabel": "Your Project Name"
+         "projectlabel": "Your Project Name",
+         "welcome": "Welcome to Wavemaker Version 4",
+         "help": "Help & Guides on how to use Wavemaker"
       },
       "google": {
          "info": "Login to Google Drive",
@@ -36,6 +38,7 @@
          "snowflake": "Your Snowflakes",
          "timeline": "Your Timeline",
          "gridplanner": "Your Grid Planners",
+         "cardsdatabase": "Your Cards",
          "name": "Name",
          "description": "Description (optional)",
          "warn": "Please provide a Name"
@@ -70,6 +73,16 @@
          "deletecolwarn": "Delete this column?",
          "deleterowwarn": "Delete this row?"
       },
-      "cards": {}
+      "cards": {
+         "createnewbtn": "Create New",
+         "linkexisting": "Link Existing Card",
+         "cardtitle": "Card Title",
+         "cardnotes": "Card Notes",
+         "cardtags": "Card Tags",
+         "moredetail": "More Detail",
+         "images": "Images (click on an image to select it)",
+         "openimagemanager": "Open Image Manager",
+         "close": "Close"
+      }
    }
 }
