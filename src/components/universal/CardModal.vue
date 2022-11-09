@@ -20,12 +20,12 @@
         <button class="c7" @click="setCardColor(7)"></button>
       </div>
 
-      <label>{{ this.$root.setlang.tools.cards.cardtitle }}</label>
+      <label>{{ this.$root.setlang.cards.cardtitle }}</label>
       <div class="inputHolder">
         <input class="cardTitle" placeholder="Title"
           v-model="this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].title" @change="updatecard" />
       </div>
-      <label>{{ this.$root.setlang.tools.cards.cardnotes }}</label>
+      <label>{{ this.$root.setlang.cards.cardnotes }}</label>
       <div class="inputHolder">
         <DescriptionEditor v-model="
           this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard]
@@ -34,7 +34,7 @@
   this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].uuid
 " />
       </div>
-      <label>{{ this.$root.setlang.tools.cards.cardtags }}</label>
+      <label>{{ this.$root.setlang.cards.cardtags }}</label>
       <div class="inputHolder">
         <span class="tag" v-for="(tag, ti) in this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].labels"
           :key="ti">
@@ -50,7 +50,7 @@
         <input placeholder="#" @change="tagger" v-model="tag" class="tagInput"
           :style="'width: ' + taginputwidth + 'ch'" />
       </div>
-      <label>{{ this.$root.setlang.tools.cards.moredetail }}</label>
+      <label>{{ this.$root.setlang.cards.moredetail }}</label>
       <div class="inputHolder">
         <AdvancedEditor v-model="
           this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard]
@@ -60,7 +60,7 @@
 " />
       </div>
       <hr />
-      <label>{{ this.$root.setlang.tools.cards.images }}</label>
+      <label>{{ this.$root.setlang.cards.images }}</label>
       <div class="inputHolder">
 
         <div v-for="(image, key) in imageList" :key="key" class="imgHolder">
@@ -87,14 +87,14 @@
           <path
             d="M7,15L11.5,9L15,13.5L17.5,10.5L21,15M22,4H14L12,2H6A2,2 0 0,0 4,4V16A2,2 0 0,0 6,18H22A2,2 0 0,0 24,16V6A2,2 0 0,0 22,4M2,6H0V11H0V20A2,2 0 0,0 2,22H20V20H2V6Z" />
         </svg>
-        {{ this.$root.setlang.tools.cards.openimagemanager }}
+        {{ this.$root.setlang.cards.openimagemanager }}
       </button>
       <button @click="$root.$data.session.EditCard = null" class="interfaceBtn" style="float:right;">
         <svg viewBox="0 0 24 24">
           <path
             d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
         </svg>
-        {{ this.$root.setlang.tools.cards.openimagemanager }}
+        {{ this.$root.setlang.cards.openimagemanager }}
       </button>
 
     </div>
