@@ -117,7 +117,9 @@ const dexieDB = {
               this.shadowDB[change.table][change.key] = change.obj;
               break;
             case 3: // DELETED
-              delete this.shadowDB[change.table][change.key];
+              if (this.shadowDB[change.table]) { // ignore tables not in the shadowDB (ie ImageLibrary)
+                delete this.shadowDB[change.table][change.key];
+              }
               break;
           }
         });

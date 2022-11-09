@@ -101,12 +101,14 @@ export default {
     },
 
     openInNew(d) {
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-
+      var w = window.innerWidth - ((window.innerWidth / 100) * 5);
+      var h = window.innerHeight - ((window.innerHeight / 100) * 5);
       if (d === "planningboard") {
         window.open("/?sc=" + d + "&sel=" + this.$root.session.writer.selected, "PlanningBoard", "width=" + w + "px,height=" + h + "px");
+        return false
       }
+      // otherwise it's a URL - may need to check for the old https here
+      window.open(d, "Info", "width=" + w + "px,height=" + h + "px");
     },
     wordCounter(str) {
       str = str.replace(/(<([^>]+)>)/gi, " ");

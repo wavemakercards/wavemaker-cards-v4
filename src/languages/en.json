@@ -5,11 +5,13 @@
          "textdirection": "ltr"
       },
       "welcome": {
+         "getstarted": "Get started!",
          "loadfile": "Load a file from your device",
          "loadgoogle": "Load a file from Google Drive",
-         "info": "Create a new file, or load an existing one",
-         "projectinput": "New Project Name",
-         "projectwarn": "You must provide a project name"
+         "info": "Create a new file, or load an existing one"
+      },
+      "start": {
+         "projectlabel": "Your Project Name"
       },
       "google": {
          "info": "Login to Google Drive",
