@@ -45,14 +45,48 @@
 
   <div class="card" v-if="!this.$root.$data.shadowDB.Cards[this.cardid]">
     <div v-if="chooser">
-      <button @click="createCard">Create New</button>
-      <hr />
-      <select style="width:100%" v-model="cardChange">
-        <option v-for="(opt, i) in currentProjectCards" :key="i" :value="opt.uuid">{{ i + ' - ' + opt.title }}
+      <button @click="this.$root.makeNewCard(this.cardid)" class="interfaceBtn" style="width:100%; text-align: left;">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M13.09 20H4C2.9 20 2 19.11 2 18V6C2 4.89 2.9 4 4 4H20C21.11 4 22 4.89 22 6V13.81C21.12 13.3 20.09 13 19 13C15.69 13 13 15.69 13 19C13 19.34 13.04 19.67 13.09 20M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
+        </svg>
+        {{ this.$root.setlang.tools.cards.createnewbtn }}
+      </button>
+
+
+      <div style="text-align: center; padding:5px;"> or </div>
+
+
+      <button @click="showLinkBox = !showLinkBox" class="interfaceBtn">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M11,16H10C8.39,16 6,14.94 6,12C6,9.07 8.39,8 10,8H11V10H10C9.54,10 8,10.17 8,12C8,13.9 9.67,14 10,14H11V16M15,11V13H9V11H15M14,16H13V14H14C14.46,14 16,13.83 16,12C16,10.1 14.33,10 14,10H13V8H14C15.61,8 18,9.07 18,12C18,14.94 15.61,16 14,16Z" />
+        </svg>
+        {{ this.$root.setlang.tools.cards.linkexisting }}
+      </button>
+
+      <div v-if="showLinkBox" class="LinkBox">
+        <button class="interfaceBtn" v-for="(opt, i) in currentProjectCards" :key="i" :value="opt.uuid"
+          @click="cardChange = opt.uuid; sendCardChange()">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,19H5V5H19V19M11,16H10C8.39,16 6,14.94 6,12C6,9.07 8.39,8 10,8H11V10H10C9.54,10 8,10.17 8,12C8,13.9 9.67,14 10,14H11V16M14,16H13V14H14C14.46,14 16,13.83 16,12C16,10.1 14.33,10 14,10H13V8H14C15.61,8 18,9.07 18,12C18,14.94 15.61,16 14,16M15,13H9V11H15V13Z" />
+          </svg>
+
+          {{ opt.title }}
+        </button>
+      </div>
+
+      <!--
+    <select style="width:100%" v-model="cardChange">
+        <option v-for="(opt, i) in currentProjectCards" :key="i" :value="opt.uuid">{{ opt.title }}
         </option>
       </select>
       <br />
       <button @click="sendCardChange">Choose</button>
+
+      -->
+
 
     </div>
     <div v-else>loading</div>
@@ -103,7 +137,8 @@ export default {
       tag: null,
       chooser: false,
       cardChange: null,
-      showimage: null
+      showimage: null,
+      showLinkBox: false
     };
   },
   methods: {
@@ -125,21 +160,6 @@ export default {
       this.$root.$data.shadowDB.Cards[this.cardid].labels.splice(i, 1);
       this.updatecard();
     },
-    createCard() {
-      console.log("creating Card");
-      let obj = {};
-      obj.uuid = this.cardid; // use the same uuid to link them
-      obj.projectID = this.$root.$data.session.selectedProject;
-      obj.title = "";
-      obj.description = "";
-      obj.content = "";
-      obj.labels = [];
-      obj.style = "";
-      obj.options = {};
-      obj.color = "--card1"
-      this.$root.$data.shadowDB.Cards[obj.uuid] = obj;
-      this.$root.AddRecord("Cards", obj);
-    },
     sendCardChange() {
       console.log("Link to card selected", this.updateelement)
       this.updateelement.uuid = this.cardChange
@@ -149,7 +169,7 @@ export default {
   async mounted() {
     if (!this.allowlink) {
       if (!this.$root.$data.shadowDB.Cards[this.cardid] && this.cardid) {
-        this.createCard();
+        this.$root.makeNewCard(this.cardid)
       }
     } else {
       if (!this.$root.$data.shadowDB.Cards[this.cardid]) {
@@ -167,6 +187,27 @@ export default {
 
 
 <style scoped >
+.LinkBox {
+  position: relative;
+  overflow-y: scroll;
+  width: 100%;
+  max-height: 200px;
+}
+
+.LinkBox .interfaceBtn {
+  background-color: var(--paper);
+  color: var(--paper-f);
+  fill: var(--paper-f);
+}
+
+.interfaceBtn {
+  margin-top: 0px;
+  width: 100%;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  text-align: left;
+}
+
 .card {
   position: relative;
   /* Add shadows to create the "card" effect */

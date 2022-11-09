@@ -13,10 +13,16 @@ html,
 body {
   background-color: var(--window);
   color: var(--window-f);
+  fill: var(--window-f);
   padding: 0px;
   margin: 0px;
   font-size: 12px;
   font-family: var(--sysfont);
+}
+
+body {
+  /*This should stop the annoying refresh on drag down on mobile*/
+  overscroll-behavior-y: contain;
 }
 
 .wavemaker_logo-top {
@@ -64,6 +70,7 @@ label {
   position: absolute;
   background-color: var(--popup-block);
   color: var(--popup-block-f);
+
   opacity: 0.93;
   top: 0;
   bottom: 0;
@@ -76,8 +83,10 @@ label {
   top: 10%;
   left: 10%;
   right: 10%;
+
   background-color: var(--display-window);
   color: var(--display-window-f);
+
   padding: 20px;
 
   max-width: 500px;
@@ -87,8 +96,10 @@ label {
 
 .wavemaker_welcome {
   padding: 30px;
+  /*
   background-color: var(--display-window);
   color: var(--display-window-f);
+  */
   max-width: 400px;
   margin: 0 auto;
   margin-top: 10%;
@@ -99,8 +110,10 @@ label {
   margin: 0 auto;
   max-width: 700px;
   margin-top: 20px;
+  /*
   background-color: var(--display-window);
   color: var(--display-window-f);
+  */
   padding: 30px;
   border-radius: 0px;
 
@@ -114,7 +127,9 @@ label {
   border-radius: 50%;
   background: none;
   transition: all 0.3s ease;
-  fill: var(--window-f);
+  fill: inherit;
+  background-color: inherit;
+  color: inherit;
 }
 
 .clearInterfaceIconButton svg {
@@ -149,6 +164,10 @@ label {
   width: 100%;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .interfaceBtn {
   position: relative;
   background-color: var(--button);
@@ -176,9 +195,9 @@ label {
 .interfaceBtn:hover,
 .interfaceBtn:focus,
 .interfaceBtn:active {
-  background-color: var(--button-hover);
-  color: var(--button-hover-f);
-  fill: var(--button-hover-f);
+  background-color: var(--button-hover) !important;
+  color: var(--button-hover-f) !important;
+  fill: var(--button-hover-f) !important;
 }
 
 .deleteIconButton {

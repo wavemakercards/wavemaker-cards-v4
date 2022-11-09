@@ -1,0 +1,88 @@
+{
+    "de": {
+        "info": {
+            "name": "Deutsch",
+            "textdirection": "ltr"
+        },
+        "welcome": {
+            "getstarted": "Neues Projekt",
+            "loadfile": "Laden Sie eine Datei von Ihrem Gerät",
+            "loadgoogle": "Laden Sie eine Datei von Google Drive",
+            "info": "Erstellen Sie eine neue Datei oder laden Sie eine vorhandene"
+        },
+        "start": {
+            "projectlabel": "Ihr Projektname",
+            "welcome": "Willkommen bei Wavemaker Version 4",
+            "help": "Hilfe und Anleitungen zur Verwendung von Wavemaker"
+        },
+        "google": {
+            "info": "Bei Google Drive anmelden",
+            "saveinfo": "Aktuelles Projekt speichern",
+            "files": "Ihre Dateien",
+            "save": "Datei speichern",
+            "search": "Nach Dateien suchen",
+            "logout": "Abmelden",
+            "close": "Fenster schließen"
+        },
+        "settings": {
+            "title": "Einstellungen",
+            "close": "Diese Datei schließen",
+            "themes": "Design auswählen",
+            "lang": "Sprache auswählen",
+            "clear": "Dadurch wird das Projekt gelöscht"
+        },
+        "tools": {
+            "writer": "Ihre Manuskripte",
+            "planningboard": "Ihre Plantafeln",
+            "mindmap": "Ihre Mindmaps",
+            "snowflake": "Ihre Schneeflocken",
+            "timeline": "Ihre Zeitleiste",
+            "gridplanner": "Ihre Rasterplaner",
+            "cardsdatabase": "Ihre Karten",
+            "name": "Name",
+            "description": "Beschreibung (optional)",
+            "warn": "Bitte geben Sie einen Namen ein"
+        },
+        "writer": {
+            "settings": "Manuskripteinstellungen",
+            "newfile": "Neuer Abschnitt",
+            "deletewarn": "Möchten Sie dieses Element löschen? Alle von Ihnen erstellten Karten bleiben in der Datenbank",
+            "intro": "Dies ist die Hauptseite für Ihr Dokument. Optionen sind unten.",
+            "docdownload": "Exportieren Sie eine .doc-Datei dieses Manuskripts",
+            "words": "Wörter"
+        },
+        "mindmap": {
+            "deletenodewarn": "Möchten Sie diesen Knoten löschen?"
+        },
+        "snowflake": {
+            "title": "Titel",
+            "deletewarn": "Möchten Sie diese Karte wirklich löschen?",
+            "replacewarn": "Dadurch wird Ihre Karte durch die drei neuen ersetzt."
+        },
+        "timeline": {
+            "date": "Datum/Uhrzeit",
+            "title": "Titel"
+        },
+        "gridplanner": {
+            "newrow": "Neue Zeile",
+            "newcol": "Neue Spalte"
+        },
+        "db": {
+            "search": "Suche nach Schlüsselwörtern",
+            "clear": "Tags löschen",
+            "deletecolwarn": "Diese Spalte löschen?",
+            "deleterowwarn": "Diese Zeile löschen?"
+        },
+        "cards": {
+            "createnewbtn": "Neu erstellen",
+            "linkexisting": "Vorhandene Karte verknüpfen",
+            "cardtitle": "Kartentitel",
+            "cardnotes": "Kartennotizen",
+            "cardtags": "Karten-Tags",
+            "moredetail": "Mehr Details",
+            "images": "Bilder (klicken Sie auf ein Bild, um es auszuwählen)",
+            "openimagemanager": "Bild-Manager öffnen",
+            "close": "Schließen"
+        }
+    }
+}

@@ -101,12 +101,14 @@ export default {
     },
 
     openInNew(d) {
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-
+      var w = window.innerWidth - ((window.innerWidth / 100) * 5);
+      var h = window.innerHeight - ((window.innerHeight / 100) * 5);
       if (d === "planningboard") {
         window.open("/?sc=" + d + "&sel=" + this.$root.session.writer.selected, "PlanningBoard", "width=" + w + "px,height=" + h + "px");
+        return false
       }
+      // otherwise it's a URL - may need to check for the old https here
+      window.open(d, "Info", "width=" + w + "px,height=" + h + "px");
     },
     wordCounter(str) {
       str = str.replace(/(<([^>]+)>)/gi, " ");
@@ -149,6 +151,27 @@ export default {
       document.getElementById("themeSwitch").href = "themes/" + this.theme + ".css";
       localStorage.setItem("wmTheme", this.theme)
     },
+    makeNewCard(existingid) {
+      let newId = this.$root.uuid(); // use the same uuid to link them
+      if (existingid) {
+        newId = existingid
+      }
+
+      console.log("creating Card");
+      let obj = {};
+      obj.uuid = newId
+      obj.projectID = this.$root.$data.session.selectedProject;
+      obj.title = "";
+      obj.description = "";
+      obj.content = "";
+      obj.labels = [];
+      obj.style = "";
+      obj.options = {};
+      obj.color = "--card1"
+      this.$root.$data.shadowDB.Cards[obj.uuid] = obj;
+      this.$root.AddRecord("Cards", obj);
+      this.$root.$data.session.EditCard = obj.uuid
+    }
   },
   mounted() {
 

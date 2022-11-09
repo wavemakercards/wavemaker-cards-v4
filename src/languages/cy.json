@@ -1,0 +1,88 @@
+{
+    "cy": {
+        "info": {
+            "name": "Cymraeg",
+            "textdirection": "ltr"
+        },
+        "welcome": {
+            "getstarted": "Prosiect Newydd",
+            "loadfile": "Llwytho ffeil o'ch dyfais",
+            "loadgoogle": "Llwytho ffeil o Google Drive",
+            "info": "Creu ffeil newydd, neu lwytho un sy'n bodoli"
+        },
+        "start": {
+            "projectlabel": "Enw eich Prosiect",
+            "welcome": "Croeso i Wavemaker Fersiwn 4",
+            "help": "Cymorth a Chanllawiau ar sut i ddefnyddio Wavemaker"
+        },
+        "google": {
+            "info": "Mewngofnodi i Google Drive",
+            "saveinfo": "Cadw Prosiect Cyfredol",
+            "files": "Eich Ffeiliau",
+            "save": "Cadw Ffeil",
+            "search": "Chwilio am Ffeiliau",
+            "logout": "Allgofnodi",
+            "close": "Cau ffenestr"
+        },
+        "settings": {
+            "title": "Gosodiadau",
+            "close": "Cau'r ffeil",
+            "themes": "Dewis Thema",
+            "lang": "Dewis Iaith",
+            "clear": "Bydd hyn yn clirio'r prosiect"
+        },
+        "tools": {
+            "writer": "Eich Llawysgrifau",
+            "planningboard": "Eich Byrddau Cynllunio",
+            "mindmap": "Eich Mapiau Meddwl",
+            "snowflake": "Eich plu eira",
+            "timeline": "Eich Llinell Amser",
+            "gridplanner": "Eich Cynllunwyr Grid",
+            "cardsdatabase": "Eich Cardiau",
+            "name": "Enw",
+            "description": "Disgrifiad (dewisol)",
+            "warn": "Rhowch Enw"
+        },
+        "writer": {
+            "settings": "Gosodiadau Llawysgrif",
+            "newfile": "Adran Newydd",
+            "deletewarn": "Ydych chi am ddileu'r eitem hon? Bydd unrhyw gardiau rydych wedi'u creu yn aros yn y gronfa ddata",
+            "intro": "Dyma brif dudalen eich dogfen. Mae'r opsiynau isod.",
+            "docdownload": "Allforio ffeil .doc o'r llawysgrif hon",
+            "words": "Geiriau"
+        },
+        "mindmap": {
+            "deletenodewarn": "Ydych chi am ddileu'r nod hwn?"
+        },
+        "snowflake": {
+            "title": "Teitl",
+            "deletewarn": "Ydych chi'n siŵr eich bod am ddileu'r cerdyn hwn?",
+            "replacewarn": "Bydd hwn yn disodli'ch cerdyn gyda'r tri pheth newydd."
+        },
+        "timeline": {
+            "date": "Dyddiad/Amser",
+            "title": "Teitl"
+        },
+        "gridplanner": {
+            "newrow": "Rhes Newydd",
+            "newcol": "Colofn Newydd"
+        },
+        "db": {
+            "search": "Chwilio yn ôl allweddeiriau",
+            "clear": "Clirio Tagiau",
+            "deletecolwarn": "Dileu’r golofn hon?",
+            "deleterowwarn": "Dileu'r rhes hon?"
+        },
+        "cards": {
+            "createnewbtn": "Creu Cyswllt Newydd",
+            "linkexisting": "Cerdyn Presennol",
+            "cardtitle": "Teitl y Cerdyn",
+            "cardnotes": "Nodiadau Cerdyn",
+            "cardtags": "Tagiau Cerdyn",
+            "moredetail": "Mwy o Fanylion",
+            "images": "Delweddau (cliciwch ar ddelwedd i'w ddewis)",
+            "openimagemanager": "Agor Rheolwr Delwedd",
+            "close": "Cau"
+        }
+    }
+}
