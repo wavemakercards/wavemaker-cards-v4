@@ -5,7 +5,10 @@
   <div v-if="!Object.keys($root.shadowDB.Settings).length">
     <WelcomeScreen />
   </div>
+
   <CardModal v-if="$root.session.EditCard" :key="$root.EditCardrefresh" />
+
+
   <ImageManager v-if="$root.imagemanager" />
   <PopupManager />
   <!--
@@ -163,6 +166,7 @@ export default {
       obj.projectID = this.$root.$data.session.selectedProject;
       obj.title = "";
       obj.description = "";
+      obj.showdesc = true;
       obj.content = "";
       obj.labels = [];
       obj.style = "";

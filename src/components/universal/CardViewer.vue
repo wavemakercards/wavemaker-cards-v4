@@ -20,10 +20,8 @@
         </span>
       </div>
 
-      <div class="cardDescription" v-bind:innerHTML="this.$root.$data.shadowDB.Cards[this.cardid]
-      .description">
-
-      </div>
+      <div class="cardDescription" v-bind:innerHTML="this.$root.$data.shadowDB.Cards[this.cardid].description"
+        v-if="this.$root.$data.shadowDB.Cards[this.cardid].showdesc"></div>
 
 
       <!--
@@ -219,11 +217,11 @@ export default {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+  min-height: 100px;
   padding: 10px;
   background-color: var(--card);
   color: var(--card-f);
   margin: 5px;
-  min-height: 150px;
   border-radius: 0px;
   font-family: inherit;
 }
@@ -257,7 +255,7 @@ export default {
 .cardDescription {
   width: 100%;
   border: 0px;
-
+  min-height: 150px;
   margin-bottom: 5px;
   background-color: inherit;
   color: inherit;
