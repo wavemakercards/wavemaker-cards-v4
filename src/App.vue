@@ -83,6 +83,18 @@ export default {
       }
     }
   },
+  computed: {
+    calcFullWordCount() {
+      let w = 0
+      this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.forEach(page => {
+        if (page.wordcount) {
+          w = w + parseInt(page.wordcount)
+        }
+      });
+
+      return w
+    }
+  },
   methods: {
     switchLang() {
       localStorage.setItem("wmLang", this.lang)
@@ -175,6 +187,12 @@ export default {
       this.$root.$data.shadowDB.Cards[obj.uuid] = obj;
       this.$root.AddRecord("Cards", obj);
       this.$root.$data.session.EditCard = obj.uuid
+    },
+    unloadEvent(e) {
+      // Cancel the event
+      e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+      // Chrome requires returnValue to be set
+      e.returnValue = "";
     }
   },
   mounted() {

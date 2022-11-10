@@ -64,9 +64,12 @@ export default {
     language(l) {
       this.$root.lang = l
       this.$root.switchLang()
+      this.lang = false
     },
     async clear() {
       if (confirm(this.$root.setlang.settings.clear)) {
+
+        window.removeEventListener("beforeunload", this.$root.unloadEvent)
         this.$root.session = {}
         this.$root.popup = {}
         this.$root.dbloaded = false
