@@ -20,8 +20,9 @@
         </span>
       </div>
 
-      <div class="cardDescription" v-bind:innerHTML="this.$root.$data.shadowDB.Cards[this.cardid].description"
-        v-if="this.$root.$data.shadowDB.Cards[this.cardid].showdesc"></div>
+      <div class="cardDescription" v-if="this.$root.$data.shadowDB.Cards[this.cardid].showdesc">
+        <span v-html="this.$root.$data.shadowDB.Cards[this.cardid].description"></span>
+      </div>
 
 
       <!--
@@ -224,6 +225,7 @@ export default {
   margin: 5px;
   border-radius: 0px;
   font-family: inherit;
+  white-space: normal;
 }
 
 .card img {
@@ -253,6 +255,7 @@ export default {
 .cardTitle:hover {}
 
 .cardDescription {
+  position: relative;
   width: 100%;
   border: 0px;
   min-height: 150px;
@@ -263,7 +266,6 @@ export default {
   padding: 0px;
   resize: vertical;
   font-family: inherit;
-
 }
 
 .cardDescription:active,
