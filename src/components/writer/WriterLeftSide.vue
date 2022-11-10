@@ -113,7 +113,7 @@ export default {
      }
     },
       addFile() {
-        let obj = {...this.defaultCard}
+           let obj = JSON.parse(JSON.stringify(this.defaultCard))
         obj.uuid = this.$root.uuid();
         
         if(this.$root.$data.session.writer.file){
