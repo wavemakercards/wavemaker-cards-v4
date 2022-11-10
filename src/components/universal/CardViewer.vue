@@ -11,20 +11,21 @@
 
 
 
+      <div class="cardTitle">
+        <span v-if="this.$root.$data.shadowDB.Cards[this.cardid].title">
+          {{ this.$root.$data.shadowDB.Cards[this.cardid].title }}
+        </span>
+        <span v-else>
+          {{ this.$root.setlang.cards.cardtitle }}
+        </span>
+      </div>
 
-      <input class="cardTitle" placeholder="Title" v-model="this.$root.$data.shadowDB.Cards[this.cardid].title"
-        @change="updatecard" />
-      <div>
-
-        <DescriptionEditor v-model="
-          this.$root.$data.shadowDB.Cards[this.cardid]
-            .description
-        " :cardid="
-  this.$root.$data.shadowDB.Cards[this.cardid].uuid
-" class="cardDescription" />
-
+      <div class="cardDescription" v-bind:innerHTML="this.$root.$data.shadowDB.Cards[this.cardid]
+      .description">
 
       </div>
+
+
       <!--
 
 
@@ -273,7 +274,10 @@ export default {
   border-bottom: 2px solid var(--primary);
 }
 
-.card:focus-within .editButton {
+
+.card:active .editButton,
+.card:focus .editButton,
+.card:hover .editButton {
   display: block;
 }
 
@@ -282,6 +286,8 @@ export default {
   background-color: var(--button);
   color: var(--button-f);
   fill: var(--button-f);
+  position: absolute;
+  bottom: 5px;
 }
 
 
