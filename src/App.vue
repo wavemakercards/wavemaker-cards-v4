@@ -166,7 +166,7 @@ export default {
       obj.projectID = this.$root.$data.session.selectedProject;
       obj.title = "";
       obj.description = "";
-      obj.showdesc = true;
+      obj.showdesc = false;
       obj.content = "";
       obj.labels = [];
       obj.style = "";
