@@ -245,7 +245,7 @@ export default {
     });
 
     this.wordcount = this.$root.wordCounter(this.editor.getHTML());
-    this.$root.shadowDB.Writer[this.$root.session.writer.selected].files[this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.map(e => e.uuid).indexOf(this.$root.session.writer.file.uuid)].wordcount = this.wordcount
+    this.$root.$data.session.writer.file.wordcount = this.wordcount
   },
 
   beforeUnmount() {

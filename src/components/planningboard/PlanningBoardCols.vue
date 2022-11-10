@@ -1,51 +1,85 @@
 <template>
-  <VueDraggableNext :list="
-    this.$root.$data.shadowDB.Writer[this.$root.$data.session.writer.selected]
-      .files[this.listKey].notes
-  " :item-key="'cards' + listKey" tag="transition-group" group="board" class="list-group-card" :component-data="{
-  tag: 'div',
-  type: 'transition-group',
-  name: !drag ? 'flip-list' : null,
-}" handle=".cardHandle" v-bind="dragOptions" @start="drag = true" @end="drag = false" :emptyInsertThreshold="90"
-    @change="ListChanged">
-    <template v-for="(element, index) in this.$root.shadowDB.Writer[
-      this.$root.session.writer.selected
-    ].files[this.listKey].notes" :key="index">
+  <VueDraggableNext
+    :list="
+      this.$root.$data.shadowDB.Writer[this.$root.$data.session.writer.selected]
+        .files[this.listKey].notes
+    "
+    :item-key="'cards' + listKey"
+    tag="transition-group"
+    group="board"
+    class="list-group-card"
+    :component-data="{
+      tag: 'div',
+      type: 'transition-group',
+      name: !drag ? 'flip-list' : null,
+    }"
+    handle=".cardHandle"
+    v-bind="dragOptions"
+    @start="drag = true"
+    @end="drag = false"
+    :emptyInsertThreshold="90"
+    @change="ListChanged"
+  >
+    <template
+      v-for="(element, index) in this.$root.shadowDB.Writer[
+        this.$root.session.writer.selected
+      ].files[this.listKey].notes"
+      :key="index"
+    >
       <div class="list-group-card-item" tabindex="0">
-        <CardViewer :cardid="element.uuid" :allowlink="true" :updateelement="element" @linkcard="ListChanged"
-          :key="(this.$root.shadowDB.Cards[element.uuid]) ? this.$root.shadowDB.Cards[element.uuid].lastupdated : $root.uuid()" />
+        <CardViewer
+          :cardid="element.uuid"
+          :allowlink="true"
+          :updateelement="element"
+          @linkcard="ListChanged"
+          :key="
+            this.$root.shadowDB.Cards[element.uuid]
+              ? this.$root.shadowDB.Cards[element.uuid].lastupdated
+              : $root.uuid()
+          "
+        />
 
         <div class="clearInterfaceIconButton cardHandle">
           <svg style="width: 18px; height: 18px" viewBox="0 0 24 24">
             <path
-              d="M13,6V11H18V7.75L22.25,12L18,16.25V13H13V18H16.25L12,22.25L7.75,18H11V13H6V16.25L1.75,12L6,7.75V11H11V6H7.75L12,1.75L16.25,6H13Z" />
+              d="M13,6V11H18V7.75L22.25,12L18,16.25V13H13V18H16.25L12,22.25L7.75,18H11V13H6V16.25L1.75,12L6,7.75V11H11V6H7.75L12,1.75L16.25,6H13Z"
+            />
           </svg>
         </div>
-        <button class="deleteIconButton" @click="
-          deleteNote(
-            index,
-            this.$root.shadowDB.Writer[this.$root.session.writer.selected]
-              .files[this.listKey]
-          )
-        " tabindex="0">
+        <button
+          class="deleteIconButton"
+          @click="
+            deleteNote(
+              index,
+              this.$root.shadowDB.Writer[this.$root.session.writer.selected]
+                .files[this.listKey]
+            )
+          "
+          tabindex="0"
+        >
           <svg style="width: 18px; height: 18px" viewBox="0 0 24 24">
             <path
-              d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
+              d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z"
+            />
           </svg>
         </button>
       </div>
     </template>
   </VueDraggableNext>
-  <button class="add-card" @click="
-    addCard(
-  this.$root.shadowDB.Writer[this.$root.session.writer.selected].files[
-  this.listKey
-  ]
-    )
-  ">
+  <button
+    class="add-card"
+    @click="
+      addCard(
+        this.$root.shadowDB.Writer[this.$root.session.writer.selected].files[
+          this.listKey
+        ]
+      )
+    "
+  >
     <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
       <path
-        d="M13.09 20H4C2.9 20 2 19.11 2 18V6C2 4.89 2.9 4 4 4H20C21.11 4 22 4.89 22 6V13.81C21.12 13.3 20.09 13 19 13C15.69 13 13 15.69 13 19C13 19.34 13.04 19.67 13.09 20M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
+        d="M13.09 20H4C2.9 20 2 19.11 2 18V6C2 4.89 2.9 4 4 4H20C21.11 4 22 4.89 22 6V13.81C21.12 13.3 20.09 13 19 13C15.69 13 13 15.69 13 19C13 19.34 13.04 19.67 13.09 20M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z"
+      />
     </svg>
   </button>
 </template>
@@ -103,7 +137,7 @@ export default {
         "Writer",
         this.$root.$data.session.writer.selected,
         this.$root.$data.shadowDB.Writer[
-        this.$root.$data.session.writer.selected
+          this.$root.$data.session.writer.selected
         ]
       );
     },

@@ -24,14 +24,14 @@
 
         <div v-if="$root.session.writer.file">
           <VueDraggableNext
-            :list="this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === $root.session.writer.file.uuid).notes"
+            :list="$root.$data.session.writer.file.notes"
             tag="transition-group" handle=".handle" :component-data="{
               tag: 'div',
               type: 'transition-group',
               name: !drag ? 'flip-list' : null,
             }" v-bind="dragOptions" @start="drag = true" @end="drag = false" item-key="order" @change="changelist">
             <template
-              v-for="(element, index) in this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === $root.session.writer.file.uuid).notes"
+              v-for="(element, index) in $root.$data.session.writer.file.notes"
               :key="index">
               <div class="list-group-item" tabindex="0">
                 <div style="padding-left:0px;">
@@ -105,7 +105,7 @@ export default {
 
     deleteNote(index) {
       if (confirm("delete this note?")) {
-        this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === this.$root.session.writer.file.uuid).notes.splice(index, 1)
+        this.$root.$data.session.writer.file.notes.splice(index, 1)
         //  this.$root.session.writer.file.notes.splice(index,1)
         //this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.notes.splice(index,1)
         this.ListChanged();
@@ -114,7 +114,7 @@ export default {
     addCard() {
       let obj = {}
       obj.uuid = this.$root.uuid()
-      this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === this.$root.session.writer.file.uuid).notes.push(obj)
+      this.$root.$data.session.writer.file.notes.push(obj)
       // this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.notes.push(obj)
       this.ListChanged();
     },

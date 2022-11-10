@@ -1,86 +1,93 @@
 <template>
-  <div class="menu" v-bind:class="$root.$data.lhspin ? 'lhspinned' : ''">
-    <!--<div class="title">
-      <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
-        <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-      </svg>
-    </div>
-    -->
-    <button class="pinBtn" @click="$root.$data.lhspin = !$root.$data.lhspin">
-      <svg
-        style="width: 18px; height: 18px"
-        viewBox="0 0 24 24"
-        v-if="$root.$data.lhspin"
+ <VueDraggableNext
+        :list="list"
+        tag="transition-group"
+        handle=".handle"
+        :component-data="{
+          tag: 'div',
+          type: 'transition-group',
+          name: !drag ? 'flip-list' : null,
+        }"
+        v-bind="dragOptions"
+        @start="drag = true"
+        @end="drag = false"
+        item-key="order"
+        @change="ListChanged"
+          :emptyInsertThreshold="50"
       >
-        <path d="M16,12V4H17V2H7V4H8V12L6,14V16H11.2V22H12.8V16H18V14L16,12Z" />
-      </svg>
+        <template v-for="(element, index) in list" :key="index">
+          <div
+            class="list-group-item"
+            tabindex="0"
+           >
 
-      <svg
-        style="width: 18px; height: px"
-        viewBox="0 0 24 24"
-        v-if="!$root.$data.lhspin"
-      >
-        <path
-          d="M2,5.27L3.28,4L20,20.72L18.73,22L12.8,16.07V22H11.2V16H6V14L8,12V11.27L2,5.27M16,12L18,14V16H17.82L8,6.18V4H7V2H17V4H16V12Z"
-        />
-      </svg>
-    </button>
-    <div class="scrollpanel">
 
-      <button class="settingsBtn" style="border:0; outline:none" @click="this.$root.$data.session.writer.file = null" > 
-<svg style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path  d="M12 19C12 20.08 12.25 21.09 12.68 22H6C4.89 22 4 21.11 4 20V4C4 2.9 4.89 2 6 2H7V9L9.5 7.5L12 9V2H18C19.1 2 20 2.89 20 4V12.08C19.67 12.03 19.34 12 19 12C15.13 12 12 15.13 12 19M23.8 20.4C23.9 20.4 23.9 20.5 23.8 20.6L22.8 22.3C22.7 22.4 22.6 22.4 22.5 22.4L21.3 22C21 22.2 20.8 22.3 20.5 22.5L20.3 23.8C20.3 23.9 20.2 24 20.1 24H18.1C18 24 17.9 23.9 17.8 23.8L17.6 22.5C17.3 22.4 17 22.2 16.8 22L15.6 22.5C15.5 22.5 15.4 22.5 15.3 22.4L14.3 20.7C14.2 20.6 14.3 20.5 14.4 20.4L15.5 19.6V18.6L14.4 17.8C14.3 17.7 14.3 17.6 14.3 17.5L15.3 15.8C15.4 15.7 15.5 15.7 15.6 15.7L16.8 16.2C17.1 16 17.3 15.9 17.6 15.7L17.8 14.4C17.8 14.3 17.9 14.2 18.1 14.2H20.1C20.2 14.2 20.3 14.3 20.3 14.4L20.5 15.7C20.8 15.8 21.1 16 21.4 16.2L22.6 15.7C22.7 15.7 22.9 15.7 22.9 15.8L23.9 17.5C24 17.6 23.9 17.7 23.8 17.8L22.7 18.6V19.6L23.8 20.4M20.5 19C20.5 18.2 19.8 17.5 19 17.5S17.5 18.2 17.5 19 18.2 20.5 19 20.5 20.5 19.8 20.5 19Z" />
+ <div @click="selectNode(element)" class="itemBox">
+            <div class="itemTitle"  :class="isSelected(element.uuid) ? 'chosen' : ''">
+              <span class="handle">
+                <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
+                  <path
+                    d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M15,18V16H6V18H15M18,14V12H6V14H18Z"
+                  />
+                </svg>
+              </span>
+              <div class="title">
+              {{element.name}}
+              </div>
+       
+            </div>
+            <div class="itemText" >
+             {{ previewText(element.content) }} 
+            </div>
+            <div class="miniwordcount">{{ element.wordcount }} words</div>
+ </div>     
+                   <button class="deleteIconButton" @click="deleteFile(index, element)"  tabindex="0"  >
+<svg style="width:18px;height:18px" viewBox="0 0 24 24">
+    <path  d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
 </svg>
-      <div>{{this.$root.setlang.writer.settings}}</div>
-
-  
-        </button>
-
-      <WriterNode :list="$root.$data.shadowDB.Writer[$root.$data.session.writer.selected].files" />
-     
-    </div>
-     <div class="addbar">
-        <button @click="addFile">
-          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path  d="M14 2H6C4.89 2 4 2.89 4 4V20C4 21.11 4.89 22 6 22H13.81C13.28 21.09 13 20.05 13 19C13 18.67 13.03 18.33 13.08 18H6V16H13.81C14.27 15.2 14.91 14.5 15.68 14H6V12H18V13.08C18.33 13.03 18.67 13 19 13S19.67 13.03 20 13.08V8L14 2M13 9V3.5L18.5 9H13M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
-</svg>
-        </button>
+          </button>
 
 
-            <button @click="addchild" style="left:50px">
-<svg style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path d="M19,15L13,21L11.58,19.58L15.17,16H4V4H6V14H15.17L11.58,10.42L13,9L19,15Z" />
-</svg>
-        </button>
-      </div>
-  </div>
+<div style="padding-left:20px">
+ <WriterNode :list="element.children"/>
+</div>
+
+
+
+          </div>
+          
+
+        </template>
+      </VueDraggableNext>
 </template>
 
 <script>
 
-import WriterNode from "./WriterNode"
+import { VueDraggableNext } from "vue-draggable-next";
 export default {
-  name: "WriterLeftSide",
-  display: "Transitions",
-  order: 7,
-  components: {
-    WriterNode,
-  },
-  data() {
+      name: "WriterNode",
+      components: {
+        VueDraggableNext,
+      },
+      props: ["list"], 
+        data() {
     return {
       drag: false,
-      pinme: false,
-      defaultCard :   {
-        type: "file",
-        name: this.$root.setlang.writer.newfile,
-        notes:[],
-        content: null,
-        children : []
-      }
     };
   },
-  methods: {
-    previewText(str){
+    computed: {
+ 
+    dragOptions() {
+      return {
+       // animation: 200,
+        group: "description",
+        disabled: false,
+        ghostClass: "ghost",
+      };
+    },
+  },
+  methods:{
+     previewText(str){
       if(str){
          str = str.replace(/(<([^>]+)>)/gi, " ");
          let app ="..."
@@ -113,7 +120,14 @@ export default {
      }
     },
       addFile() {
-        let obj = {...this.defaultCard}
+        let obj = JSON.parse(JSON.stringify(
+          {
+        type: "file",
+        name: this.$root.setlang.writer.newfile,
+        notes:[],
+        content: null
+      }
+        ));
         obj.uuid = this.$root.uuid();
         
         if(this.$root.$data.session.writer.file){
@@ -125,15 +139,6 @@ export default {
         }
         this.ListChanged();
   
-    },
-    addchild(){
-      console.log(this.$root.$data.session.writer.file)
-       let obj = JSON.parse(JSON.stringify(this.defaultCard))
-        obj.uuid = this.$root.uuid();
-
-       this.$root.$data.session.writer.file.children.push(obj);
-        
-          this.ListChanged();
     },
    ListChanged() {
       console.log("list changed");
@@ -153,20 +158,11 @@ export default {
       }
       return false
     },
-  },
-  computed: {
- 
-    dragOptions() {
-      return {
-        animation: 200,
-        group: "description",
-        disabled: false,
-        ghostClass: "ghost",
-      };
-    },
-  },
-};
+  }
+}
 </script>
+
+
 
 <style scoped>
 .miniwordcount{
@@ -313,7 +309,7 @@ color: var(--writer-side-panels-f);
 .list-group-item svg {
     fill:var(--writer-side-panels-f);
 }
-
+/*
 .list-group-item:hover,
 .list-group-item:focus,
 .list-group-item:active  {
@@ -326,7 +322,7 @@ color: var(--writer-side-panels-f);
 .list-group-item:active svg{
    fill:var(--button-hover-f)
 } 
-
+*/
 
 .list-group-item:hover .deleteIconButton,
 .list-group-item:focus .deleteIconButton,
@@ -415,3 +411,4 @@ color: var(--button-hover-f);
 }
 
 </style>
+

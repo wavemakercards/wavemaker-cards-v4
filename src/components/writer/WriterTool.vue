@@ -49,13 +49,13 @@
     <transition name="fade">
       <div class="pageHolder" v-if="$root.$data.session.writer.file" :key="$root.$data.session.writer.file.uuid">
         <PageEditor
-          v-model="this.$root.shadowDB.Writer[this.$root.session.writer.selected].files[this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.map(e => e.uuid).indexOf(this.$root.session.writer.file.uuid)].content"
+          v-model="$root.$data.session.writer.file.content"
           @update:modelValue="changed()" />
       </div>
     </transition>
     <div class="titleBar" v-if="$root.$data.session.writer.file">
       <input type="text" :placeholder="this.$root.setlang.writer.newfile"
-        v-model="this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.find(x => x.uuid === this.$root.session.writer.file.uuid).name"
+        v-model="$root.$data.session.writer.file.name"
         @change="changed" />
     </div>
   </div>
