@@ -1,205 +1,154 @@
 <template>
- <VueDraggableNext
-        :list="list"
-        tag="transition-group"
-        handle=".handle"
-        :component-data="{
-          tag: 'div',
-          type: 'transition-group',
-          name: !drag ? 'flip-list' : null,
-        }"
-        v-bind="dragOptions"
-        @start="drag = true"
-        @end="drag = false"
-        item-key="order"
-        @change="ListChanged"
-          :emptyInsertThreshold="50"
-      >
-        <template v-for="(element, index) in list" :key="index">
-          <div
-            class="list-group-item"
-            tabindex="0"
-           >
+  <VueDraggableNext :list="list" tag="transition-group" handle=".handle" :component-data="{
+    tag: 'div',
+    type: 'transition-group',
+    name: !drag ? 'flip-list' : null,
+  }" v-bind="dragOptions" @start="drag = true" @end="drag = false" item-key="order" @change="updateDatabase"
+    :emptyInsertThreshold="50">
+    <template v-for="(element, index) in list" :key="index">
+      <div class="list-group-item" tabindex="0">
 
 
- <div @click="selectNode(element)" class="itemBox">
-            <div class="itemTitle"  :class="isSelected(element.uuid) ? 'chosen' : ''">
-              <span class="handle">
-                <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
-                  <path
-                    d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M15,18V16H6V18H15M18,14V12H6V14H18Z"
-                  />
-                </svg>
-              </span>
-              <div class="title">
-              {{element.name}}
-              </div>
-       
-            </div>
-            <div class="itemText" >
-             {{ previewText(element.content) }} 
-            </div>
-            <div class="miniwordcount">{{ element.wordcount }} words</div>
-                           <button class="deleteIconButton" @click="deleteFile(index, element)"  tabindex="0"  >
-<svg style="width:18px;height:18px" viewBox="0 0 24 24">
-    <path  d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
-</svg>
+        <div class="itemBox">
+
+          <NodeTemplate :pageuuid="element.uuid" :key="element.uuid" :parent="element" />
+
+          <button class="deleteIconButton" @click="deleteFile(index, element)" tabindex="0">
+            <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+              <path
+                d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
+            </svg>
           </button>
 
- </div>     
-    
-
-<div style="padding-left:20px">
- <WriterNode :list="element.children"/>
-</div>
+        </div>
 
 
+        <div class="childbox">
+          <WriterNode :list="element.children" :parent="parent" />
+        </div>
 
-          </div>
-          
 
-        </template>
-      </VueDraggableNext>
+
+      </div>
+
+
+    </template>
+  </VueDraggableNext>
 </template>
 
 <script>
 
 import { VueDraggableNext } from "vue-draggable-next";
+import NodeTemplate from "./NodeTemplate"
 export default {
-      name: "WriterNode",
-      components: {
-        VueDraggableNext,
-      },
-      props: ["list"], 
-        data() {
+  name: "WriterNode",
+  components: {
+    VueDraggableNext,
+    NodeTemplate
+  },
+  props: {
+    list: Array,
+    parent: Object
+  },
+  data() {
     return {
       drag: false,
     };
   },
-    computed: {
- 
+  computed: {
     dragOptions() {
       return {
-       animation: 200,
+        animation: 200,
         group: "description",
         disabled: false,
         ghostClass: "ghost",
       };
     },
   },
-  methods:{
-     previewText(str){
-      if(str){
-         str = str.replace(/(<([^>]+)>)/gi, " ");
-         let app ="..."
-         if(str.length<100){ app=""}
-      return str.substring(0,75) + app
+  methods: {
+    previewText(str) {
+      if (str) {
+        str = str.replace(/(<([^>]+)>)/gi, " ");
+        let app = "..."
+        if (str.length < 100) { app = "" }
+        return str.substring(0, 75) + app
       }
     },
-    changelist(){
-      console.log("Changed")
-         this.ListChanged() 
-    },
-    selectNode(element){
-       this.$root.$data.session.writer.file = element
-       /*
-      if(this.$root.$data.session.writer.file && this.$root.$data.session.writer.file===element ){ 
-        this.$root.$data.session.writer.file = null 
-        }else {
-          this.$root.$data.session.writer.file = element
-          }
-          */
-    },
-    deleteFile(index, element){
-     if(confirm(this.$root.setlang.writer.deletewarn)){
-       if(this.$root.$data.session.writer.file === element){
-        this.$root.$data.session.writer.file = null
-      }
-      this.$root.$data.shadowDB.Writer[this.$root.$data.session.writer.selected].files.splice(index,1)
-     
-      this.ListChanged();
-     }
-    },
-      addFile() {
-        let obj = JSON.parse(JSON.stringify(
-          {
-        type: "file",
-        name: this.$root.setlang.writer.newfile,
-        notes:[],
-        content: null
-      }
-        ));
-        obj.uuid = this.$root.uuid();
-        
-        if(this.$root.$data.session.writer.file){
-            // file selected so put it after that one
-            let i = this.$root.$data.shadowDB.Writer[this.$root.$data.session.writer.selected].files.indexOf(this.$root.$data.session.writer.file)
-             this.$root.$data.shadowDB.Writer[this.$root.$data.session.writer.selected].files.splice(i+1,0,obj);
-        }else{
-        this.$root.$data.shadowDB.Writer[this.$root.$data.session.writer.selected].files.push(obj);
+    deleteFile(index, element) {
+      console.log(this.$root.session.writer.file.uuid, element.uuid)
+      if (confirm(this.$root.setlang.writer.deletewarn)) {
+        if (this.$root.session.writer.file.uuid === element.uuid) {
+          this.$root.session.writer.file = null
         }
-        this.ListChanged();
-  
+
+        console.log("remove ", index, this.list)
+        console.log("delete ", element.uuid)
+        //eslint-disable-next-line
+        this.list.splice(index, 1)
+        this.updateDatabase()
+        this.$root.DeleteRecord("Files", element.uuid)
+
+      }
     },
-   ListChanged() {
-      console.log("list changed");
+    updateDatabase() {
+      console.log("list updateDatabase");
       this.$root.UpdateRecord(
         "Writer",
-        this.$root.$data.session.writer.selected,
-        this.$root.$data.shadowDB.Writer[
-          this.$root.$data.session.writer.selected
-        ]
+        this.parent.uuid,
+        this.parent
       );
     },
-           isSelected(id){
-      if(this.$root.session.writer.file){
-     if (this.$root.session.writer.file.uuid===id){
-      return true
-     }
+  },
+  isSelected(id) {
+    if (this.$root.session.writer.file) {
+      if (this.$root.session.writer.file.uuid === id) {
+        return true
       }
-      return false
-    },
-  }
+    }
+    return false
+  },
 }
+
 </script>
 
 
 
 <style scoped>
-.miniwordcount{
-   font-weight:bold; 
-   text-align:right;
+.itemBox {
+  padding-right: 25px;
+}
 
-}
-.itemBox{
-  padding-right:25px;
-}
-.settingsBtn{
-  height:40px;
-  width:100%;
-  background-color:var(--writer-side-nav );
-  color: var(--writer-side-nav-f );
+
+
+
+.settingsBtn {
+  height: 40px;
+  width: 100%;
+  background-color: var(--writer-side-nav);
+  color: var(--writer-side-nav-f);
   text-align: left;
-  padding-left:40px;
-  cursor:pointer;
+  padding-left: 40px;
+  cursor: pointer;
 }
-.settingsBtn svg{
+
+.settingsBtn svg {
   position: absolute;
-  left:5px;
-  top:5px;
-  fill :var(--writer-side-nav-f );
+  left: 5px;
+  top: 5px;
+  fill: var(--writer-side-nav-f);
 }
+
 .settingsBtn:hover,
 .settingsBtn:focus,
-.settingsBtn:active{
- background-color:var(--button-hover);
+.settingsBtn:active {
+  background-color: var(--button-hover);
   color: var(--button-hover-f);
 }
 
 .settingsBtn:hover svg,
 .settingsBtn:focus svg,
-.settingsBtn:active svg{
-   fill : var(--button-hover-f)
+.settingsBtn:active svg {
+  fill: var(--button-hover-f)
 }
 
 .pinBtn {
@@ -210,11 +159,12 @@ export default {
   background: none;
   padding: 5px;
   cursor: pointer;
-  width:40px;
-  height:40px;
-  background-color: var(--writer-side-nav );
+  width: 40px;
+  height: 40px;
+  background-color: var(--writer-side-nav);
 
 }
+
 .pinBtn svg {
   fill: var(--writer-side-nav-f);
 }
@@ -224,92 +174,55 @@ export default {
 .pinBtn:hover,
 .pinBtn:active,
 .pinBtn:focus {
-   background-color:var(--button-hover);
+  background-color: var(--button-hover);
   color: var(--button-hover-f);
 
 }
+
 .pinBtn:hover svg,
 .pinBtn:active svg,
 .pinBtn:focus svg {
   fill: var(--button-hover-f);
 }
 
-.itemTitle {
-    position: relative;
-  font-weight: bold;
-  padding-left: 30px;
-  padding-right:10px;
-  margin-bottom: 10px;
-}
-
-.itemTitle .title{
-  font-family: inherit;
-  background-color: inherit;
-  color: inherit;
-  border:0px;
-  width:calc(100% -20px);
-  outline: none;
-  height:20px;
-  margin:0px;
-
-}
-
-.itemTitle input{
-  font-family: inherit;
-  background-color: inherit;
-  color: inherit;
-  border:0px;
-  width:100%;
-}
-
-.handle {
-  position: absolute;
-  left: 0px;
-  top:-4px;
-  margin-bottom: 5px;
-  cursor: move;
-}
-.itemText {
-  font-size: 0.9rem;
-  color: inherit;
-  font-style: italic;
-  margin-bottom: 10px;
-  padding-left: 10px;
-  padding-right:10px;
- }
-
 
 
 .button {
   margin-top: 35px;
 }
+
 .flip-list-move {
   transition: transform 0.5s;
 }
+
 .no-move {
   transition: transform 0s;
 }
+
 .ghost {
   opacity: 0.5;
   background: var(--hover-ghost);
 }
+
 .list-group {
   min-height: 20px;
 }
+
 .list-group-item {
   position: relative;
-  display:block;
+  display: block;
   cursor: pointer;
   padding: 5px;
-  padding-top:10px;
+  padding-top: 10px;
   min-height: 40px;
   background-color: var(--writer-side-panels);
-color: var(--writer-side-panels-f);
+  color: var(--writer-side-panels-f);
 }
 
 .list-group-item svg {
-    fill:var(--writer-side-panels-f);
+  fill: var(--writer-side-panels-f);
 }
+
 /*
 .list-group-item:hover,
 .list-group-item:focus,
@@ -317,24 +230,21 @@ color: var(--writer-side-panels-f);
   background-color: var(--button-hover);
   color: var(--button-hover-f);
 }
-
-.list-group-item:hover svg,
-.list-group-item:focus svg,
-.list-group-item:active svg{
-   fill:var(--button-hover-f)
-} 
 */
+.childbox {
+  padding-left: 10px;
+}
 
 .itemBox:hover .deleteIconButton,
 .itemBox:focus .deleteIconButton,
-.itemBox:active .deleteIconButton  {
-  display:block
+.itemBox:active .deleteIconButton {
+  display: block
 }
 
 
 .menu {
   font-weight: 100;
-  background: var(--writer-side-panels );
+  background: var(--writer-side-panels);
   color: var(--writer-side-panels-f);
   width: 300px;
   height: 100%;
@@ -350,6 +260,7 @@ color: var(--writer-side-panels-f);
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
 }
+
 .menu:hover,
 .menu:focus,
 .lhspinned {
@@ -364,27 +275,29 @@ color: var(--writer-side-panels-f);
   position: absolute;
   top: 40px;
   bottom: 0px;
- width:100%;
+  width: 100%;
   padding: 0px;
-     background-color: inherit
+  background-color: inherit
 }
 
-.addbar{
-  position:absolute;
-  top:0px;
-  background-color: var(--writer-side-nav );
-   width: calc(100% - 40px);
-   height:40px;
+.addbar {
+  position: absolute;
+  top: 0px;
+  background-color: var(--writer-side-nav);
+  width: calc(100% - 40px);
+  height: 40px;
 }
-.addbar button{
+
+.addbar button {
   border: 0px;
   padding: 5px;
   cursor: pointer;
-  width:40px;
-  height:40px;
+  width: 40px;
+  height: 40px;
   background-color: var(--writer-side-nav);
   color: var(--writer-side-nav-f);
 }
+
 .addbar button svg {
   fill: var(--writer-side-nav-f);
 }
@@ -392,24 +305,14 @@ color: var(--writer-side-panels-f);
 .addbar button:hover,
 .addbar button:active,
 .addbar button:focus {
-background-color: var(--button-hover);
-color: var(--button-hover-f);
+  background-color: var(--button-hover);
+  color: var(--button-hover-f);
 }
+
 .addbar button:hover svg,
 .addbar button:active svg,
 .addbar button:focus svg {
-  fill:  var(--button-hover-f);
+  fill: var(--button-hover-f);
 }
-
-.chosen{
-  background-color: var(--accent);
-  color: var(--accent-f);
-
-}
-
-.chosen>svg{
-  fill: var(--accent-f);
-}
-
 </style>
 

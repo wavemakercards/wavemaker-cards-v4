@@ -83,18 +83,6 @@ export default {
       }
     }
   },
-  computed: {
-    calcFullWordCount() {
-      let w = 0
-      this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.forEach(page => {
-        if (page.wordcount) {
-          w = w + parseInt(page.wordcount)
-        }
-      });
-
-      return w
-    }
-  },
   methods: {
     switchLang() {
       localStorage.setItem("wmLang", this.lang)

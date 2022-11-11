@@ -1,11 +1,12 @@
 <template>
   <div class="writer" v-bind:class="
   [
-    $root.$data.lhspin ? 'lhspin' : '',
-    $root.$data.rhspin ? 'rhspin' : ''
+    $root.lhspin ? 'lhspin' : '',
+    $root.rhspin ? 'rhspin' : ''
   ]">
-    <div v-if="!$root.$data.session.writer.file">
-      <div class="wavemaker_info_box">
+    <div v-if="!$root.session.writer.file">
+      <div class="wavemaker_info_box" v-if="writerData">
+
         <div style="text-align:center">
           <svg id="wavemaker_logo" version="1.1" viewBox="0 0 24 24" height="50" width="50">
             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -20,16 +21,21 @@
           </svg>
         </div>
         <label>{{ this.$root.setlang.tools.name }}</label>
-        <input type="text" class="formInput mantitle" v-model="this.$root.$data.shadowDB.Writer[
-          this.$root.$data.session.writer.selected
-        ].title" @change="changed" :placeholder="this.$root.setlang.tools.name" />
+        <input type="text" class="formInput mantitle" v-model="writerData.title" @keyup="changed"
+          :placeholder="this.$root.setlang.tools.name" />
         <label>{{ this.$root.setlang.tools.description }}</label>
-        <input type="text" class="formInput mandesc" v-model="this.$root.$data.shadowDB.Writer[
-          this.$root.$data.session.writer.selected
-        ].description" @change="changed" :placeholder="this.$root.setlang.tools.description" />
-        <h4>
-          {{ this.$root.calcFullWordCount }} {{ this.$root.setlang.writer.words }}
-        </h4>
+        <input type="text" class="formInput mandesc" v-model="writerData.description" @keyup="changed"
+          :placeholder="this.$root.setlang.tools.description" />
+        <div>
+          {{ fullWordCount }} {{ this.$root.setlang.writer.words }} <button class="clearInterfaceIconButton"
+            @click="calcFullWordCount()">
+            <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+              <path
+                d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2M18 11H13L14.81 9.19A3.94 3.94 0 0 0 12 8A4 4 0 1 0 15.86 13H17.91A6 6 0 1 1 12 6A5.91 5.91 0 0 1 16.22 7.78L18 6Z" />
+            </svg>
+
+          </button>
+        </div>
         <p>
           {{ this.$root.setlang.writer.intro }}
         </p>
@@ -47,17 +53,11 @@
     </div>
 
     <transition name="fade">
-      <div class="pageHolder" v-if="$root.$data.session.writer.file" :key="$root.$data.session.writer.file.uuid">
-        <PageEditor
-          v-model="$root.$data.session.writer.file.content"
-          @update:modelValue="changed()" />
+      <div class="pageHolder" v-if="$root.session.writer.file" :key="$root.session.writer.file.uuid">
+        <NewPage :pageuuid="$root.session.writer.file.uuid" />
       </div>
     </transition>
-    <div class="titleBar" v-if="$root.$data.session.writer.file">
-      <input type="text" :placeholder="this.$root.setlang.writer.newfile"
-        v-model="$root.$data.session.writer.file.name"
-        @change="changed" />
-    </div>
+
   </div>
 
   <WriterRightSide />
@@ -65,38 +65,60 @@
 </template>
 
 <script>
+import { useObservable } from "@vueuse/rxjs";
+import { liveQuery } from "dexie";
+import { db } from "@/db.js";
 import WriterLeftSide from "./WriterLeftSide.vue";
 import WriterRightSide from "./WriterRightSide.vue";
-import PageEditor from "./PageEditor.vue";
+import NewPage from "./NewPage.vue";
 export default {
   name: "WriterTool",
   components: {
     WriterLeftSide,
     WriterRightSide,
-    PageEditor
+    NewPage
+  },
+  data() {
+    return {
+      writerData: useObservable(liveQuery(() => db.Writer.get(this.$root.session.writer.selected))),
+      fullWordCount: 0
+    }
   },
   methods: {
+    async calcFullWordCount() {
+      console.log("wordcounting")
+      let count = 0
+      let files = await db.Files.where({ writerid: this.$root.session.writer.selected }).toArray()
+      files.forEach(element => {
+        count = count + element.wordcount
+      });
+      this.fullWordCount = count
+    },
     exportDoc() {
       if (confirm(this.$root.setlang.writer.docdownload)) {
+        // TODO : write the loop to get all from the db as needed
+        alert("I need to re- do this logic for the new tool")
+        /*
         let html = "";
-
-        this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.forEach(page => {
-          html = html + page.content
-        });
-
-        window.Export2Word(html)
+          this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.forEach(page => {
+            html = html + page.content
+          });
+  
+          window.Export2Word(html)
+        */
       }
     },
     changed() {
       console.log("list changed");
       this.$root.UpdateRecord(
         "Writer",
-        this.$root.$data.session.writer.selected,
-        this.$root.$data.shadowDB.Writer[
-        this.$root.$data.session.writer.selected
-        ]
+        this.writerData.uuid,
+        this.writerData
       );
     }
+  },
+  updated() {
+    this.calcFullWordCount()
   }
 }
 </script>
@@ -123,37 +145,12 @@ export default {
 
 .lhspin {
   left: 300px;
-
 }
 
 .rhspin {
   right: 300px;
 
 }
-
-.titleBar {
-  position: absolute;
-  top: 0px;
-  background-color: var(--writer-title-bar);
-  color: var(--writer-title-bar-f);
-  height: 40px;
-  width: 100%;
-
-}
-
-.titleBar input {
-  width: 100%;
-  background-color: inherit;
-  color: inherit;
-  outline: none;
-  height: 40px;
-  border: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-family: inherit;
-  font-size: 1.5rem;
-}
-
 
 .mantitle,
 .mandesc {

@@ -16,38 +16,18 @@ const dexieDB = {
     async getImage(uuid) {
       return await this.$root.db.ImageLibrary.get(uuid)
     },
-    AddRecord(myTable, myData) {
+    async AddRecord(myTable, myData) {
       console.log("Add", myTable, myData);
       myData.lastupdated = Date.now();
-      this.db.transaction("rw", myTable, (tx) => {
-        tx.source = this.windowID; //TODO : this stopped working see hack workaround
-        this.AllowNextTransaction = false; // This is the Hack
-        // this.shadowDB[myTable][myData.uuid] =  myData;
-        this.db[myTable].add(myData);
-      });
+      await this.db[myTable].add(myData).then(r => console.log("Added", r));
     },
-    UpdateRecord(myTable, myKey, myData) {
+    async UpdateRecord(myTable, myKey, myData) {
       myData.uuid = myKey;
       myData.lastupdated = Date.now();
-      this.db
-        .transaction("rw", myTable, (tx) => {
-          tx.source = this.windowID; //TODO : this stopped working see hack workaround
-          this.AllowNextTransaction = false; // This is the Hack
-          //this.shadowDB[myTable][myKey] =  myData;
-          this.db[myTable].put(JSON.parse(JSON.stringify(myData))); // this clears upa  bug where a proxy is passed
-        })
-        .then(console.log("Update Complete"));
+      await this.db[myTable].put(JSON.parse(JSON.stringify(myData))).then(r => console.log("Update Complete", r));
     },
-    DeleteRecord(myTable, myKey) {
-      this.db
-        .transaction("rw", myTable, (tx) => {
-          console.log("TX", tx);
-
-          tx.source = this.windowID; //TODO : this stopped working see hack workaround
-          this.AllowNextTransaction = false; // This is the Hack
-          this.db[myTable].delete(myKey);
-        })
-        .then(console.log("Delete Complete"));
+    async DeleteRecord(myTable, myKey) {
+      await this.db[myTable].delete(myKey).then(r => console.log("Delete Complete", r));
     },
     createDatabase() {
 
@@ -80,14 +60,14 @@ const dexieDB = {
     
     },
      DBexport() {  
-
+  
      exportDB(this.db).then(response => {
       console.log(response);
   }).catch(e => {
       console.log("what",e);
   });
- 
-
+   
+  
     // return JSON.stringify(this.shadowDB);
     }  */
   },
@@ -101,32 +81,6 @@ const dexieDB = {
     */
     this.createDatabase();
   },
-  mounted() {
-    this.db.on("changes", (changes) => {
-      console.log("allow change", this.AllowNextTransaction, changes);
-      if (this.AllowNextTransaction) {
-        // TODO : Fix this properly
-        changes.forEach((change) => {
-          //        if (change.source != this.windowID) {
-          // using transactions allows me to filter updates out of the window that sent them (just causes lag occasionanly)
-          switch (change.type) {
-            case 1: // CREATED
-              this.shadowDB[change.table][change.key] = change.obj; // can't just ASSIGN as it wont be reactive so set it using VUE
-              break;
-            case 2: // UPDATED
-              this.shadowDB[change.table][change.key] = change.obj;
-              break;
-            case 3: // DELETED
-              if (this.shadowDB[change.table]) { // ignore tables not in the shadowDB (ie ImageLibrary)
-                delete this.shadowDB[change.table][change.key];
-              }
-              break;
-          }
-        });
-      }
-      this.AllowNextTransaction = true;
-    });
 
-  }
 }
 export default dexieDB

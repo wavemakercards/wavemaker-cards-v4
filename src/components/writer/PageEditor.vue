@@ -1,7 +1,8 @@
 <template>
 
-  <div v-if="!$root.$data.session.writer.file">
-    <h1>Create or choose a file to start writing</h1>
+  <div class="titleBar" v-if="$root.$data.session.writer.file">
+    <input type="text" :placeholder="this.$root.setlang.writer.newfile" v-model="$root.$data.session.writer.file.name"
+      @change="changed" />
   </div>
   <div v-if="$root.$data.session.writer.file">
     <div class="scrolly">
