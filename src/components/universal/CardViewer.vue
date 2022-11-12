@@ -1,7 +1,7 @@
 <template>
-  <div v-if="this.$root.$data.shadowDB.Cards[this.cardid]">
+  <div v-if="cardInfo">
     <div class="card"
-      :style="'background-color: var(' + this.$root.$data.shadowDB.Cards[this.cardid].color + '); color : var(' + this.$root.$data.shadowDB.Cards[this.cardid].color + '-f); fill : var(' + this.$root.$data.shadowDB.Cards[this.cardid].color + '-f)'">
+      :style="'background-color: var(' + cardInfo.color + '); color : var(' + cardInfo.color + '-f); fill : var(' + cardInfo.color + '-f)'">
 
 
 
@@ -12,29 +12,19 @@
 
 
       <div class="cardTitle">
-        <span v-if="this.$root.$data.shadowDB.Cards[this.cardid].title">
-          {{ this.$root.$data.shadowDB.Cards[this.cardid].title }}
+        <span v-if="cardInfo.title">
+          {{ cardInfo.title }}
         </span>
         <span v-else>
           {{ this.$root.setlang.cards.cardtitle }}
         </span>
       </div>
 
-      <div class="cardDescription" v-if="this.$root.$data.shadowDB.Cards[this.cardid].showdesc">
-        <span v-html="this.$root.$data.shadowDB.Cards[this.cardid].description"></span>
+      <div class="cardDescription" v-if="cardInfo.showdesc">
+        <span v-html="cardInfo.description"></span>
       </div>
 
 
-      <!--
-
-
-
-      <div class="tagbox" v-if="this.$root.$data.shadowDB.Cards[this.cardid].labels.length">
-        <span class="tag" v-for="(tag, i) in this.$root.$data.shadowDB.Cards[this.cardid].labels" :key="i">{{ tag
-        }}</span>
-
-      </div>
--->
       <button class="clearInterfaceIconButton editButton" @click="$root.$data.session.EditCard = cardid">
         <svg version="1.1" viewBox="0 0 24 24">
           <path
@@ -44,7 +34,7 @@
     </div>
   </div>
 
-  <div class="card" v-if="!this.$root.$data.shadowDB.Cards[this.cardid]">
+  <div class="card" v-if="!cardInfo">
     <div v-if="chooser">
       <button @click="this.$root.makeNewCard(this.cardid)" class="interfaceBtn" style="width:100%; text-align: left;">
         <svg viewBox="0 0 24 24">
@@ -67,7 +57,7 @@
       </button>
 
       <div v-if="showLinkBox" class="LinkBox">
-        <button class="interfaceBtn" v-for="(opt, i) in currentProjectCards" :key="i" :value="opt.uuid"
+        <button class="interfaceBtn" v-for="(opt, i) in linkcards" :key="i" :value="opt.uuid"
           @click="cardChange = opt.uuid; sendCardChange()">
           <svg viewBox="0 0 24 24">
             <path
@@ -77,16 +67,6 @@
           {{ opt.title }}
         </button>
       </div>
-
-      <!--
-    <select style="width:100%" v-model="cardChange">
-        <option v-for="(opt, i) in currentProjectCards" :key="i" :value="opt.uuid">{{ opt.title }}
-        </option>
-      </select>
-      <br />
-      <button @click="sendCardChange">Choose</button>
-
-      -->
 
 
     </div>
@@ -98,13 +78,11 @@
 </template>
 
 <script>
-/* eslint-disable */
-import DescriptionEditor from "@/components/universal/DescriptionEditor.vue";
+import { useObservable } from "@vueuse/rxjs";
+import { liveQuery } from "dexie";
+import { db } from "@/db.js";
 export default {
   name: "CardViewer",
-  components: {
-    DescriptionEditor
-  },
   emits: ["linkcard"],
   props: {
     cardid: {
@@ -114,19 +92,14 @@ export default {
     allowlink: {
       type: Boolean,
       default: false,
-    },
-    updateelement: {
-      type: Object,
-      default: [],
-      required: false,
     }
   },
   computed: {
     currentProjectCards() {
       let data = [];
-      Object.keys(this.$root.$data.shadowDB.Cards).forEach(element => {
-        if (this.$root.$data.shadowDB.Cards[element].projectID === this.$root.$data.session.selectedProject && this.$root.$data.shadowDB.Cards[element].title != "") {
-          data.push(this.$root.$data.shadowDB.Cards[element])
+      Object.keys(this.linkcards).forEach(element => {
+        if (this.linkcards[element].title != "") {
+          data.push(this.linkcards[element])
         }
       });
       return data
@@ -134,6 +107,8 @@ export default {
   },
   data() {
     return {
+      cardInfo: useObservable(liveQuery(async () => await db.Cards.get(this.cardid))),
+      linkcards: useObservable(liveQuery(async () => await db.Cards.toArray())),
       advancedEdit: false,
       tag: null,
       chooser: false,
@@ -162,18 +137,17 @@ export default {
       this.updatecard();
     },
     sendCardChange() {
-      console.log("Link to card selected", this.updateelement)
-      this.updateelement.uuid = this.cardChange
-      this.$emit("linkcard")
+      console.log(this.cardChange)
+      this.$emit("linkcard", this.cardChange, this.cardid)
     }
   },
   async mounted() {
     if (!this.allowlink) {
-      if (!this.$root.$data.shadowDB.Cards[this.cardid] && this.cardid) {
+      if (!this.cardInfo && this.cardid) {
         this.$root.makeNewCard(this.cardid)
       }
     } else {
-      if (!this.$root.$data.shadowDB.Cards[this.cardid]) {
+      if (!this.cardInfo) {
         if (Object.keys(this.$root.$data.shadowDB.Cards).length) {
           this.chooser = true;
         } else {
@@ -181,9 +155,9 @@ export default {
         }
       }
     }
-    if (this.$root.$data.shadowDB.Cards[this.cardid]) {
-      if (this.$root.$data.shadowDB.Cards[this.cardid].showimage) {
-        this.showimage = await this.$root.getImage(this.$root.$data.shadowDB.Cards[this.cardid].showimage)
+    if (this.cardInfo) {
+      if (this.cardInfo.showimage) {
+        this.showimage = await this.$root.getImage(this.cardInfo.showimage)
       }
     }
   }

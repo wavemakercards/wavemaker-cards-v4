@@ -92,25 +92,25 @@ export default {
       }
     },
     searchforuuid(file, parent) {
-      let index = parent.findIndex(item => item.uuid === file.uuid)
-      if (index !== -1) {
-        return {
-          index,
-          parent
-        }
-      } else {
-
-        parent.forEach(newlist => {
-          console.log("parent", newlist)
-          if (newlist.children.length) {
-            this.searchforuuid(file, newlist.children)
-          }
-        })
+      // find the index and parent of the selected node so we can insert afterwards
+      let output = {
+        index: null,
+        parent: null
       }
+      for (let i = 0; i < parent.length; i++) {
+        if (parent[i].uuid === file.uuid) {
+          output.index = i
+          output.parent = parent
+          return output
+        } else {
+          if (parent[i].children.length) {
+            return this.searchforuuid(file, parent[i].children)
+          }
+        }
+      }
+      return false
     },
     async addFile() {
-
-      console.log("add file")
       let obj = JSON.parse(JSON.stringify(this.defaultCard))
       obj.uuid = this.$root.uuid();
       // create the new file first!!
@@ -120,38 +120,27 @@ export default {
       file.uuid = obj.uuid
       file.content = ""
       file.notes = []
+      // we need to create a new file here
 
       await this.$root.AddRecord("Files", file)
 
-
-
-
-      if (this.$root.session.writer.file) {
-        this.$root.session.writer.file.children.push(obj);
-        console.log(this.$root.session.writer.file.children)
-        this.updateDatabase();
-        return false
-      }
-
-
-
-
+      console.log(this.$root.session.writer.file)
       if (this.$root.session.writer.file) {
         // so I need to find the file and it's parent array
-        //let i = this.searchforuuid(this.$root.session.writer.file, this.$root.session.writer.selected.files)
-        //console.log(i)
-        // i.parent.splice((i.index + 1), 0, obj);
-        console.log("thu", this.$root.session.writer.file.children.length)
-        this.$root.session.writer.file.children.push(obj);
+        let found = this.searchforuuid(this.$root.session.writer.file, this.$root.session.writer.selected.files)
+        if (found) {
+          found.parent.splice((found.index + 1), 0, obj);
+        }
       } else {
         this.$root.session.writer.selected.files.push(obj);
       }
-      // we need to create a new file here
 
       this.updateDatabase();
 
     },
     addchild() {
+
+      // creates a child node
       let obj = JSON.parse(JSON.stringify(this.defaultCard))
       obj.uuid = this.$root.uuid();
       console.log(this.$root.session.writer.file)

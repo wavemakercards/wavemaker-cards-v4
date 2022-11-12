@@ -69,8 +69,8 @@
 <script>
 
 import { db } from "@/db.js";
-import WriterLeftSide from "./WriterLeftSide.vue";
-import WriterRightSide from "./WriterRightSide.vue";
+import WriterLeftSide from "./leftpanel/WriterLeftSide.vue";
+import WriterRightSide from "./rightpanel/WriterRightSide.vue";
 import NewPage from "./NewPage.vue";
 export default {
   name: "WriterTool",

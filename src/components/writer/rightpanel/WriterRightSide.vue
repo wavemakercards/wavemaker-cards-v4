@@ -27,8 +27,7 @@
             <template v-for="(element, index) in item.notes" :key="index">
               <div class="list-group-item" tabindex="0">
                 <div style="padding-left:0px;">
-                  <CardViewer :cardid="element.uuid" :allowlink="true" :updateelement="element"
-                    @linkcard="updateDatabase" />
+                  <CardViewer :cardid="element.uuid" :allowlink="true" @linkcard="linkCard" />
 
                   <div class="handle">
                     <svg viewBox="0 0 24 24">
@@ -96,6 +95,18 @@ export default {
     };
   },
   methods: {
+    linkCard(newuuid, uuid) {
+      console.log(newuuid, uuid)
+      var index = this.item.notes.find(x => x.uuid === uuid);
+      console.log(this.item.notes, index)
+      if (index !== -1) {
+        this.item.notes[index].uuid = newuuid;
+      }
+
+
+      // element.uuid = uuid;
+      // this.updateDatabase()
+    },
     deleteNote(index) {
       if (confirm("delete this note?")) {
         this.item.notes.splice(index, 1)
@@ -108,8 +119,6 @@ export default {
       let obj = {}
       obj.uuid = this.$root.uuid()
       this.item.notes.push(obj)
-
-      // this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.notes.push(obj)
       this.updateDatabase();
     },
     updateDatabase() {

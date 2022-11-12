@@ -158,8 +158,6 @@ export default {
       if (existingid) {
         newId = existingid
       }
-
-
       let obj = {};
       obj.uuid = newId
       obj.projectID = this.$root.$data.session.selectedProject;
@@ -171,9 +169,8 @@ export default {
       obj.style = "";
       obj.options = {};
       obj.color = "--card1"
-      this.$root.$data.shadowDB.Cards[obj.uuid] = obj;
       this.$root.AddRecord("Cards", obj);
-      this.$root.$data.session.EditCard = obj.uuid
+      // this.$root.$data.session.EditCard = obj.uuid
     },
     unloadEvent(e) {
       // Cancel the event
