@@ -24,7 +24,7 @@
 
         <label>{{ this.$root.setlang.cards.cardtitle }}</label>
         <div class="inputHolder">
-          <input class="cardTitle" placeholder="Title" v-model="this.cardInfo.title" @keyup="updatecard" />
+          <input class="cardTitle" placeholder="Title" v-model="this.cardInfo.title" @change="updatecard" />
         </div>
         <label>{{ this.$root.setlang.cards.cardnotes }} <input type="checkbox" value="true"
             v-model="this.cardInfo.showdesc" @change="updatecard()"></label>
@@ -54,15 +54,16 @@
         <label>{{ this.$root.setlang.cards.images }}</label>
         <div class="inputHolder">
 
-          <div v-for="(image, key) in imageList" :key="key" class="imgHolder">
+          <div v-for="(image, key) in this.cardInfo.images" :key="key" class="imgHolder">
             <button class="deleteBtn" @click="deleteImage(key)"
-              :style="(this.cardInfo.showimage === image.uuid) ? 'display:none' : ''">
+              :style="(this.cardInfo.showimage === image) ? 'display:none' : ''">
               <svg viewBox="0 0 24 24">
                 <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
               </svg>
             </button>
-            <img :class="(this.cardInfo.showimage === image.uuid) ? 'selectedImg' : 'unselectedImg'"
-              :src="'data:image/png;base64,' + image.base64" @click="chooseImage(image.uuid)" />
+            <MiniImage :uuid="image" :class="(this.cardInfo.showimage === image) ? 'selectedImg' : 'unselectedImg'"
+              @click="chooseImage(image)" />
+
 
 
 
@@ -96,6 +97,7 @@
 <script>
 /* eslint-disable */
 import MiniEditor from "@/components/universal/MiniEditor.vue";
+import MiniImage from "@/components/universal/MiniImage.vue";
 import { useObservable } from "@vueuse/rxjs";
 import { liveQuery } from "dexie";
 import { db } from "@/db.js";
@@ -103,7 +105,8 @@ export default {
   name: "CardViewer",
   emits: ["cardChange"],
   components: {
-    MiniEditor
+    MiniEditor,
+    MiniImage
   },
   computed: {
     taginputwidth() {
@@ -114,17 +117,30 @@ export default {
       }
       return 6
     },
+    imageList() {
+      let a = []
+      if (this.cardInfo) {
+        this.cardInfo.images.forEach(async (id) => {
+          let image = await this.$root.getImage(id)
+          if (image) {
+            a.push(image)
+          } else {
+            // if the image is not in the db remove them from the array
+            this.cardInfo.images = this.cardInfo.images.filter(item => item !== id)
+          }
+        });
+      }
+      return a
+    },
   },
   data() {
     return {
       tag: null,
-      imageList: [],
       animate: false,
-      cardInfo: useObservable(liveQuery(async () => await db.Cards.get(this.$root.$data.session.EditCard)))
+      cardInfo: null
     };
   },
   methods: {
-
     updatecard() {
       console.log("updating")
       this.cardInfo.updateWindow = this.$root.windowID
@@ -140,7 +156,6 @@ export default {
       } else {
         this.cardInfo.showimage = null
       }
-
       console.log("image " + id)
       this.updatecard()
     },
@@ -159,43 +174,24 @@ export default {
       this.cardInfo.color = "--card" + c
       this.updatecard();
     },
-
-    setupImages() {
-      this.imageList = []
-      console.log(this.$cardInfo.images)
-      this.cardInfo.images.forEach(async (id) => {
-        let image = await this.$root.getImage(id)
-        if (image) {
-          this.imageList.push(image)
-        } else {
-          // if the image is not in the db remove them from the array
-          this.cardInfo.images =
-            this.cardInfo.images.filter(item => item !== id)
-        }
-      });
-
-    },
     addImage() {
-      this.$root.imagemanager = true
-      this.$root.imageUpdate = {
+      // pass the object we want the image manager to update
+
+      this.$root.imagemanager = {
         table: "Cards",
         targetuuid: this.$root.$data.session.EditCard,
-        target: this.cardInfo.images
+        target: this.cardInfo.images,
+        updateObj: this.cardInfo
       }
     },
     deleteImage(i) {
-      this.imageList.splice(i, 1)
       this.cardInfo.images.splice(i, 1)
       this.updatecard()
     }
 
   },
   mounted() {
-
-    // console.log(this.cardInfo)
-    // this.setupImages()
-
-
+    this.cardInfo = useObservable(liveQuery(async () => await db.Cards.get(this.$root.$data.session.EditCard)))
     this.animate = true // triggers the animation
   }
 };

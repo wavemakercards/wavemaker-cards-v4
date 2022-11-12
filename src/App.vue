@@ -75,12 +75,7 @@ export default {
       uuid,
       session: {},
       navshow: true,
-      imagemanager: false,
-      imageUpdate: {
-        table: null,
-        targetuuid: null,
-        target: null
-      }
+      imagemanager: false
     }
   },
   methods: {

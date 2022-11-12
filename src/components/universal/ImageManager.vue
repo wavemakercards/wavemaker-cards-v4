@@ -1,6 +1,6 @@
 <template>
     <div class="backdrop"></div>
-    <div class="imageWindow">
+    <div class="imageWindow" v-if="imagesArray">
         <div class="imageScroller" v-if="!this.newimage.base64">
             <masonry-wall :items="imagesArray" :ssr-columns="1" :column-width="300" :gap="16">
                 <template #default="{ item }">
@@ -8,7 +8,7 @@
                         <img :src="'data:image/png;base64,' + item.base64" />
                         <div style="margin-top:-10px; text-align: right;">
                             <button @click="pickImage(item.uuid)" class=" interfaceBtn chooseBtn"
-                                v-if="this.$root.imageUpdate.targetuuid">
+                                v-if="this.$root.imagemanager.targetuuid">
                                 <svg viewBox="0 0 24 24">
                                     <path
                                         d="M19,19H5V5H19M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M13.96,12.29L11.21,15.83L9.25,13.47L6.5,17H17.5L13.96,12.29Z" />
@@ -82,6 +82,9 @@
 </template>
 
 <script>
+import { useObservable } from "@vueuse/rxjs";
+import { liveQuery } from "dexie";
+import { db } from "@/db.js";
 import MasonryWall from '@yeger/vue-masonry-wall'
 export default {
     name: "ImageViewer",
@@ -90,7 +93,7 @@ export default {
     },
     data() {
         return {
-            imagesArray: [],
+            imagesArray: useObservable(liveQuery(async () => await db.ImageLibrary.toArray())),
             newimage: {
                 title: null,
                 base64: null
@@ -108,16 +111,9 @@ export default {
             // hack for the card modal
             this.$root.EditCardrefresh = this.$root.uuid()
             this.$root.imagemanager = null;
-            this.$root.imageUpdate = {
-                table: null,
-                targetuuid: null,
-                target: null
-            }
 
         },
-        async getImages() {
-            this.imagesArray = await this.$root.db.ImageLibrary.toArray()
-        },
+
         updateCanvasImage(e) {
             var self = this;
             var files = e.target.files;
@@ -158,30 +154,30 @@ export default {
             await this.$root.AddRecord("ImageLibrary", o)
             this.newimage.title = null
             this.newimage.base64 = null
-            this.getImages()
+
             // add the image uuid to the image list for this card
 
         },
         async deleteImage(uuid) {
             if (confirm("Delete this Image?")) {
                 await this.$root.db.ImageLibrary.delete(uuid)
-                this.getImages()
             }
         },
         pickImage(uuid) {
-            if (this.$root.imageUpdate.targetuuid) {
+            if (this.$root.imagemanager.targetuuid) {
                 if (confirm("Do you want to choose this image?")) {
-                    if (!this.$root.imageUpdate.target) {
+                    console.log(this.$root.imagemanager.target)
+                    if (!this.$root.imagemanager.target) {
                         alert("no target to update")
                     }
 
-                    this.$root.imageUpdate.target.push(uuid)
-
+                    this.$root.imagemanager.target.push(uuid)
+                    console.log("update", this.$root.imagemanager)
                     // do the DB update
                     this.$root.UpdateRecord(
-                        this.$root.imageUpdate.table,
-                        this.$root.imageUpdate.targetuuid,
-                        this.$root.$data.shadowDB[this.$root.imageUpdate.table][this.$root.imageUpdate.targetuuid]
+                        this.$root.imagemanager.table,
+                        this.$root.imagemanager.targetuuid,
+                        this.$root.imagemanager.updateObj
                     );
 
 
@@ -191,9 +187,6 @@ export default {
 
         }
     },
-    mounted() {
-        this.getImages()
-    }
 }
 </script>
 

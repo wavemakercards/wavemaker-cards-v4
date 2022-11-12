@@ -60,7 +60,7 @@ export default {
             onUpdate: () => {
                 // HTML
                 this.$emit('update:modelValue', this.editor.getHTML())
-                this.$emit("updatecard")
+                this.$emit("updateda")
                 // JSON
                 // this.$emit('update:modelValue', this.editor.getJSON())
             },

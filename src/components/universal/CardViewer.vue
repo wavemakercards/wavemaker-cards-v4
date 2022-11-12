@@ -5,8 +5,8 @@
 
 
 
-      <div v-if="this.showimage">
-        <img :src="'data:image/png;base64,' + this.showimage.base64" />
+      <div v-if="cardInfo.showimage">
+        <MiniImage :uuid="cardInfo.showimage" />
       </div>
 
 
@@ -83,12 +83,14 @@
 </template>
 
 <script>
+import MiniImage from "@/components/universal/MiniImage.vue";
 import { useObservable } from "@vueuse/rxjs";
 import { liveQuery } from "dexie";
 import { db } from "@/db.js";
 export default {
   name: "CardViewer",
   emits: ["linkcard"],
+  components: { MiniImage },
   props: {
     cardid: {
       type: String,
