@@ -5,20 +5,20 @@
             "textdirection": "ltr"
         },
         "welcome": {
-            "getstarted": "Proyecto nuevo",
-            "loadfile": "Cargar un archivo desde su dispositivo",
-            "loadgoogle": "Cargar un archivo desde Google Drive",
-            "info": "Crear un archivo nuevo o cargar uno existente"
+            "getstarted": "Nuevo Proyecto",
+            "loadfile": "Carga un archivo desde tu dispositivo",
+            "loadgoogle": "Carga un archivo desde Google Drive",
+            "info": "Crea un archivo nuevo o carga uno existente"
         },
         "start": {
-            "projectlabel": "Nombre de su proyecto",
+            "projectlabel": "Nombre del proyecto",
             "welcome": "Bienvenido a la versión 4 de Wavemaker",
             "help": "Ayuda y guías sobre cómo usar Wavemaker"
         },
         "google": {
             "info": "Iniciar sesión en Google Drive",
             "saveinfo": "Guardar proyecto actual",
-            "files": "Sus archivos",
+            "files": "Archivos",
             "save": "Guardar archivo",
             "search": "Buscar archivos",
             "logout": "Cerrar sesión",
@@ -32,13 +32,13 @@
             "clear": "Esto borrará el proyecto"
         },
         "tools": {
-            "writer": "Sus manuscritos",
-            "planningboard": "Su Tableros de planificación",
-            "mindmap": "Sus mapas mentales",
-            "snowflake": "Sus copos de nieve",
-            "timeline": "Su línea de tiempo",
-            "gridplanner": "Sus planificadores de cuadrícula",
-            "cardsdatabase": "Sus tarjetas",
+            "writer": "Manuscritos",
+            "planningboard": "Tableros de planificación",
+            "mindmap": "Mapas mentales",
+            "snowflake": "Copos de nieve",
+            "timeline": "Líneas de tiempo",
+            "gridplanner": "Planificadores de cuadrícula",
+            "cardsdatabase": "Tarjetas",
             "name": "Nombre",
             "description": "Descripción (opcional)",
             "warn": "Proporcione un nombre"
