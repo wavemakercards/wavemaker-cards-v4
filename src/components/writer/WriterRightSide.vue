@@ -18,26 +18,17 @@
     </button>
     <div class="scrollpanel scroll-lhs">
       <div class="scroll-inside">
-
-        <div v-if="!$root.session.writer.file">
-        </div>
-
-        <div v-if="$root.session.writer.file">
-          <VueDraggableNext
-            :list="$root.$data.session.writer.file.notes"
-            tag="transition-group" handle=".handle" :component-data="{
-              tag: 'div',
-              type: 'transition-group',
-              name: !drag ? 'flip-list' : null,
-            }" v-bind="dragOptions" @start="drag = true" @end="drag = false" item-key="order" @change="changelist">
-            <template
-              v-for="(element, index) in $root.$data.session.writer.file.notes"
-              :key="index">
+        <div v-if="item">
+          <VueDraggableNext :list="item.notes" tag="transition-group" handle=".handle" :component-data="{
+            tag: 'div',
+            type: 'transition-group',
+            name: !drag ? 'flip-list' : null,
+          }" v-bind="dragOptions" @start="drag = true" @end="drag = false" item-key="order" @change="updateDatabase">
+            <template v-for="(element, index) in item.notes" :key="index">
               <div class="list-group-item" tabindex="0">
                 <div style="padding-left:0px;">
-
-                  <CardViewer :cardid="element.uuid" :allowlink="true" :updateelement="element" @linkcard="ListChanged"
-                    :key="(this.$root.shadowDB.Cards[element.uuid]) ? this.$root.shadowDB.Cards[element.uuid].lastupdated : $root.uuid()" />
+                  <CardViewer :cardid="element.uuid" :allowlink="true" :updateelement="element"
+                    @linkcard="updateDatabase" />
 
                   <div class="handle">
                     <svg viewBox="0 0 24 24">
@@ -57,10 +48,13 @@
               </div>
             </template>
           </VueDraggableNext>
+
         </div>
+
       </div>
+
     </div>
-    <div class="addbar" v-if="$root.session.writer.file">
+    <div class="addbar" v-if="item">
 
       <button @click="$root.openInNew('planningboard')" class="popBtn">
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -81,6 +75,9 @@
 </template>
 
 <script>
+import { useObservable } from "@vueuse/rxjs";
+import { liveQuery } from "dexie";
+import { db } from "@/db.js";
 import { VueDraggableNext } from "vue-draggable-next";
 import CardViewer from "@/components/universal/CardViewer.vue"
 
@@ -95,38 +92,28 @@ export default {
   data() {
     return {
       drag: false,
+      item: useObservable(liveQuery(() => db.Files.get(this.$root.session.writer.file.uuid))),
     };
   },
   methods: {
-    changelist() {
-      console.log("Changed")
-      this.ListChanged()
-    },
-
     deleteNote(index) {
       if (confirm("delete this note?")) {
-        this.$root.$data.session.writer.file.notes.splice(index, 1)
+        this.item.notes.splice(index, 1)
         //  this.$root.session.writer.file.notes.splice(index,1)
         //this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.notes.splice(index,1)
-        this.ListChanged();
+        this.updateDatabase();
       }
     },
     addCard() {
       let obj = {}
       obj.uuid = this.$root.uuid()
-      this.$root.$data.session.writer.file.notes.push(obj)
+      this.item.notes.push(obj)
+
       // this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.notes.push(obj)
-      this.ListChanged();
+      this.updateDatabase();
     },
-    ListChanged() {
-      console.log("list changed");
-      this.$root.UpdateRecord(
-        "Writer",
-        this.$root.session.writer.selected,
-        this.$root.shadowDB.Writer[
-        this.$root.session.writer.selected
-        ]
-      );
+    updateDatabase() {
+      this.$root.UpdateRecord("Files", this.item.uuid, this.item)
     },
   },
   computed: {

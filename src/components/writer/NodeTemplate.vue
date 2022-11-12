@@ -53,7 +53,7 @@ export default {
             return false
         },
         selectNode() {
-            console.log("Selecting", this.parent)
+
             this.$root.session.writer.file = this.parent
         },
     }

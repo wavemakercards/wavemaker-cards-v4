@@ -5,8 +5,10 @@
     $root.rhspin ? 'rhspin' : ''
   ]">
     <div v-if="!$root.session.writer.file">
-      <div class="wavemaker_info_box" v-if="writerData">
-
+      <div class="wavemaker_info_box" v-if="this.$root.session.writer.selected">
+        <pre>
+ {{ this.$root.session.writer.selected }}
+</pre>
         <div style="text-align:center">
           <svg id="wavemaker_logo" version="1.1" viewBox="0 0 24 24" height="50" width="50">
             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -21,11 +23,11 @@
           </svg>
         </div>
         <label>{{ this.$root.setlang.tools.name }}</label>
-        <input type="text" class="formInput mantitle" v-model="writerData.title" @keyup="changed"
-          :placeholder="this.$root.setlang.tools.name" />
+        <input type="text" class="formInput mantitle" v-model="this.$root.session.writer.selected.title"
+          @keyup="updateDatabase" :placeholder="this.$root.setlang.tools.name" />
         <label>{{ this.$root.setlang.tools.description }}</label>
-        <input type="text" class="formInput mandesc" v-model="writerData.description" @keyup="changed"
-          :placeholder="this.$root.setlang.tools.description" />
+        <input type="text" class="formInput mandesc" v-model="this.$root.session.writer.selected.description"
+          @keyup="updateDatabase" :placeholder="this.$root.setlang.tools.description" />
         <div>
           {{ fullWordCount }} {{ this.$root.setlang.writer.words }} <button class="clearInterfaceIconButton"
             @click="calcFullWordCount()">
@@ -60,13 +62,12 @@
 
   </div>
 
-  <WriterRightSide />
+  <WriterRightSide v-if="this.$root.session.writer.file" :key="this.$root.session.writer.file.uuid" />
   <WriterLeftSide />
 </template>
 
 <script>
-import { useObservable } from "@vueuse/rxjs";
-import { liveQuery } from "dexie";
+
 import { db } from "@/db.js";
 import WriterLeftSide from "./WriterLeftSide.vue";
 import WriterRightSide from "./WriterRightSide.vue";
@@ -80,15 +81,14 @@ export default {
   },
   data() {
     return {
-      writerData: useObservable(liveQuery(() => db.Writer.get(this.$root.session.writer.selected))),
+
       fullWordCount: 0
     }
   },
   methods: {
     async calcFullWordCount() {
-      console.log("wordcounting")
       let count = 0
-      let files = await db.Files.where({ writerid: this.$root.session.writer.selected }).toArray()
+      let files = await db.Files.where({ writerid: this.$root.session.writer.selected.uuid }).toArray()
       files.forEach(element => {
         count = count + element.wordcount
       });
@@ -108,12 +108,11 @@ export default {
         */
       }
     },
-    changed() {
-      console.log("list changed");
+    updateDatabase() {
       this.$root.UpdateRecord(
         "Writer",
-        this.writerData.uuid,
-        this.writerData
+        this.this.$root.session.writer.selected.uuid,
+        this.this.$root.session.writer.selected
       );
     }
   },
@@ -131,6 +130,7 @@ export default {
   bottom: 0px;
   top: 0px;
   transition: all 0.3s ease;
+  overflow-y: auto;
 }
 
 .pageHolder {

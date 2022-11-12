@@ -46,7 +46,7 @@ export default {
     params.delete("sc");
     params.delete("sel");
     if (sc === "planningboard") {
-      console.log(sc, sel)
+
       this.$root.session.writer = {}
       this.$root.session.writer.selected = sel
       this.$root.session.selectedTool = sc;

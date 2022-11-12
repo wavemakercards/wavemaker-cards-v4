@@ -1,5 +1,5 @@
 <template>
-  <div class="menu" v-bind:class="$root.lhspin ? 'lhspinned' : ''" v-if="writerData">
+  <div class="menu" v-bind:class="$root.lhspin ? 'lhspinned' : ''" v-if="this.$root.session.writer.selected">
     <!--<div class="title">
       <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
         <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
@@ -28,7 +28,7 @@
 
       </button>
       <div style="height:20px;"></div>
-      <WriterNode :list="writerData.files" :parent="writerData" />
+      <WriterNode :list="this.$root.session.writer.selected.files" :parent="this.$root.session.writer.selected" />
 
     </div>
 
@@ -52,9 +52,6 @@
 </template>
 
 <script>
-import { useObservable } from "@vueuse/rxjs";
-import { liveQuery } from "dexie";
-import { db } from "@/db.js";
 import WriterNode from "./WriterNode"
 export default {
   name: "WriterLeftSide",
@@ -70,11 +67,9 @@ export default {
       defaultCard: {
         type: "file",
         name: this.$root.setlang.writer.newfile,
-        notes: [],
-        content: null,
-        children: []
+        children: [],
+        open: true
       },
-      writerData: useObservable(liveQuery(() => db.Writer.get(this.$root.session.writer.selected))),
     };
   },
   methods: {
@@ -86,83 +81,96 @@ export default {
         return str.substring(0, 75) + app
       }
     },
-    changelist() {
-      console.log("updateDatabase")
-      this.updateDatabase()
-    },
     deleteFile(index, element) {
       if (confirm(this.$root.setlang.writer.deletewarn)) {
         if (this.$root.session.writer.file === element) {
           this.$root.session.writer.file = null
         }
-        this.writerData.files.splice(index, 1)
+        this.$root.session.writer.selected.files.splice(index, 1)
 
         this.updateDatabase();
       }
     },
     searchforuuid(file, parent) {
-      let index = parent.indexOf(file)
-      if (index !== "undefined") {
+      let index = parent.findIndex(item => item.uuid === file.uuid)
+      if (index !== -1) {
         return {
           index,
           parent
         }
       } else {
-        this.searchforuuid(file, parent.children)
+
+        parent.forEach(newlist => {
+          console.log("parent", newlist)
+          if (newlist.children.length) {
+            this.searchforuuid(file, newlist.children)
+          }
+        })
       }
     },
     async addFile() {
-      let obj = {}
-      obj.uuid = this.$root.uuid();
-      obj.children = [],
-        obj.open = true,
-        obj.type = "file"
 
+      console.log("add file")
+      let obj = JSON.parse(JSON.stringify(this.defaultCard))
+      obj.uuid = this.$root.uuid();
       // create the new file first!!
       let file = {}
       file.title = this.$root.setlang.writer.newfile
-      file.writerid = this.$root.session.writer.selected
+      file.writerid = this.$root.session.writer.selected.uuid
       file.uuid = obj.uuid
       file.content = ""
-      let x = await this.$root.AddRecord("Files", file)
-      console.log(x)
+      file.notes = []
+
+      await this.$root.AddRecord("Files", file)
+
+
+
+
+      if (this.$root.session.writer.file) {
+        this.$root.session.writer.file.children.push(obj);
+        console.log(this.$root.session.writer.file.children)
+        this.updateDatabase();
+        return false
+      }
+
+
+
 
       if (this.$root.session.writer.file) {
         // so I need to find the file and it's parent array
-        console.log("looking for file")
-        let i = this.searchforuuid(this.$root.session.writer.file, this.writerData.files)
-        i.parent.splice((i.index + 1), 0, obj);
+        //let i = this.searchforuuid(this.$root.session.writer.file, this.$root.session.writer.selected.files)
+        //console.log(i)
+        // i.parent.splice((i.index + 1), 0, obj);
+        console.log("thu", this.$root.session.writer.file.children.length)
+        this.$root.session.writer.file.children.push(obj);
       } else {
-        this.writerData.files.push(obj);
+        this.$root.session.writer.selected.files.push(obj);
       }
       // we need to create a new file here
 
       this.updateDatabase();
 
     },
-    async addchild() {
-      console.log(this.$root.session.writer.file)
+    addchild() {
       let obj = JSON.parse(JSON.stringify(this.defaultCard))
       obj.uuid = this.$root.uuid();
-
+      console.log(this.$root.session.writer.file)
       // create the new file first!!
       let file = {}
       file.title = this.$root.setlang.writer.newfile,
         file.uuid = obj.uuid
-      file.writerid = this.$root.session.writer.selected
+      file.writerid = this.$root.session.writer.selected.uuid
       file.content = ""
-      await this.$root.AddRecord("Files", file)
-
+      file.notes = []
+      this.$root.AddRecord("Files", file)
       this.$root.session.writer.file.children.push(obj);
-
       this.updateDatabase();
     },
     updateDatabase() {
-      console.log("list updateDatabase");
       this.$root.UpdateRecord(
         "Writer",
-        this.writerData.uuid,
-        this.writerData
+        this.$root.session.writer.selected.uuid,
+        this.$root.session.writer.selected
       );
     }
   },

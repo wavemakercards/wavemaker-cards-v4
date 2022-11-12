@@ -86,11 +86,10 @@ export default {
   methods: {
     switchLang() {
       localStorage.setItem("wmLang", this.lang)
-      console.log("swltched to", this.lang)
       this.updateLang()
     },
     updateLang() {
-      console.log("updating", this.$root.language[this.$root.lang])
+
       this.setlang = this.$root.language[this.$root.lang]
       /*
             Object.keys(this.$root.language[this.$root.lang]).forEach((section)=>{
@@ -160,7 +159,7 @@ export default {
         newId = existingid
       }
 
-      console.log("creating Card");
+
       let obj = {};
       obj.uuid = newId
       obj.projectID = this.$root.$data.session.selectedProject;

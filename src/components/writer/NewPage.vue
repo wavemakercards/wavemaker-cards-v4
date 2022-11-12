@@ -183,14 +183,14 @@ export default {
     },
     methods: {
         changed() {
-            console.log("list changed");
-            db.Files.update(this.item.uuid, this.item)
+
+            this.$root.UpdateRecord("Files", this.item.uuid, this.item)
         },
         addImage() {
             let url = window.prompt("Provide a URL to your image");
             if (url) {
                 if (url.includes("drive.google.com")) {
-                    console.log("google drive link");
+
                     let parts = url.split("/");
                     let NewUrl =
                         parts[0] + "//" + parts[2] + "/uc?export=view&id=" + parts[5];

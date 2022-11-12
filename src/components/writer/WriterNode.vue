@@ -75,14 +75,13 @@ export default {
       }
     },
     deleteFile(index, element) {
-      console.log(this.$root.session.writer.file.uuid, element.uuid)
+
       if (confirm(this.$root.setlang.writer.deletewarn)) {
         if (this.$root.session.writer.file.uuid === element.uuid) {
           this.$root.session.writer.file = null
         }
 
-        console.log("remove ", index, this.list)
-        console.log("delete ", element.uuid)
+
         //eslint-disable-next-line
         this.list.splice(index, 1)
         this.updateDatabase()
@@ -91,7 +90,7 @@ export default {
       }
     },
     updateDatabase() {
-      console.log("list updateDatabase");
+
       this.$root.UpdateRecord(
         "Writer",
         this.parent.uuid,
