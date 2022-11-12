@@ -21,14 +21,14 @@
       <button class="settingsBtn" style="border:0; outline:none" @click="this.$root.session.writer.file = null">
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
           <path
-            d="M12 19C12 20.08 12.25 21.09 12.68 22H6C4.89 22 4 21.11 4 20V4C4 2.9 4.89 2 6 2H7V9L9.5 7.5L12 9V2H18C19.1 2 20 2.89 20 4V12.08C19.67 12.03 19.34 12 19 12C15.13 12 12 15.13 12 19M23.8 20.4C23.9 20.4 23.9 20.5 23.8 20.6L22.8 22.3C22.7 22.4 22.6 22.4 22.5 22.4L21.3 22C21 22.2 20.8 22.3 20.5 22.5L20.3 23.8C20.3 23.9 20.2 24 20.1 24H18.1C18 24 17.9 23.9 17.8 23.8L17.6 22.5C17.3 22.4 17 22.2 16.8 22L15.6 22.5C15.5 22.5 15.4 22.5 15.3 22.4L14.3 20.7C14.2 20.6 14.3 20.5 14.4 20.4L15.5 19.6V18.6L14.4 17.8C14.3 17.7 14.3 17.6 14.3 17.5L15.3 15.8C15.4 15.7 15.5 15.7 15.6 15.7L16.8 16.2C17.1 16 17.3 15.9 17.6 15.7L17.8 14.4C17.8 14.3 17.9 14.2 18.1 14.2H20.1C20.2 14.2 20.3 14.3 20.3 14.4L20.5 15.7C20.8 15.8 21.1 16 21.4 16.2L22.6 15.7C22.7 15.7 22.9 15.7 22.9 15.8L23.9 17.5C24 17.6 23.9 17.7 23.8 17.8L22.7 18.6V19.6L23.8 20.4M20.5 19C20.5 18.2 19.8 17.5 19 17.5S17.5 18.2 17.5 19 18.2 20.5 19 20.5 20.5 19.8 20.5 19Z" />
+            d="M17.5 14.33C18.29 14.33 19.13 14.41 20 14.57V16.07C19.38 15.91 18.54 15.83 17.5 15.83C15.6 15.83 14.11 16.16 13 16.82V15.13C14.17 14.6 15.67 14.33 17.5 14.33M13 12.46C14.29 11.93 15.79 11.67 17.5 11.67C18.29 11.67 19.13 11.74 20 11.9V13.4C19.38 13.24 18.54 13.16 17.5 13.16C15.6 13.16 14.11 13.5 13 14.15M17.5 10.5C15.6 10.5 14.11 10.82 13 11.5V9.84C14.23 9.28 15.73 9 17.5 9C18.29 9 19.13 9.08 20 9.23V10.78C19.26 10.59 18.41 10.5 17.5 10.5M21 18.5V7C19.96 6.67 18.79 6.5 17.5 6.5C15.45 6.5 13.62 7 12 8V19.5C13.62 18.5 15.45 18 17.5 18C18.69 18 19.86 18.16 21 18.5M17.5 4.5C19.85 4.5 21.69 5 23 6V20.56C23 20.68 22.95 20.8 22.84 20.91C22.73 21 22.61 21.08 22.5 21.08C22.39 21.08 22.31 21.06 22.25 21.03C20.97 20.34 19.38 20 17.5 20C15.45 20 13.62 20.5 12 21.5C10.66 20.5 8.83 20 6.5 20C4.84 20 3.25 20.36 1.75 21.07C1.72 21.08 1.68 21.08 1.63 21.1C1.59 21.11 1.55 21.12 1.5 21.12C1.39 21.12 1.27 21.08 1.16 21C1.05 20.89 1 20.78 1 20.65V6C2.34 5 4.18 4.5 6.5 4.5C8.83 4.5 10.66 5 12 6C13.34 5 15.17 4.5 17.5 4.5Z" />
         </svg>
         <div>{{ this.$root.setlang.writer.settings }}</div>
 
 
       </button>
-      <div style="height:20px;"></div>
-      <WriterNode :list="this.$root.session.writer.selected.files" :parent="this.$root.session.writer.selected" />
+
+      <WriterNode :list="this.$root.session.writer.selected.files" />
 
     </div>
 
@@ -41,7 +41,7 @@
       </button>
 
 
-      <button @click="addchild" style="left:50px" v-if="this.$root.session.writer.file">
+      <button @click="addChild" style="left:50px" v-if="this.$root.session.writer.file">
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
           <path d="M19,15L13,21L11.58,19.58L15.17,16H4V4H6V14H15.17L11.58,10.42L13,9L19,15Z" />
         </svg>
@@ -68,7 +68,8 @@ export default {
         type: "file",
         name: this.$root.setlang.writer.newfile,
         children: [],
-        open: true
+        open: true,
+
       },
     };
   },
@@ -79,16 +80,6 @@ export default {
         let app = "..."
         if (str.length < 100) { app = "" }
         return str.substring(0, 75) + app
-      }
-    },
-    deleteFile(index, element) {
-      if (confirm(this.$root.setlang.writer.deletewarn)) {
-        if (this.$root.session.writer.file === element) {
-          this.$root.session.writer.file = null
-        }
-        this.$root.session.writer.selected.files.splice(index, 1)
-
-        this.updateDatabase();
       }
     },
     searchforuuid(file, parent) {
@@ -138,12 +129,10 @@ export default {
       this.updateDatabase();
 
     },
-    addchild() {
-
+    addChild() {
       // creates a child node
       let obj = JSON.parse(JSON.stringify(this.defaultCard))
       obj.uuid = this.$root.uuid();
-      console.log(this.$root.session.writer.file)
       // create the new file first!!
       let file = {}
       file.title = this.$root.setlang.writer.newfile,
@@ -153,6 +142,9 @@ export default {
       file.notes = []
       this.$root.AddRecord("Files", file)
       this.$root.session.writer.file.children.push(obj);
+
+      console.log(this.$root.session.writer.file.children)
+
       this.updateDatabase();
     },
     updateDatabase() {
@@ -191,8 +183,8 @@ export default {
 .settingsBtn {
   height: 40px;
   width: 100%;
-  background-color: var(--writer-side-nav);
-  color: var(--writer-side-nav-f);
+  background-color: inherit;
+  color: inherit;
   text-align: left;
   padding-left: 40px;
   cursor: pointer;

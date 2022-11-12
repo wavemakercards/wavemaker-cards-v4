@@ -57,6 +57,11 @@
       </button>
 
       <div v-if="showLinkBox" class="LinkBox">
+        <div v-if="linkcards.length == 0">
+          No cards
+        </div>
+
+
         <button class="interfaceBtn" v-for="(opt, i) in linkcards" :key="i" :value="opt.uuid"
           @click="cardChange = opt.uuid; sendCardChange()">
           <svg viewBox="0 0 24 24">
@@ -103,45 +108,31 @@ export default {
         }
       });
       return data
+    },
+    chooser() {
+      let r = false
+      if (!this.cardInfo && this.allowlink) {
+        return true
+      }
+      return r
     }
   },
   data() {
     return {
       cardInfo: useObservable(liveQuery(async () => await db.Cards.get(this.cardid))),
-      linkcards: useObservable(liveQuery(async () => await db.Cards.toArray())),
+      linkcards: useObservable(liveQuery(async () => await db.Cards.where("title").notEqual('').toArray())),
       advancedEdit: false,
       tag: null,
-      chooser: false,
       cardChange: null,
       showimage: null,
       showLinkBox: false
     };
   },
   methods: {
-    updatecard() {
-      this.$root.UpdateRecord(
-        "Cards",
-        this.cardid,
-        this.$root.$data.shadowDB.Cards[this.cardid]
-      );
-    },
-    tagger() {
-      if (this.tag) {
-        this.$root.$data.shadowDB.Cards[this.cardid].labels.push(this.tag);
-        this.tag = null;
-        this.updatecard();
-      }
-    },
-    removetag(i) {
-      this.$root.$data.shadowDB.Cards[this.cardid].labels.splice(i, 1);
-      this.updatecard();
-    },
-    sendCardChange() {
-      console.log(this.cardChange)
-      this.$emit("linkcard", this.cardChange, this.cardid)
-    }
+
   },
   async mounted() {
+    /*
     if (!this.allowlink) {
       if (!this.cardInfo && this.cardid) {
         this.$root.makeNewCard(this.cardid)
@@ -160,6 +151,7 @@ export default {
         this.showimage = await this.$root.getImage(this.cardInfo.showimage)
       }
     }
+    */
   }
 };
 </script>

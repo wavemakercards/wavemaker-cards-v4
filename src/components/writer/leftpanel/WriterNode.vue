@@ -5,26 +5,32 @@
     name: !drag ? 'flip-list' : null,
   }" v-bind="dragOptions" @start="drag = true" @end="drag = false" item-key="order" @change="updateDatabase"
     :emptyInsertThreshold="50">
+
     <template v-for="(element, index) in list" :key="index">
-      <div class="list-group-item" tabindex="0">
+      <div class="childbox">
+        <div class="list-group-item" tabindex="0">
 
 
-        <div class="itemBox">
+          <div class="itemBox">
 
-          <NodeTemplate :pageuuid="element.uuid" :key="element.uuid" :parent="element" />
+            <NodeTemplate :nodeElement="element" :key="element.uuid" @selectNode="selectNode(element)"
+              @toggleFolder="element.open = !element.open" />
 
-          <button class="deleteIconButton" @click="deleteFile(index, element)" tabindex="0">
-            <svg style="width:18px;height:18px" viewBox="0 0 24 24">
-              <path
-                d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
-            </svg>
-          </button>
+            <button class="deleteIconButton" @click="deleteFile(index, element)" tabindex="0">
+              <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path
+                  d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
+              </svg>
+            </button>
 
-        </div>
+          </div>
 
 
-        <div class="childbox">
-          <WriterNode :list="element.children" :parent="parent" />
+          <transition name="folderslide">
+            <template v-if="element.open">
+              <WriterNode :list="element.children" @updateDatabase="updateDatabase" @selectNode="selectNode(element)" />
+            </template>
+          </transition>
         </div>
 
 
@@ -47,8 +53,7 @@ export default {
     NodeTemplate
   },
   props: {
-    list: Array,
-    parent: Object
+    list: Array
   },
   data() {
     return {
@@ -66,46 +71,25 @@ export default {
     },
   },
   methods: {
-    previewText(str) {
-      if (str) {
-        str = str.replace(/(<([^>]+)>)/gi, " ");
-        let app = "..."
-        if (str.length < 100) { app = "" }
-        return str.substring(0, 75) + app
-      }
-    },
     deleteFile(index, element) {
-
       if (confirm(this.$root.setlang.writer.deletewarn)) {
         if (this.$root.session.writer.file.uuid === element.uuid) {
           this.$root.session.writer.file = null
         }
-
-
         //eslint-disable-next-line
         this.list.splice(index, 1)
         this.updateDatabase()
         this.$root.DeleteRecord("Files", element.uuid)
-
       }
     },
     updateDatabase() {
-
-      this.$root.UpdateRecord(
-        "Writer",
-        this.parent.uuid,
-        this.parent
-      );
+      this.$emit("updateDatabase")
     },
-  },
-  isSelected(id) {
-    if (this.$root.session.writer.file) {
-      if (this.$root.session.writer.file.uuid === id) {
-        return true
-      }
+    selectNode(element) {
+      console.log("select")
+      this.$root.session.writer.file = element
     }
-    return false
-  },
+  }
 }
 
 </script>

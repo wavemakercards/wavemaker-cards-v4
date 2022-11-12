@@ -91,7 +91,7 @@ export default {
   data() {
     return {
       drag: false,
-      item: useObservable(liveQuery(() => db.Files.get(this.$root.session.writer.file.uuid))),
+      item: useObservable(liveQuery(async () => await db.Files.get(this.$root.session.writer.file.uuid))),
     };
   },
   methods: {

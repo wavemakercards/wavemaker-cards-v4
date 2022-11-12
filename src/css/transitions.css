@@ -32,7 +32,7 @@
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-  transform: translate(0,-200px);
+  transform: translate(0, -200px);
 
   opacity: 0;
 }
@@ -51,7 +51,7 @@
 
 .h-slide-fade-enter-from,
 .h-slide-fade-leave-to {
-  transform: translate(-200,0);
+  transform: translate(-200, 0);
 
   opacity: 0;
 }
@@ -63,7 +63,7 @@
 }
 
 .rollup-leave-active {
-  transition: all 0.5s  ease-out;
+  transition: all 0.5s ease-out;
 }
 
 .rollup-enter-from,
@@ -77,17 +77,57 @@
 .bounce-enter-active {
   animation: bounce-in 0.3s;
 }
+
 .bounce-leave-active {
   animation: bounce-in 0.3s reverse;
 }
+
 @keyframes bounce-in {
   0% {
     transform: scale(0);
   }
+
   50% {
     transform: scale(1.1);
   }
+
   100% {
     transform: scale(1);
   }
+}
+
+
+
+.folderslide-enter-active {
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+}
+
+.folderslide-leave-active {
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.folderslide-enter-to,
+.folderslide-leave {
+  max-height: 100px;
+  overflow: hidden;
+}
+
+.folderslide-enter,
+.folderslide-leave-to {
+  overflow: hidden;
+  max-height: 0;
 }

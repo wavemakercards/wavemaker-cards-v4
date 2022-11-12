@@ -166,11 +166,12 @@ export default {
       obj.showdesc = false;
       obj.content = "";
       obj.labels = [];
+      obj.images = [];
       obj.style = "";
       obj.options = {};
       obj.color = "--card1"
       this.$root.AddRecord("Cards", obj);
-      // this.$root.$data.session.EditCard = obj.uuid
+      this.$root.$data.session.EditCard = obj.uuid
     },
     unloadEvent(e) {
       // Cancel the event

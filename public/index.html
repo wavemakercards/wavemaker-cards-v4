@@ -22,12 +22,32 @@
   <link rel="stylesheet" id="themeSwitch" href="themes/default.css">
 </head>
 
+
 <body>
+
+
+  </div>
   <noscript>
     <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
         Please enable it to continue.</strong>
   </noscript>
   <div id="app"></div>
+
+  <div id="StatusWarn" style="
+  position:fixed;
+  bottom:0px;
+  left:0px;
+ 
+  height:20px;
+  font-family: monospace;
+  font-weight: bold;
+  color: #fff;
+  background-color: darkred;
+  text-align: center;
+  padding: 4px;
+  ">
+    Wavemaker is is ALPHA at the moment - it is not for active use - only for testing
+  </div>
   <script src="https://apis.google.com/js/api.js"></script>
   <script src="https://accounts.google.com/gsi/client"></script>
 

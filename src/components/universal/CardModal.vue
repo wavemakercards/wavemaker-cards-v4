@@ -3,8 +3,8 @@
   <Transition name="bounce">
     <div class="scrollHolder" v-if="animate">
 
-      <div class="cardEditorHolder"
-        :style="'background-color: var(' + this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].color + '); color : var(' + this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].color + '-f); fill : var(' + this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].color + '-f)'">
+      <div class="cardEditorHolder" v-if="cardInfo"
+        :style="'background-color: var(' + this.cardInfo.color + '); color : var(' + this.cardInfo.color + '-f); fill : var(' + this.cardInfo.color + '-f)'">
         <button @click="$root.$data.session.EditCard = null" class="clearInterfaceIconButton closebtn">
           <svg viewBox="0 0 24 24">
             <path
@@ -24,24 +24,16 @@
 
         <label>{{ this.$root.setlang.cards.cardtitle }}</label>
         <div class="inputHolder">
-          <input class="cardTitle" placeholder="Title"
-            v-model="this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].title" @change="updatecard" />
+          <input class="cardTitle" placeholder="Title" v-model="this.cardInfo.title" @keyup="updatecard" />
         </div>
         <label>{{ this.$root.setlang.cards.cardnotes }} <input type="checkbox" value="true"
-            v-model="this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].showdesc"
-            @change="updatecard()"></label>
+            v-model="this.cardInfo.showdesc" @change="updatecard()"></label>
         <div class="inputHolder">
-          <DescriptionEditor v-model="
-            this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard]
-              .description
-          " :cardid="
-  this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].uuid
-" />
+          <MiniEditor v-model="this.cardInfo.description" @updatecard="updatecard" />
         </div>
         <label>{{ this.$root.setlang.cards.cardtags }}</label>
-        <div class="inputHolder">
-          <span class="tag"
-            v-for="(tag, ti) in this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].labels" :key="ti">
+        <div class=" inputHolder">
+          <span class="tag" v-for="(tag, ti) in this.cardInfo.labels" :key="ti">
             {{ tag }}
             <button @click="removetag(ti)">
               <svg version="1.1" width="24" height="24" viewBox="0 0 24 24" data-v-024bf5af="">
@@ -56,12 +48,7 @@
         </div>
         <label>{{ this.$root.setlang.cards.moredetail }} </label>
         <div class="inputHolder">
-          <AdvancedEditor v-model="
-            this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard]
-              .content
-          " :cardid="
-  this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].uuid
-" />
+          <MiniEditor v-model="this.cardInfo.content" @updatecard="updatecard" />
         </div>
         <hr />
         <label>{{ this.$root.setlang.cards.images }}</label>
@@ -69,13 +56,12 @@
 
           <div v-for="(image, key) in imageList" :key="key" class="imgHolder">
             <button class="deleteBtn" @click="deleteImage(key)"
-              :style="(this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].showimage === image.uuid) ? 'display:none' : ''">
+              :style="(this.cardInfo.showimage === image.uuid) ? 'display:none' : ''">
               <svg viewBox="0 0 24 24">
                 <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
               </svg>
             </button>
-            <img
-              :class="(this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].showimage === image.uuid) ? 'selectedImg' : 'unselectedImg'"
+            <img :class="(this.cardInfo.showimage === image.uuid) ? 'selectedImg' : 'unselectedImg'"
               :src="'data:image/png;base64,' + image.base64" @click="chooseImage(image.uuid)" />
 
 
@@ -109,15 +95,15 @@
 
 <script>
 /* eslint-disable */
-import AdvancedEditor from "@/components/universal/AdvancedEditor.vue";
-import DescriptionEditor from "@/components/universal/DescriptionEditor.vue";
-
+import MiniEditor from "@/components/universal/MiniEditor.vue";
+import { useObservable } from "@vueuse/rxjs";
+import { liveQuery } from "dexie";
+import { db } from "@/db.js";
 export default {
   name: "CardViewer",
   emits: ["cardChange"],
   components: {
-    AdvancedEditor,
-    DescriptionEditor
+    MiniEditor
   },
   computed: {
     taginputwidth() {
@@ -127,28 +113,32 @@ export default {
         }
       }
       return 6
-    }
+    },
   },
   data() {
     return {
       tag: null,
       imageList: [],
-      animate: false
+      animate: false,
+      cardInfo: useObservable(liveQuery(async () => await db.Cards.get(this.$root.$data.session.EditCard)))
     };
   },
   methods: {
+
     updatecard() {
+      console.log("updating")
+      this.cardInfo.updateWindow = this.$root.windowID
       this.$root.UpdateRecord(
         "Cards",
         this.$root.$data.session.EditCard,
-        this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard]
+        this.cardInfo
       );
     },
     chooseImage(id) {
-      if (this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].showimage != id) {
-        this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].showimage = id
+      if (this.cardInfo.showimage != id) {
+        this.cardInfo.showimage = id
       } else {
-        this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].showimage = null
+        this.cardInfo.showimage = null
       }
 
       console.log("image " + id)
@@ -156,31 +146,31 @@ export default {
     },
     tagger() {
       if (this.tag) {
-        this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].labels.push(this.tag);
+        this.cardInfo.labels.push(this.tag);
         this.tag = null;
         this.updatecard();
       }
     },
     removetag(i) {
-      this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].labels.splice(i, 1);
+      this.cardInfo.labels.splice(i, 1);
       this.updatecard();
     },
     setCardColor(c) {
-      this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].color = "--card" + c
+      this.cardInfo.color = "--card" + c
       this.updatecard();
     },
 
     setupImages() {
       this.imageList = []
-      console.log(this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images)
-      this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images.forEach(async (id) => {
+      console.log(this.$cardInfo.images)
+      this.cardInfo.images.forEach(async (id) => {
         let image = await this.$root.getImage(id)
         if (image) {
           this.imageList.push(image)
         } else {
           // if the image is not in the db remove them from the array
-          this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images =
-            this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images.filter(item => item !== id)
+          this.cardInfo.images =
+            this.cardInfo.images.filter(item => item !== id)
         }
       });
 
@@ -190,21 +180,22 @@ export default {
       this.$root.imageUpdate = {
         table: "Cards",
         targetuuid: this.$root.$data.session.EditCard,
-        target: this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images
+        target: this.cardInfo.images
       }
     },
     deleteImage(i) {
       this.imageList.splice(i, 1)
-      this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images.splice(i, 1)
+      this.cardInfo.images.splice(i, 1)
       this.updatecard()
     }
 
   },
   mounted() {
-    if (!this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images) {
-      this.$root.$data.shadowDB.Cards[this.$root.$data.session.EditCard].images = []
-    }
-    this.setupImages()
+
+    // console.log(this.cardInfo)
+    // this.setupImages()
+
+
     this.animate = true // triggers the animation
   }
 };
