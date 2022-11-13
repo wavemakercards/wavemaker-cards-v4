@@ -1,8 +1,8 @@
 <template>
-  <div v-if="Object.keys($root.shadowDB.Settings).length">
+  <div v-if="this.$root.session.settings">
     <Start />
   </div>
-  <div v-if="!Object.keys($root.shadowDB.Settings).length">
+  <div v-if="!this.$root.session.settings">
     <WelcomeScreen />
   </div>
 
@@ -21,9 +21,7 @@
 <script>
 import '@/css/wavemakerInterface.css'
 import '@/css/transitions.css'
-import apitool from '@/mixins/apitool.js'
 import fileManage from '@/mixins/fileManage.js'
-import shadowDatabase from '@/mixins/shadowDatabase.js'
 import dexieDB from '@/mixins/dexieDB.js'
 import GoogleDriveApi from '@/mixins/GoogleDriveApi.js'
 import PopupManager from '@/components/popups/PopupManager.vue'
@@ -35,7 +33,7 @@ import CardModal from "./components/universal/CardModal.vue"
 import ImageManager from "./components/universal/ImageManager.vue"
 export default {
   name: 'App',
-  mixins: [apitool, fileManage, shadowDatabase, dexieDB, GoogleDriveApi],
+  mixins: [fileManage, dexieDB, GoogleDriveApi],
   components: {
     PopupManager,
     WelcomeScreen,
@@ -75,34 +73,16 @@ export default {
       uuid,
       session: {},
       navshow: true,
-      imagemanager: false,
-      imageUpdate: {
-        table: null,
-        targetuuid: null,
-        target: null
-      }
-    }
-  },
-  computed: {
-    calcFullWordCount() {
-      let w = 0
-      this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.forEach(page => {
-        if (page.wordcount) {
-          w = w + parseInt(page.wordcount)
-        }
-      });
-
-      return w
+      imagemanager: false
     }
   },
   methods: {
     switchLang() {
       localStorage.setItem("wmLang", this.lang)
-      console.log("swltched to", this.lang)
       this.updateLang()
     },
     updateLang() {
-      console.log("updating", this.$root.language[this.$root.lang])
+
       this.setlang = this.$root.language[this.$root.lang]
       /*
             Object.keys(this.$root.language[this.$root.lang]).forEach((section)=>{
@@ -119,7 +99,7 @@ export default {
       var w = window.innerWidth - ((window.innerWidth / 100) * 5);
       var h = window.innerHeight - ((window.innerHeight / 100) * 5);
       if (d === "planningboard") {
-        window.open("/?sc=" + d + "&sel=" + this.$root.session.writer.selected, "PlanningBoard", "width=" + w + "px,height=" + h + "px");
+        window.open("/?sc=" + d + "&sel=" + this.$root.session.writer.selected.uuid, "PlanningBoard", "width=" + w + "px,height=" + h + "px");
         return false
       }
       // otherwise it's a URL - may need to check for the old https here
@@ -150,7 +130,6 @@ export default {
       /* */
       if (e.shiftKey && e.key === "Enter") {
         console.log("Session :", JSON.parse(JSON.stringify(this.session)));
-        console.log("shadowDB : ", JSON.parse(JSON.stringify(this.shadowDB)));
       }
       /*
       if (e.ctrlKey && e.key === "Enter") {
@@ -171,8 +150,6 @@ export default {
       if (existingid) {
         newId = existingid
       }
-
-      console.log("creating Card");
       let obj = {};
       obj.uuid = newId
       obj.projectID = this.$root.$data.session.selectedProject;
@@ -181,10 +158,10 @@ export default {
       obj.showdesc = false;
       obj.content = "";
       obj.labels = [];
+      obj.images = [];
       obj.style = "";
       obj.options = {};
       obj.color = "--card1"
-      this.$root.$data.shadowDB.Cards[obj.uuid] = obj;
       this.$root.AddRecord("Cards", obj);
       this.$root.$data.session.EditCard = obj.uuid
     },
@@ -195,8 +172,12 @@ export default {
       e.returnValue = "";
     }
   },
-  mounted() {
-
+  async mounted() {
+    // see if we are alreay running a project
+    let settingsCheck = await this.$root.db.Settings.toArray()
+    if (settingsCheck) {
+      this.$root.session.settings = settingsCheck[0]
+    }
     if (localStorage.getItem("wmTheme")) {
       this.theme = localStorage.getItem("wmTheme")
       this.switchTheme()

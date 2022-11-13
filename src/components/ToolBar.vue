@@ -153,7 +153,7 @@ export default {
       }
       this.$root.session.selectedTool = me;
       this.navbar = false
-      console.log("tool set to ", me)
+
 
     }
   }

@@ -1,13 +1,12 @@
 <template>
-  <div id="workspace" v-if="$root.shadowDB.Mindmap[$root.session.mindmap.selected].content">
-  <svg id="svg">
-     <template v-for="(link, index) in $root.shadowDB.Mindmap[$root.session.mindmap.selected].content.links" :key="index">
-      <LinkNodes :mylink="link" :myindex="index" /> 
+  <div id="workspace" v-if="$root.session.mindmap.selected.content">
+    <svg id="svg">
+      <template v-for="(link, index) in $root.session.mindmap.selected.content.links" :key="index">
+        <LinkNodes :mylink="link" :myindex="index" />
       </template>
     </svg>
 
-
-    <template v-for="myid in Object.keys($root.shadowDB.Mindmap[$root.session.mindmap.selected].content.nodes)" :key="myid">
+    <template v-for="myid in Object.keys($root.session.mindmap.selected.content.nodes)" :key="myid">
       <NodeBox :uuid="myid" />
     </template>
 
@@ -23,17 +22,17 @@ export default {
     NodeBox,
     LinkNodes
   },
-  mounted(){
-   if(!this.$root.shadowDB.Mindmap[this.$root.session.mindmap.selected].content){
-        let obj = {
-          nodes : {},
-          links : []
-        }
-        this.$root.shadowDB.Mindmap[this.$root.session.mindmap.selected].content=obj    
-   }
-   console.log(this.$root.shadowDB.Mindmap[this.$root.session.mindmap.selected])
+  mounted() {
+    if (!this.$root.session.mindmap.selected.content) {
+      let obj = {
+        nodes: {},
+        links: []
+      }
+      this.$root.session.mindmap.selected.content = obj
+    }
+    console.log(this.$root.session.mindmap.selected)
   }
-  
+
 };
 </script>
 
@@ -41,7 +40,7 @@ export default {
 <style scoped >
 #workspace {
   position: fixed;
-  top:80px;
+  top: 80px;
   bottom: 0px;
   left: 0px;
   right: 0px;

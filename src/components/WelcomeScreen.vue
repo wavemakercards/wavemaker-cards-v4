@@ -72,19 +72,18 @@ export default {
     }
   },
   methods: {
-
-    async MakeSettings() {
-
-      await this.$root.createDatabase()
-
-      // creates the settings object to allow start
+    MakeSettings() {
       let obj = {};
       obj.uuid = this.$root.uuid();
       obj.settings = {};
       obj.settings.ProjectName = this.projname;
       this.$root.AddRecord("Settings", obj);
-      this.$root.shadowDB.Settings[obj.uuid] = obj;
+
+      this.$root.session.settings = obj
     }
+
+
+
   }
 }
 

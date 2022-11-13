@@ -93,9 +93,8 @@
   --planningboard-title: var(--writer-side-panels);
   --planningboard-title-f: var(--writer-side-panels-f);
 
-  --planningboard-handle: var(--planningboard-title);
-  --planningboard-handle-f: var(--planningboard-title-f);
   --planningboard-col: var(--c8);
+  --planningboard-col-f: var(--c8-f);
 
   --db-search-bar: var(--writer-title-bar);
   --db-search-bar-f: var(--writer-title-bar-f);

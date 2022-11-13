@@ -6,9 +6,7 @@
 
 
     <label>{{ this.$root.setlang.start.projectlabel }}</label>
-    <input class="projectName"
-      v-model="this.$root.$data.shadowDB.Settings[Object.keys(this.$root.$data.shadowDB.Settings)[0]].settings.ProjectName"
-      @change="update" />
+    <input class="projectName" v-model="this.$root.session.settings.ProjectName" @change="update" />
 
 
 
@@ -93,18 +91,17 @@ export default {
   name: "ProjectInfo",
   methods: {
     update() {
-      let uuid = Object.keys(this.$root.$data.shadowDB.Settings)[0]
-      this.$root.UpdateRecord("Settings", uuid, this.$root.$data.shadowDB.Settings[uuid]);
+      let uuid = this.$root.session.settings.uuid
+      this.$root.UpdateRecord("Settings", uuid, this.$root.session.settings[uuid]);
     },
     setTool(me) {
-
       if (me) {
         this.$root.session.writer = {}
         this.$root.session[me] = {}
       }
       this.$root.session.selectedTool = me;
       this.navbar = false
-      console.log("tool set to ", me)
+
 
     },
     gettingStartedPopup() {

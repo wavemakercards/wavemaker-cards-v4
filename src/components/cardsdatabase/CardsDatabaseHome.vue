@@ -23,13 +23,10 @@
     <div style="padding:15px;padding-right:135px;">
 
 
-
       <masonry-wall :items="CardsArray" :ssr-columns="1" :column-width="300" :gap="16">
         <template #default="{ item }">
           <div class="cardFrame">
-
-
-            <CardViewer :cardid="item.uuid" :updateelement="{}" :key="item.lastupdated" />
+            <CardViewer :cardid="item.uuid" :key="item.lastupdated" />
             <button class="deleteIconButton" @click="deleteCard(item.uuid)">
               <svg style="width: 18px; height: 18px" viewBox="0 0 24 24">
                 <path
@@ -39,30 +36,8 @@
           </div>
         </template>
       </masonry-wall>
-
-
-
-      <!--
-     
-    <masonry-wall :items="CardsArray" :ssr-columns="1" :column-width="300" :gap="16">
-        <template #default="{ card }">
-          <CardViewer :cardid="card.uuid" :updateelement="{}" />
-        </template>
-      </masonry-wall>
-
-
-   <div style="display: flex; flex-wrap: wrap;">
-        <div v-for="(card, i) in CardsArray" :key="i" class="list-item">
-          <div class="list-content">
-            <CardViewer :cardid="card.uuid" :updateelement="{}" />
-          </div>
-        </div>
-      </div>
--->
-
     </div>
     <div class="taglist">
-
       <div>
         <button @click="currentTag = tag" style="background-color:var(--primary);color:var(--primary-f)">
           [ {{ this.$root.setlang.db.clear }} ]
@@ -78,12 +53,16 @@
 <script>
 import MasonryWall from '@yeger/vue-masonry-wall'
 import CardViewer from "@/components/universal/CardViewer";
+import { useObservable } from "@vueuse/rxjs";
+import { liveQuery } from "dexie";
+import { db } from "@/db.js";
 export default {
   name: 'CardsDatabaseHome',
   data() {
     return {
       SearchTerm: null,
-      currentTag: null
+      currentTag: null,
+      cardList: useObservable(liveQuery(async () => await db.Cards.toArray())),
     }
   },
   components: {
@@ -93,43 +72,45 @@ export default {
   computed: {
     CardsArray() {
       let list = [];
-      Object.keys(this.$root.$data.shadowDB.Cards).forEach((element) => {
-        let qmatch = false
-        if (!this.SearchTerm) {
-          qmatch = true
-        } else {
-          if (
-            this.$root.$data.shadowDB.Cards[element].title.toLowerCase().includes(this.SearchTerm.toLowerCase()) ||
-            this.$root.$data.shadowDB.Cards[element].description.toLowerCase().includes(this.SearchTerm.toLowerCase())
-          ) {
+      if (this.cardList) {
+        this.cardList.forEach((element) => {
+          let qmatch = false
+          if (!this.SearchTerm) {
             qmatch = true
+          } else {
+            if (
+              element.title.toLowerCase().includes(this.SearchTerm.toLowerCase()) ||
+              element.description.toLowerCase().includes(this.SearchTerm.toLowerCase())
+            ) {
+              qmatch = true
+            }
           }
-        }
-        let tmatch = false
-        if (!this.currentTag) {
-          tmatch = true
-        } else {
-          if (this.$root.$data.shadowDB.Cards[element].labels.includes(this.currentTag)) {
+          let tmatch = false
+          if (!this.currentTag) {
             tmatch = true
+          } else {
+            if (element.labels.includes(this.currentTag)) {
+              tmatch = true
+            }
           }
-        }
 
-        if (qmatch && tmatch) {
-          list.push(this.$root.$data.shadowDB.Cards[element]);
-        }
-
-      });
+          if (qmatch && tmatch) {
+            list.push(element);
+          }
+        });
+      }
       return list;
     },
     taglist() {
       let taglist = []
-      Object.keys(this.CardsArray).forEach((card) => {
-        this.CardsArray[card].labels.forEach((tg) => {
+      this.CardsArray.forEach((card) => {
+        card.labels.forEach((tg) => {
           if (!taglist.includes(tg)) {
             taglist.push(tg)
           }
         })
       })
+
       // TODO : add a tag filter to the list here as well so it returns any with the selected tag within the search
       return taglist
     }

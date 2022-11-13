@@ -6,6 +6,7 @@ export const DBstores = {
   Settings: `uuid, settings, lastupdated`,
   Writer: `uuid, title, description, files, lastupdated`,
   Cards: `uuid, title,description,content,style,labels,options,lastupdated`,
+  Files: `uuid, writerid, title, content, lastupdated`,
   Snowflake: `uuid, title, description,content,lastupdated`,
   Timeline: `uuid, title, description,content,lastupdated`,
   Gridplanner: `uuid, title, description,content,lastupdated`,
