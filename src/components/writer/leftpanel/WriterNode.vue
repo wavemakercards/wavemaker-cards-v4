@@ -72,10 +72,17 @@ export default {
     },
   },
   methods: {
+
     deleteFile(index, element) {
       if (confirm(this.$root.setlang.writer.deletewarn)) {
-        if (this.$root.session.writer.file.uuid === element.uuid) {
-          this.$root.session.writer.file = null
+        if (this.$root.session.writer.file) {
+          if (this.$root.session.writer.file.uuid === element.uuid) {
+            this.$root.session.writer.file = null
+          }
+        }
+        if (element.children.length) {
+          console.log(element.children)
+          this.recursiveDelete(element.children)
         }
         //eslint-disable-next-line
         this.list.splice(index, 1)
@@ -83,11 +90,24 @@ export default {
         this.$root.DeleteRecord("Files", element.uuid)
       }
     },
+    recursiveDelete(list) {
+      list.forEach(element => {
+        if (this.$root.session.writer.file) {
+          if (this.$root.session.writer.file.uuid === element.uuid) {
+            this.$root.session.writer.file = null
+          }
+        }
+        if (element.children.length) {
+          this.recursiveDelete(element.children)
+        }
+        this.$root.DeleteRecord("Files", element.uuid)
+      })
+    },
     updateDatabase() {
       this.$emit("updateDatabase")
     },
     selectNode(element) {
-      console.log("select")
+      console.log("select", element)
       this.$root.session.writer.file = element
     }
   }

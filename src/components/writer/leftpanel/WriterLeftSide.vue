@@ -41,8 +41,7 @@
       </button>
 
 
-      <button @click="addChild" style="left:50px"
-        v-if="this.$root.session.writer.file && !this.$root.session.writer.file.children.length">
+      <button @click="addChild" style="left:50px" v-if="this.$root.session.writer.file">
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
           <path d="M19,15L13,21L11.58,19.58L15.17,16H4V4H6V14H15.17L11.58,10.42L13,9L19,15Z" />
         </svg>
@@ -102,7 +101,9 @@ export default {
       }
       return false
     },
+
     async addFile() {
+
       let obj = JSON.parse(JSON.stringify(this.defaultCard))
       obj.uuid = this.$root.uuid();
       // create the new file first!!
@@ -116,36 +117,32 @@ export default {
 
       await this.$root.AddRecord("Files", file)
 
-      console.log(this.$root.session.writer.file)
-      if (this.$root.session.writer.file) {
-        // so I need to find the file and it's parent array
-        let found = this.searchforuuid(this.$root.session.writer.file, this.$root.session.writer.selected.files)
-        if (found) {
+      if (!this.$root.session.writer.file) {
+        this.$root.session.writer.selected.files.push(obj);
+      } else {
+        if (this.$root.session.writer.file.children.length) {
+          this.$root.session.writer.file.children.push(obj);
+        } else {
+          let found = this.searchforuuid(this.$root.session.writer.file, this.$root.session.writer.selected.files)
           found.parent.splice((found.index + 1), 0, obj);
         }
-      } else {
-        this.$root.session.writer.selected.files.push(obj);
       }
-
-      this.updateDatabase();
-
     },
+
     addChild() {
-      // creates a child node
+      // creates a child node making the folder
       let obj = JSON.parse(JSON.stringify(this.defaultCard))
       obj.uuid = this.$root.uuid();
       // create the new file first!!
       let file = {}
-      file.title = this.$root.setlang.writer.newfile,
-        file.uuid = obj.uuid
+      file.title = this.$root.setlang.writer.newfile
+      file.uuid = obj.uuid
       file.writerid = this.$root.session.writer.selected.uuid
       file.content = ""
       file.notes = []
       this.$root.AddRecord("Files", file)
       this.$root.session.writer.file.children.push(obj);
-
       console.log(this.$root.session.writer.file.children)
-
       this.updateDatabase();
     },
     updateDatabase() {
