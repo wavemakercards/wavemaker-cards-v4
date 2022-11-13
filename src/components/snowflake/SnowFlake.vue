@@ -34,7 +34,7 @@
       <hr />
 
       <table style="width: 100%" v-if="!showaddform">
-        <tr v-for="(item, index) in $root.$data.shadowDB.Snowflake" :key="index">
+        <tr v-for="(item, index) in Snowflakes" :key="index">
           <td>
             <div class="title">{{ item.title }}</div>
 
@@ -42,7 +42,7 @@
             <i> <br /> {{ $root.niceDate(item.lastupdated) }} </i>
           </td>
           <td style="width: 100px">
-            <button @click="$root.$data.session.snowflake.selected = item.uuid" class="interfaceBtn">
+            <button @click="chooseItem(item)" class="interfaceBtn">
               <svg viewBox="0 0 24 24">
                 <path
                   d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
@@ -69,9 +69,13 @@ export default {
       title: null,
       description: null,
       showaddform: false,
+      Snowflakes: this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Snowflake.toArray())),
     };
   },
   methods: {
+    chooseItem(item) {
+      this.$root.session.snowflake.selected = this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Snowflake.get(item.uuid)))
+    },
     addItem() {
       if (!this.title) {
         alert(this.$root.setlang.tools.warn);
@@ -82,7 +86,6 @@ export default {
       obj.description = this.description;
       obj.content = [];
       obj.uuid = this.$root.uuid(); // genertate your own UUID so thta you can update the shadow db
-      this.$root.$data.shadowDB.Snowflake[obj.uuid] = obj;
       this.$root.AddRecord("Snowflake", obj);
       this.title = "";
       this.description = "";

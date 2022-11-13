@@ -1,9 +1,7 @@
 <template>
   <div class="scroller">
 
-    <template v-for="(flake, index) in $root.shadowDB.Snowflake[
-      this.$root.session.snowflake.selected
-    ].content" :key="index">
+    <template v-for="(flake, index) in this.$root.session.snowflake.selected.content" :key="index">
       <div class="row">
         <div class="column" :style="!flake.open ? 'display:block' : ''">
           <div class="card">
@@ -25,31 +23,28 @@
               </svg>
             </button>
             <input class="title" v-model="flake.title" :placeholder="this.$root.setlang.snowflake.title"
-              @change="ListChanged" />
-            <SnowflakeEditor :snowFlake="flake" :modelValue="flake.text" @change="ListChanged" />
+              @change="updateDatabase" />
+            <MiniEditor :snowFlake="flake" v-model="flake.text" @updated="updateDatabase" />
           </div>
         </div>
         <Transition name="h-slide-fade">
           <div class="column" v-if="flake.open">
             <div class="card">
               <input class="title" v-model="flake.children[0].title" :placeholder="this.$root.setlang.snowflake.title"
-                @change="ListChanged" />
-              <SnowflakeEditor :snowFlake="flake.children[0]" :modelValue="flake.children[0].text"
-                @change="ListChanged" />
+                @change="updateDatabase" />
+              <MiniEditor :snowFlake="flake.children[0]" v-model="flake.children[0].text" @updated="updateDatabase" />
             </div>
 
             <div class="card">
               <input class="title" v-model="flake.children[1].title" :placeholder="this.$root.setlang.snowflake.title"
-                @change="ListChanged" />
-              <SnowflakeEditor :snowFlake="flake.children[1]" :modelValue="flake.children[1].text"
-                @change="ListChanged" />
+                @change="updateDatabase" />
+              <MiniEditor :snowFlake="flake.children[1]" v-model="flake.children[1].text" @updated="updateDatabase" />
             </div>
 
             <div class="card">
               <input class="title" v-model="flake.children[2].title" :placeholder="this.$root.setlang.snowflake.title"
-                @change="ListChanged" />
-              <SnowflakeEditor :snowFlake="flake.children[2]" :modelValue="flake.children[2].text"
-                @change="ListChanged" />
+                @change="updateDatabase" />
+              <MiniEditor :snowFlake="flake.children[2]" v-model="flake.children[2].text" @updated="updateDatabase" />
             </div>
 
             <button class="replaceButton" @click="replace(flake, index)">
@@ -67,11 +62,11 @@
 </template>
 
 <script>
-import SnowflakeEditor from "./SnowflakeEditor.vue"
+import MiniEditor from "@/components/universal/MiniEditor.vue"
 export default {
   name: "SnowFlakeTool",
   components: {
-    SnowflakeEditor
+    MiniEditor
   },
   data() {
     return {};
@@ -94,13 +89,13 @@ export default {
 
       }
       flake.open = !flake.open
-      this.ListChanged()
+      this.updateDatabase()
     },
     deleteFlake(index) {
       if (confirm(this.$root.setlang.snowflake.deletewarn)) {
-        this.$root.shadowDB.Snowflake[this.$root.session.snowflake.selected].content.splice(index, 1)
+        this.$root.session.snowflake.selected.content.splice(index, 1)
         this.startFlake()
-        this.ListChanged()
+        this.updateDatabase()
       }
     },
     replace(flake, index) {
@@ -111,31 +106,28 @@ export default {
 
 
         // insert in reverse
-        this.$root.shadowDB.Snowflake[this.$root.session.snowflake.selected].content.splice(index + 1, 0, f2)
-        this.$root.shadowDB.Snowflake[this.$root.session.snowflake.selected].content.splice(index + 1, 0, f1)
-        this.$root.shadowDB.Snowflake[this.$root.session.snowflake.selected].content.splice(index + 1, 0, f0)
+        this.$root.session.snowflake.selected.content.splice(index + 1, 0, f2)
+        this.$root.session.snowflake.selected.content.splice(index + 1, 0, f1)
+        this.$root.session.snowflake.selected.content.splice(index + 1, 0, f0)
 
         // delete the old one 
-        this.$root.shadowDB.Snowflake[this.$root.session.snowflake.selected].content.splice(index, 1)
+        this.$root.session.snowflake.selected.content.splice(index, 1)
 
-        this.ListChanged()
+        this.updateDatabase()
 
       }
     },
-    ListChanged() {
+    updateDatabase() {
       console.log("list changed");
       this.$root.UpdateRecord(
         "Snowflake",
-        this.$root.$data.session.snowflake.selected,
-        this.$root.$data.shadowDB.Snowflake[
-        this.$root.$data.session.snowflake.selected
-        ]
+        this.$root.session.snowflake.selected.uuid,
+        this.$root.session.snowflake.selected
       );
     },
     startFlake() {
       if (
-        !this.$root.shadowDB.Snowflake[this.$root.session.snowflake.selected]
-          .content.length
+        !this.$root.session.snowflake.selected.content.length
       ) {
         let obj = {};
         obj.title = "";
@@ -143,9 +135,7 @@ export default {
         obj.content = "";
         obj.open = false;
         obj.children = [];
-        this.$root.shadowDB.Snowflake[
-          this.$root.session.snowflake.selected
-        ].content.push(obj);
+        this.$root.session.snowflake.selected.content.push(obj);
       }
     }
 
