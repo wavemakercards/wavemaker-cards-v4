@@ -6,9 +6,6 @@
   ]">
     <div v-if="!$root.session.writer.file">
       <div class="wavemaker_info_box" v-if="this.$root.session.writer.selected">
-        <pre>
- {{ this.$root.session.writer.selected }}
-</pre>
         <div style="text-align:center">
           <svg id="wavemaker_logo" version="1.1" viewBox="0 0 24 24" height="50" width="50">
             <path d="M0 0h24v24H0V0z" fill="none" />

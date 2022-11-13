@@ -21,7 +21,6 @@
 <script>
 import '@/css/wavemakerInterface.css'
 import '@/css/transitions.css'
-import apitool from '@/mixins/apitool.js'
 import fileManage from '@/mixins/fileManage.js'
 import shadowDatabase from '@/mixins/shadowDatabase.js'
 import dexieDB from '@/mixins/dexieDB.js'
@@ -35,7 +34,7 @@ import CardModal from "./components/universal/CardModal.vue"
 import ImageManager from "./components/universal/ImageManager.vue"
 export default {
   name: 'App',
-  mixins: [apitool, fileManage, shadowDatabase, dexieDB, GoogleDriveApi],
+  mixins: [fileManage, shadowDatabase, dexieDB, GoogleDriveApi],
   components: {
     PopupManager,
     WelcomeScreen,

@@ -27,7 +27,7 @@
             <template v-for="(element, index) in item.notes" :key="index">
               <div class="list-group-item" tabindex="0">
                 <div style="padding-left:0px;">
-                  <CardViewer :cardid="element.uuid" :allowlink="true" @linkcard="linkCard" />
+                  <CardViewer :cardid="element.uuid" :allowlink="true" @linkcard="linkCard" :key="element.uuid" />
 
                   <div class="handle">
                     <svg viewBox="0 0 24 24">
@@ -96,16 +96,9 @@ export default {
   },
   methods: {
     linkCard(newuuid, uuid) {
-      console.log(newuuid, uuid)
-      var index = this.item.notes.find(x => x.uuid === uuid);
-      console.log(this.item.notes, index)
-      if (index !== -1) {
-        this.item.notes[index].uuid = newuuid;
-      }
-
-
-      // element.uuid = uuid;
-      // this.updateDatabase()
+      var element = this.item.notes.find(x => x.uuid === uuid);
+      element.uuid = newuuid
+      this.updateDatabase()
     },
     deleteNote(index) {
       if (confirm("delete this note?")) {
