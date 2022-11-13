@@ -6,7 +6,7 @@
         </div>
         <div class=" titleBar">
             <input type="text" :placeholder="this.$root.setlang.writer.newfile" v-model="item.title"
-                v-on:keyup="changed" />
+                @change="changed" />
         </div>
         <div v-if="editor" class="toolbar" :style="[
             $root.$data.session.writer.lhs ? 'left:40px;' : '',

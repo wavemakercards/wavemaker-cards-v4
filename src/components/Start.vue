@@ -1,7 +1,7 @@
 <template>
   <div class="toolbox">
     <ProjectInfo v-if="!$root.session.selectedTool" />
-    <Writer v-if="$root.session.selectedTool === 'writer'" />
+    <WriterMenu v-if="$root.session.selectedTool === 'writer'" />
     <CardsDatabaseHome v-if="$root.session.selectedTool === 'cardsdatabase'" />
     <PlanningBoardHome v-if="$root.session.selectedTool === 'planningboard'" />
     <SnowFlake v-if="$root.session.selectedTool === 'snowflake'" />
@@ -15,9 +15,9 @@
 <script>
 import ToolBar from "@/components/ToolBar.vue";
 import ProjectInfo from "@/components/project/ProjectInfo.vue";
-import Writer from "@/components/writer/Writer.vue";
+import WriterMenu from "@/components/writer/WriterMenu.vue";
 import CardsDatabaseHome from "@/components/cardsdatabase/CardsDatabaseHome.vue";
-import PlanningBoardHome from "@/components/planningboard/PlanningBoardHome.vue";
+import PlanningBoardHome from "@/components/planningboard/PlanningBoardMenu.vue";
 import SnowFlake from "@/components/snowflake/SnowFlake.vue";
 import TimeLine from "@/components/timeline/TimeLine.vue";
 import MindMapHome from "@/components/mindmap/MindMapHome.vue";
@@ -28,7 +28,7 @@ export default {
   components: {
     ToolBar,
     ProjectInfo,
-    Writer,
+    WriterMenu,
     PlanningBoardHome,
     SnowFlake,
     TimeLine,
@@ -37,7 +37,7 @@ export default {
     GridPlannerHome,
   },
   methods: {},
-  mounted() {
+  async mounted() {
 
     let params = new URLSearchParams(document.location.search);
     let sc = params.get("sc");
@@ -46,9 +46,8 @@ export default {
     params.delete("sc");
     params.delete("sel");
     if (sc === "planningboard") {
-
       this.$root.session.writer = {}
-      this.$root.session.writer.selected = sel
+      this.$root.session.writer.selected = this.$root.useObservable(this.$root.liveQuery(() => this.$root.db.Writer.get(sel)))
       this.$root.session.selectedTool = sc;
     }
 

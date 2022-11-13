@@ -52,6 +52,7 @@ export default {
     VueDraggableNext,
     NodeTemplate
   },
+  emits: ["updateDatabase"],
   props: {
     list: Array
   },

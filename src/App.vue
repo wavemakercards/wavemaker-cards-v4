@@ -1,8 +1,8 @@
 <template>
-  <div v-if="Object.keys($root.shadowDB.Settings).length">
+  <div v-if="this.$root.session.settings">
     <Start />
   </div>
-  <div v-if="!Object.keys($root.shadowDB.Settings).length">
+  <div v-if="!this.$root.session.settings">
     <WelcomeScreen />
   </div>
 
@@ -22,7 +22,6 @@
 import '@/css/wavemakerInterface.css'
 import '@/css/transitions.css'
 import fileManage from '@/mixins/fileManage.js'
-import shadowDatabase from '@/mixins/shadowDatabase.js'
 import dexieDB from '@/mixins/dexieDB.js'
 import GoogleDriveApi from '@/mixins/GoogleDriveApi.js'
 import PopupManager from '@/components/popups/PopupManager.vue'
@@ -34,7 +33,7 @@ import CardModal from "./components/universal/CardModal.vue"
 import ImageManager from "./components/universal/ImageManager.vue"
 export default {
   name: 'App',
-  mixins: [fileManage, shadowDatabase, dexieDB, GoogleDriveApi],
+  mixins: [fileManage, dexieDB, GoogleDriveApi],
   components: {
     PopupManager,
     WelcomeScreen,
@@ -100,7 +99,7 @@ export default {
       var w = window.innerWidth - ((window.innerWidth / 100) * 5);
       var h = window.innerHeight - ((window.innerHeight / 100) * 5);
       if (d === "planningboard") {
-        window.open("/?sc=" + d + "&sel=" + this.$root.session.writer.selected, "PlanningBoard", "width=" + w + "px,height=" + h + "px");
+        window.open("/?sc=" + d + "&sel=" + this.$root.session.writer.selected.uuid, "PlanningBoard", "width=" + w + "px,height=" + h + "px");
         return false
       }
       // otherwise it's a URL - may need to check for the old https here
@@ -131,7 +130,6 @@ export default {
       /* */
       if (e.shiftKey && e.key === "Enter") {
         console.log("Session :", JSON.parse(JSON.stringify(this.session)));
-        console.log("shadowDB : ", JSON.parse(JSON.stringify(this.shadowDB)));
       }
       /*
       if (e.ctrlKey && e.key === "Enter") {
@@ -174,8 +172,12 @@ export default {
       e.returnValue = "";
     }
   },
-  mounted() {
-
+  async mounted() {
+    // see if we are alreay running a project
+    let settingsCheck = await this.$root.db.Settings.toArray()
+    if (settingsCheck) {
+      this.$root.session.settings = settingsCheck[0]
+    }
     if (localStorage.getItem("wmTheme")) {
       this.theme = localStorage.getItem("wmTheme")
       this.switchTheme()
