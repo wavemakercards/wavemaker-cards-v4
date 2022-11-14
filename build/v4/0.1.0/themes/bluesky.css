@@ -1,0 +1,138 @@
+  
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Sen:wght@400;700;800&display=swap');
+:root {
+  
+    --c10: #efefef;
+    --c9: #fafafa;
+    --c8: #eeeeee;
+    --c7: #e0e0e0;
+    --c6: #bdbdbd;
+    --c5: #9e9e9e;
+    --c4: #757575;
+    --c3: #616161;
+    --c2: #424242;
+    --c1: #424242;
+    --c0: #424242;
+  
+  
+    --c10-f: #424242;
+    --c9-f: #424242;
+    --c8-f: #424242;
+    --c7-f: #424242;
+    --c6-f: #424242;
+    --c5-f: #424242;
+    --c4-f: #fff;
+    --c3-f: #fff;
+    --c2-f: #fff;
+    --c1-f: #fff;
+    --c0-f: #fff;
+
+  
+  --accent: #E1F5FE;
+  --accent-f: #757575;
+  --warn: #FF8C00;
+  --warn-f: #fff;
+  --danger: #B22222;
+  --danger-f: #fff;
+  --success: #006400;
+  --success-f: #fff;
+  --primary: #191970;
+  --primary-f: #fff;
+  
+  --window : #fff;
+  --window-f :  #424242;
+
+  --sysfont: 'Sen', sans-serif;
+  --pagefont: 'Libre Baskerville', serif;;
+
+  --paper :  #F5F5F5;
+  --paper-f :  #9E9E9E;
+ 
+  --card : #F5F5F5;
+  --card-f :#9E9E9E;
+
+  --box-shadow : rgba(255,255,255,0.5);
+  
+  --logo-top :#fff;
+  --logo-bottom : #999;
+
+  --webkit-scrollbar-button : var(--c10);
+  --webkit-scrollbar-thumb : var(--c7);
+  --webkit-scrollbar-track  : var(--c10);
+
+  --button : #80D8FF;
+  --button-f: #01579B;
+  --button-hover : #0288D1;
+  --button-hover-f :#fff;
+
+  --hover-ghost : var(--c0);
+
+  --display-window : #01579B;
+  --display-window-f :#E1F5FE;
+
+  --popup-block: #000;
+  --popup-block-f : #000;
+
+  --top-toolbar :#003863;
+  --top-toolbar-f :#fff;
+
+  --writer-side-panels :#E1F5FE;
+  --writer-side-panels-f : #646464;
+  --writer-side-nav : #01579B;
+  --writer-side-nav-f: #fff;
+
+
+  --writer-title-bar :#01579B;
+  --writer-title-bar-f :#fff;
+
+  --writer-button-bar : var(--c7);
+  --writer-button-bar-f : var(--c7-f);
+
+  --planningboard-title : var(--writer-side-panels );
+  --planningboard-title-f : var(--writer-side-panels-f);
+
+  --planningboard-handle : var(--planningboard-title);
+  --planningboard-handle-f : var(--planningboard-title-f);
+  --planningboard-col : var(--c8);
+ 
+  --db-search-bar : var(--writer-title-bar);
+  --db-search-bar-f : var(--writer-title-bar-f);
+  --taglist-panel : var(--c8);
+  --taglist-panel-f : var(--c8-f);
+  --taglist-tag : var(--warning);
+  --taglist-tag-f : var(--warning-f);
+
+  --grid-th : var(--c8);
+  --grid-th-f :var(--c8-f);
+  --grid-cell-bg :var(--c7);
+
+
+   --tl-bar : var(--primary);
+   --tl-dot : var(--primary);
+   --tl-date : var(--accent);
+   --tl-date-f : var(--accent-f);
+   --tl-card : var(--card);
+   --tl-card-f : var(--card-f);
+
+   --mm-title-bar :var(--c8);
+   --mm-title-bar-f :var(--c8-f);
+
+   --mm-background : var(--c9);
+   --mm-background-f : var(--c9-f);
+
+   --mm-handle-bar :var(--accent);
+   --mm-handle-bar-f :var(--accent-f);
+
+   --mm-node : #fafafa;
+   --mm-node-f : #424242;
+
+}
+.TopToolbar{
+  box-shadow: 0px 1px 8px 0px rgb(34, 34, 34);
+  }
+
+.pageHolder .scrolly{
+-webkit-box-shadow: 0px 0px 25px 10px rgba(153,153,153,1);
+-moz-box-shadow: 0px 0px 25px 10px rgba(153,153,153,1);
+box-shadow: 0px 0px 25px 10px rgba(153,153,153,1);
+}
