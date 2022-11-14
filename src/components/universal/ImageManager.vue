@@ -164,27 +164,29 @@ export default {
             }
         },
         pickImage(uuid) {
+
             if (this.$root.imagemanager.targetuuid) {
                 if (confirm("Do you want to choose this image?")) {
-                    console.log(this.$root.imagemanager.target)
-                    if (!this.$root.imagemanager.target) {
-                        alert("no target to update")
+
+                    // for the cards I'm simply pushing to an array
+                    if (this.$root.imagemanager.table === "Cards") {
+                        this.$root.imagemanager.target.push(uuid)
+                    }
+                    // for the gridplanner I simply set an ID
+                    if (this.$root.imagemanager.table === "Gridplanner") {
+
+                        this.$root.imagemanager.target.text = uuid
                     }
 
-                    this.$root.imagemanager.target.push(uuid)
-                    console.log("update", this.$root.imagemanager)
                     // do the DB update
                     this.$root.UpdateRecord(
                         this.$root.imagemanager.table,
                         this.$root.imagemanager.targetuuid,
                         this.$root.imagemanager.updateObj
                     );
-
-
                     this.closeImageManager()
                 }
             }
-
         }
     },
 }

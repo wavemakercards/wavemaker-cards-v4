@@ -30,10 +30,10 @@ export default {
     console.log("list changed");
     this.$root.UpdateRecord(
       "Mindmap",
-      this.$root.$data.session.mindmap.selected,
-      this.$root.$data.shadowDB.Mindmap[
+
+      this.$root.$data.session.mindmap.selected.uuid,
       this.$root.$data.session.mindmap.selected
-      ]
+
     );
   }
 }

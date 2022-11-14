@@ -15,22 +15,41 @@
       @keydown.left.exact.prevent.stop="$root.moveNode('left')"
       @keydown.right.exact.prevent.stop="$root.moveNode('right')">
       <svg viewBox="0 0 24 24">
-        <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+        <path fill="currentColor"
+          d="M13,11H18L16.5,9.5L17.92,8.08L21.84,12L17.92,15.92L16.5,14.5L18,13H13V18L14.5,16.5L15.92,17.92L12,21.84L8.08,17.92L9.5,16.5L11,18V13H6L7.5,14.5L6.08,15.92L2.16,12L6.08,8.08L7.5,9.5L6,11H11V6L9.5,7.5L8.08,6.08L12,2.16L15.92,6.08L14.5,7.5L13,6V11Z" />
       </svg>
     </div>
+    <template v-if="this.$root.session.mindmap.selected.content.nodes[this.uuid].type === 'image'">
 
-    <input v-model="this.$root.session.mindmap.selected.content.nodes[this.uuid].text" @keyup="textchange"
-      class="inputcontrol" :id="uuid" @click="onActivated(uuid)" />
-    <!--
-    <textarea
-      v-model="card.text"
-      @keydown.stop="
-        () => {
-          return true;
-        }
-      "
-    ></textarea>
-    -->
+      <template v-if="this.$root.session.mindmap.selected.content.nodes[this.uuid].text">
+        <MiniImage :uuid="this.$root.session.mindmap.selected.content.nodes[this.uuid].text" style="max-width:300px"
+          :key="this.$root.session.mindmap.selected.content.nodes[this.uuid].text" />
+        <button @click="addImage" class="NewImageBtn" v-if="$root.session.mindmap.currentnode === uuid">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M22.7 14.3L21.7 15.3L19.7 13.3L20.7 12.3C20.8 12.2 20.9 12.1 21.1 12.1C21.2 12.1 21.4 12.2 21.5 12.3L22.8 13.6C22.9 13.8 22.9 14.1 22.7 14.3M13 19.9V22H15.1L21.2 15.9L19.2 13.9L13 19.9M11.21 15.83L9.25 13.47L6.5 17H13.12L15.66 14.55L13.96 12.29L11.21 15.83M11 19.9V19.05L11.05 19H5V5H19V11.31L21 9.38V5C21 3.9 20.11 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.11 3.9 21 5 21H11V19.9Z" />
+          </svg>
+        </button>
+      </template>
+
+      <template v-else>
+        <button class="imageButton" @click="addImage">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M22.7 14.3L21.7 15.3L19.7 13.3L20.7 12.3C20.8 12.2 20.9 12.1 21.1 12.1C21.2 12.1 21.4 12.2 21.5 12.3L22.8 13.6C22.9 13.8 22.9 14.1 22.7 14.3M13 19.9V22H15.1L21.2 15.9L19.2 13.9L13 19.9M11.21 15.83L9.25 13.47L6.5 17H13.12L15.66 14.55L13.96 12.29L11.21 15.83M11 19.9V19.05L11.05 19H5V5H19V11.31L21 9.38V5C21 3.9 20.11 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.11 3.9 21 5 21H11V19.9Z" />
+          </svg>
+        </button>
+
+      </template>
+
+    </template>
+    <template v-else>
+      <textarea ref="textarea" v-model="this.$root.session.mindmap.selected.content.nodes[this.uuid].text"
+        @click="onActivated(uuid)" style="width:300px" cols="30" rows="1" @keyup="resizeTextarea"></textarea>
+    </template>
+
+
+
     <button id="deleteButton" @click="deleteNode(uuid)" v-if="$root.session.mindmap.currentnode === uuid" tabindex="0">
       <svg viewBox="0 0 24 24">
         <path
@@ -47,8 +66,12 @@
 </template>
 
 <script>
+import MiniImage from '../universal/MiniImage.vue';
 export default {
   name: "NodeBox",
+  components: {
+    MiniImage
+  },
   props: {
     uuid: String,
   },
@@ -62,7 +85,13 @@ export default {
     };
   },
   methods: {
+    resizeTextarea() {
+      let element = this.$refs["textarea"];
+      element.style.height = "18px";
+      element.style.height = element.scrollHeight + "px";
+    },
     textchange() {
+      /*
       if (this.$root.session.mindmap.selected.content.nodes[this.uuid].text.length > 30) {
         document.getElementById(this.uuid).style.width =
           this.$root.session.mindmap.selected.content.nodes[this.uuid].text.length * 6.2 + "px";
@@ -70,6 +99,7 @@ export default {
         document.getElementById(this.uuid).style.width = 30 * 6.2 + "px";
       }
       this.savechange();
+      */
     },
     onResize: function (x, y, width, height) {
       this.$root.session.mindmap.selected.content.nodes[this.uuid].x = x;
@@ -132,14 +162,42 @@ export default {
         this.$root.$data.session.mindmap.selected
       );
     },
+    imageCallback() {
+      console.log("Callback fired")
+    },
+    addImage() {
+      // pass the object we want the image manager to update
+      this.$root.imagemanager = {
+        table: "Gridplanner",
+        targetuuid: this.$root.$data.session.mindmap.selected.uuid,
+        target: this.$root.session.mindmap.selected.content.nodes[this.uuid],
+        updateObj: this.$root.session.mindmap.selected
+      }
+    },
   },
   mounted() {
-    this.textchange();
+    if (!this.$root.session.mindmap.selected.content.nodes[this.uuid]) {
+      this.resizeTextarea()
+    }
+
   },
 };
 </script>
 
 <style scoped >
+.imageButton {
+  width: 300px;
+  height: 300px;
+  background-color: var(--accent);
+  color: var(--accent-f);
+  fill: var(--accent-f);
+  cursor: pointer;
+}
+
+.imageButton svg {
+  width: 100px;
+}
+
 #deleteButton {
   position: absolute;
   right: -10px;
@@ -175,6 +233,41 @@ export default {
 
 }
 
+.NewImageBtn {
+  position: absolute;
+  left: -10px;
+  bottom: -15px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--button);
+  color: var(--button-f);
+  font-weight: bold;
+  border-radius: 15px;
+  border: 0px;
+  cursor: pointer;
+  padding: 0px;
+  margin: 0px;
+}
+
+.NewImageBtn svg {
+  fill: var(--button-f);
+  width: 100%;
+  padding: 4px;
+}
+
+.NewImageBtn:hover,
+.NewImageBtn:focus,
+.NewImageBtn:active {
+  background-color: var(--button-hover);
+}
+
+
+.NewImageBtn:hover svg,
+.NewImageBtn:focus svg,
+.NewImageBtn:active svg {
+
+  fill: var(--button-hover-f);
+}
 
 #linkButton {
   position: absolute;
@@ -201,7 +294,14 @@ export default {
 #linkButton:hover,
 #linkButton:focus,
 #linkButton:active {
-  background-color: var(--button-hover)
+  background-color: var(--button-hover);
+}
+
+#linkButton:hover svg,
+#linkButton:focus svg,
+#linkButton:active svg {
+
+  fill: var(--button-hover-f);
 }
 
 .activeClass .drag-handle {
@@ -232,17 +332,26 @@ export default {
   fill: var(--mm-handle-bar-f);
 }
 
+textarea {
+  font-family: var(--sysfont);
+  padding: 10px;
+  overflow: hidden;
+  min-height: 20px;
+  outline: none;
+  border: none;
+}
+
 .card {
   padding: 0px;
   background-color: var(--mm-node);
   color: var(--mm-node-f);
   white-space: pre-line;
   cursor: move;
+  height: auto !important
 }
 
 .card .inputcontrol {
   border: 0px;
-  height: 30px;
   padding: 5px;
   border: 0px;
   outline: none;

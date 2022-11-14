@@ -20,8 +20,10 @@
       <div v-if="showaddform">
         <hr />
         <input type="text" v-model="title" :placeholder="this.$root.setlang.tools.name" class="formInput" />
-        <input type="text" v-model="description" :placeholder="this.$root.setlang.tools.description"
+        <!--
+  <input type="text" v-model="description" :placeholder="this.$root.setlang.tools.description"
           class="formInput" />
+        -->
         <div style="text-align: right">
           <button @click="addItem" class="interfaceBtn">
             <svg viewBox="0 0 24 24">
@@ -37,8 +39,10 @@
         <tr v-for="(item, index) in MindMaps" :key="index">
           <td>
             <div class="title">{{ item.title }}</div>
+            <!--
+    <div class="author">{{ item.description }}</div>
+-->
 
-            <div class="author">{{ item.description }}</div>
             <i> <br /> {{ $root.niceDate(item.lastupdated) }} </i>
           </td>
           <td style="width: 50px">
