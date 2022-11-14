@@ -1,6 +1,7 @@
 import Dexie from "dexie";
 import "dexie-export-import";
-export const db = new Dexie("wavemakerv4");
+const myJson = require('../package.json');
+export const db = new Dexie("wavemakerv4_" + myJson.version);
 
 export const DBstores = {
   Settings: `uuid, settings, lastupdated`,

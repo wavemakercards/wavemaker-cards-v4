@@ -14,7 +14,8 @@
           </g>
         </svg>
         <div class="softwareName">Wavemaker Cards</div>
-        <div>{{ this.$root.setlang.welcome.info }}</div>
+        <div>Version 4 (Alpha) </div>
+        <h3>{{ this.$root.setlang.welcome.info }}</h3>
       </div>
 
 
@@ -59,6 +60,18 @@
 
       </div>
 
+
+
+      <div style="background-color: firebrick; color:#fff; padding: 10px;margin:10px;">
+        <p>This is an ALPHA version it may break - if you are having issues you can clear all the stored data for your
+          browser - instructions linked below</p>
+        <a style="color: #fff;"
+          href="https://www.howtogeek.com/664912/how-to-clear-storage-and-site-data-for-a-single-site-on-google-chrome/"
+          target="blank">
+
+          How to clear your cache on chrome based browsers
+        </a>
+      </div>
     </div>
   </div>
 </template>
