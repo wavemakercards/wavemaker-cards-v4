@@ -6,7 +6,7 @@
           <td>
             <h1>{{ this.$root.setlang.tools.gridplanner }}</h1>
           </td>
-          <td style="width: 100px">
+          <td style="width: 50px">
             <button @click="showaddform = !showaddform" class="interfaceBtn">
               <svg viewBox="0 0 24 24">
                 <path
@@ -41,11 +41,18 @@
             <div class="author">{{ item.description }}</div>
             <i> <br /> {{ $root.niceDate(item.lastupdated) }} </i>
           </td>
-          <td style="width: 100px">
+          <td style="width: 50px">
             <button @click="chooseItem(item)" class="interfaceBtn">
               <svg viewBox="0 0 24 24">
                 <path
                   d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+              </svg>
+            </button>
+          </td>
+          <td style="width: 50px">
+            <button @click="deleteItem(item)" class="interfaceBtn deleteBtn">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
               </svg>
             </button>
           </td>
@@ -75,6 +82,11 @@ export default {
     };
   },
   methods: {
+    deleteItem(item) {
+      if (confirm("Are toy sure you want to delete this?")) {
+        this.$root.DeleteRecord("Gridplanner", item.uuid)
+      }
+    },
     chooseItem(item) {
       this.$root.session.gridplanner.selected = this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Gridplanner.get(item.uuid)))
     },

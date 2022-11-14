@@ -241,7 +241,11 @@ label {
   fill: var(--danger-f) !important;
 }
 
-
+.deleteBtn {
+  background-color: var(--danger);
+  color: var(--danger-f);
+  fill: var(--danger-f);
+}
 
 .writer .ProseMirror {
   background-color: var(--paper);

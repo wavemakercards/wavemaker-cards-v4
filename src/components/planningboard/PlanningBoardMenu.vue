@@ -6,7 +6,7 @@
           <td>
             <h1>{{ this.$root.setlang.tools.planningboard }}</h1>
           </td>
-          <td style="width: 100px">
+          <td style="width: 50px">
             <button @click="addItem" class="interfaceBtn">
               <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                 <path
@@ -27,7 +27,7 @@
             <div class="author">{{ item.description }}</div>
             <i> <br /> {{ $root.niceDate(item.lastupdated) }} </i>
           </td>
-          <td style="width: 100px">
+          <td style="width: 50px">
             <button @click="setLiveQuery(item)" class="interfaceBtn">
               <svg viewBox="0 0 24 24">
                 <path

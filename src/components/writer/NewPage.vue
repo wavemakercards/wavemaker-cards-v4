@@ -4,7 +4,7 @@
         <div class="scrolly">
             <EditorContent :editor="editor" v-if="editor" />
         </div>
-        <div class=" titleBar">
+        <div class="titleBar">
             <input type="text" :placeholder="this.$root.setlang.writer.newfile" v-model="item.title"
                 @change="changed" />
         </div>
