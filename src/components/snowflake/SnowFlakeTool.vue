@@ -2,21 +2,17 @@
   <div class="scroller">
 
     <template v-for="(flake, index) in this.$root.session.snowflake.selected.content" :key="index">
+      <div id="toolbox">
+        <input v-model="$root.session.snowflake.selected.title" class="titleinput" @change="updateDatabase" />
+      </div>
+
+
       <div class="row">
         <div class="column" :style="!flake.open ? 'display:block' : ''">
           <div class="card">
 
 
-            <button class="delete-flake-button" @click="deleteFlake(index)">
-              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path
-                  d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M17,7H14.5L13.5,6H10.5L9.5,7H7V9H17V7M9,18H15A1,1 0 0,0 16,17V10H8V17A1,1 0 0,0 9,18Z" />
-              </svg>
-            </button>
-
-
             <button class="open-flake-button" @click="openflake(flake)">
-
               <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path
                   d="M8,2H16A2,2 0 0,1 18,4V20A2,2 0 0,1 16,22H8A2,2 0 0,1 6,20V4A2,2 0 0,1 8,2M8,10V14H16V10H8M8,16V20H16V16H8M8,4V8H16V4H8Z" />
@@ -25,6 +21,12 @@
             <input class="title" v-model="flake.title" :placeholder="this.$root.setlang.snowflake.title"
               @change="updateDatabase" />
             <MiniEditor :snowFlake="flake" v-model="flake.text" @updated="updateDatabase" />
+
+            <button class="delete-flake-button" @click="deleteFlake(index)">
+              <svg viewBox="0 0 24 24">
+                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+              </svg>
+            </button>
           </div>
         </div>
         <Transition name="h-slide-fade">
@@ -149,7 +151,7 @@ export default {
 <style scoped>
 .scroller {
   position: absolute;
-  top: 0px;
+  top: 40px;
   left: 0px;
   bottom: 0px;
   right: 0px;
@@ -200,13 +202,14 @@ export default {
   cursor: pointer;
   width: 40px;
   height: 40px;
-
-
+  background-color: var(--accent);
+  border: 0px;
+  border-radius: 20px;
+  fill: var(--accent-f);
 }
 
 .open-flake-button svg {
   width: 24px;
-
 }
 
 .open-flake-button:hover,
@@ -218,7 +221,6 @@ export default {
 .open-flake-button:hover svg,
 .open-flake-button:focus svg,
 .open-flake-button:active svg {
-
   fill: var(--success-f)
 }
 
@@ -228,20 +230,81 @@ export default {
   height: 40px;
   top: calc(50% - 20px);
   right: -20px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-color: var(--accent);
+  border: 0px;
+  border-radius: 20px;
+  fill: var(--accent-f);
 }
+
+
+.replaceButton:hover,
+.replaceButton:focus,
+.replaceButton:active {
+  background-color: var(--success);
+}
+
+.replaceButton:hover svg,
+.replaceButton:focus svg,
+.replaceButton:active svg {
+  fill: var(--success-f)
+}
+
+
 
 .delete-flake-button {
   cursor: pointer;
   border: 0px;
   background: inherit;
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 3px;
+  right: 3px;
+  padding: 0px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+
 }
+
+.delete-flake-button svg {
+  width: 16px
+}
+
+.delete-flake-button:hover,
+.delete-flake-button:active,
+.delete-flake-button:focus {
+  background-color: var(--danger)
+}
+
+
 
 .delete-flake-button:hover svg,
 .delete-flake-button:active svg,
 .delete-flake-button:focus svg {
-  fill: var(--danger)
+  fill: var(--danger-f)
+}
+
+#toolbox {
+  position: fixed;
+  top: 50px;
+  height: 40px;
+  width: 100%;
+  background-color: var(--mm-title-bar);
+  text-align: right;
+}
+
+.titleinput {
+  background-color: inherit;
+  color: inherit;
+  outline: none;
+  border: none;
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  height: 40px;
+  width: calc(100% - 80px);
 }
 </style>

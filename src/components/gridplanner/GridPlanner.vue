@@ -1,5 +1,21 @@
 <template>
   <div class="scroller">
+    <div id="toolbox">
+      <input v-model="$root.session.gridplanner.selected.title" class="titleinput" @change="updateDatabase" />
+
+      <button @click="addRow" class="toolbutton">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+          <path
+            d="M22,10A2,2 0 0,1 20,12H4A2,2 0 0,1 2,10V3H4V5H8V3H10V5H14V3H16V5H20V3H22V10M4,10H8V7H4V10M10,10H14V7H10V10M20,10V7H16V10H20M11,14H13V17H16V19H13V22H11V19H8V17H11V14Z" />
+        </svg>
+      </button><button @click="addCol" class="toolbutton">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+          <path
+            d="M11,2A2,2 0 0,1 13,4V20A2,2 0 0,1 11,22H2V2H11M4,10V14H11V10H4M4,16V20H11V16H4M4,4V8H11V4H4M15,11H18V8H20V11H23V13H20V16H18V13H15V11Z" />
+        </svg>
+      </button>
+    </div>
+
     <table :style="'width :' + tableWidth + 'px;'" v-if="this.$root.session.gridplanner.selected.content.headers">
       <thead>
         <VueDraggableNext v-model="this.$root.session.gridplanner.selected.content.headers" tag='tr' :component-data="{
@@ -61,17 +77,7 @@
 
 
     </table>
-    <button @click="addRow" class="floatBtn addRow">
-      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-        <path
-          d="M22,10A2,2 0 0,1 20,12H4A2,2 0 0,1 2,10V3H4V5H8V3H10V5H14V3H16V5H20V3H22V10M4,10H8V7H4V10M10,10H14V7H10V10M20,10V7H16V10H20M11,14H13V17H16V19H13V22H11V19H8V17H11V14Z" />
-      </svg>
-    </button><button @click="addCol" class="floatBtn addCol">
-      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-        <path
-          d="M11,2A2,2 0 0,1 13,4V20A2,2 0 0,1 11,22H2V2H11M4,10V14H11V10H4M4,16V20H11V16H4M4,4V8H11V4H4M15,11H18V8H20V11H23V13H20V16H18V13H15V11Z" />
-      </svg>
-    </button>
+
   </div>
 </template>
 
@@ -185,27 +191,54 @@ export default {
 </script>
 
 <style scoped>
-.floatBtn {
-  cursor: pointer;
-  background-color: var(--accent);
+#toolbox {
   position: fixed;
-  width: 50px;
-  height: 50px;
-  border: 0px;
-  border-radius: 50%;
   top: 50px;
+  height: 40px;
+  width: 100%;
+  background-color: var(--mm-title-bar);
+  text-align: right;
 }
 
-.floatBtn svg {
-  fill: var(--accent-f)
+.toolbutton {
+  height: 40px;
+  padding: 10px;
+  border: 0px;
+  color: var(--button-f);
+  background-color: var(--mm-title-bar);
+  cursor: pointer;
+  margin-left: 5px
 }
 
-.addCol {
-  right: 5px;
+.toolbutton svg {
+  fill: var(--mm-title-bar-f);
+  width: 100%;
 }
 
-.addRow {
-  right: 60px;
+
+.toolbutton:hover,
+.toolbutton:active,
+.toolbutton:focus {
+  color: var(--button-hover-f);
+  background-color: var(--button-hover);
+}
+
+.toolbutton:hover svg,
+.toolbutton:active svg,
+.toolbutton:focus svg {
+  fill: var(--button-hover-f);
+}
+
+.titleinput {
+  background-color: inherit;
+  color: inherit;
+  outline: none;
+  border: none;
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  height: 40px;
+  width: calc(100% - 80px);
 }
 
 .rowInput,
@@ -247,7 +280,7 @@ export default {
 
 .scroller {
   position: absolute;
-  top: 0px;
+  top: 40px;
   bottom: 0px;
   left: 0px;
   right: 0px;
