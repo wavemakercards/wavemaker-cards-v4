@@ -1,10 +1,11 @@
 <template>
-    <div v-if="item">
+    <div>
 
-        <div class="PageEditorScroll">
+        <div class="PageEditorScroll" ref="scrolltarget">
             <EditorContent :editor="editor" v-if="editor" />
         </div>
-        <div class="titleBar">
+
+        <div class="titleBar" v-if="item">
             <input type="text" :placeholder="this.$root.setlang.writer.newfile" v-model="item.title"
                 @change="changed" />
         </div>
@@ -156,17 +157,23 @@
                     <path d="M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z" />
                 </svg>
             </button>
+
+            <button @click="this.$root.session.selectedTool = 'distractionfree'">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" />
+                </svg>
+            </button>
+
         </div>
-        <div class="wordcountdisplay">{{ item.wordcount }} of {{ this.$root.calcFullWordCount }} </div>
+        <div class="wordcountdisplay" v-if="item">{{ item.wordcount }} of {{ this.$root.calcFullWordCount }} </div>
 
     </div>
 
 </template>
   
 <script>
-import { useObservable } from "@vueuse/rxjs";
-import { liveQuery } from "dexie";
-import { db } from "@/db.js";
+
 import { Editor, EditorContent } from "@tiptap/vue-3";
 import StarterKit from "@tiptap/starter-kit";
 import Typography from "@tiptap/extension-typography";
@@ -182,14 +189,34 @@ export default {
     },
     data() {
         return {
-            item: useObservable(liveQuery(() => db.Files.get(this.pageuuid))),
+            item: this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Files.get(this.pageuuid))),
             editor: null,
-            updateUUID: null
+            updateUUID: null,
+            mypos: 0,
         };
     },
     methods: {
-        changed() {
+        repositionEditor() {
+            this.mypos = this.getCaretPosition()
+            console.log(parseInt(this.mypos), this.$refs.scrolltarget.scrollTop, this.$refs.scrolltarget.scrollHeight, window.innerHeight)
+            //console.log(this.$refs.scrolltarget.scrollHeight - (this.$refs.scrolltarget.scrollTop + this.mypos))
 
+            if (this.mypos != 0) {
+                let calculatedPosition = parseInt(this.mypos) + this.$refs.scrolltarget.scrollTop - (window.innerHeight / 2)
+                this.$refs.scrolltarget.scrollTo({ top: calculatedPosition, behavior: 'smooth' });
+            }
+        },
+        getCaretPosition() {
+            var caretPos = 0
+            var sel, range;
+            sel = window.getSelection();
+            range = sel.getRangeAt(0);
+            caretPos = range.getBoundingClientRect();
+            // console.log(caretPos)
+            return caretPos.y;
+        },
+
+        changed() {
             this.$root.UpdateRecord("Files", this.item.uuid, this.item)
         },
         addImage() {
@@ -229,6 +256,9 @@ export default {
         this.editor = new Editor({
             extensions: [StarterKit, Typography, Image],
             content: '',
+            onTransaction: () => {
+                this.repositionEditor()
+            },
             onUpdate: () => {
                 // HTML
                 this.item.wordcount = this.$root.wordCounter(this.editor.getHTML());

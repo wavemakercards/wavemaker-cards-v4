@@ -8,8 +8,12 @@
     <TimeLine v-if="$root.session.selectedTool === 'timeline'" />
     <MindMapHome v-if="$root.session.selectedTool === 'mindmap'" />
     <GridPlannerHome v-if="$root.session.selectedTool === 'gridplanner'" />
+
   </div>
   <ToolBar />
+
+
+  <DistractionFree v-if="$root.session.selectedTool === 'distractionfree'" />
 </template>
 
 <script>
@@ -22,6 +26,7 @@ import SnowFlake from "@/components/snowflake/SnowFlake.vue";
 import TimeLine from "@/components/timeline/TimeLine.vue";
 import MindMapHome from "@/components/mindmap/MindMapHome.vue";
 import GridPlannerHome from "@/components/gridplanner/GridPlannerHome.vue";
+import DistractionFree from "@/components/distractionfree/DistractionFree.vue";
 
 export default {
   name: "StartApp",
@@ -35,6 +40,7 @@ export default {
     MindMapHome,
     CardsDatabaseHome,
     GridPlannerHome,
+    DistractionFree
   },
   methods: {},
   async mounted() {

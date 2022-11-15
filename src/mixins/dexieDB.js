@@ -19,7 +19,7 @@ const dexieDB = {
       return await this.db[myTable].add(myData)
     },
     async UpdateRecord(myTable, myKey, myData) {
-      console.log("updating", myTable, myKey, myData)
+      //console.log("updating", myTable, myKey, myData)
       myData.uuid = myKey;
       myData.lastupdated = Date.now();
       return await this.db[myTable].put(JSON.parse(JSON.stringify(myData)))
