@@ -100,10 +100,28 @@
           <option value="justify">Justify</option>
         </select>
 
+        <hr />
+        <h2>Distraction-Free Preferences</h2>
 
-
-
-
+        <table>
+          <tr>
+            <td>
+              <label>Text Colour</label>
+              <input type="color" v-model="this.$root.session.settings.documentprefs.distractionfree_fg"
+                @change="updateSettings" style=" width:30px; height:30px">
+            </td>
+            <td>
+              <label>Page Colour</label>
+              <input type="color" v-model="this.$root.session.settings.documentprefs.distractionfree_bg"
+                @change="updateSettings" style=" width:30px; height:30px">
+            </td>
+            <td>
+              <label>Typewriter sound</label>
+              <input type="checkbox" v-model="this.$root.session.settings.documentprefs.typesound"
+                style="width:20px; height:20px" />
+            </td>
+          </tr>
+        </table>
 
 
         <br />
@@ -145,12 +163,13 @@
           <button class="myoption" v-for="(k, i) in Object.keys(this.$root.language)" :key="i" @click="language(k)">
             {{ this.$root.language[k].info.name }}
           </button>
-
         </div>
 
-
-
         <hr />
+
+
+
+
         <button @click="clear" class="interfaceBtn fullw " style="text-align: left;">
           <svg viewBox="0 0 24 24">
             <path
@@ -216,12 +235,19 @@ export default {
       document.documentElement.style.setProperty('--pageEditor-color', this.$root.session.settings.documentprefs.color)
       document.documentElement.style.setProperty('--pageEditor-bgcolor', this.$root.session.settings.documentprefs.bgcolor)
 
+      document.documentElement.style.setProperty('--pageEditor-font', this.$root.session.settings.documentprefs.distractionfree_font)
+      document.documentElement.style.setProperty('--pageEditor-color', this.$root.session.settings.documentprefs.distractionfree_fg)
+      document.documentElement.style.setProperty('--pageEditor-bgcolor', this.$root.session.settings.documentprefs.distractionfree_bg)
+
       this.$root.UpdateRecord(
         "Settings",
         this.$root.session.settings.uuid,
         this.$root.session.settings
       )
     }
+  },
+  mounted() {
+    console.log(this.$root.session.settings.documentprefs)
   }
 }
 </script>

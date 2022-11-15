@@ -38,14 +38,14 @@
       
 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" /></svg>
     </button>
-    -->
+
             <button @click="editor.chain().focus().unsetAllMarks().run()">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path
                         d="M16.24,3.56L21.19,8.5C21.97,9.29 21.97,10.55 21.19,11.34L12,20.53C10.44,22.09 7.91,22.09 6.34,20.53L2.81,17C2.03,16.21 2.03,14.95 2.81,14.16L13.41,3.56C14.2,2.78 15.46,2.78 16.24,3.56M4.22,15.58L7.76,19.11C8.54,19.9 9.8,19.9 10.59,19.11L14.12,15.58L9.17,10.63L4.22,15.58Z" />
                 </svg>
             </button>
-            <!--
+       
     <button @click="editor.chain().focus().clearNodes().run()">
       clear nodes
     </button>
@@ -70,7 +70,8 @@
                         d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M21,18H15A2,2 0 0,1 13,16C13,15.47 13.2,15 13.54,14.64L18.41,9.41C18.78,9.05 19,8.55 19,8A2,2 0 0,0 17,6A2,2 0 0,0 15,8H13A4,4 0 0,1 17,4A4,4 0 0,1 21,8C21,9.1 20.55,10.1 19.83,10.83L15,16H21V18Z" />
                 </svg>
             </button>
-            <button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
+            <!--
+      <button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
                 :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path
@@ -84,6 +85,8 @@
                         d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M18,18V13H13V11L18,4H20V11H21V13H20V18H18M18,11V7.42L15.45,11H18Z" />
                 </svg>
             </button>
+            -->
+
 
             <button @click="addImage">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
@@ -123,14 +126,17 @@
         />
       </svg>
     </button>
-    -->
-            <button @click="editor.chain().focus().toggleBlockquote().run()"
+
+        <button @click="editor.chain().focus().toggleBlockquote().run()"
                 :class="{ 'is-active': editor.isActive('blockquote') }">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path
                         d="M9 22C8.4 22 8 21.6 8 21V18H4C2.9 18 2 17.1 2 16V4C2 2.9 2.9 2 4 2H20C21.1 2 22 2.9 22 4V16C22 17.1 21.1 18 20 18H13.9L10.2 21.7C10 21.9 9.8 22 9.5 22H9M10 16V19.1L13.1 16H20V4H4V16H10M16.3 6L14.9 9H17V13H13V8.8L14.3 6H16.3M10.3 6L8.9 9H11V13H7V8.8L8.3 6H10.3Z" />
                 </svg>
             </button>
+
+    -->
+
             <!--
     <button @click="editor.chain().focus().setHorizontalRule().run()">
       horizontal rule
@@ -138,7 +144,7 @@
     <button @click="editor.chain().focus().setHardBreak().run()">
       hard break
     </button>
-    -->
+  
             <button @click="editor.chain().focus().undo().run()">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path
@@ -151,15 +157,17 @@
                         d="M3 13.5C3 9.36 6.36 6 10.5 6H13V2L20 8L13 14V10H10.5C8.57 10 7 11.57 7 13.5S8.57 17 10.5 17H18V21H10.5C6.36 21 3 17.64 3 13.5Z" />
                 </svg>
             </button>
-
+  -->
             <button @click="this.$root.session.selectedTool = 'planningboard'">
-                <svg viewBox="0 0 24 24">
-                    <path d="M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z" />
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path
+                        d="M22,9V7H20V5A2,2 0 0,0 18,3H4A2,2 0 0,0 2,5V19A2,2 0 0,0 4,21H18A2,2 0 0,0 20,19V17H22V15H20V13H22V11H20V9H22M18,19H4V5H18V19M6,13H11V17H6V13M12,7H16V10H12V7M6,7H11V12H6V7M12,11H16V17H12V11Z">
+                    </path>
                 </svg>
             </button>
 
             <button @click="this.$root.session.selectedTool = 'distractionfree'">
-                <svg viewBox="0 0 24 24">
+                <svg width="24" height="24" viewBox="0 0 24 24">
                     <path
                         d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" />
                 </svg>
@@ -198,7 +206,7 @@ export default {
     methods: {
         repositionEditor() {
             this.mypos = this.getCaretPosition()
-            console.log(parseInt(this.mypos), this.$refs.scrolltarget.scrollTop, this.$refs.scrolltarget.scrollHeight, window.innerHeight)
+            //console.log(parseInt(this.mypos), this.$refs.scrolltarget.scrollTop, this.$refs.scrolltarget.scrollHeight, window.innerHeight)
             //console.log(this.$refs.scrolltarget.scrollHeight - (this.$refs.scrolltarget.scrollTop + this.mypos))
 
             if (this.mypos != 0) {

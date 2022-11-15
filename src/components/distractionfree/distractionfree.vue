@@ -4,20 +4,6 @@
         <div class="distractionfree">
             <EditorContent :editor="editor" v-if="editor" />
         </div>
-        <bubble-menu :editor="editor" :tippy-options="{ duration: 100 }" v-if="editor">
-            <button @click="editor.chain().focus().toggleBold().run()"
-                :class="{ 'is-active': editor.isActive('bold') }">
-                bold
-            </button>
-            <button @click="editor.chain().focus().toggleItalic().run()"
-                :class="{ 'is-active': editor.isActive('italic') }">
-                italic
-            </button>
-            <button @click="editor.chain().focus().toggleStrike().run()"
-                :class="{ 'is-active': editor.isActive('strike') }">
-                strike
-            </button>
-        </bubble-menu>
         <button @click="this.$root.session.selectedTool = 'writer'" class="closebutton">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path
@@ -30,19 +16,19 @@
 import StarterKit from "@tiptap/starter-kit";
 import Typography from "@tiptap/extension-typography";
 import Image from "@tiptap/extension-image";
-import { BubbleMenu, Editor, EditorContent } from '@tiptap/vue-3'
+import { Editor, EditorContent } from '@tiptap/vue-3'
 export default {
     name: "DistractionFree",
     components: {
-        EditorContent,
-        BubbleMenu
+        EditorContent
     },
     data() {
         return {
             item: this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Files.get(this.$root.session.writer.file.uuid))),
             editor: null,
             updateUUID: null,
-            mypos: 0
+            mypos: 0,
+            keycount: 1
         };
     },
     methods: {
@@ -95,6 +81,14 @@ export default {
                 this.repositionEditor()
             },
             onUpdate: () => {
+
+                if (this.$root.session.settings.documentprefs.typesound) {
+                    window["typesound" + this.keycount].play()
+                    if (this.keycount === 9) {
+                        this.keycount = 0
+                    }
+                    this.keycount++
+                }
                 // HTML
                 this.item.wordcount = this.$root.wordCounter(this.editor.getHTML());
                 this.item.content = this.editor.getHTML()
@@ -102,6 +96,7 @@ export default {
                 // JSON
                 //this.$emit('update:modelValue', this.editor.getJSON())
                 this.changed();
+
             }
         })
     },
@@ -120,8 +115,10 @@ export default {
 
 .blackout {
     position: fixed;
-    background-color: var(--window);
-    color: var(--window-f);
+    background-color: var(--distractionfree-bg);
+    color: var(--distractionfree-fg);
+    fill: var(--distractionfree-fg);
+    font-family: var(--distractionfree-font);
     top: 0px;
     bottom: 0px;
     left: 0px;

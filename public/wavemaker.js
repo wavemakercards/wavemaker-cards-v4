@@ -1,3 +1,14 @@
+var typesound1 = new Audio('audio/type.mp3');
+var typesound2 = new Audio('audio/type.mp3');
+var typesound3 = new Audio('audio/type.mp3');
+var typesound4 = new Audio('audio/type.mp3');
+var typesound5 = new Audio('audio/type.mp3');
+var typesound6 = new Audio('audio/type.mp3');
+var typesound7 = new Audio('audio/type.mp3');
+var typesound8 = new Audio('audio/type.mp3');
+var typesound9 = new Audio('audio/type.mp3');
+
+
 function Export2Word(newhtml, filename = '') {
     var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
     var postHtml = "</body></html>";
