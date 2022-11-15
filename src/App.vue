@@ -23,6 +23,7 @@ import '@/css/wavemakerInterface.css'
 import '@/css/transitions.css'
 import fileManage from '@/mixins/fileManage.js'
 import dexieDB from '@/mixins/dexieDB.js'
+import templateObjects from '@/mixins/templateObjects.js'
 import GoogleDriveApi from '@/mixins/GoogleDriveApi.js'
 import PopupManager from '@/components/popups/PopupManager.vue'
 import WelcomeScreen from '@/components/WelcomeScreen.vue'
@@ -33,7 +34,7 @@ import CardModal from "./components/universal/CardModal.vue"
 import ImageManager from "./components/universal/ImageManager.vue"
 export default {
   name: 'App',
-  mixins: [fileManage, dexieDB, GoogleDriveApi],
+  mixins: [fileManage, dexieDB, GoogleDriveApi, templateObjects],
   components: {
     PopupManager,
     WelcomeScreen,
@@ -144,26 +145,6 @@ export default {
     switchTheme() {
       document.getElementById("themeSwitch").href = "themes/" + this.theme + ".css";
       localStorage.setItem("wmTheme", this.theme)
-    },
-    makeNewCard(existingid) {
-      let newId = this.$root.uuid(); // use the same uuid to link them
-      if (existingid) {
-        newId = existingid
-      }
-      let obj = {};
-      obj.uuid = newId
-      obj.projectID = this.$root.$data.session.selectedProject;
-      obj.title = "";
-      obj.description = "";
-      obj.showdesc = false;
-      obj.content = "";
-      obj.labels = [];
-      obj.images = [];
-      obj.style = "";
-      obj.options = {};
-      obj.color = "--card1"
-      this.$root.AddRecord("Cards", obj);
-      this.$root.$data.session.EditCard = obj.uuid
     },
     unloadEvent(e) {
       // Cancel the event

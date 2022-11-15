@@ -127,6 +127,8 @@ export default {
           found.parent.splice((found.index + 1), 0, obj);
         }
       }
+
+      this.updateDatabase();
     },
 
     addChild() {
@@ -192,7 +194,7 @@ export default {
   position: absolute;
   left: 5px;
   top: 5px;
-  fill: var(--writer-side-nav-f);
+
 }
 
 .settingsBtn:hover,

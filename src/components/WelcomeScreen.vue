@@ -86,13 +86,12 @@ export default {
   },
   methods: {
     MakeSettings() {
-      let obj = {};
+      let obj = JSON.parse(JSON.stringify(this.$root.SettingsTemplate))
       obj.uuid = this.$root.uuid();
-      obj.settings = {};
       obj.settings.ProjectName = this.projname;
       this.$root.AddRecord("Settings", obj);
 
-      this.$root.session.settings = obj
+      this.$root.session.settings = this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Settings.get(obj.uuid)))
     }
 
 

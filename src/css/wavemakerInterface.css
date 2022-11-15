@@ -1,3 +1,70 @@
+/* Root variables that the can be changed by the system */
+:root {
+  --pageEditor-align: left;
+  --pageEditor-fontsize: 1.5rem;
+  --pageEditor-lspacing: 3rem;
+  --pageEditor-indentation: 20px;
+  --pageEditor-pspacing: 50px;
+  --pageEditor-page: 800px;
+  --pageEditor-font: "Merriweather", 'Times New Roman', Times, serif;
+  --pageEditor-color: #424242;
+  --pageEditor-bgcolor: #cfcfcf;
+  --pageEditor-h1align: center;
+  --pageEditor-h2align: center;
+  --pageEditor-h3align: center;
+  --pageEditor-h4align: center;
+}
+
+.writer .ProseMirror {
+  text-align: var(--pageEditor-align);
+  font-size: var(--pageEditor-fontsize);
+  line-height: var(--pageEditor-lspacing);
+  font-family: var(--pageEditor-font);
+  background-color: var(--pageEditor-bgcolor);
+  color: var(--pageEditor-color);
+  margin-bottom: 10px;
+  margin-top: 100px;
+  padding: 5% 10% 5% 10%;
+  padding-bottom: 100px;
+  min-height: 700px;
+}
+
+.PageEditorScroll {
+  position: absolute;
+  max-width: var(--pageEditor-page);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  overflow-y: scroll;
+}
+
+.writer .ProseMirror p:first-of-type {
+  text-indent: 0px;
+}
+
+.writer .ProseMirror p {
+  margin-bottom: var(--pageEditor-pspacing);
+  text-indent: var(--pageEditor-indentation);
+}
+
+.writer .ProseMirror h1 {
+  text-align: var(--pageEditor-h1align);
+}
+
+.writer .ProseMirror h2 {
+  text-align: var(--pageEditor-h2align);
+}
+
+.writer .ProseMirror h3 {
+  text-align: var(--pageEditor-h3align);
+}
+
+.writer .ProseMirror h4 {
+  text-align: var(--pageEditor-h4align);
+}
+
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
   box-sizing: border-box;
@@ -83,15 +150,16 @@ label {
   top: 10%;
   left: 10%;
   right: 10%;
-
+  bottom: 10%;
   background-color: var(--display-window);
   color: var(--display-window-f);
 
   padding: 20px;
 
-  max-width: 500px;
+  max-width: 900px;
   margin: 0 auto;
   padding-bottom: 50px;
+  overflow-y: auto;
 }
 
 .wavemaker_welcome {
@@ -247,20 +315,6 @@ label {
   fill: var(--danger-f);
 }
 
-.writer .ProseMirror {
-  background-color: var(--paper);
-  color: var(--paper-f);
-  padding: 50px;
-
-  max-width: 800px;
-  margin: 0 auto;
-  min-height: 900px;
-  font-size: 1.5rem;
-  font-family: var(--pagefont);
-  margin-bottom: 10px;
-  margin-top: 80px;
-  padding-bottom: 100px
-}
 
 .ProseMirror img {
   max-width: 100%;

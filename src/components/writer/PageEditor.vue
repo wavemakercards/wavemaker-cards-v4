@@ -1,7 +1,7 @@
 <template>
     <div v-if="item">
 
-        <div class="scrolly">
+        <div class="PageEditorScroll">
             <EditorContent :editor="editor" v-if="editor" />
         </div>
         <div class="titleBar">
@@ -273,17 +273,7 @@ export default {
 }
 
 
-.scrolly {
-    position: absolute;
-    max-width: 700px;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    overflow-y: scroll;
 
-}
 
 .toolbar {
     position: absolute;

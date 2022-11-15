@@ -53,7 +53,7 @@
 
     <transition name="fade">
       <div class="pageHolder" v-if="$root.session.writer.file" :key="$root.session.writer.file.uuid">
-        <NewPage :pageuuid="$root.session.writer.file.uuid" />
+        <PageEditor :pageuuid="$root.session.writer.file.uuid" />
       </div>
     </transition>
 
@@ -68,13 +68,13 @@
 
 import WriterLeftSide from "./leftpanel/WriterLeftSide.vue";
 import WriterRightSide from "./rightpanel/WriterRightSide.vue";
-import NewPage from "./NewPage.vue";
+import PageEditor from "./PageEditor.vue";
 export default {
   name: "WriterTool",
   components: {
     WriterLeftSide,
     WriterRightSide,
-    NewPage
+    PageEditor
   },
   data() {
     return {
@@ -139,7 +139,7 @@ export default {
   padding: 0px;
   bottom: 0px;
   top: 0px;
-  overflow: none;
+  overflow: hidden;
 }
 
 .lhspin {
