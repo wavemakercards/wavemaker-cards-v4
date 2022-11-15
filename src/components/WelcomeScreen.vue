@@ -14,7 +14,7 @@
           </g>
         </svg>
         <div class="softwareName">Wavemaker Cards</div>
-        <div>Version 4 (Alpha) </div>
+        <div>Version 4 ({{ this.$root.myPackage.version }}) </div>
         <h3>{{ this.$root.setlang.welcome.info }}</h3>
       </div>
 

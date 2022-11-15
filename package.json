@@ -1,6 +1,7 @@
 {
-  "name": "wavemakercardsv4",
-  "version": "0.1.0",
+  "name": "wavemakercards-v4",
+  "version": "0.1.2",
+  "description": "Wavemaker cards is software to help you plan and write your novel",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

@@ -150,6 +150,12 @@
                         d="M3 13.5C3 9.36 6.36 6 10.5 6H13V2L20 8L13 14V10H10.5C8.57 10 7 11.57 7 13.5S8.57 17 10.5 17H18V21H10.5C6.36 21 3 17.64 3 13.5Z" />
                 </svg>
             </button>
+
+            <button @click="this.$root.session.selectedTool = 'planningboard'">
+                <svg viewBox="0 0 24 24">
+                    <path d="M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z" />
+                </svg>
+            </button>
         </div>
         <div class="wordcountdisplay">{{ item.wordcount }} of {{ this.$root.calcFullWordCount }} </div>
 

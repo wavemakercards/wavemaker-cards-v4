@@ -14,7 +14,9 @@ module.exports = defineConfig({
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
     workboxOptions: {
-      "exclude": [
+      skipWaiting: true,
+      clientsClaim: true,
+      exclude: [
         ".htaccess"
       ]
     },

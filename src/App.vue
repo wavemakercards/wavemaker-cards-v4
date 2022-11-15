@@ -21,6 +21,7 @@
 <script>
 import '@/css/wavemakerInterface.css'
 import '@/css/transitions.css'
+import myPackage from "../package.json"
 import fileManage from '@/mixins/fileManage.js'
 import dexieDB from '@/mixins/dexieDB.js'
 import templateObjects from '@/mixins/templateObjects.js'
@@ -55,6 +56,7 @@ export default {
   */
   data() {
     return {
+      myPackage,
       EditCardrefresh: null,
       theme: "default",
       themeList: [

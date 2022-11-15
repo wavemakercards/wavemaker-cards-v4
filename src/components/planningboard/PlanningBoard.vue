@@ -1,6 +1,15 @@
 <template>
 
   <div class="planningBoardHolder" v-if="WriterLQ">
+    <div id="toolbox">
+      <input v-model="this.WriterLQ.title" class="titleinput" @change="updateDatabase" />
+
+      <button @click="this.$root.session.selectedTool = 'writer'" class="toolbutton">
+        <svg viewBox="0 0 24 24">
+          <path d="M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z" />
+        </svg>
+      </button>
+    </div>
     <table class="boardTable" cellspacing="0" cellpadding="0">
       <!--
         :style="'width:' + TableWidth + 'px'"
@@ -94,6 +103,27 @@ export default {
 </script>
 
 <style scoped>
+#toolbox {
+  position: fixed;
+  top: 50px;
+  height: 40px;
+  width: 100%;
+  background-color: var(--mm-title-bar);
+  text-align: right;
+}
+
+.titleinput {
+  background-color: inherit;
+  color: inherit;
+  outline: none;
+  border: none;
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  height: 40px;
+  width: calc(100% - 80px);
+}
+
 .add-col-btn {
   position: absolute;
   bottom: 5px;
@@ -142,6 +172,7 @@ export default {
   position: relative;
   height: 100%;
   margin: 0px;
+  margin-top: 40px;
   padding: 0px;
   border: none;
   table-layout: fixed;
@@ -151,5 +182,36 @@ export default {
 .boardTable tr {
   margin: 0px;
   padding: 0px;
+}
+
+
+.toolbutton {
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  border: 0px;
+  color: var(--button-f);
+  background-color: var(--mm-title-bar);
+  cursor: pointer;
+  margin-left: 5px
+}
+
+.toolbutton svg {
+  fill: var(--mm-title-bar-f);
+  width: 100%;
+}
+
+.toolbutton:hover,
+.toolbutton:active,
+.toolbutton:focus {
+  color: var(--button-hover-f);
+  background-color: var(--button-hover);
+}
+
+.toolbutton:hover svg,
+.toolbutton:active svg,
+.toolbutton:focus svg {
+
+  fill: var(--button-hover-f);
 }
 </style>
