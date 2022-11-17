@@ -211,10 +211,11 @@ export default {
         this.$root.session = {}
         this.$root.popup = {}
         this.$root.dbloaded = false
-
-        this.$root.shadowDB = { Settings: {} }
-        await this.$root.db.delete()
-        location.reload()
+        this.$root.clearDatabase()
+        /*
+              await this.$root.db.delete()
+              location.reload()
+              */
       }
     },
     resetSettings() {

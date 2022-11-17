@@ -92,7 +92,7 @@ export default {
   methods: {
     update() {
       let uuid = this.$root.session.settings.uuid
-      this.$root.UpdateRecord("Settings", uuid, this.$root.session.settings[uuid]);
+      this.$root.UpdateRecord("Settings", uuid, this.$root.session.settings);
     },
     setTool(me) {
       if (me) {

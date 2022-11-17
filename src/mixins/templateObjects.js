@@ -2,9 +2,8 @@ const templateObjects = {
     data() {
         return {
             SettingsTemplate: {
-                settings: {},
                 documentprefs: {
-                    // need to rim a space from the formatted css
+                    // need to trim a space from the formatted css
                     align: this.dotrim(getComputedStyle(document.documentElement).getPropertyValue('--pageEditor-align')),
                     fontsize: this.dotrim(getComputedStyle(document.documentElement).getPropertyValue('--pageEditor-fontsize')),
                     lspacing: this.dotrim(getComputedStyle(document.documentElement).getPropertyValue('--pageEditor-lspacing')),

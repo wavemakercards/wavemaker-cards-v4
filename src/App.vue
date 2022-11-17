@@ -11,11 +11,13 @@
 
   <ImageManager v-if="$root.imagemanager" />
   <PopupManager />
+  <Version3Import v-if="v3import" />
   <!--
   Hidden File open element
   this is used byt the fileManage.js to trigger a file open dialogue
  -->
   <input type="file" id="wavemakerHiddenPicker" name="upload" accept=".wm4" @change="file_load" style="display: none" />
+
 </template>
 
 <script>
@@ -33,6 +35,7 @@ import { v4 as uuid } from "uuid";
 import Languages from "./lang.json";
 import CardModal from "./components/universal/CardModal.vue"
 import ImageManager from "./components/universal/ImageManager.vue"
+import Version3Import from "./utilitystuff/version3Importer.vue"
 export default {
   name: 'App',
   mixins: [fileManage, dexieDB, GoogleDriveApi, templateObjects],
@@ -41,7 +44,8 @@ export default {
     WelcomeScreen,
     Start,
     CardModal,
-    ImageManager
+    ImageManager,
+    Version3Import
   },
   /*
    watch: {  // for dev
@@ -76,7 +80,8 @@ export default {
       uuid,
       session: {},
       navshow: true,
-      imagemanager: false
+      imagemanager: false,
+      v3import: false
     }
   },
   methods: {

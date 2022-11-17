@@ -68,7 +68,7 @@ export default {
         type: "file",
         name: this.$root.setlang.writer.newfile,
         children: [],
-        open: true,
+        open: false,
 
       },
     };

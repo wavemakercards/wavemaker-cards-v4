@@ -1,4 +1,4 @@
-import db from "@/db.js"
+import { db, databaseImport, databaseExport } from "@/db.js"
 import { useObservable } from "@vueuse/rxjs";
 import { liveQuery } from "dexie";
 const dexieDB = {
@@ -7,6 +7,8 @@ const dexieDB = {
       db,
       useObservable,
       liveQuery,
+      databaseImport,
+      databaseExport,
       windowID: null
     }
   },
@@ -26,6 +28,17 @@ const dexieDB = {
     },
     async DeleteRecord(myTable, myKey) {
       return await this.db[myTable].delete(myKey)
+    },
+    clearDatabase() {
+      this.$root.db.Settings.clear()
+      this.$root.db.Writer.clear()
+      this.$root.db.Cards.clear()
+      this.$root.db.Files.clear()
+      this.$root.db.Mindmap.clear()
+      this.$root.db.ImageLibrary.clear()
+      this.$root.db.Gridplanner.clear()
+      this.$root.db.Snowflake.clear()
+      this.$root.db.Timeline.clear()
     }
   },
   beforeMount() {

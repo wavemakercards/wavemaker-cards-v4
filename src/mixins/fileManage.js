@@ -18,14 +18,14 @@ const fileManage = {
           type: "text/json;charset=utf-8",
         });
         await this.$root.databaseImport(mydata)
-        this.$root.setupShadowDB()
+        console.log("import complete")
         //this.$root.databaseImport(mydata)
         //  this.$root.DBimport(JSON.parse(event.target.result));
       };
 
       fr.readAsText(event.target.files.item(0));
-      this.$root.$data.session = {}
-      this.$root.setupShadowDB();
+
+
     },
 
     async file_downloadDB() {
