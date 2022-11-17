@@ -14,7 +14,7 @@ const GoogleDriveApi = {
                 CURRENT_FILE_OBJ: null,
                 CURRENT_FILE_NAME: "",
                 CURRENT_FILE_CONTENTS: "",
-                loading:false
+                loading: false
             }
         }
     },
@@ -49,8 +49,8 @@ const GoogleDriveApi = {
          */
         async GoogleDriveAuthStart() {
             console.log("GoogleDriveAuthStart")
-            this.GoogleDriveApi.tokenClient.callback =  (resp) => {
-                console.log("GoogleDriveAuthStart" ,"callback", resp)
+            this.GoogleDriveApi.tokenClient.callback = (resp) => {
+                console.log("GoogleDriveAuthStart", "callback", resp)
                 if (resp.error !== undefined) {
                     throw (resp);
                 }
@@ -78,10 +78,10 @@ const GoogleDriveApi = {
                 this.GoogleDriveApi.loggedin = false
                 this.$root.$data.popup.name = null
             }
-           
+
         },
         async GoogleDriveListFiles() {
-            this.GoogleDriveApi.searching= true
+            this.GoogleDriveApi.searching = true
             console.log("GoogleDriveListFiles")
             let response;
             try {
@@ -100,12 +100,12 @@ const GoogleDriveApi = {
                 return;
             }
             this.GoogleDriveApi.files = files
-            this.GoogleDriveApi.searching= false
+            this.GoogleDriveApi.searching = false
             // Flatten to string to display
-    /*         const output = files.reduce(
-                (str, file) => `${str}${file.name} (${file.id}\n`,
-                'Files:\n');
-            console.log(output); */
+            /*         const output = files.reduce(
+                        (str, file) => `${str}${file.name} (${file.id}\n`,
+                        'Files:\n');
+                    console.log(output); */
         }
         ,
         GoogleDriveReadFile() {
@@ -119,10 +119,10 @@ const GoogleDriveApi = {
                 //console.log(response.body)
                 const mydata = new Blob([response.body], {
                     type: "text/json;charset=utf-8",
-                  });
-                  await this.$root.databaseImport(mydata)
-                  this.$root.setupShadowDB()
-             
+                });
+                await this.$root.databaseImport(mydata)
+                this.$root.getSettings()
+
             }, function (error) {
                 console.error(error)
             })
@@ -130,13 +130,13 @@ const GoogleDriveApi = {
             this.$root.$data.popup.name = null
             return request; //for batch request
         },
-       async GoogleDriveWriteFile(callback) {
+        async GoogleDriveWriteFile(callback) {
             this.GoogleDriveApi.loading = true;
-            this.GoogleDriveApi.CURRENT_FILE_NAME = this.$root.$data.shadowDB.Settings[Object.keys(this.$root.$data.shadowDB.Settings)[0]].settings.ProjectName
-            let blob  = await this.$root.databaseExport()
-            console.log("blob" ,blob)
-            let CURRENT_FILE_CONTENTS  = await blob.text()
-            console.log("CURRENT_FILE_CONTENTS",CURRENT_FILE_CONTENTS)
+            this.GoogleDriveApi.CURRENT_FILE_NAME = this.$root.session.settings.ProjectName
+            let blob = await this.$root.databaseExport()
+            console.log("blob", blob)
+            let CURRENT_FILE_CONTENTS = await blob.text()
+            console.log("CURRENT_FILE_CONTENTS", CURRENT_FILE_CONTENTS)
             var filePath = "";
             console.log(this.GoogleDriveApi.CURRENT_FILE_OBJ);
             if (this.GoogleDriveApi.CURRENT_FILE_OBJ) {
@@ -193,9 +193,9 @@ const GoogleDriveApi = {
             request.execute(callback);
         },
 
-         GoogleDriveSignIn() {
-             window.gapi.load('client', this.GoogleDriveInitializeGapi);
-             this.GoogleDrivegisLoaded()
+        GoogleDriveSignIn() {
+            window.gapi.load('client', this.GoogleDriveInitializeGapi);
+            this.GoogleDrivegisLoaded()
         }
     },
 }

@@ -116,7 +116,9 @@ export default {
 
             // finish up and restart with the new project loaded
             this.$root.v3import = false
-            this.$root.session.settings = this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Settings.get(obj.uuid)))
+
+            this.$root.getSettings()
+
 
         },
         loopfiles(arr, parent, writerid) {

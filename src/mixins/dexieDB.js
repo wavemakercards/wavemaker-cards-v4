@@ -39,6 +39,14 @@ const dexieDB = {
       this.$root.db.Gridplanner.clear()
       this.$root.db.Snowflake.clear()
       this.$root.db.Timeline.clear()
+    },
+    async getSettings(uuid) {
+      if (!uuid) {
+        let arr = await this.$root.db.Settings.toArray()
+        uuid = arr[0].uuid
+      }
+
+      this.$root.session.settings = this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Settings.get(uuid)))
     }
   },
   beforeMount() {

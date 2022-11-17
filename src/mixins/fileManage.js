@@ -19,6 +19,7 @@ const fileManage = {
         });
         await this.$root.databaseImport(mydata)
         console.log("import complete")
+        this.$root.getSettings()
         //this.$root.databaseImport(mydata)
         //  this.$root.DBimport(JSON.parse(event.target.result));
       };
