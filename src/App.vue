@@ -81,10 +81,25 @@ export default {
       session: {},
       navshow: true,
       imagemanager: false,
-      v3import: false
+      v3import: false,
+      fullWordCount: 0
     }
   },
   methods: {
+    async calcFullWordCount() {
+      let counter = 0
+      if (this.$root.session.writer.selected) {
+        let arr = await this.$root.db.Files.where({ writerid: this.$root.session.writer.selected.uuid }).toArray()
+        arr.forEach(file => {
+          let words = 0
+          if (file.wordcount) {
+            words = parseInt(file.wordcount)
+          }
+          counter = counter + parseInt(words)
+        })
+      }
+      this.fullWordCount = counter
+    },
     switchLang() {
       localStorage.setItem("wmLang", this.lang)
       this.updateLang()

@@ -174,7 +174,7 @@
             </button>
 
         </div>
-        <div class="wordcountdisplay" v-if="item">{{ item.wordcount }} of {{ this.$root.calcFullWordCount }} </div>
+        <div class="wordcountdisplay" v-if="item">{{ item.wordcount }} of {{ this.$root.fullWordCount }} </div>
 
     </div>
 
@@ -200,7 +200,7 @@ export default {
             item: this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Files.get(this.pageuuid))),
             editor: null,
             updateUUID: null,
-            mypos: 0,
+            mypos: 0
         };
     },
     methods: {
@@ -253,10 +253,14 @@ export default {
             if (!oldVal) {
                 // when first loaded update the content
                 this.editor.commands.setContent(this.item.content)
+                this.item.wordcount = this.$root.wordCounter(this.editor.getHTML());
+                this.$root.calcFullWordCount()
                 return false
             }
             if (newVal.updateUUID != this.updateUUID) {
                 this.editor.commands.setContent(newVal.content)
+                this.item.wordcount = this.$root.wordCounter(this.editor.getHTML());
+                this.$root.calcFullWordCount()
             }
 
         });
@@ -275,6 +279,7 @@ export default {
                 this.item.updateUUID = this.updateUUID
                 // JSON
                 this.$emit('update:modelValue', this.editor.getJSON())
+                this.$root.calcFullWordCount()
                 this.changed();
             }
         })

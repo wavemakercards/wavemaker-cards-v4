@@ -40,16 +40,25 @@
       </VueDraggableNext>
 
       <div style="clear:both;"></div>
+      <div style="text-align: center; padding-left:15px">
+        <button @click="addTime" class="add-btn">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path
+              d="M13.72 21.84C13.16 21.94 12.59 22 12 22C6.5 22 2 17.5 2 12S6.5 2 12 2 22 6.5 22 12C22 12.59 21.94 13.16 21.84 13.72C21 13.26 20.03 13 19 13C17.74 13 16.57 13.39 15.6 14.06L12.5 12.2V7H11V13L14.43 15.11C13.54 16.16 13 17.5 13 19C13 20.03 13.26 21 13.72 21.84M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
+          </svg>
+        </button>
+
+      </div>
 
     </div>
-
+    <button @click="exportToManuscript" class="export-btn">
+      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+        <path
+          d="M9 12H18.8L16.3 9.5L17.7 8.1L22.6 13L17.7 17.9L16.3 16.5L18.8 14H9V12M21 17.4V20H3V6H21V8.6L23 10.6V4C23 2.9 22.1 2 21 2H3C1.9 2 1 2.9 1 4V20C1 21.1 1.9 22 3 22H21C22.1 22 23 21.1 23 20V15.4L21 17.4Z" />
+      </svg>
+    </button>
   </div>
-  <button @click="addTime" class="add-btn">
-    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-      <path
-        d="M13.72 21.84C13.16 21.94 12.59 22 12 22C6.5 22 2 17.5 2 12S6.5 2 12 2 22 6.5 22 12C22 12.59 21.94 13.16 21.84 13.72C21 13.26 20.03 13 19 13C17.74 13 16.57 13.39 15.6 14.06L12.5 12.2V7H11V13L14.43 15.11C13.54 16.16 13 17.5 13 19C13 20.03 13.26 21 13.72 21.84M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
-    </svg>
-  </button>
+
 </template>
 
 <script>
@@ -101,6 +110,43 @@ export default {
 
       );
     },
+    exportToManuscript() {
+      //loop throught the timeline and add all the nodes to a writer object and create the files
+      if (confirm("this will export this timeline to your manuscripts")) {
+        let newWriter = {}
+        newWriter.uuid = this.$root.uuid()
+        newWriter.title = this.$root.session.timeline.selected.title
+        newWriter.descripton = this.$root.session.timeline.selected.description
+        newWriter.files = []
+
+        this.$root.session.timeline.selected.content.forEach(tl => {
+          let uuid = this.$root.uuid()
+          let newfile = {}
+          newfile.title = tl.event + "-" + tl.title
+          newfile.content = tl.content
+          newfile.notes = []
+          newfile.uuid = uuid
+
+          this.$root.AddRecord("Files", newfile)
+
+
+          let o = {}
+          o.uuid = uuid
+          o.open = false
+          o.type = "file"
+          o.children = []
+          newWriter.files.push(o)
+
+        })
+
+        this.$root.AddRecord("Writer", newWriter)
+
+        alert("Export Complete")
+
+      }
+
+
+    }
   },
   mounted() {
     if (!this.$root.session.timeline.selected.content.length) {
@@ -153,7 +199,7 @@ export default {
 
 
 .add-btn {
-  position: absolute;
+  position: relative;
   bottom: 5px;
   right: 5px;
   border: 0px;
@@ -164,7 +210,8 @@ export default {
   width: 50px;
   height: 50px;
   padding: 7px 0 5px 0px;
-  cursor: pointer
+  cursor: pointer;
+  margin: 0 auto;
 }
 
 .add-btn svg {
@@ -183,6 +230,43 @@ export default {
 .add-btn:focus svg {
   fill: var(--button-hover-f)
 }
+
+
+
+
+.export-btn {
+  position: fixed;
+  top: 60px;
+  right: 5px;
+  border: 0px;
+  padding: 10px;
+  background-color: var(--button);
+  color: var(--button-f);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 7px 0 5px 0px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.export-btn svg {
+  fill: var(--button-f)
+}
+
+.export-btn:hover,
+.export-btn:active,
+.export-btn:focus {
+  background-color: var(--button-hover);
+  color: var(--button-hover-f);
+}
+
+.export-btn:hover svg,
+.export-btn:active svg,
+.export-btn:focus svg {
+  fill: var(--button-hover-f)
+}
+
 
 
 .scroller {

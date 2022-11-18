@@ -104,7 +104,7 @@ export default {
             writerobj.title = this.proj.title;
             writerobj.description = '';
             writerobj.files = JSON.parse(JSON.stringify(this.filearray));
-            writerobj.uuid = this.$root.uuid(); // genertate your own UUID so thta you can update the   db
+            writerobj.uuid = writerid;
             this.$root.AddRecord("Writer", writerobj);
 
             this.processCards()
@@ -135,9 +135,15 @@ export default {
                 o.uuid = file.uuid;
                 o.writerid = writerid;
                 /// needs to be converted to html here
-                let converter = new showdown.Converter();
-                let html = converter.makeHtml(f.data.content);
-                o.content = html;
+                if (f.data.content) {
+                    let converter = new showdown.Converter();
+                    let html = converter.makeHtml(f.data.content);
+                    o.content = html;
+                    o.wordcount = this.$root.wordCounter(html)
+                } else {
+                    o.content = "";
+                    o.wordcount = 0
+                }
                 o.title = f.title;
                 o.notes = [];
 
@@ -190,16 +196,18 @@ export default {
                 //fix for duff colourn on default
                 // HANDLE images
                 let imagearray = []
-                card.images.forEach(image => {
-                    let newImageId = this.$root.uuid()
-                    let newImage = {}
-                    let b64string = image.slice(22)
-                    newImage.uuid = newImageId
-                    newImage.title = "imported"
-                    newImage.base64 = b64string
-                    this.$root.AddRecord("ImageLibrary", newImage);
-                    imagearray.push(newImageId)
-                })
+                if (card.images) {
+                    card.images.forEach(image => {
+                        let newImageId = this.$root.uuid()
+                        let newImage = {}
+                        let b64string = image.slice(22)
+                        newImage.uuid = newImageId
+                        newImage.title = "imported"
+                        newImage.base64 = b64string
+                        this.$root.AddRecord("ImageLibrary", newImage);
+                        imagearray.push(newImageId)
+                    })
+                }
 
                 if (card.backgroundColor === 0) {
                     card.backgroundColor = 1

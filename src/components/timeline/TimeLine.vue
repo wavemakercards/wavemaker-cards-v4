@@ -103,7 +103,7 @@ export default {
       this.title = "";
       this.description = "";
       this.showaddform = false;
-    },
+    }
 
   },
   created() {

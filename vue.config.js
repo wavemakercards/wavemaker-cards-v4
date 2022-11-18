@@ -7,6 +7,15 @@ module.exports = defineConfig({
   "publicPath": "./", // allow it to run from a folder
   // transpileDependencies: true,  // double checks dependencies - slows build
   productionSourceMap: false, // disable large source map files
+  pluginOptions: {
+    electronBuilder: {
+      builderOptions: {
+        win: {
+          icon: './icon.ico'
+        }
+      }
+    }
+  },
   pwa: {
     name: 'My App',
     themeColor: '#424242',
