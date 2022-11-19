@@ -167,24 +167,62 @@ export default {
       this.updateDatabase();
     },
     deleteCol(i) {
-      if (confirm(this.$root.setlang.gridplanner.deletecolwarn)) {
-        console.log(i)
-        let delId = this.$root.session.gridplanner.selected.content.headers[i].uuid
-        console.log(delId)
-        // remove from all the rows
-        this.$root.session.gridplanner.selected.content.rows.forEach(row => {
-          delete row.cells[delId]
-        })
-        this.$root.session.gridplanner.selected.content.headers.splice(i, 1)
-        this.updateDatabase();
-      }
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            let delId = this.$root.session.gridplanner.selected.content.headers[i].uuid
+            // remove from all the rows
+            this.$root.session.gridplanner.selected.content.rows.forEach(row => {
+              delete row.cells[delId]
+            })
+            this.$root.session.gridplanner.selected.content.headers.splice(i, 1)
+            this.updateDatabase();
+
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        }
+        );
 
     },
     deleteRow(i) {
-      if (confirm(this.$root.setlang.gridplanner.deleterowwarn)) {
-        this.$root.session.gridplanner.selected.content.rows.splice(i, 1)
-        this.updateDatabase();
-      }
+
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            this.$root.session.gridplanner.selected.content.rows.splice(i, 1)
+            this.updateDatabase();
+
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        }
+        );
+
     }
   }
 }

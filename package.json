@@ -1,16 +1,22 @@
 {
   "name": "wavemakercards-v4",
   "version": "0.1.3",
-  "description": "Wavemaker cards is software to help you plan and write your novel",
   "private": true,
+  "description": "Wavemaker cards is software to help you plan and write your novel",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps"
   },
+  "main": "background.js",
   "dependencies": {
     "@tiptap/extension-bubble-menu": "^2.0.0-beta.202",
     "@tiptap/extension-dropcursor": "^2.0.0-beta.25",
+    "@tiptap/extension-highlight": "^2.0.0-beta.202",
     "@tiptap/extension-image": "^2.0.0-beta.27",
     "@tiptap/extension-task-item": "^2.0.0-beta.32",
     "@tiptap/extension-task-list": "^2.0.0-beta.26",
@@ -31,7 +37,8 @@
     "uuid": "^9.0.0",
     "vue": "^3.2.41",
     "vue-draggable-next": "^2.1.1",
-    "vue-draggable-resizable": "^2.3.0"
+    "vue-draggable-resizable": "^2.3.0",
+    "vue-sweetalert2": "^5.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -40,7 +47,10 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-pwa": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "electron": "^13.0.0",
+    "electron-devtools-installer": "^3.1.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
+    "eslint-plugin-vue": "^8.0.3",
+    "vue-cli-plugin-electron-builder": "~2.1.1"
   }
 }

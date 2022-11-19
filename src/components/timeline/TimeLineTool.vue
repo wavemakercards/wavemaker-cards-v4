@@ -17,7 +17,7 @@
         @change="updateDatabase">
         <template v-for="(element, index) in this.$root.session.timeline.selected.content" :key="index">
           <li>
-            <div class="time ">
+            <div class="time">
               <div class="handle">
                 <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                   <path
@@ -26,6 +26,13 @@
               </div>
               <input class="timeText" tabindex="1" :placeholder="this.$root.setlang.timeline.date"
                 v-model="element.event" @change="updateDatabase">
+
+              <button @click="deleteTime(index)" class="deleteIconButton">
+                <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                  <path
+                    d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
+                </svg>
+              </button>
             </div>
             <div class="content">
               <input class="title" :placeholder="this.$root.setlang.timeline.title" tabindex="1" v-model="element.title"
@@ -40,16 +47,25 @@
       </VueDraggableNext>
 
       <div style="clear:both;"></div>
+      <div style="text-align: center; padding-left:15px">
+        <button @click="addTime" class="add-btn">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path
+              d="M13.72 21.84C13.16 21.94 12.59 22 12 22C6.5 22 2 17.5 2 12S6.5 2 12 2 22 6.5 22 12C22 12.59 21.94 13.16 21.84 13.72C21 13.26 20.03 13 19 13C17.74 13 16.57 13.39 15.6 14.06L12.5 12.2V7H11V13L14.43 15.11C13.54 16.16 13 17.5 13 19C13 20.03 13.26 21 13.72 21.84M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
+          </svg>
+        </button>
+
+      </div>
 
     </div>
-
+    <button @click="exportToManuscript" class="export-btn">
+      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+        <path
+          d="M9 12H18.8L16.3 9.5L17.7 8.1L22.6 13L17.7 17.9L16.3 16.5L18.8 14H9V12M21 17.4V20H3V6H21V8.6L23 10.6V4C23 2.9 22.1 2 21 2H3C1.9 2 1 2.9 1 4V20C1 21.1 1.9 22 3 22H21C22.1 22 23 21.1 23 20V15.4L21 17.4Z" />
+      </svg>
+    </button>
   </div>
-  <button @click="addTime" class="add-btn">
-    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-      <path
-        d="M13.72 21.84C13.16 21.94 12.59 22 12 22C6.5 22 2 17.5 2 12S6.5 2 12 2 22 6.5 22 12C22 12.59 21.94 13.16 21.84 13.72C21 13.26 20.03 13 19 13C17.74 13 16.57 13.39 15.6 14.06L12.5 12.2V7H11V13L14.43 15.11C13.54 16.16 13 17.5 13 19C13 20.03 13.26 21 13.72 21.84M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
-    </svg>
-  </button>
+
 </template>
 
 <script>
@@ -87,10 +103,30 @@ export default {
       this.updateDatabase();
     },
     deleteTime(index) {
-      if (confirm("delete this event?")) {
-        this.$root.session.timeline.selected.content.splice(index, 1)
-        this.updateDatabase();
-      }
+
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            this.$root.session.timeline.selected.content.splice(index, 1)
+            this.updateDatabase();
+
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        }
+        )
     },
     updateDatabase() {
       console.log("list changed");
@@ -101,6 +137,63 @@ export default {
 
       );
     },
+    exportToManuscript() {
+      //loop throught the timeline and add all the nodes to a writer object and create the files
+
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "Export your timeline!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, export it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            let newWriter = {}
+            newWriter.uuid = this.$root.uuid()
+            newWriter.title = this.$root.session.timeline.selected.title
+            newWriter.descripton = this.$root.session.timeline.selected.description
+            newWriter.files = []
+
+            this.$root.session.timeline.selected.content.forEach(tl => {
+              let uuid = this.$root.uuid()
+              let newfile = {}
+              newfile.title = tl.event + "-" + tl.title
+              newfile.content = tl.content
+              newfile.notes = []
+              newfile.uuid = uuid
+
+              this.$root.AddRecord("Files", newfile)
+
+
+              let o = {}
+              o.uuid = uuid
+              o.open = false
+              o.type = "file"
+              o.children = []
+              newWriter.files.push(o)
+
+            })
+
+            this.$root.AddRecord("Writer", newWriter)
+
+            this.$swal(
+              'Exported!',
+              'Your file has been Exported.',
+              'success'
+            )
+          }
+        }
+        )
+
+
+
+
+
+    }
   },
   mounted() {
     if (!this.$root.session.timeline.selected.content.length) {
@@ -116,6 +209,15 @@ export default {
 </script>
 
 <style scoped>
+.time:hover .deleteIconButton,
+.time:focus .deleteIconButton,
+.time:active .deleteIconButton {
+  display: block;
+  top: 10px;
+}
+
+
+
 .topinput {
   width: 100%;
   font-size: 4rem;
@@ -153,7 +255,7 @@ export default {
 
 
 .add-btn {
-  position: absolute;
+  position: relative;
   bottom: 5px;
   right: 5px;
   border: 0px;
@@ -164,7 +266,8 @@ export default {
   width: 50px;
   height: 50px;
   padding: 7px 0 5px 0px;
-  cursor: pointer
+  cursor: pointer;
+  margin: 0 auto;
 }
 
 .add-btn svg {
@@ -183,6 +286,43 @@ export default {
 .add-btn:focus svg {
   fill: var(--button-hover-f)
 }
+
+
+
+
+.export-btn {
+  position: fixed;
+  top: 60px;
+  right: 5px;
+  border: 0px;
+  padding: 10px;
+  background-color: var(--button);
+  color: var(--button-f);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 7px 0 5px 0px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.export-btn svg {
+  fill: var(--button-f)
+}
+
+.export-btn:hover,
+.export-btn:active,
+.export-btn:focus {
+  background-color: var(--button-hover);
+  color: var(--button-hover-f);
+}
+
+.export-btn:hover svg,
+.export-btn:active svg,
+.export-btn:focus svg {
+  fill: var(--button-hover-f)
+}
+
 
 
 .scroller {
@@ -237,6 +377,16 @@ h1 div {
   float: left;
   text-align: right;
   clear: both;
+}
+
+.timeline ul li:nth-child(odd) .deleteIconButton {
+  right: -10px !important;
+  top: 8px !important;
+}
+
+.timeline ul li:nth-child(even) .deleteIconButton {
+  left: -10px !important;
+  top: 8px !important;
 }
 
 .timeline ul li:nth-child(even) {
@@ -397,6 +547,16 @@ h1 div {
     left: 50px;
     right: inherit;
   }
+
+
+  .timeline ul li:nth-child(odd) .deleteIconButton,
+  .timeline ul li:nth-child(even) .deleteIconButton {
+    left: auto !important;
+    right: -10px !important;
+    top: 8px !important;
+  }
+
+
 
   .timeline ul li .time .handle {
     left: 10px !important;

@@ -118,10 +118,27 @@ export default {
 
   methods: {
     deleteCard(uuid) {
-      if (confirm("Are you sure you want to delete this card - it will remove it from the project completely")) {
-        this.$root.DeleteRecord("Cards", uuid)
-        delete this.$root.shadowDB.Cards[uuid]
-      }
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.$root.DeleteRecord("Cards", uuid)
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        }
+        );
+
     },
 
   },

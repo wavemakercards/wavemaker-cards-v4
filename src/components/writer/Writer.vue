@@ -26,14 +26,16 @@
         <input type="text" class="formInput mandesc" v-model="this.$root.session.writer.selected.description"
           @change="updateDatabase" :placeholder="this.$root.setlang.tools.description" />
         <div>
-          {{ fullWordCount }} {{ this.$root.setlang.writer.words }} <button class="clearInterfaceIconButton"
-            @click="calcFullWordCount()">
+          {{ this.$root.fullWordCount }} {{ this.$root.setlang.writer.words }}
+          <!--
+ <button class="clearInterfaceIconButton" @click="calcFullWordCount()">
             <svg style="width:18px;height:18px" viewBox="0 0 24 24">
               <path
                 d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2M18 11H13L14.81 9.19A3.94 3.94 0 0 0 12 8A4 4 0 1 0 15.86 13H17.91A6 6 0 1 1 12 6A5.91 5.91 0 0 1 16.22 7.78L18 6Z" />
             </svg>
-
           </button>
+          -->
+
         </div>
         <p>
           {{ this.$root.setlang.writer.intro }}
@@ -45,7 +47,6 @@
               d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M15.2,20H13.8L12,13.2L10.2,20H8.8L6.6,11H8.1L9.5,17.8L11.3,11H12.6L14.4,17.8L15.8,11H17.3L15.2,20M13,9V3.5L18.5,9H13Z" />
           </svg>
           {{ this.$root.setlang.writer.docdownload }}</button>
-
 
 
       </div>
@@ -78,34 +79,34 @@ export default {
   },
   data() {
     return {
-
-      fullWordCount: 0
+      exportHTML: null,
+      exportObject: {}
     }
   },
   methods: {
-    async calcFullWordCount() {
-      let count = 0
-      /*
-      let files = await db.Files.where({ writerid: this.$root.session.writer.selected.uuid }).toArray()
-      files.forEach(element => {
-        count = count + element.wordcount
-      });
-      */
-      this.fullWordCount = count
+    async exportDoc() {
+      this.exportObject = {}
+      let arr = await this.$root.db.Files.where({ writerid: this.$root.session.writer.selected.uuid }).toArray()
+      arr.forEach(file => {
+        this.exportObject[file.uuid] = file
+      })
+      this.exportHTML = ''
+      this.getfileexport(this.$root.session.writer.selected.files)
+      window.Export2Word(this.exportHTML)
+      //clear up
+      this.exportHTML = ''
+      this.exportObject = {}
     },
-    exportDoc() {
-      if (confirm(this.$root.setlang.writer.docdownload)) {
-        // TODO : write the loop to get all from the db as needed
-        alert("I need to re- do this logic for the new tool")
-        /*
-        let html = "";
-          this.$root.shadowDB.Writer[this.$root.session.writer.selected].files.forEach(page => {
-            html = html + page.content
-          });
-  
-          window.Export2Word(html)
-        */
-      }
+    getfileexport(arr) {
+      arr.forEach(file => {
+        let currentfile = this.exportObject[file.uuid]
+        this.exportHTML = this.exportHTML + "<h1>" + currentfile.title + "</h1>" + currentfile.content
+        if (file.children) {
+          if (file.children.length) {
+            this.getfileexport(file.children)
+          }
+        }
+      })
     },
     updateDatabase() {
       this.$root.UpdateRecord(
@@ -115,8 +116,8 @@ export default {
       );
     }
   },
-  updated() {
-    this.calcFullWordCount()
+  mounted() {
+    this.$root.calcFullWordCount()
   }
 }
 </script>
