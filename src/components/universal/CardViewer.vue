@@ -6,7 +6,7 @@
 
 
       <div v-if="cardInfo.showimage">
-        <MiniImage :uuid="cardInfo.showimage" />
+        <MiniImage :uuid="cardInfo.showimage" :key="cardInfo.showimage" />
       </div>
 
 

@@ -17,7 +17,7 @@
         @change="updateDatabase">
         <template v-for="(element, index) in this.$root.session.timeline.selected.content" :key="index">
           <li>
-            <div class="time ">
+            <div class="time">
               <div class="handle">
                 <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                   <path
@@ -26,6 +26,13 @@
               </div>
               <input class="timeText" tabindex="1" :placeholder="this.$root.setlang.timeline.date"
                 v-model="element.event" @change="updateDatabase">
+
+              <button @click="deleteTime(index)" class="deleteIconButton">
+                <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                  <path
+                    d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
+                </svg>
+              </button>
             </div>
             <div class="content">
               <input class="title" :placeholder="this.$root.setlang.timeline.title" tabindex="1" v-model="element.title"
@@ -133,8 +140,6 @@ export default {
     exportToManuscript() {
       //loop throught the timeline and add all the nodes to a writer object and create the files
 
-
-
       this.$swal(
         {
           title: 'Are you sure?',
@@ -204,6 +209,15 @@ export default {
 </script>
 
 <style scoped>
+.time:hover .deleteIconButton,
+.time:focus .deleteIconButton,
+.time:active .deleteIconButton {
+  display: block;
+  top: 10px;
+}
+
+
+
 .topinput {
   width: 100%;
   font-size: 4rem;
@@ -365,6 +379,16 @@ h1 div {
   clear: both;
 }
 
+.timeline ul li:nth-child(odd) .deleteIconButton {
+  right: -10px !important;
+  top: 8px !important;
+}
+
+.timeline ul li:nth-child(even) .deleteIconButton {
+  left: -10px !important;
+  top: 8px !important;
+}
+
 .timeline ul li:nth-child(even) {
   float: right;
   text-align: left;
@@ -523,6 +547,16 @@ h1 div {
     left: 50px;
     right: inherit;
   }
+
+
+  .timeline ul li:nth-child(odd) .deleteIconButton,
+  .timeline ul li:nth-child(even) .deleteIconButton {
+    left: auto !important;
+    right: -10px !important;
+    top: 8px !important;
+  }
+
+
 
   .timeline ul li .time .handle {
     left: 10px !important;

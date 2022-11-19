@@ -112,10 +112,6 @@ export default {
 
 
 
-
-
-
-
     },
     recursiveDelete(list) {
       list.forEach(element => {

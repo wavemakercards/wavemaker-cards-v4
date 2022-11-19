@@ -131,7 +131,7 @@ export default {
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: 'Yes, replace it!'
         }).then((result) => {
           if (result.isConfirmed) {
 
@@ -152,8 +152,8 @@ export default {
 
 
             this.$swal(
-              'Deleted!',
-              'Your file has been deleted.',
+              'Replaced!',
+              'Your card has been replaced with the three new ones.',
               'success'
             )
           }

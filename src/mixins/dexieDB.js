@@ -47,7 +47,42 @@ const dexieDB = {
       }
 
       this.$root.session.settings = this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Settings.get(uuid)))
-    }
+    },
+    async closeProject() {
+
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "This will close the project and clear the database!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, close it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            window.removeEventListener("beforeunload", this.$root.unloadEvent)
+            this.$root.session = {}
+            this.$root.popup = {}
+            this.$root.dbloaded = false
+            this.$root.clearDatabase()
+            /*
+                  await this.$root.db.delete()
+                  location.reload()
+                  */
+
+            this.$swal(
+              'Project Closed!',
+              'Your file has been closed.',
+              'success'
+            )
+          }
+        }
+        );
+
+    },
+
   },
   beforeMount() {
     this.windowID = this.uuid(); // each window generates a unique ID so it knows who is doing the emitting of changes

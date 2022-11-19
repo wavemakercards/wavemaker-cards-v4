@@ -130,8 +130,6 @@ export default {
         }).then((result) => {
           if (result.isConfirmed) {
             this.$root.DeleteRecord("Cards", uuid)
-            delete this.$root.shadowDB.Cards[uuid]
-
             this.$swal(
               'Deleted!',
               'Your file has been deleted.',
