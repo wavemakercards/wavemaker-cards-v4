@@ -276,7 +276,7 @@ export default {
   left: 10px;
   top: 0px;
   height: 40px;
-  width: calc(100% - 80px);
+  width: calc(100% - 100px);
 }
 
 .rowInput,
