@@ -77,12 +77,31 @@ export default {
       this.$root.session.writer.selected = this.$root.useObservable(this.$root.liveQuery(() => this.$root.db.Writer.get(item.uuid)))
     },
     deleteItem(item) {
-      if (confirm("Are toy sure you want to delete this?")) {
-        this.recursiveDelete(item.files)
-        this.$root.DeleteRecord("Writer", item.uuid)
-      }
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.recursiveDelete(item.files)
+            this.$root.DeleteRecord("Writer", item.uuid)
+
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        }
+        );
     },
     recursiveDelete(list) {
+      /// TODO : uhhh as we have the writer ID this could be done with that?? Why did I do this?
       list.forEach(element => {
         if (element.children.length) {
           this.recursiveDelete(element.children)

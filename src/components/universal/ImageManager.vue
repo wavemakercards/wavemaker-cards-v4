@@ -159,33 +159,53 @@ export default {
 
         },
         async deleteImage(uuid) {
-            if (confirm("Delete this Image?")) {
-                await this.$root.db.ImageLibrary.delete(uuid)
-            }
+
+            this.$swal(
+                {
+                    title: 'Are you sure?',
+                    text: "You won't be able to undo this!",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then(async (result) => {
+                    if (result.isConfirmed) {
+
+                        await this.$root.db.ImageLibrary.delete(uuid)
+
+                        this.$swal(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                }
+                );
+
         },
         pickImage(uuid) {
 
             if (this.$root.imagemanager.targetuuid) {
-                if (confirm("Do you want to choose this image?")) {
 
-                    // for the cards I'm simply pushing to an array
-                    if (this.$root.imagemanager.table === "Cards") {
-                        this.$root.imagemanager.target.push(uuid)
-                    }
-                    // for the gridplanner I simply set an ID
-                    if (this.$root.imagemanager.table === "Gridplanner") {
-
-                        this.$root.imagemanager.target.text = uuid
-                    }
-
-                    // do the DB update
-                    this.$root.UpdateRecord(
-                        this.$root.imagemanager.table,
-                        this.$root.imagemanager.targetuuid,
-                        this.$root.imagemanager.updateObj
-                    );
-                    this.closeImageManager()
+                // for the cards I'm simply pushing to an array
+                if (this.$root.imagemanager.table === "Cards") {
+                    this.$root.imagemanager.target.push(uuid)
                 }
+                // for the gridplanner I simply set an ID
+                if (this.$root.imagemanager.table === "Gridplanner") {
+
+                    this.$root.imagemanager.target.text = uuid
+                }
+
+                // do the DB update
+                this.$root.UpdateRecord(
+                    this.$root.imagemanager.table,
+                    this.$root.imagemanager.targetuuid,
+                    this.$root.imagemanager.updateObj
+                );
+                this.closeImageManager()
+
             }
         }
     },

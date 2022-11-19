@@ -94,30 +94,74 @@ export default {
       this.updateDatabase()
     },
     deleteFlake(index) {
-      if (confirm(this.$root.setlang.snowflake.deletewarn)) {
-        this.$root.session.snowflake.selected.content.splice(index, 1)
-        this.startFlake()
-        this.updateDatabase()
-      }
+
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            this.$root.session.snowflake.selected.content.splice(index, 1)
+            this.startFlake()
+            this.updateDatabase()
+
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        }
+        )
     },
     replace(flake, index) {
-      if (confirm(this.$root.setlang.snowflake.replacewarn)) {
-        let f0 = { ...flake.children[0] }
-        let f1 = { ...flake.children[1] }
-        let f2 = { ...flake.children[2] }
 
 
-        // insert in reverse
-        this.$root.session.snowflake.selected.content.splice(index + 1, 0, f2)
-        this.$root.session.snowflake.selected.content.splice(index + 1, 0, f1)
-        this.$root.session.snowflake.selected.content.splice(index + 1, 0, f0)
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
 
-        // delete the old one 
-        this.$root.session.snowflake.selected.content.splice(index, 1)
+            let f0 = { ...flake.children[0] }
+            let f1 = { ...flake.children[1] }
+            let f2 = { ...flake.children[2] }
 
-        this.updateDatabase()
 
-      }
+            // insert in reverse
+            this.$root.session.snowflake.selected.content.splice(index + 1, 0, f2)
+            this.$root.session.snowflake.selected.content.splice(index + 1, 0, f1)
+            this.$root.session.snowflake.selected.content.splice(index + 1, 0, f0)
+
+            // delete the old one 
+            this.$root.session.snowflake.selected.content.splice(index, 1)
+
+            this.updateDatabase()
+
+
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        }
+        )
+
+
+
     },
     updateDatabase() {
       console.log("list changed");

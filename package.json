@@ -16,6 +16,7 @@
   "dependencies": {
     "@tiptap/extension-bubble-menu": "^2.0.0-beta.202",
     "@tiptap/extension-dropcursor": "^2.0.0-beta.25",
+    "@tiptap/extension-highlight": "^2.0.0-beta.202",
     "@tiptap/extension-image": "^2.0.0-beta.27",
     "@tiptap/extension-task-item": "^2.0.0-beta.32",
     "@tiptap/extension-task-list": "^2.0.0-beta.26",
@@ -36,7 +37,8 @@
     "uuid": "^9.0.0",
     "vue": "^3.2.41",
     "vue-draggable-next": "^2.1.1",
-    "vue-draggable-resizable": "^2.3.0"
+    "vue-draggable-resizable": "^2.3.0",
+    "vue-sweetalert2": "^5.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

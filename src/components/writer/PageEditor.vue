@@ -167,11 +167,62 @@
             </button>
 
             <button @click="this.$root.session.selectedTool = 'distractionfree'">
-                <svg width="24" height="24" viewBox="0 0 24 24">
+
+                <!--
+ <svg width="24" height="24" viewBox="0 0 24 24">
                     <path
                         d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" />
                 </svg>
+
+             -->
+
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path
+                        d="M20 13H16C16 14.1 15.1 15 14 15H10C8.9 15 8 14.1 8 13H4L2 18V20C2 21.1 2.9 22 4 22H20C21.1 22 22 21.1 22 20V18M6 20C5.11 20 4.66 18.92 5.29 18.29C5.92 17.66 7 18.11 7 19C7 19.55 6.55 20 6 20M10 20C9.11 20 8.66 18.92 9.29 18.29C9.92 17.66 11 18.11 11 19C11 19.55 10.55 20 10 20M14 20C13.11 20 12.66 18.92 13.29 18.29C13.92 17.66 15 18.11 15 19C15 19.55 14.55 20 14 20M18 20C17.11 20 16.66 18.92 17.29 18.29C17.92 17.66 19 18.11 19 19C19 19.55 18.55 20 18 20M18 10V3H6V10H3V12H21V10M8 5H16V6H8M8 7H14V8H8" />
+                </svg>
+
             </button>
+
+
+
+            <button @click="hilighter = !hilighter">
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path
+                        d="M7 16C7.55 16 8 16.45 8 17C8 18.1 7.1 19 6 19C5.83 19 5.67 19 5.5 18.95C5.81 18.4 6 17.74 6 17C6 16.45 6.45 16 7 16M18.67 3C18.41 3 18.16 3.1 17.96 3.29L9 12.25L11.75 15L20.71 6.04C21.1 5.65 21.1 5 20.71 4.63L19.37 3.29C19.17 3.09 18.92 3 18.67 3M7 14C5.34 14 4 15.34 4 17C4 18.31 2.84 19 2 19C2.92 20.22 4.5 21 6 21C8.21 21 10 19.21 10 17C10 15.34 8.66 14 7 14Z" />
+                </svg>
+            </button>
+
+            <div class="hilighter" v-if="hilighter">
+                <button style="background-color: yellow;"
+                    @click="editor.chain().focus().toggleHighlight({ color: 'yellow' }).run()"></button>
+
+                <button style="background-color: #ffc078;"
+                    @click="editor.chain().focus().toggleHighlight({ color: '#ffc078' }).run()"></button>
+                <button style="background-color: #8ce99a;"
+                    @click="editor.chain().focus().toggleHighlight({ color: '#8ce99a' }).run()"></button>
+                <button style="background-color: #74c0fc;"
+                    @click="editor.chain().focus().toggleHighlight({ color: '#74c0fc' }).run()"></button>
+                <button style="background-color: #b197fc;"
+                    @click="editor.chain().focus().toggleHighlight({ color: '#b197fc' }).run()"></button>
+                <button style="background-color: #ffa8a8;"
+                    @click="editor.chain().focus().toggleHighlight({ color: '#ffa8a8' }).run()"></button>
+                <button style="background-color: #ff0000;"
+                    @click="editor.chain().focus().toggleHighlight({ color: '#ff0000' }).run()"></button>
+
+            </div>
+
+            <!--
+ <button @click="doComment()">
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path
+                        d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10Z" />
+                </svg>
+            </button>
+
+-->
+
+
+
 
         </div>
         <div class="wordcountdisplay" v-if="item">{{ item.wordcount }} of {{ this.$root.fullWordCount }} </div>
@@ -186,7 +237,7 @@ import { Editor, EditorContent } from "@tiptap/vue-3";
 import StarterKit from "@tiptap/starter-kit";
 import Typography from "@tiptap/extension-typography";
 import Image from "@tiptap/extension-image";
-
+import Highlight from '@tiptap/extension-highlight'
 export default {
     name: "NewPage",
     props: {
@@ -200,10 +251,12 @@ export default {
             item: this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Files.get(this.pageuuid))),
             editor: null,
             updateUUID: null,
-            mypos: 0
+            mypos: 0,
+            hilighter: false
         };
     },
     methods: {
+
         repositionEditor() {
             this.mypos = this.getCaretPosition()
             //console.log(parseInt(this.mypos), this.$refs.scrolltarget.scrollTop, this.$refs.scrolltarget.scrollHeight, window.innerHeight)
@@ -266,7 +319,7 @@ export default {
         });
 
         this.editor = new Editor({
-            extensions: [StarterKit, Typography, Image],
+            extensions: [StarterKit, Typography, Image, Highlight.configure({ multicolor: true })],
             content: '',
             onTransaction: () => {
                 this.repositionEditor()
@@ -296,6 +349,33 @@ export default {
 .rhspin {
     right: 300px;
 
+}
+
+.hilighter {
+    position: absolute;
+    padding: 5px;
+    right: 0px;
+
+    width: 30px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+
+.hilighter button {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    margin: 2px;
+}
+
+.hilighter button:hover,
+.hilighter button:focus,
+.hilighter button:active {
+    border: 2px solid #424242;
 }
 
 .titleBar {
@@ -344,6 +424,7 @@ button {
     width: 40px;
     cursor: pointer;
     text-align: center;
+    padding-bottom: 7px;
 }
 
 button svg {
@@ -385,6 +466,27 @@ button:active svg {
     padding: 5px;
     border-radius: 5px 5px 0px 0px;
     text-align: center;
+}
+
+mark {
+    background-color: #ffe066;
+    padding: 0.125em 0;
+    border-radius: 0.25em;
+    box-decoration-break: clone;
+}
+
+
+
+.body-blue {
+    color: blue;
+}
+
+.body-red {
+    color: red;
+}
+
+.body-green {
+    color: green;
 }
 </style>
   

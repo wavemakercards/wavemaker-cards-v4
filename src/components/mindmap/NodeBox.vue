@@ -140,19 +140,49 @@ export default {
       this.savechange();
     },
     deleteNode(u) {
-      if (confirm(this.$root.setlang.mindmap.deletenodewarn)) {
-        // remove any links with this UUID in
 
-        this.$root.session.mindmap.selected.content.links = this.$root.session.mindmap.selected.content.links.filter((v) => {
-          if (v.from !== u && v.to !== u) {
-            return true;
+
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+
+            this.$root.session.mindmap.selected.content.links = this.$root.session.mindmap.selected.content.links.filter((v) => {
+              if (v.from !== u && v.to !== u) {
+                return true;
+              }
+            });
+            // delete the node
+            delete this.$root.session.mindmap.selected
+              .content.nodes[u];
+            this.savechange();
+
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
           }
-        });
-        // delete the node
-        delete this.$root.session.mindmap.selected
-          .content.nodes[u];
-        this.savechange();
-      }
+        }
+        );
+
+
+
+
+
+
+
+
+
+
     },
     savechange() {
       console.log("list changed");

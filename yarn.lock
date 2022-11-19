@@ -1419,6 +1419,11 @@
   resolved "https://registry.yarnpkg.com/@tiptap/extension-heading/-/extension-heading-2.0.0-beta.199.tgz#b766de44fd09843364280a03d1e180db346f1ccd"
   integrity sha512-WGQ7ET2TBpldrD8JX37OXHXq05LU3OWItIVBs9nKGh4otZTUwPtwfOyMlFfA+IMfQif+ilwLGvUC6EHOw/LwxQ==
 
+"@tiptap/extension-highlight@^2.0.0-beta.202":
+  version "2.0.0-beta.202"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-highlight/-/extension-highlight-2.0.0-beta.202.tgz#cba317c934d0a37b61e6d36c9879df8f76c154bf"
+  integrity sha512-lRsXseZxOz/gATpqMZKIJk61+KeV35cr7UPoRrX4eoImSS0EJEYjjlfnBKeFxju9b1qUv3ui4oq4nvrZ/MDwnw==
+
 "@tiptap/extension-history@^2.0.0-beta.199":
   version "2.0.0-beta.199"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-history/-/extension-history-2.0.0-beta.199.tgz#ff83184b6f7e0ed9a5c6362cfbc15319a451b960"
@@ -9607,6 +9612,11 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
+sweetalert2@11.x:
+  version "11.6.9"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.6.9.tgz#23fdd581d0b695c61fedbe5b9be1994c73d7b722"
+  integrity sha512-zx0vdToB2Ququk+0qbXruca5KJuScyno77cqPfuwSiRwlMS5CwwnZDWiLqcRlIAZzDEbZHz9g/T7BDqAGqsQlA==
+
 table@^6.0.9:
   version "6.8.0"
   resolved "https://registry.npmmirror.com/table/-/table-6.8.0.tgz#87e28f14fa4321c3377ba286f07b79b281a3b3ca"
@@ -10308,6 +10318,13 @@ vue-style-loader@^4.1.0, vue-style-loader@^4.1.3:
   dependencies:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
+
+vue-sweetalert2@^5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/vue-sweetalert2/-/vue-sweetalert2-5.0.5.tgz#298663884149c7675d514490d1389f0614d875c0"
+  integrity sha512-Q7+TjQxNwGruT2jfPaSKMz18HHWs81r4umEwlrrtOf/QL5Iwl1T+tUaNkcvKB7Rf9rYftubt7NnOMjfDMnDH3A==
+  dependencies:
+    sweetalert2 "11.x"
 
 vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"

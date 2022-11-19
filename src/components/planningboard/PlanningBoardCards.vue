@@ -101,10 +101,30 @@ export default {
             this.updateDatabase()
         },
         deleteNote(index) {
-            if (confirm("delete this note?")) {
-                this.MyFile.notes.splice(index, 1);
-                this.updateDatabase();
-            }
+
+            this.$swal(
+                {
+                    title: 'Are you sure?',
+                    text: "You won't be able to undo this!",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        this.MyFile.notes.splice(index, 1);
+                        this.updateDatabase();
+
+                        this.$swal(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                }
+                );
         },
         addCard() {
             let obj = {};

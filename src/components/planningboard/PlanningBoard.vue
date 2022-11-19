@@ -47,13 +47,34 @@ export default {
   },
   methods: {
     deleteFile(index, element) {
-      if (confirm(this.$root.setlang.writer.deletewarn)) {
-        if (this.$root.$data.session.writer.file === element) {
-          this.$root.$data.session.writer.file = null
+
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            if (this.$root.$data.session.writer.file === element) {
+              this.$root.$data.session.writer.file = null
+            }
+            this.WriterLQ.files.splice(index, 1)
+            this.updateDatabase();
+
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
         }
-        this.WriterLQ.files.splice(index, 1)
-        this.updateDatabase();
-      }
+        );
+
     },
     addFile() {
       console.log("Add needed")

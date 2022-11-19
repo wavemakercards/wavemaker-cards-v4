@@ -205,18 +205,38 @@ export default {
       this.lang = false
     },
     async clear() {
-      if (confirm(this.$root.setlang.settings.clear)) {
 
-        window.removeEventListener("beforeunload", this.$root.unloadEvent)
-        this.$root.session = {}
-        this.$root.popup = {}
-        this.$root.dbloaded = false
-        this.$root.clearDatabase()
-        /*
-              await this.$root.db.delete()
-              location.reload()
-              */
-      }
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            window.removeEventListener("beforeunload", this.$root.unloadEvent)
+            this.$root.session = {}
+            this.$root.popup = {}
+            this.$root.dbloaded = false
+            this.$root.clearDatabase()
+            /*
+                  await this.$root.db.delete()
+                  location.reload()
+                  */
+
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        }
+        );
+
     },
     resetSettings() {
       this.$root.session.settings.documentprefs = JSON.parse(JSON.stringify(this.$root.SettingsTemplate.documentprefs))

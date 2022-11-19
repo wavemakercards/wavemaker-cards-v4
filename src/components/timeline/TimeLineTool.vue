@@ -96,10 +96,30 @@ export default {
       this.updateDatabase();
     },
     deleteTime(index) {
-      if (confirm("delete this event?")) {
-        this.$root.session.timeline.selected.content.splice(index, 1)
-        this.updateDatabase();
-      }
+
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            this.$root.session.timeline.selected.content.splice(index, 1)
+            this.updateDatabase();
+
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        }
+        )
     },
     updateDatabase() {
       console.log("list changed");
@@ -112,38 +132,60 @@ export default {
     },
     exportToManuscript() {
       //loop throught the timeline and add all the nodes to a writer object and create the files
-      if (confirm("this will export this timeline to your manuscripts")) {
-        let newWriter = {}
-        newWriter.uuid = this.$root.uuid()
-        newWriter.title = this.$root.session.timeline.selected.title
-        newWriter.descripton = this.$root.session.timeline.selected.description
-        newWriter.files = []
-
-        this.$root.session.timeline.selected.content.forEach(tl => {
-          let uuid = this.$root.uuid()
-          let newfile = {}
-          newfile.title = tl.event + "-" + tl.title
-          newfile.content = tl.content
-          newfile.notes = []
-          newfile.uuid = uuid
-
-          this.$root.AddRecord("Files", newfile)
 
 
-          let o = {}
-          o.uuid = uuid
-          o.open = false
-          o.type = "file"
-          o.children = []
-          newWriter.files.push(o)
 
-        })
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "Export your timeline!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, export it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
 
-        this.$root.AddRecord("Writer", newWriter)
+            let newWriter = {}
+            newWriter.uuid = this.$root.uuid()
+            newWriter.title = this.$root.session.timeline.selected.title
+            newWriter.descripton = this.$root.session.timeline.selected.description
+            newWriter.files = []
 
-        alert("Export Complete")
+            this.$root.session.timeline.selected.content.forEach(tl => {
+              let uuid = this.$root.uuid()
+              let newfile = {}
+              newfile.title = tl.event + "-" + tl.title
+              newfile.content = tl.content
+              newfile.notes = []
+              newfile.uuid = uuid
 
-      }
+              this.$root.AddRecord("Files", newfile)
+
+
+              let o = {}
+              o.uuid = uuid
+              o.open = false
+              o.type = "file"
+              o.children = []
+              newWriter.files.push(o)
+
+            })
+
+            this.$root.AddRecord("Writer", newWriter)
+
+            this.$swal(
+              'Exported!',
+              'Your file has been Exported.',
+              'success'
+            )
+          }
+        }
+        )
+
+
+
 
 
     }

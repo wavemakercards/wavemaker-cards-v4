@@ -86,9 +86,31 @@ export default {
   },
   methods: {
     deleteItem(item) {
-      if (confirm("Are toy sure you want to delete this?")) {
-        this.$root.DeleteRecord("Snowflake", item.uuid)
-      }
+
+
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            this.$root.DeleteRecord("Snowflake", item.uuid)
+
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        }
+        )
+
     },
     chooseItem(item) {
       this.$root.session.snowflake.selected = this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Snowflake.get(item.uuid)))

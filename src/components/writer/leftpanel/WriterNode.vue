@@ -74,21 +74,48 @@ export default {
   methods: {
 
     deleteFile(index, element) {
-      if (confirm(this.$root.setlang.writer.deletewarn)) {
-        if (this.$root.session.writer.file) {
-          if (this.$root.session.writer.file.uuid === element.uuid) {
-            this.$root.session.writer.file = null
+
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "You won't be able to undo this!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            if (this.$root.session.writer.file) {
+              if (this.$root.session.writer.file.uuid === element.uuid) {
+                this.$root.session.writer.file = null
+              }
+            }
+            if (element.children.length) {
+              console.log(element.children)
+              this.recursiveDelete(element.children)
+            }
+            //eslint-disable-next-line
+            this.list.splice(index, 1)
+            this.updateDatabase()
+            this.$root.DeleteRecord("Files", element.uuid)
+
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
           }
         }
-        if (element.children.length) {
-          console.log(element.children)
-          this.recursiveDelete(element.children)
-        }
-        //eslint-disable-next-line
-        this.list.splice(index, 1)
-        this.updateDatabase()
-        this.$root.DeleteRecord("Files", element.uuid)
-      }
+        );
+
+
+
+
+
+
+
     },
     recursiveDelete(list) {
       list.forEach(element => {
