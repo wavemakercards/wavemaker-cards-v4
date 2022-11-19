@@ -59,12 +59,13 @@ export default {
 
 
 
-    // only for dev
+    // only for dev -- huh?? this is old I think
     if (localStorage.getItem("wmDev")) {
       this.session = JSON.parse(localStorage.getItem("wmDev"));
     }
     // now we loaded pop in the warning here
-    window.addEventListener("beforeunload", this.$root.unloadEvent);
+    // dont think this is needed but will consider so leaving commented
+    // window.addEventListener("beforeunload", this.$root.unloadEvent);
   },
 };
 </script>

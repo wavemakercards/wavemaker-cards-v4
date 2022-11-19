@@ -17,6 +17,8 @@ async function createWindow() {
     height: 600,
     darkTheme: true,
     resizable: true,
+    //titleBarStyle: "hidden",
+    autoHideMenuBar: true,
     webPreferences: {
 
       // Use pluginOptions.nodeIntegration, leave this alone
