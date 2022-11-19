@@ -4,6 +4,14 @@
     <template v-for="(flake, index) in this.$root.session.snowflake.selected.content" :key="index">
       <div id="toolbox">
         <input v-model="$root.session.snowflake.selected.title" class="titleinput" @change="updateDatabase" />
+
+
+        <button @click="exportToManuscript" class="toolbutton">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path
+              d="M9 12H18.8L16.3 9.5L17.7 8.1L22.6 13L17.7 17.9L16.3 16.5L18.8 14H9V12M21 17.4V20H3V6H21V8.6L23 10.6V4C23 2.9 22.1 2 21 2H3C1.9 2 1 2.9 1 4V20C1 21.1 1.9 22 3 22H21C22.1 22 23 21.1 23 20V15.4L21 17.4Z" />
+          </svg>
+        </button>
       </div>
 
 
@@ -20,7 +28,7 @@
             </button>
             <input class="title" v-model="flake.title" :placeholder="this.$root.setlang.snowflake.title"
               @change="updateDatabase" />
-            <MiniEditor :snowFlake="flake" v-model="flake.text" @updated="updateDatabase" />
+            <MiniEditor :snowFlake="flake" v-model="flake.content" @updated="updateDatabase" />
 
             <button class="delete-flake-button" @click="deleteFlake(index)">
               <svg viewBox="0 0 24 24">
@@ -34,19 +42,22 @@
             <div class="card">
               <input class="title" v-model="flake.children[0].title" :placeholder="this.$root.setlang.snowflake.title"
                 @change="updateDatabase" />
-              <MiniEditor :snowFlake="flake.children[0]" v-model="flake.children[0].text" @updated="updateDatabase" />
+              <MiniEditor :snowFlake="flake.children[0]" v-model="flake.children[0].content"
+                @updated="updateDatabase" />
             </div>
 
             <div class="card">
               <input class="title" v-model="flake.children[1].title" :placeholder="this.$root.setlang.snowflake.title"
                 @change="updateDatabase" />
-              <MiniEditor :snowFlake="flake.children[1]" v-model="flake.children[1].text" @updated="updateDatabase" />
+              <MiniEditor :snowFlake="flake.children[1]" v-model="flake.children[1].content"
+                @updated="updateDatabase" />
             </div>
 
             <div class="card">
               <input class="title" v-model="flake.children[2].title" :placeholder="this.$root.setlang.snowflake.title"
                 @change="updateDatabase" />
-              <MiniEditor :snowFlake="flake.children[2]" v-model="flake.children[2].text" @updated="updateDatabase" />
+              <MiniEditor :snowFlake="flake.children[2]" v-model="flake.children[2].content"
+                @updated="updateDatabase" />
             </div>
 
             <button class="replaceButton" @click="replace(flake, index)">
@@ -74,6 +85,62 @@ export default {
     return {};
   },
   methods: {
+    exportToManuscript() {
+      //loop throught the timeline and add all the nodes to a writer object and create the files
+
+      this.$swal(
+        {
+          title: 'Are you sure?',
+          text: "Export your Cards!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, export it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            let newWriter = {}
+            newWriter.uuid = this.$root.uuid()
+            newWriter.title = this.$root.session.snowflake.selected.title
+            newWriter.descripton = this.$root.session.snowflake.selected.description
+            newWriter.files = []
+
+            this.$root.session.snowflake.selected.content.forEach(tl => {
+              console.log("SNOW >>>", tl)
+              let uuid = this.$root.uuid()
+              let newfile = {}
+              newfile.writerid = newWriter.uuid
+              newfile.title = tl.title
+              newfile.content = tl.content
+              newfile.notes = []
+              newfile.uuid = uuid
+              newfile.wordcount = this.$root.wordCounter(tl.content)
+
+              this.$root.AddRecord("Files", newfile)
+
+
+              let o = {}
+              o.uuid = uuid
+              o.open = false
+              o.type = "file"
+              o.children = []
+              newWriter.files.push(o)
+
+            })
+
+            this.$root.AddRecord("Writer", newWriter)
+
+            this.$swal(
+              'Exported!',
+              'Your file has been Exported.',
+              'success'
+            )
+          }
+        }
+        )
+    },
+
     openflake(flake) {
 
       if (!flake.children.length) {
@@ -193,6 +260,36 @@ export default {
 </script>
 
 <style scoped>
+.toolbutton {
+  height: 40px;
+  padding: 10px;
+  border: 0px;
+  color: var(--button-f);
+  background-color: var(--mm-title-bar);
+  cursor: pointer;
+  margin-left: 5px
+}
+
+.toolbutton svg {
+  fill: var(--mm-title-bar-f);
+  width: 100%;
+}
+
+
+.toolbutton:hover,
+.toolbutton:active,
+.toolbutton:focus {
+  color: var(--button-hover-f);
+  background-color: var(--button-hover);
+}
+
+.toolbutton:hover svg,
+.toolbutton:active svg,
+.toolbutton:focus svg {
+  fill: var(--button-hover-f);
+}
+
+
 .scroller {
   position: absolute;
   top: 40px;

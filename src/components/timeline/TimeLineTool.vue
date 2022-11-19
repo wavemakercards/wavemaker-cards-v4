@@ -161,11 +161,12 @@ export default {
             this.$root.session.timeline.selected.content.forEach(tl => {
               let uuid = this.$root.uuid()
               let newfile = {}
+              newfile.writerid = newWriter.uuid
               newfile.title = tl.event + "-" + tl.title
               newfile.content = tl.content
               newfile.notes = []
               newfile.uuid = uuid
-
+              newfile.wordcount = this.$root.wordCounter(tl.content)
               this.$root.AddRecord("Files", newfile)
 
 
@@ -174,6 +175,7 @@ export default {
               o.open = false
               o.type = "file"
               o.children = []
+
               newWriter.files.push(o)
 
             })

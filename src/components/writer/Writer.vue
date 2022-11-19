@@ -19,14 +19,30 @@
             </g>
           </svg>
         </div>
-        <label>{{ this.$root.setlang.tools.name }}</label>
-        <input type="text" class="formInput mantitle" v-model="this.$root.session.writer.selected.title"
-          @change="updateDatabase" :placeholder="this.$root.setlang.tools.name" />
-        <label>{{ this.$root.setlang.tools.description }}</label>
-        <input type="text" class="formInput mandesc" v-model="this.$root.session.writer.selected.description"
-          @change="updateDatabase" :placeholder="this.$root.setlang.tools.description" />
+        <table style="width:100%">
+          <tr>
+            <td style="max-width: 200px;">
+              <img src="img/placeholder.png" style="max-width:200px" />
+              <p>(1600px X 2500px) (coming soon)</p>
+            </td>
+            <td>
+              <label>{{ this.$root.setlang.tools.name }}</label>
+              <input type="text" class="formInput mantitle" v-model="this.$root.session.writer.selected.title"
+                @change="updateDatabase" :placeholder="this.$root.setlang.tools.name" />
+              <hr />
+              <label>{{ this.$root.setlang.tools.description }}</label>
+              <input type="text" class="formInput mandesc" v-model="this.$root.session.writer.selected.description"
+                @change="updateDatabase" :placeholder="this.$root.setlang.tools.description" />
+              <hr />
+              {{ this.$root.fullWordCount }} {{ this.$root.setlang.writer.words }}
+            </td>
+
+          </tr>
+        </table>
+
+
         <div>
-          {{ this.$root.fullWordCount }} {{ this.$root.setlang.writer.words }}
+
           <!--
  <button class="clearInterfaceIconButton" @click="calcFullWordCount()">
             <svg style="width:18px;height:18px" viewBox="0 0 24 24">

@@ -64,7 +64,7 @@ export default {
       EditCardrefresh: null,
       theme: "default",
       themeList: [
-        { name: "Default Wavemaker", file: "default" },
+        { name: "Default Wavemaker", file: "wavemaker" },
         { name: "Light Theme", file: "light" },
         { name: "Blue Sky", file: "bluesky" }
       ],
@@ -87,11 +87,14 @@ export default {
   },
   methods: {
     async calcFullWordCount() {
+
       let counter = 0
       if (this.$root.session.writer.selected) {
         let arr = await this.$root.db.Files.where({ writerid: this.$root.session.writer.selected.uuid }).toArray()
+        console.log("Wordcounter called for doc ", arr)
         arr.forEach(file => {
           let words = 0
+
           if (file.wordcount) {
             words = parseInt(file.wordcount)
           }
