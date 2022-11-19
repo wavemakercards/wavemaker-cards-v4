@@ -171,7 +171,7 @@ export default {
 </script>
 <style scoped>
 .TopToolbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;

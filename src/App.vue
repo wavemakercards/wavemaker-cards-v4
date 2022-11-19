@@ -1,18 +1,4 @@
 <template>
-  <vueTitlebar :theme="theme" :platform="platform" :on-close="close" :on-maximize="toggleMaximize"
-    :on-minimize="minimize" :is-maximizable="isMaximizable" :is-closable="isClosable" :is-minimizable="isMinimizable"
-    :menu="menu" :show-icon="showIcon" :show-title="showTitle">
-
-
-    <template>
-      <img src="image.png" alt="icon" />
-    </template>
-
-    <template>
-      App Name
-    </template>
-  </vueTitlebar>
-
   <div v-if="this.$root.session.settings">
     <Start />
   </div>
@@ -50,7 +36,6 @@ import Languages from "./lang.json";
 import CardModal from "./components/universal/CardModal.vue"
 import ImageManager from "./components/universal/ImageManager.vue"
 import Version3Import from "./utilitystuff/version3Importer.vue"
-import vueTitlebar from "@wuild/vue-titlebar"
 export default {
   name: 'App',
   mixins: [fileManage, dexieDB, GoogleDriveApi, templateObjects],
@@ -60,8 +45,7 @@ export default {
     Start,
     CardModal,
     ImageManager,
-    Version3Import,
-    vueTitlebar
+    Version3Import
   },
   /*
    watch: {  // for dev
