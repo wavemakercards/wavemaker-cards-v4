@@ -1,8 +1,8 @@
 <template>
-  <div id="overlay"></div>
+
   <Transition name="bounce">
     <div class="scrollHolder" v-if="animate">
-
+      <div id="overlay" @click="$root.$data.session.EditCard = null"></div>
       <div class="cardEditorHolder" v-if="cardInfo"
         :style="'background-color: var(' + this.cardInfo.color + '); color : var(' + this.cardInfo.color + '-f); fill : var(' + this.cardInfo.color + '-f)'">
         <button @click="$root.$data.session.EditCard = null" class="clearInterfaceIconButton closebtn">
@@ -29,7 +29,7 @@
         <label>{{ this.$root.setlang.cards.cardnotes }} <input type="checkbox" value="true"
             v-model="this.cardInfo.showdesc" @change="updatecard()"></label>
         <div class="inputHolder">
-          <MiniEditor v-model="this.cardInfo.description" @updatecard="updatecard" />
+          <MiniEditor v-model="this.cardInfo.description" @updated="updatecard" />
         </div>
         <label>{{ this.$root.setlang.cards.cardtags }}</label>
         <div class=" inputHolder">
@@ -48,7 +48,7 @@
         </div>
         <label>{{ this.$root.setlang.cards.moredetail }} </label>
         <div class="inputHolder">
-          <MiniEditor v-model="this.cardInfo.content" @updatecard="updatecard" />
+          <MiniEditor v-model="this.cardInfo.content" @updated="updatecard" />
         </div>
         <hr />
         <label>{{ this.$root.setlang.cards.images }}</label>
@@ -193,6 +193,9 @@ export default {
   mounted() {
     this.cardInfo = useObservable(liveQuery(async () => await db.Cards.get(this.$root.$data.session.EditCard)))
     this.animate = true // triggers the animation
+  },
+  beforeUnmount() {
+    this.animate = false
   }
 };
 </script>
@@ -287,7 +290,6 @@ label {
   padding-bottom: 50px;
   bottom: 0px;
   overflow-y: auto;
-
 }
 
 .inputHolder {
@@ -308,7 +310,6 @@ label {
   margin: 0 auto;
   max-width: 700px;
   overflow: hidden;
-
 }
 
 .closebtn {

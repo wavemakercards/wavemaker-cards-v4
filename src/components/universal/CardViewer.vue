@@ -1,6 +1,6 @@
 <template>
   <div v-if="cardInfo">
-    <div class="card"
+    <div class="card" @dblclick="$root.$data.session.EditCard = cardid"
       :style="'background-color: var(' + cardInfo.color + '); color : var(' + cardInfo.color + '-f); fill : var(' + cardInfo.color + '-f)'">
 
 
@@ -8,8 +8,6 @@
       <div v-if="cardInfo.showimage">
         <MiniImage :uuid="cardInfo.showimage" :key="cardInfo.showimage" />
       </div>
-
-
 
       <div class="cardTitle">
         <span v-if="cardInfo.title">

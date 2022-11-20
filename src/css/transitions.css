@@ -18,6 +18,34 @@
   opacity: 0;
 }
 
+
+
+.toolbar-slide-fade-enter-active {
+  transition: all 0.2s ease-out;
+}
+
+.toolbar-slide-fade-leave-active {
+  transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.toolbar-slide-fade-enter-from,
+.toolbar-slide-fade-leave-to {
+  transform: translate(-50px, 0px);
+  opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
   Enter and leave animations can use different
   durations and timing functions.

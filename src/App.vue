@@ -70,6 +70,8 @@ export default {
       ],
       lhspin: true,
       rhspin: true,
+      navbar: false,
+      togglenav: true,
       show: false,
       popup: {
         name: null
@@ -146,10 +148,14 @@ export default {
       if (w < 720) {
         this.lhspin = false
         this.rhspin = false
+        this.navbar = false
+        this.togglenav = true
       }
       if (w > 720) {
         this.lhspin = true
         this.rhspin = true
+        this.navbar = true
+        this.togglenav = false
       }
     },
     SpecialKeys(e) {
