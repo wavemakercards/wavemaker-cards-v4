@@ -211,8 +211,6 @@ export default {
     },
     updateSettings() {
       // set the --root variables for each thingy
-
-      document.documentElement.style.setProperty('--my-variable-name', 'pink');
       document.documentElement.style.setProperty('--pageEditor-align', this.$root.session.settings.documentprefs.align)
       document.documentElement.style.setProperty('--pageEditor-fontsize', this.$root.session.settings.documentprefs.fontsize)
       document.documentElement.style.setProperty('--pageEditor-lspacing', this.$root.session.settings.documentprefs.lspacing)
@@ -223,9 +221,9 @@ export default {
       document.documentElement.style.setProperty('--pageEditor-color', this.$root.session.settings.documentprefs.color)
       document.documentElement.style.setProperty('--pageEditor-bgcolor', this.$root.session.settings.documentprefs.bgcolor)
 
-      document.documentElement.style.setProperty('--pageEditor-font', this.$root.session.settings.documentprefs.distractionfree_font)
-      document.documentElement.style.setProperty('--pageEditor-color', this.$root.session.settings.documentprefs.distractionfree_fg)
-      document.documentElement.style.setProperty('--pageEditor-bgcolor', this.$root.session.settings.documentprefs.distractionfree_bg)
+      document.documentElement.style.setProperty('--distractionfree-font', this.$root.session.settings.documentprefs.distractionfree_font)
+      document.documentElement.style.setProperty('--distractionfree-fg', this.$root.session.settings.documentprefs.distractionfree_fg)
+      document.documentElement.style.setProperty('--distractionfree-bg', this.$root.session.settings.documentprefs.distractionfree_bg)
 
       this.$root.UpdateRecord(
         "Settings",

@@ -22,7 +22,8 @@
     <template v-if="this.$root.session.mindmap.selected.content.nodes[this.uuid].type === 'image'">
 
       <template v-if="this.$root.session.mindmap.selected.content.nodes[this.uuid].text">
-        <MiniImage :uuid="this.$root.session.mindmap.selected.content.nodes[this.uuid].text" style="max-width:300px"
+        <MiniImage :uuid="this.$root.session.mindmap.selected.content.nodes[this.uuid].text"
+          style="min-width:100px; width:100%"
           :key="this.$root.session.mindmap.selected.content.nodes[this.uuid].text" />
         <button @click="addImage" class="NewImageBtn" v-if="$root.session.mindmap.currentnode === uuid">
           <svg viewBox="0 0 24 24">
