@@ -1,5 +1,5 @@
 <template>
-    <td style="width:320px" width="320px">
+    <td style="width:320px" width="320px" v-if="FileNode.type === 'file'">
         <template v-if="MyFile">
             <div class="titleBar" @click="selectCol">
                 <input type="text" class="titleBarInput" v-model="MyFile.title"
@@ -51,7 +51,7 @@
 
         </template>
     </td>
-    <template v-if="FileNode.children.length">
+    <template v-if="FileNode.type === 'folder'">
         <PlanningBoardCards :fileId="col.uuid" v-for="(col, i) in FileNode.children" :key="i" :FileNode="col" />
     </template>
 </template>
@@ -101,7 +101,6 @@ export default {
             this.updateDatabase()
         },
         deleteNote(index) {
-
             this.$swal(
                 {
                     title: 'Are you sure?',

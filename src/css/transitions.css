@@ -37,6 +37,19 @@
 
 
 
+.folder-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.folder-leave-active {
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.folder-enter-from,
+.folder-leave-to {
+  transform: translate(50px, 50px);
+  opacity: 0;
+}
 
 
 
@@ -70,7 +83,7 @@
   durations and timing functions.
 */
 .h-slide-fade-enter-active {
-  transition: all 0.2s ease-out;
+  transition: all 0.6s ease-out;
 }
 
 .h-slide-fade-leave-active {
