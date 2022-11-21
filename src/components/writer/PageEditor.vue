@@ -271,10 +271,12 @@ export default {
             var caretPos = 0
             var sel, range;
             sel = window.getSelection();
-            range = sel.getRangeAt(0);
-            caretPos = range.getBoundingClientRect();
-            // console.log(caretPos)
-            return caretPos.y;
+            if (sel) {
+                range = sel.getRangeAt(0);
+                caretPos = range.getBoundingClientRect();
+                // console.log(caretPos)
+                return caretPos.y;
+            }
         },
 
         changed() {

@@ -1,7 +1,7 @@
 <template>
 
   <div class="planningBoardHolder" v-if="WriterLQ">
-    <div id="toolbox">
+    <div id="toolbox" @click="this.$root.session.writer.file = this.WriterLQ">
       <input v-model="this.WriterLQ.title" class="titleinput" @change="updateDatabase" />
 
       <button @click="this.$root.session.selectedTool = 'writer'" class="toolbutton">
@@ -47,7 +47,6 @@ export default {
   },
   methods: {
     deleteFile(index, element) {
-
       this.$swal(
         {
           title: 'Are you sure?',
@@ -74,22 +73,16 @@ export default {
           }
         }
         );
-
     },
     addFile() {
       console.log("Add needed")
 
       let obj = JSON.parse(JSON.stringify(
         {
-          type: "file",
-          name: this.$root.setlang.writer.newfile,
-          children: [],
-          content: null
+          type: "file"
         }
       ));
       obj.uuid = this.$root.uuid();
-
-
 
       // create the new file first!!
       let file = {}
@@ -102,6 +95,7 @@ export default {
 
       this.$root.AddRecord("Files", file)
 
+      /*
       if (this.$root.session.writer.file) {
         // file selected so put it after that one
         let i = this.WriterLQ.files.indexOf(this.$root.session.writer.file)
@@ -109,8 +103,9 @@ export default {
       } else {
         this.WriterLQ.files.push(obj);
       }
+*/
+      this.WriterLQ.files.push(obj);
       this.updateDatabase();
-
     },
     updateDatabase() {
       console.log("list changed");

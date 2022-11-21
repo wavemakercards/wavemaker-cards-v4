@@ -67,12 +67,33 @@
 
       </div>
     </div>
+    <div v-if="$root.session.writer.file">
 
-    <transition name="fade">
-      <div class="pageHolder" v-if="$root.session.writer.file" :key="$root.session.writer.file.uuid">
-        <PageEditor :pageuuid="$root.session.writer.file.uuid" />
+      <div v-if="$root.session.writer.file.type === 'file'">
+        <transition name="fade">
+          <div class="pageHolder" :key="$root.session.writer.file.uuid">
+            <PageEditor :pageuuid="$root.session.writer.file.uuid" />
+          </div>
+        </transition>
       </div>
-    </transition>
+
+      <div v-if="$root.session.writer.file.type === 'folder'" @change="updateDatabase">
+
+        <div class="titleBar">
+          <input type="text" :placeholder="this.$root.setlang.writer.newfile" v-model="$root.session.writer.file.title"
+            @change="updateDatabase" />
+        </div>
+
+        <div class="wavemaker_info_box">
+          <h1>Folder Options TBC</h1>
+        </div>
+
+      </div>
+
+
+
+    </div>
+
 
   </div>
 
@@ -116,7 +137,11 @@ export default {
     getfileexport(arr) {
       arr.forEach(file => {
         let currentfile = this.exportObject[file.uuid]
-        this.exportHTML = this.exportHTML + "<h1>" + currentfile.title + "</h1>" + currentfile.content
+        if (file.type === 'file') {
+          this.exportHTML = this.exportHTML + "<h1>" + currentfile.title + "</h1>" + currentfile.content
+        } else {
+          this.exportHTML = this.exportHTML + "<h1>" + file.title + "</h1>"
+        }
         if (file.children) {
           if (file.children.length) {
             this.getfileexport(file.children)
@@ -188,5 +213,29 @@ export default {
 
 .mantitle {
   font-size: 2rem;
+}
+
+
+.titleBar {
+  position: absolute;
+  top: 0px;
+  background-color: var(--writer-title-bar);
+  color: var(--writer-title-bar-f);
+  height: 40px;
+  width: 100%;
+
+}
+
+.titleBar input {
+  width: 100%;
+  background-color: inherit;
+  color: inherit;
+  outline: none;
+  height: 40px;
+  border: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: inherit;
+  font-size: 1.5rem;
 }
 </style>

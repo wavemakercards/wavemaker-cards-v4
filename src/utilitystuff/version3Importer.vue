@@ -123,12 +123,12 @@ export default {
         },
         loopfiles(arr, parent, writerid) {
             // this does all the work for the files creation etc and building the array
+
             arr.forEach((f) => {
+
                 let file = {
                     uuid: this.$root.uuid(),
                     type: "file",
-                    children: [],
-                    open: false,
                 };
                 // create and add the FILE
                 let o = {};
@@ -177,13 +177,24 @@ export default {
                 }
                 this.$root.AddRecord("Files", o);
 
+                // if its a folder then we need to add a folder to the structure and push to that
                 if (f.children) {
+                    let folder = {
+                        uuid: this.$root.uuid(),
+                        type: "folder",
+                        title: f.title,
+                        children: [],
+                        open: true
+                    };
+                    parent.push(folder) // create the folder
+                    folder.children.push(file) // add the contetns of this as a file
                     if (f.children.length) {
-                        this.loopfiles(f.children, file.children, writerid);
+                        this.loopfiles(f.children, folder.children, writerid);
                     }
-
+                } else {
+                    parent.push(file) // add the file to the file structure
                 }
-                parent.push(file) // add the file to the file structure
+
             });
         },
         processCards() {
