@@ -187,7 +187,7 @@ export default {
 
 .boardTable {
   position: relative;
-  height: 100%;
+  height: calc(100% - 40px);
   margin: 0px;
   margin-top: 40px;
   padding: 0px;

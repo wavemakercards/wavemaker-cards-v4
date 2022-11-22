@@ -85,12 +85,13 @@
         </div>
 
         <div class="wavemaker_info_box">
-          <h1>Folder Options TBC</h1>
-          <pre>
-{{ this.$root.session.writer.selected }}
+          <button @click="exportDoc($root.session.writer.file.children)" class="interfaceBtn">
 
-            {{ $root.session.writer.file }}
-          </pre>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M15.2,20H13.8L12,13.2L10.2,20H8.8L6.6,11H8.1L9.5,17.8L11.3,11H12.6L14.4,17.8L15.8,11H17.3L15.2,20M13,9V3.5L18.5,9H13Z" />
+            </svg>
+            Export this folder to word</button>
         </div>
 
       </div>
@@ -126,14 +127,17 @@ export default {
     }
   },
   methods: {
-    async exportDoc() {
+    async exportDoc(exportArray) {
+      if (!exportArray) {
+        exportArray = this.$root.session.writer.selected.files
+      }
       this.exportObject = {}
       let arr = await this.$root.db.Files.where({ writerid: this.$root.session.writer.selected.uuid }).toArray()
       arr.forEach(file => {
         this.exportObject[file.uuid] = file
       })
       this.exportHTML = ''
-      this.getfileexport(this.$root.session.writer.selected.files)
+      this.getfileexport(exportArray)
       window.Export2Word(this.exportHTML)
       //clear up
       this.exportHTML = ''
