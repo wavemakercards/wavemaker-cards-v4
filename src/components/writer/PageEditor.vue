@@ -259,8 +259,6 @@ export default {
 
         repositionEditor() {
             this.mypos = this.getCaretPosition()
-            //console.log(parseInt(this.mypos), this.$refs.scrolltarget.scrollTop, this.$refs.scrolltarget.scrollHeight, window.innerHeight)
-            //console.log(this.$refs.scrolltarget.scrollHeight - (this.$refs.scrolltarget.scrollTop + this.mypos))
 
             if (this.mypos != 0) {
                 let calculatedPosition = parseInt(this.mypos) + this.$refs.scrolltarget.scrollTop - (window.innerHeight / 2)
@@ -271,10 +269,11 @@ export default {
             var caretPos = 0
             var sel, range;
             sel = window.getSelection();
+
             if (sel) {
                 range = sel.getRangeAt(0);
                 caretPos = range.getBoundingClientRect();
-                // console.log(caretPos)
+
                 return caretPos.y;
             }
         },

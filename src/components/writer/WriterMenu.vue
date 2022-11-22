@@ -63,18 +63,20 @@ export default {
       toollist: this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Writer.toArray())),
     };
   },
+
   methods: {
-    addItem() {
+    async addItem() {
       let obj = {};
       obj.title = '';
       obj.description = '';
       obj.files = [];
       obj.uuid = this.$root.uuid(); // genertate your own UUID so thta you can update the   db
-      this.$root.AddRecord("Writer", obj);
-      this.$root.session.writer.selected = obj
+      await this.$root.AddRecord("Writer", obj);
+      this.setLiveQuery(obj)
     },
     setLiveQuery(item) {
-      this.$root.session.writer.selected = this.$root.useObservable(this.$root.liveQuery(() => this.$root.db.Writer.get(item.uuid)))
+      this.$root.session.writer.selected = this.$root.useObservable(this.$root.liveQuery(async () => await this.$root.db.Writer.get(item.uuid)))
+
     },
     deleteItem(item) {
       this.$swal(

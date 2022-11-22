@@ -30,20 +30,21 @@
         </div>
       </button>
 
-      <WriterNode :list="this.$root.session.writer.selected.files" @updateDatabase="updateDatabase" />
+      <WriterNode :list="$root.session.writer.selected.files" @updateDatabase="updateDatabase"
+        :key="this.$root.session.writer.selected.lastupdated" />
 
     </div>
 
     <div class="addbar">
 
-      <button @click="addFolder">
+      <button @click="addNode('folder')">
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
           <path
             d="M13 19C13 19.34 13.04 19.67 13.09 20H4C2.9 20 2 19.11 2 18V6C2 4.89 2.89 4 4 4H10L12 6H20C21.1 6 22 6.89 22 8V13.81C21.12 13.3 20.1 13 19 13C15.69 13 13 15.69 13 19M20 18V15H18V18H15V20H18V23H20V20H23V18H20Z" />
         </svg>
       </button>
 
-      <button @click="addFile" style="left:50px">
+      <button @click="addNode('file')" style="left:50px">
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
           <path
             d="M14 2H6C4.89 2 4 2.89 4 4V20C4 21.11 4.89 22 6 22H13.81C13.28 21.09 13 20.05 13 19C13 18.67 13.03 18.33 13.08 18H6V16H13.81C14.27 15.2 14.91 14.5 15.68 14H6V12H18V13.08C18.33 13.03 18.67 13 19 13S19.67 13.03 20 13.08V8L14 2M13 9V3.5L18.5 9H13M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z" />
@@ -73,7 +74,7 @@ export default {
         open: true,
         title: "Folder Name",
         children: []
-      },
+      }
     };
   },
   methods: {
@@ -85,15 +86,13 @@ export default {
         return str.substring(0, 75) + app
       }
     },
-    searchforuuid(file, parent) {
+    searchForFileandParent(file, parent) {
       // find the index and parent of the selected node so we can insert afterwards
       let output = {
         index: null,
         parent: null
       }
       for (let i = 0; i < parent.length; i++) {
-
-        console.log("looking", parent[i].uuid, file.uuid)
         if (parent[i].uuid === file.uuid) {
           output.index = i
           output.parent = parent
@@ -101,69 +100,76 @@ export default {
         } else {
           if (parent[i].children) {
             if (parent[i].children.length) {
-              return this.searchforuuid(file, parent[i].children)
+              return this.searchForFileandParent(file, parent[i].children)
             }
           }
         }
       }
       //return false
     },
+    searchForFolder(folderid, list) {
+      for (let i = 0; i < list.length; i++) {
+        if (list[i].type === 'folder') {
+          if (list[i].uuid === folderid) {
+            return list[i]
+          }
+          return this.searchForFolder(folderid, list[i].children)
+        }
+      }
+    },
 
-    async addFile() {
-      let obj = JSON.parse(JSON.stringify(this.defaultFileStructure))
-      obj.uuid = this.$root.uuid();
-      // create the new file first!!
-      let file = {}
-      file.title = this.$root.setlang.writer.newfile
-      file.writerid = this.$root.session.writer.selected.uuid
-      file.uuid = obj.uuid
-      file.content = ""
-      file.notes = []
-      // we need to create a new file here
-
-      await this.$root.AddRecord("Files", file)
+    async addNode(type) {
+      let obj = null
+      if (type === 'file') {
+        obj = JSON.parse(JSON.stringify(this.defaultFileStructure))
+        obj.uuid = this.$root.uuid();
+        // create the new file first!!
+        let file = {}
+        file.title = this.$root.setlang.writer.newfile
+        file.writerid = this.$root.session.writer.selected.uuid
+        file.uuid = obj.uuid
+        file.content = ""
+        file.notes = []
+        // we need to create a new file here
+        await this.$root.AddRecord("Files", file)
+      }
+      if (type === 'folder') {
+        obj = JSON.parse(JSON.stringify(this.defaultFolderStructure))
+        obj.uuid = this.$root.uuid();
+      }
+      let WriterNewObj = JSON.parse(JSON.stringify(this.$root.session.writer.selected))
 
       if (!this.$root.session.writer.file) {
-        this.$root.session.writer.selected.files.push(obj);
+        WriterNewObj.files.push(obj);
       } else {
         if (this.$root.session.writer.file.type === 'folder') {
-          console.log("pushing again")
-          this.$root.session.writer.file.children.push(obj);
+          let folder = this.searchForFolder(this.$root.session.writer.file.uuid, WriterNewObj.files)
+          console.log(folder)
+          if (folder) {
+            folder.children.push(obj);
+          }
         } else {
-          let found = this.searchforuuid(this.$root.session.writer.file, this.$root.session.writer.selected.files)
-          console.log(found)
+          let found = this.searchForFileandParent(this.$root.session.writer.file, WriterNewObj.files)
           if (found) {
             found.parent.splice((found.index + 1), 0, obj);
           }
         }
       }
-
-      this.updateDatabase();
-    },
-
-    addFolder() {
-      let obj = JSON.parse(JSON.stringify(this.defaultFolderStructure))
-      obj.uuid = this.$root.uuid();
-
-      if (!this.$root.session.writer.file) {
-        this.$root.session.writer.selected.files.push(obj);
-      } else {
-        if (this.$root.session.writer.file.type === 'folder') {
-          this.$root.session.writer.file.children.push(obj);
-        } else {
-          let found = this.searchforuuid(this.$root.session.writer.file, this.$root.session.writer.selected.files)
-          found.parent.splice((found.index + 1), 0, obj);
-        }
-      }
-
-      this.updateDatabase();
-    },
-    updateDatabase() {
       this.$root.UpdateRecord(
+        "Writer",
+        WriterNewObj.uuid,
+        WriterNewObj
+      );
+
+    },
+    async updateDatabase() {
+      //      this.$root.session.writer.selected.windowid = this.$root.windowID
+      await this.$root.UpdateRecord(
         "Writer",
         this.$root.session.writer.selected.uuid,
         this.$root.session.writer.selected
       );
+
     }
   },
   computed: {

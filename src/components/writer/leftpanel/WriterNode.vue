@@ -9,7 +9,26 @@
       <div class="childbox">
         <div class="list-group-item" tabindex="0">
           <div class="itemBox" v-if="element.type === 'file'">
-            <NodeTemplate :nodeElement="element" :key="element.uuid" @selectNode="selectNode(element)" />
+
+            <div class="itemTitle" :class="isSelected(element.uuid) ? 'chosen' : ''" @click="selectNode(element)">
+              <span class="handle">
+
+                <svg style="width: 24px; height: 24px" viewBox="0 0 24 24" v-if="isSelected(element.uuid)">
+                  <path
+                    d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M15,18V16H6V18H15M18,14V12H6V14H18Z" />
+                </svg>
+
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24" v-if="!isSelected(element.uuid)">
+                  <path
+                    d="M6,2A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6M6,4H13V9H18V20H6V4M8,12V14H16V12H8M8,16V18H13V16H8Z" />
+                </svg>
+              </span>
+              <div class="title">
+                <NodeTemplate :nodeElement="element" :key="element.title" />
+              </div>
+
+            </div>
+
             <button class="deleteIconButton" @click="deleteFile(index, element)" tabindex="0">
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path
@@ -52,11 +71,11 @@
               </svg>
             </button>
           </div>
-          <Transition name="folder">
-            <template v-if="element.open">
-              <WriterNode :list="element.children" @updateDatabase="updateDatabase" @selectNode="selectNode(element)" />
-            </template>
-          </Transition>
+
+          <template v-if="element.open">
+            <WriterNode :list="element.children" @updateDatabase="updateDatabase" @selectNode="selectNode(element)" />
+          </template>
+
         </div>
       </div>
     </template>
@@ -112,10 +131,12 @@ export default {
                 this.$root.session.writer.file = null
               }
             }
-            if (element.children.length) {
-              console.log(element.children)
-              this.recursiveDelete(element.children)
+            if (element.type === 'folder') {
+              if (element.children.length) {
+                this.recursiveDelete(element.children)
+              }
             }
+
             //eslint-disable-next-line
             this.list.splice(index, 1)
             this.updateDatabase()
@@ -140,17 +161,19 @@ export default {
             this.$root.session.writer.file = null
           }
         }
-        if (element.children.length) {
-          this.recursiveDelete(element.children)
+        if (element.type === "folder") {
+          if (element.children.length) {
+            this.recursiveDelete(element.children)
+          }
+        } else {
+          this.$root.DeleteRecord("Files", element.uuid)
         }
-        this.$root.DeleteRecord("Files", element.uuid)
       })
     },
     updateDatabase() {
       this.$emit("updateDatabase")
     },
     selectNode(element) {
-      console.log("select", element)
       this.$root.session.writer.file = element
     },
     isSelected(id) {

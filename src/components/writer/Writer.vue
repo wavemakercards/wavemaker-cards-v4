@@ -86,6 +86,11 @@
 
         <div class="wavemaker_info_box">
           <h1>Folder Options TBC</h1>
+          <pre>
+{{ this.$root.session.writer.selected }}
+
+            {{ $root.session.writer.file }}
+          </pre>
         </div>
 
       </div>
@@ -153,7 +158,7 @@ export default {
       this.$root.UpdateRecord(
         "Writer",
         this.$root.session.writer.selected.uuid,
-        this.$root.session.writer.selected
+        JSON.parse(JSON.stringify(this.$root.session.writer.selected))
       );
     }
   },
