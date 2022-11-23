@@ -64,7 +64,7 @@
           </svg>
           {{ this.$root.setlang.writer.docdownload }}</button>
 
-
+        <BarChart />
       </div>
     </div>
     <div v-if="$root.session.writer.file">
@@ -72,7 +72,7 @@
       <div v-if="$root.session.writer.file.type === 'file'">
         <transition name="fade">
           <div class="pageHolder" :key="$root.session.writer.file.uuid">
-            <PageEditor :pageuuid="$root.session.writer.file.uuid" />
+            <PageEditor :pageuuid="$root.session.writer.file.uuid" @blur="$root.calcFullWordCount()" />
           </div>
         </transition>
       </div>
@@ -109,7 +109,7 @@
 
 <script>
 
-
+import BarChart from "./BarChart.vue"
 import WriterLeftSide from "./leftpanel/WriterLeftSide.vue";
 import WriterRightSide from "./rightpanel/WriterRightSide.vue";
 import PageEditor from "./PageEditor.vue";
@@ -118,7 +118,8 @@ export default {
   components: {
     WriterLeftSide,
     WriterRightSide,
-    PageEditor
+    PageEditor,
+    BarChart
   },
   data() {
     return {
@@ -172,6 +173,11 @@ export default {
 }
 </script>
 <style scoped>
+.chartbar {
+  background-color: red;
+  width: 25px;
+}
+
 .writer {
   position: absolute;
   left: 40px;

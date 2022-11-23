@@ -93,7 +93,6 @@ export default {
       let counter = 0
       if (this.$root.session.writer.selected) {
         let arr = await this.$root.db.Files.where({ writerid: this.$root.session.writer.selected.uuid }).toArray()
-        console.log("Wordcounter called for doc ", arr)
         arr.forEach(file => {
           let words = 0
 
@@ -104,6 +103,17 @@ export default {
         })
       }
       this.fullWordCount = counter
+
+      //log the full wordcount
+      if (!this.$root.session.writer.selected.log) {
+        this.$root.session.writer.selected.log = {}
+      }
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+      today = yyyy + "-" + mm + "-" + dd
+      this.$root.session.writer.selected.log[today] = this.fullWordCount
     },
     switchLang() {
       localStorage.setItem("wmLang", this.lang)
@@ -133,6 +143,7 @@ export default {
       // otherwise it's a URL - may need to check for the old https here
       window.open(d, "Info", "width=" + w + "px,height=" + h + "px");
     },
+
     wordCounter(str) {
       str = str.replace(/(<([^>]+)>)/gi, " ");
       return str.split(" ").filter(function (n) {
