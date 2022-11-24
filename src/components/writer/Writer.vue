@@ -56,7 +56,7 @@
         <p>
           {{ this.$root.setlang.writer.intro }}
         </p>
-        <button @click="exportDoc" class="interfaceBtn">
+        <button @click="exportDoc(this.$root.session.writer.selected.files)" class="interfaceBtn">
 
           <svg viewBox="0 0 24 24">
             <path

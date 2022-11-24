@@ -166,7 +166,7 @@
                 </svg>
             </button>
 
-            <button @click="this.$root.session.selectedTool = 'distractionfree'">
+            <button @click="this.$root.session.selectedTool = 'distractionfree'" title="Enter Typewriter mode">
 
                 <!--
  <svg width="24" height="24" viewBox="0 0 24 24">
@@ -185,7 +185,7 @@
 
 
 
-            <button @click="hilighter = !hilighter">
+            <button @click="hilighter = !hilighter" title="Toggle Hilighting">
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                     <path
                         d="M7 16C7.55 16 8 16.45 8 17C8 18.1 7.1 19 6 19C5.83 19 5.67 19 5.5 18.95C5.81 18.4 6 17.74 6 17C6 16.45 6.45 16 7 16M18.67 3C18.41 3 18.16 3.1 17.96 3.29L9 12.25L11.75 15L20.71 6.04C21.1 5.65 21.1 5 20.71 4.63L19.37 3.29C19.17 3.09 18.92 3 18.67 3M7 14C5.34 14 4 15.34 4 17C4 18.31 2.84 19 2 19C2.92 20.22 4.5 21 6 21C8.21 21 10 19.21 10 17C10 15.34 8.66 14 7 14Z" />
@@ -221,6 +221,21 @@
 
 -->
 
+            <button @click="wordcountToggle()" title="Exclude this from the wordcount">
+
+
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24" v-if="!item.excludefromwordcount">
+                    <path
+                        d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
+                </svg>
+
+
+
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24" v-if="item.excludefromwordcount">
+                    <path
+                        d="M2,5.27L3.28,4L20,20.72L18.73,22L15.65,18.92C14.5,19.3 13.28,19.5 12,19.5C7,19.5 2.73,16.39 1,12C1.69,10.24 2.79,8.69 4.19,7.46L2,5.27M12,9A3,3 0 0,1 15,12C15,12.35 14.94,12.69 14.83,13L11,9.17C11.31,9.06 11.65,9 12,9M12,4.5C17,4.5 21.27,7.61 23,12C22.18,14.08 20.79,15.88 19,17.19L17.58,15.76C18.94,14.82 20.06,13.54 20.82,12C19.17,8.64 15.76,6.5 12,6.5C10.91,6.5 9.84,6.68 8.84,7L7.3,5.47C8.74,4.85 10.33,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C12.69,17.5 13.37,17.43 14,17.29L11.72,15C10.29,14.85 9.15,13.71 9,12.28L5.6,8.87C4.61,9.72 3.78,10.78 3.18,12Z" />
+                </svg>
+            </button>
 
 
 
@@ -256,7 +271,11 @@ export default {
         };
     },
     methods: {
-
+        wordcountToggle() {
+            this.item.excludefromwordcount = !this.item.excludefromwordcount
+            this.changed()
+            this.$root.calcFullWordCount()
+        },
         repositionEditor() {
             this.mypos = this.getCaretPosition()
 
