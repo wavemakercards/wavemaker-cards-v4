@@ -1,88 +1,78 @@
 {
     "cy": {
-        "info": {
-            "name": "Cymraeg",
-            "textdirection": "ltr"
-        },
-        "welcome": {
-            "getstarted": "Prosiect Newydd",
-            "loadfile": "Llwytho ffeil o'ch dyfais",
-            "loadgoogle": "Llwytho ffeil o Google Drive",
-            "info": "Creu ffeil newydd, neu lwytho un sy'n bodoli"
-        },
-        "start": {
-            "projectlabel": "Enw eich Prosiect",
-            "welcome": "Croeso i Wavemaker Fersiwn 4",
-            "help": "Cymorth a Chanllawiau ar sut i ddefnyddio Wavemaker"
-        },
-        "google": {
-            "info": "Mewngofnodi i Google Drive",
-            "saveinfo": "Cadw Prosiect Cyfredol",
-            "files": "Eich Ffeiliau",
-            "save": "Cadw Ffeil",
-            "search": "Chwilio am Ffeiliau",
-            "logout": "Allgofnodi",
-            "close": "Cau ffenestr"
-        },
-        "settings": {
-            "title": "Gosodiadau",
-            "close": "Cau'r ffeil",
-            "themes": "Dewis Thema",
-            "lang": "Dewis Iaith",
-            "clear": "Bydd hyn yn clirio'r prosiect"
-        },
-        "tools": {
-            "writer": "Eich Llawysgrifau",
-            "planningboard": "Eich Byrddau Cynllunio",
-            "mindmap": "Eich Mapiau Meddwl",
-            "snowflake": "Eich plu eira",
-            "timeline": "Eich Llinell Amser",
-            "gridplanner": "Eich Cynllunwyr Grid",
-            "cardsdatabase": "Eich Cardiau",
-            "name": "Enw",
-            "description": "Disgrifiad (dewisol)",
-            "warn": "Rhowch Enw"
-        },
-        "writer": {
-            "settings": "Gosodiadau Llawysgrif",
-            "newfile": "Adran Newydd",
-            "deletewarn": "Ydych chi am ddileu'r eitem hon? Bydd unrhyw gardiau rydych wedi'u creu yn aros yn y gronfa ddata",
-            "intro": "Dyma brif dudalen eich dogfen. Mae'r opsiynau isod.",
-            "docdownload": "Allforio ffeil .doc o'r llawysgrif hon",
-            "words": "Geiriau"
-        },
-        "mindmap": {
-            "deletenodewarn": "Ydych chi am ddileu'r nod hwn?"
-        },
-        "snowflake": {
-            "title": "Teitl",
-            "deletewarn": "Ydych chi'n siŵr eich bod am ddileu'r cerdyn hwn?",
-            "replacewarn": "Bydd hwn yn disodli'ch cerdyn gyda'r tri pheth newydd."
-        },
-        "timeline": {
-            "date": "Dyddiad/Amser",
-            "title": "Teitl"
-        },
-        "gridplanner": {
-            "newrow": "Rhes Newydd",
-            "newcol": "Colofn Newydd"
-        },
-        "db": {
-            "search": "Chwilio yn ôl allweddeiriau",
-            "clear": "Clirio Tagiau",
-            "deletecolwarn": "Dileu’r golofn hon?",
-            "deleterowwarn": "Dileu'r rhes hon?"
-        },
-        "cards": {
-            "createnewbtn": "Creu Cyswllt Newydd",
-            "linkexisting": "Cerdyn Presennol",
-            "cardtitle": "Teitl y Cerdyn",
-            "cardnotes": "Nodiadau Cerdyn",
-            "cardtags": "Tagiau Cerdyn",
-            "moredetail": "Mwy o Fanylion",
-            "images": "Delweddau (cliciwch ar ddelwedd i'w ddewis)",
-            "openimagemanager": "Agor Rheolwr Delwedd",
-            "close": "Cau"
+        "name": "Cymraeg",
+        "textdirection": "ltr",
+        "text": {
+            "Add Card": "Tagiau Cerdyn",
+            "Add Column": "Teitl y Cerdyn",
+            "Add Image": "Cronfa Ddata Cardiau",
+            "Add Row": "Clirio Tagiau",
+            "Add Text Box": "Cau",
+            "Are you sure?": "Cau’r Prosiect",
+            "Bold": "Cau Ffenestr",
+            "Bullet List": "Parhau",
+            "Cancel": "Creu Cerdyn Newydd",
+            "Card Nodes": "Creu ffeil newydd, neu lwytho un sy’n bodoli",
+            "Card Tags": "Dyddiad/ Amser",
+            "Card Title": "Dileu'r Cerdyn hwn",
+            "Cards Database": "Wedi'i ddileu",
+            "Clear Tags": "Disgrifiad (dewisol)",
+            "Close": "Allforio ffeil .doc",
+            "Close Project": "Allforio'r Pluen Eira hon",
+            "Close Window": "Allforio'r llinell amser hon",
+            "Continue": "Google Drive",
+            "Create New Card": "Offeryn Cynlluniwr Grid",
+            "Create a new file, or load an existing one": "Pennawd 1",
+            "Date/Time": "Pennawd 2",
+            "Delete this Card": "Amlycaf",
+            "Deleted": "Delweddau (cliciwch ar ddelwedd i'w ddewis )",
+            "Description (optional)": "Mewnforio cronfa ddata Wavemaker fersiwn 3",
+            "Export a .doc file": "Mewnosod Llun",
+            "Export this Snowflake": "Italig",
+            "Export this timeline": "Cyswllt Cerdyn Presennol",
+            "Google Drive": "Cysylltwch y Ddelwedd hon",
+            "Gridplanner Tool": "Llwythwch ffeil o Google Drive",
+            "Heading 1": "Llwythwch ffeil o'ch dyfais",
+            "Heading 2": "Allgofnodwch",
+            "Hilighter": "Mewngofnodwch i Google Drive",
+            "Images (click on an image to select it)": "Offeryn Map Meddwl",
+            "Import a Wavemaker version 3 database": "Mwy o fanylion",
+            "Insert Picture": "Colofn Newydd",
+            "Italic": "Ffolder Newydd",
+            "Link Existing Card": "Prosiect Newydd",
+            "Link this Image": "Rhes Newydd",
+            "Load a file from Google Drive": "Rhan Newydd",
+            "Load a file from your device": "Rhestr wedi’i Rhifo",
+            "Log Out": "Iawn",
+            "Login to Google Drive": "Rheolwr Delwedd Agored",
+            "Mindmap Tool": "Paragraff",
+            "More Detail": "Bwrdd Cynllunio",
+            "New Column": "Byrddau Cynllunio",
+            "New Folder": "Llwytho’n Gyflym",
+            "New Project": "Amnewid y Cerdyn presennol",
+            "New Row": "Wedi’i Amnewid",
+            "New Section": "Cadw’r Prosiect Presennol",
+            "Numbered List": "Cadw Ffeil",
+            "OK": "Chwilio Yn ôl allweddeiriau",
+            "Open Image Manager": "Chwilio am Ffeiliau",
+            "Paragraph": "Gosodiadau",
+            "Planning Board": "Dangos Cardiau Pluen Eira",
+            "Planning Boards": "Teclyn Pluen Eira",
+            "Quick Upload": "Taro drwodd",
+            "Replace existing Card": "Llwyddiant",
+            "Replaced": "Teclyn Llinell Amser",
+            "Save Current Project": "Teitl",
+            "Save File": "Toglo Cyfriad Geiriau",
+            "Search By keywords": "Modd Teipiadur",
+            "Search For Files": "Llwytho Delwedd",
+            "Settings": "Fersiwn 4 (0.1.4)",
+            "Show Snowflake Cards": "Cardiau Gwneuthurwr Tonnau",
+            "Snowflake Tool": "Ni fyddwch yn gallu dadwneud hyn.",
+            "Strikethrough": "Teitl Eich Llyfr",
+            "Success": "Eich Llyfrau",
+            "Timeline Tool": "Eich Ffeiliau",
+            "Title": "Enw eich Prosiect",
+            "Toggle Wordcount": "geiriau"
         }
     }
 }

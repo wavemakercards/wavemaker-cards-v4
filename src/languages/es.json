@@ -1,88 +1,88 @@
 {
     "es": {
-        "info": {
-            "name": "Español",
-            "textdirection": "ltr"
-        },
-        "welcome": {
-            "getstarted": "Nuevo Proyecto",
-            "loadfile": "Carga un archivo desde tu dispositivo",
-            "loadgoogle": "Carga un archivo desde Google Drive",
-            "info": "Crea un archivo nuevo o carga uno existente"
-        },
-        "start": {
-            "projectlabel": "Nombre del proyecto",
-            "welcome": "Bienvenido a la versión 4 de Wavemaker",
-            "help": "Ayuda y guías sobre cómo usar Wavemaker"
-        },
-        "google": {
-            "info": "Iniciar sesión en Google Drive",
-            "saveinfo": "Guardar proyecto actual",
-            "files": "Archivos",
-            "save": "Guardar archivo",
-            "search": "Buscar archivos",
-            "logout": "Cerrar sesión",
-            "close": "Cerrar ventana"
-        },
-        "settings": {
-            "title": "Configuración",
-            "close": "Cerrar este archivo",
-            "themes": "Elegir un tema",
-            "lang": "Elegir un idioma",
-            "clear": "Esto borrará el proyecto"
-        },
-        "tools": {
-            "writer": "Manuscritos",
-            "planningboard": "Tableros de planificación",
-            "mindmap": "Mapas mentales",
-            "snowflake": "Copos de nieve",
-            "timeline": "Líneas de tiempo",
-            "gridplanner": "Planificadores de cuadrícula",
-            "cardsdatabase": "Tarjetas",
-            "name": "Nombre",
-            "description": "Descripción (opcional)",
-            "warn": "Proporcione un nombre"
-        },
-        "writer": {
-            "settings": "Configuración del manuscrito",
-            "newfile": "Nueva sección",
-            "deletewarn": "¿Desea eliminar este elemento? Todas las tarjetas que haya creado permanecerán en la base de datos",
-            "intro": "Esta es la página principal de su documento. Las opciones están abajo.",
-            "docdownload": "Exportar un archivo .doc de este manuscrito",
-            "words": "Palabras"
-        },
-        "mindmap": {
-            "deletenodewarn": "¿Desea eliminar este nodo?"
-        },
-        "snowflake": {
-            "title": "Título",
-            "deletewarn": "¿Está seguro de que desea eliminar esta tarjeta?",
-            "replacewarn": "Esto reemplazará su tarjeta con las tres nuevas."
-        },
-        "timeline": {
-            "date": "Fecha/hora",
-            "title": "Título"
-        },
-        "gridplanner": {
-            "newrow": "Nueva fila",
-            "newcol": "Nueva columna"
-        },
-        "db": {
-            "search": "Buscar por palabras clave",
-            "clear": "Borrar etiquetas",
-            "deletecolwarn": "¿Eliminar esta columna?",
-            "deleterowwarn": "¿Eliminar esta fila?"
-        },
-        "cards": {
-            "createnewbtn": "Crear nueva",
-            "linkexisting": "Vincular tarjeta existente",
-            "cardtitle": "Título de tarjeta",
-            "cardnotes": "Notas de tarjeta",
-            "cardtags": "Etiquetas de tarjeta",
-            "moredetail": "Más detalles",
-            "images": "Imágenes (haga clic en una imagen para seleccionarla)",
-            "openimagemanager": "Abrir administrador de imágenes",
-            "close": "Cerrar\n"
+        "name": "Español",
+        "textdirection": "ltr",
+        "text": {
+            "Add Card": "Agregar tarjeta",
+            "Add Column": "Agregar columna",
+            "Add Image": "Agregar imagen",
+            "Add Row": "Agregar fila",
+            "Add Text Box": "Agregar cuadro de texto",
+            "Are you sure?": "¿Está seguro?",
+            "Bold": "Negrita",
+            "Bullet List": "Lista de viñetas",
+            "Cancel": "Cancelar",
+            "Card Nodes": "Nodos de tarjeta",
+            "Card Tags": "Etiquetas de tarjeta",
+            "Card Title": "Título de tarjeta",
+            "Cards Database": "Base de datos de tarjetas",
+            "Clear Tags": "Borrar etiquetas",
+            "Close": "Cerrar",
+            "Close Project": "Cerrar proyecto",
+            "Close Window": "Cerrar ventana",
+            "Continue": "Continuar",
+            "Create New Card": "Crear nueva tarjeta",
+            "Create a new file, or load an existing one": "Crear un nuevo archivo o cargar uno existente",
+            "Date/Time": "Fecha/ Hora",
+            "Delete this Card": "Eliminar esta tarjeta",
+            "Deleted": "Eliminado",
+            "Description (optional)": "Descripción (opcional)",
+            "Export a .doc file": "Exportar un archivo .doc",
+            "Export this Snowflake": "Exportar este copo de nieve",
+            "Export this timeline": "Exportar esta línea de tiempo",
+            "Google Drive": "Google Drive",
+            "Gridplanner Tool": "Herramienta Gridplanner",
+            "Heading 1": "Título 1",
+            "Heading 2": "Título 2",
+            "Hilighter": "Resaltador",
+            "Images (click on an image to select it)": "Imágenes (haga clic en una imagen para seleccionarla",
+            "Import a Wavemaker version 3 database": "Importar una base de datos Wavemaker versión 3",
+            "Insert Picture": "Insertar imagen",
+            "Italic": "Cursiva",
+            "Link Existing Card": "Vincular tarjeta existente",
+            "Link this Image": "Vincular esta imagen",
+            "Load a file from Google Drive": "Cargar un archivo desde Google Drive",
+            "Load a file from your device": "Cargar un archivo desde su dispositivo",
+            "Log Out": "Cerrar sesión",
+            "Login to Google Drive": "Iniciar sesión en Google Drive",
+            "Mindmap Tool": "Herramienta Mindmap",
+            "More Detail": "Más detalles",
+            "New Column": "Nueva columna",
+            "New Folder": "Nueva carpeta",
+            "New Project": "Nuevo proyecto",
+            "New Row": "Nueva fila",
+            "New Section": "Nueva sección",
+            "Numbered List": "Lista numerada",
+            "OK": "Aceptar",
+            "Open Image Manager": "Abrir administrador de imágenes",
+            "Paragraph": "Párrafo",
+            "Planning Board": "Tablero de planificación",
+            "Planning Boards": "Tableros de planificación",
+            "Quick Upload": "Carga rápida",
+            "Replace existing Card": "Reemplazar tarjeta existente",
+            "Replaced": "Reemplazado",
+            "Save Current Project": "Guardar proyecto actual",
+            "Save File": "Guardar archivo",
+            "Search By keywords": "Buscar por palabras clave",
+            "Search For Files": "Buscar archivos",
+            "Settings": "Configuración",
+            "Show Snowflake Cards": "Mostrar tarjetas Snowflake",
+            "Snowflake Tool": "Herramienta Copo de nieve",
+            "Strikethrough": "Tachado",
+            "Success": "Éxito",
+            "Timeline Tool": "Herramienta Línea de tiempo",
+            "Title": "Título",
+            "Toggle Wordcount": "Alternar número de palabras",
+            "Typewriter Mode": "Modo de máquina de escribir",
+            "Upload an Image": "Cargar una imagen",
+            "Version 4 (0.1.4)": "Versión 4 (0.1.4)",
+            "Wavemaker Cards": "Tarjetas Wavemaker",
+            "You won't be able to undo this.": "No podrá deshacer esta acción.",
+            "Your Book Title": "Título de su libro",
+            "Your Books": "Sus libros",
+            "Your Files": "Sus archivos",
+            "Your Project Name": "Nombre de su proyecto",
+            "words": "palabras"
         }
     }
 }
