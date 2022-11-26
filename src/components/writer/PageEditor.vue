@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="item">
 
         <div class="PageEditorScroll" ref="scrolltarget">
             <EditorContent :editor="editor" v-if="editor" />
@@ -277,11 +277,12 @@ export default {
             this.$root.calcFullWordCount()
         },
         repositionEditor() {
-            this.mypos = this.getCaretPosition()
-
-            if (this.mypos != 0) {
-                let calculatedPosition = parseInt(this.mypos) + this.$refs.scrolltarget.scrollTop - (window.innerHeight / 2)
-                this.$refs.scrolltarget.scrollTo({ top: calculatedPosition, behavior: 'smooth' });
+            if (this.editor && this.item) {
+                this.mypos = this.getCaretPosition()
+                if (this.mypos != 0 && this.$refs.scrolltarget) {
+                    let calculatedPosition = parseInt(this.mypos) + this.$refs.scrolltarget.scrollTop - (window.innerHeight / 2)
+                    this.$refs.scrolltarget.scrollTo({ top: calculatedPosition, behavior: 'smooth' });
+                }
             }
         },
         getCaretPosition() {
@@ -289,7 +290,8 @@ export default {
             var sel, range;
             sel = window.getSelection();
 
-            if (sel) {
+            if (sel.anchorNode) { // prebvent this happening on the odd occasion that a null is sent back for the anchor node
+
                 range = sel.getRangeAt(0);
                 caretPos = range.getBoundingClientRect();
 

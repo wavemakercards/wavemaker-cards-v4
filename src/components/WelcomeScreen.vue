@@ -71,12 +71,17 @@
 
 
 
-      <div style="background-color: firebrick; color:#fff; padding: 10px;margin:10px;">
-        <p>This is an ALPHA version it may break - if you are having issues you can clear all the stored data for your
-          browser - instructions linked below</p>
+      <div style="background-color: purple; color:#fff; padding: 10px;margin:10px;">
+        <h3>Wavemaker 4 is now in BETA</h3>
+        <p>this means that the software is safe to use, but there may be changes that are
+          till to be made and some features may not be fully functional</p>
         <a style="color: #fff;"
           href="https://www.howtogeek.com/664912/how-to-clear-storage-and-site-data-for-a-single-site-on-google-chrome/"
           target="blank">
+
+          <p>
+            If you find you have problems using it you might like
+          </p>
 
           How to clear your cache on chrome based browsers
         </a>
