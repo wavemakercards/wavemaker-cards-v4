@@ -36,7 +36,7 @@
             "v3import": "Importe un archivo Wavemaker versión 3"
         },
         "start": {
-            "projectlabel": "Mi nombre de proyecto",
+            "projectlabel": "Nombre de proyecto",
             "welcome": "Bienvenido a Wavemaker versión 4",
             "help": "Ayuda y guías sobre cómo para usar Wavemaker"
         },
@@ -99,7 +99,7 @@
         "tools": {
             "writer": "Mis libros",
             "planningboard": "Tableros de planificación",
-            "mindmap": "Mmapas mentales",
+            "mindmap": "Mapas mentales",
             "snowflake": "Copos de nieve",
             "timeline": "Líneas de tiempo",
             "gridplanner": "Planificadores de cuadrícula",
