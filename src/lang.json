@@ -950,8 +950,8 @@
    },
    "tr": {
       "info": {
-         "name": "Turkish¬ ltr",
-         "textdirection": "Emin misiniz?"
+         "name": "Türk",
+         "textdirection": "ltr"
       },
       "confirm": {
          "sure": "Emin misiniz?",
