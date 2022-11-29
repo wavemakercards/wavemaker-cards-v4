@@ -156,7 +156,12 @@ export default {
                         cardobj.style = "";
                         cardobj.options = {};
                         cardobj.color = "--card" + card.backgroundColor;
-                        o.notes.push({ uuid: cardobj.uuid });
+
+                        let crd = { uuid: cardobj.uuid }
+                        if (card.completed) {
+                            crd.completed = true
+                        }
+                        o.notes.push(crd);
 
                         this.$root.AddRecord("Cards", cardobj);
                     });

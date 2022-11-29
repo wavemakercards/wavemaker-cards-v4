@@ -126,18 +126,18 @@
 
   --card1: var(--card);
   --card1-f: var(--card-f);
-  --card2: #fff79a;
-  --card2-f: #424242;
-  --card3: #f7941d;
+  --card2: #f06292;
+  --card2-f: #fff;
+  --card3: #9575cd;
   --card3-f: #fff;
-  --card4: #bc8cbe;
+  --card4: #4fc3f7;
   --card4-f: #fff;
-  --card5: #add273;
-  --card5-f: #424242;
-  --card6: #f49ac0;
+  --card5: #4db6ac;
+  --card5-f: #fff;
+  --card6: #fff176;
   --card6-f: #424242;
-  --card7: #6dcff6;
-  --card7-f: #424242;
+  --card7: #ff8a65;
+  --card7-f: #fff;
 
   --pageEditor-align: left;
   --pageEditor-fontsize: 1.5rem;

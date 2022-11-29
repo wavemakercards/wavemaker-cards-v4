@@ -765,11 +765,11 @@
          "textdirection": "ltr"
       },
       "confirm": {
-         "sure": "Êtes-vous sûr ?",
+         "sure": "Êtes-vous sûr ?",
          "downloadfile": "Ceci téléchargera un fichier sur votre appareil.",
-         "fileexport": "Oui, exportez-le !",
+         "fileexport": "Oui, exportation !",
          "filecancel": "Annuler",
-         "exportedsuccess": "Exporté !",
+         "exportedsuccess": "Exporté !",
          "exportedmessage": "Votre fichier a été exporté"
       },
       "toolbar": {
@@ -798,7 +798,7 @@
       "start": {
          "projectlabel": "Mon nom de projet",
          "welcome": "Bienvenue dans Wavemaker Version 4",
-         "help": "Aide et guides sur la façon pour utiliser Wavemaker"
+         "help": "Aide et guides pour utiliser Wavemaker"
       },
       "google": {
          "info": "Se connecter à Google Drive",
@@ -822,11 +822,11 @@
          "alignC": "Aligner au centre",
          "alignJ": "Justifier",
          "fontsize": "Taille de la police",
-         "fontsize1": "Le plus petit",
+         "fontsize1": "La plus petite",
          "fontsize2": "Petit",
          "fontsize3": "Standard",
          "fontsize4": "Grand",
-         "fontsize5": "Le plus grand",
+         "fontsize5": "La plus grande",
          "lineheight": "Hauteur de ligne",
          "lineheight1": "Standard",
          "lineheight2": "Double interligne",
@@ -835,7 +835,7 @@
          "paragraph": "Retrait de paragraphe",
          "paragraphyes": "Oui",
          "paragraphno": "Non",
-         "paragraphspacing": "Paragraphe Espacement",
+         "paragraphspacing": "Espacement de Paragraphe",
          "paragraphspacing1": "Espacement standard",
          "paragraphspacing2": "Espacement 1,5x",
          "paragraphspacing3": "Espacement 2x",
@@ -844,17 +844,17 @@
          "pagewidth": "Largeur de page",
          "pagestyle": "Style de page",
          "fullwidth": "Pleine largeur",
-         "pagetext": "Couleur du texte",
+         "pagetext": "Couleur de texte",
          "pagecolour": "Couleur de la page",
          "h1align": "Alignement H1",
          "h2align": "Alignement H2",
          "h3align": "Alignement H3",
          "h4align": "Alignement H4",
          "typewriter": "Préférences de la machine à écrire",
-         "typetext": "Couleur du texte",
+         "typetext": "Couleur de texte",
          "typepage": "Couleur de la page",
          "typesound": "Son de la machine à écrire",
-         "reset": "Réinitialiser Valeurs par défaut"
+         "reset": "Réinitialiser les valeurs par défaut"
       },
       "tools": {
          "writer": "Mes livres",
@@ -872,26 +872,26 @@
          "settings": "Titre de votre livre",
          "newfile": "Nouvelle section",
          "newfolder": "Nouveau dossier",
-         "deletewarn": "Voulez-vous supprimer cet article ? Toutes les cartes que vous avez créées resteront dans la base de données",
-         "intro": "Il s'agit de la page principale de votre document. Les options sont ci-dessous.",
+         "deletewarn": "Voulez-vous supprimer cet article ? Toutes les cartes que vous avez créées resteront dans la base de données",
+         "intro": "Il s'agit de la page principale de votre document. Voir les options ci-dessous.",
          "docdownload": "Exporter un fichier .doc de ce manuscrit",
-         "words": "Words"
+         "words": "Mots"
       },
       "confirmmodal": {
-         "confirmdelete": "Êtes-vous sûr de vouloir le supprimer ?",
+         "confirmdelete": "Êtes-vous sûr de vouloir le supprimer ?",
          "noundo": "Vous ne pourrez pas revenir en arrière.",
-         "confirmbtn": "Oui, supprimez-le !",
+         "confirmbtn": "Oui, suppression !",
          "cancelbtn": "Annuler",
-         "success": "Supprimé !",
+         "success": "Supprimé !",
          "successfeedback": "Cela a été supprimé.",
          "confirmexport": "Exporter ?",
-         "exportmsg": "Exporter cet outil ?",
-         "exportconfirmbtn": "Oui, exportez ceci.",
+         "exportmsg": "Exporter cet outil ?",
+         "exportconfirmbtn": "Oui, exportation.",
          "exportsuccess": "Exporté",
          "exportsuccessfeedback": "Exporté avec succès",
          "snowconfirm": "Remplacer la carte",
          "snowconfirmtext": "Remplacez la carte d'origine par ces trois",
-         "snowconfirmbtn": "Oui, remplacez-la !",
+         "snowconfirmbtn": "Oui, remplacement !",
          "snowconfirmsuccess": "Remplacé",
          "snowconfirmmsg": "La carte a été remplacée"
       },
@@ -911,12 +911,12 @@
          "wordcount": "Basculer la visibilité du nombre de mots"
       },
       "mindmap": {
-         "deletenodewarn": "Voulez-vous supprimer ce nœud ?"
+         "deletenodewarn": "Voulez-vous supprimer ce nœud ?"
       },
       "snowflake": {
          "title": "Titre",
-         "deletewarn": "Voulez-vous vraiment supprimer cette carte ?",
-         "replacewarn": "Cela remplacera votre carte par les trois nouvelles."
+         "deletewarn": "Voulez-vous vraiment supprimer cette carte ?",
+         "replacewarn": "Cela remplacera votre carte par trois nouvelles."
       },
       "timeline": {
          "date": "Date/Heure",
@@ -929,8 +929,8 @@
       "db": {
          "search": "Recherche par mots clés",
          "clear": "Effacer les balises",
-         "deletecolwarn": "Supprimer cette colonne ?",
-         "deleterowwarn": "Supprimer cette ligne ?"
+         "deletecolwarn": "Supprimer cette colonne ?",
+         "deleterowwarn": "Supprimer cette ligne ?"
       },
       "cards": {
          "createnewbtn": "Créer un nouveau",
@@ -945,7 +945,7 @@
       },
       "wm3import": {
          "close": "Fermer",
-         "info": "<h1>Version 3 Converter</h1>< p>Bonjour, il s'agit d'un outil hérité qui vous permet de charger vos anciens fichiers <strong>wavemaker version 3</strong> dans la nouvelle version.</p><p>Comme la base de données des coulisses a beaucoup changé c'est un processus à sens unique.</p><p>Vous aurez besoin de votre fichier DATABASE (allez dans le menu principal en cliquant sur le logo dans wavemaker 3 puis exportez la base de données) Vous devriez alors avoir un fichier avec l'extension ' .wmdata'</p><p>Vous devrez importer chaque projet et l'enregistrer dans son propre fichier car ils sont tous séparés dans la nouvelle version</p>",
+         "info": "<h1>Version 3 Converter</h1>< p>Bonjour, il s'agit d'un outil hérité qui vous permet de charger vos anciens fichiers <strong>wavemaker version 3</strong> dans la nouvelle version.</p><p>Comme la base de données a changé en profondeur, c'est un processus à sens unique.</p><p>Vous aurez besoin de votre fichier DATABASE (allez dans le menu principal en cliquant sur le logo dans wavemaker 3 puis exportez la base de données) Vous devriez alors avoir un fichier avec l'extension ' .wmdata'</p><p>Vous devrez importer chaque projet et l'enregistrer dans son propre fichier car ils sont tous séparés dans la nouvelle version</p>",
          "upload": "Téléchargez une base de données Wavemaker"
       }
    },

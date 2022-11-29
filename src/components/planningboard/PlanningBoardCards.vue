@@ -15,8 +15,17 @@
                     @change="updateDatabase">
                     <template v-for="(element, index) in this.MyFile.notes" :key="index">
                         <div class="list-group-card-item" tabindex="0">
-                            <CardViewer :cardid="element.uuid" :allowlink="true" @linkcard="linkCard" :key="$root.uuid()
-                            " />
+                            <div :class="(element.completed) ? 'completedcard' : ''">
+                                <CardViewer :cardid="element.uuid" :allowlink="true" @linkcard="linkCard" :key="$root.uuid()
+                                " />
+                                <button class="togglecomplete"
+                                    @click="element.completed = !element.completed; updateDatabase()">
+                                    <svg style="width:16px;height:16px" viewBox="0 0 24 24">
+                                        <path
+                                            d="M19,19H5V5H15V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V11H19M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z" />
+                                    </svg>
+                                </button>
+                            </div>
 
                             <div class="clearInterfaceIconButton cardHandle">
                                 <svg style="width: 18px; height: 18px" viewBox="0 0 24 24">
@@ -304,5 +313,38 @@ export default {
     padding-top: 40px;
     vertical-align: top;
     width: 320px
+}
+
+
+.togglecomplete {
+    border: 0px;
+    background: none;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: var(--accent);
+    color: var(--accent-f);
+    fill: var(--accent-f);
+    cursor: pointer;
+}
+
+.togglecomplete svg {
+    fill: inherit
+}
+
+.togglecomplete:hover,
+.togglecomplete:active,
+.togglecomplete:focus {
+    background-color: var(--primary);
+    color: var(--primary-f);
+    fill: var(--primary-f);
+
+}
+
+.completedcard {
+    opacity: 0.2;
 }
 </style>
