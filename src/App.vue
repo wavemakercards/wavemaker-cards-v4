@@ -207,7 +207,6 @@ export default {
     }
 
     if (localStorage.getItem("wmLang") && localStorage.getItem("wmLang") != "undefined") {
-
       this.lang = localStorage.getItem("wmLang")
     } else {
       this.lang = "en"

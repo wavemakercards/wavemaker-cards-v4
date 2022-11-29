@@ -51,7 +51,7 @@
 
       <div class="languages">
         <select v-model="this.$root.lang" @change="this.$root.switchLang()">
-          <option v-for="(k, i) in Object.keys(this.$root.language)" :key="i" :value="k">
+          <option v-for="(k, i) in Object.keys(this.$root.language).sort()" :key="i" :value="k">
             {{ k }}
             ({{ this.$root.language[k].info.name }})
           </option>

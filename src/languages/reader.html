@@ -211,11 +211,10 @@
     let list = []
     Object.keys(o.en).forEach(no => {
         Object.keys(o.en[no]).forEach(sub => {
-            list.push(o.en[no][sub])
+            list.push('"' + o.en[no][sub] + '"')
         })
     })
     document.getElementById("eng").value = list.join(" ¬ ")
-
 
 
 
@@ -226,13 +225,16 @@
 
         counter = 0
         Object.keys(newo.en).forEach(no => {
+            console.log(no)
             Object.keys(newo.en[no]).forEach(sub => {
+                console.log(sub)
                 newo.en[no][sub] = data[counter]
                 counter++
             })
         })
 
-        document.getElementById("output").value = JSON.stringify(newo, null, 2)
+        document.getElementById("output").value = JSON.stringify(newo, null, 2).replaceAll('\\"', '');
+        document.getElementById("pretag").innerText = JSON.stringify(newo, null, 2).replaceAll('\\"', '');
     }
 
 </script>
