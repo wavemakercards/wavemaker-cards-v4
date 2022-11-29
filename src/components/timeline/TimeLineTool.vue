@@ -104,15 +104,17 @@ export default {
     },
     deleteTime(index) {
 
+
       this.$swal(
         {
-          title: 'Are you sure?',
-          text: "You won't be able to undo this!",
+          title: this.$root.setlang.confirmmodal.confirmdelete,
+          text: this.$root.setlang.confirmmodal.noundo,
           icon: 'question',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: this.$root.setlang.confirmmodal.confirmbtn,
+          cancelButtonText: this.$root.setlang.confirmmodal.cancelbtn
         }).then((result) => {
           if (result.isConfirmed) {
 
@@ -120,13 +122,15 @@ export default {
             this.updateDatabase();
 
             this.$swal(
-              'Deleted!',
-              'Your file has been deleted.',
+              this.$root.setlang.confirmmodal.success,
+              this.$root.setlang.confirmmodal.successfeedback,
               'success'
             )
           }
         }
-        )
+        );
+
+
     },
     updateDatabase() {
       console.log("list changed");
@@ -142,13 +146,14 @@ export default {
 
       this.$swal(
         {
-          title: 'Are you sure?',
-          text: "Export your timeline!",
+          title: this.$root.setlang.confirmmodal.confirmexport,
+          text: this.$root.setlang.confirmmodal.exportmsg,
           icon: 'question',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, export it!'
+          confirmButtonText: this.$root.setlang.confirmmodal.exportconfirmbtn,
+          cancelButtonText: this.$root.setlang.confirmmodal.cancelbtn
         }).then((result) => {
           if (result.isConfirmed) {
 
@@ -183,16 +188,13 @@ export default {
             this.$root.AddRecord("Writer", newWriter)
 
             this.$swal(
-              'Exported!',
-              'Your file has been Exported.',
+              this.$root.setlang.confirmmodal.exportsuccess,
+              this.$root.setlang.confirmmodal.exportsuccessfeedback,
               'success'
             )
           }
         }
-        )
-
-
-
+        );
 
 
     }

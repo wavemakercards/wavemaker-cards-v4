@@ -13,21 +13,21 @@
             $root.$data.session.writer.lhs ? 'left:40px;' : '',
             $root.$data.session.writer.rhs ? 'right:-40px;' : '',
         ]">
-            <button @click="editor.chain().focus().toggleBold().run()"
-                :class="{ 'is-active': editor.isActive('bold') }">
+            <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }"
+                :title="this.$root.setlang.editor.bold">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path
                         d="M13.5,15.5H10V12.5H13.5A1.5,1.5 0 0,1 15,14A1.5,1.5 0 0,1 13.5,15.5M10,6.5H13A1.5,1.5 0 0,1 14.5,8A1.5,1.5 0 0,1 13,9.5H10M15.6,10.79C16.57,10.11 17.25,9 17.25,8C17.25,5.74 15.5,4 13.25,4H7V18H14.04C16.14,18 17.75,16.3 17.75,14.21C17.75,12.69 16.89,11.39 15.6,10.79Z" />
                 </svg>
             </button>
             <button @click="editor.chain().focus().toggleItalic().run()"
-                :class="{ 'is-active': editor.isActive('italic') }">
+                :class="{ 'is-active': editor.isActive('italic') }" :title="this.$root.setlang.editor.italic">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M10,4V7H12.21L8.79,15H6V18H14V15H11.79L15.21,7H18V4H10Z" />
                 </svg>
             </button>
             <button @click="editor.chain().focus().toggleStrike().run()"
-                :class="{ 'is-active': editor.isActive('strike') }">
+                :class="{ 'is-active': editor.isActive('strike') }" :title="this.$root.setlang.editor.strikethrough">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24" class="strikefix">
                     <path
                         d="M23,12V14H18.61C19.61,16.14 19.56,22 12.38,22C4.05,22.05 4.37,15.5 4.37,15.5L8.34,15.55C8.37,18.92 11.5,18.92 12.12,18.88C12.76,18.83 15.15,18.84 15.34,16.5C15.42,15.41 14.32,14.58 13.12,14H1V12H23M19.41,7.89L15.43,7.86C15.43,7.86 15.6,5.09 12.15,5.08C8.7,5.06 9,7.28 9,7.56C9.04,7.84 9.34,9.22 12,9.88H5.71C5.71,9.88 2.22,3.15 10.74,2C19.45,0.8 19.43,7.91 19.41,7.89Z" />
@@ -51,20 +51,22 @@
     </button>
     -->
             <button @click="editor.chain().focus().setParagraph().run()"
-                :class="{ 'is-active': editor.isActive('paragraph') }">
+                :class="{ 'is-active': editor.isActive('paragraph') }" :title="this.$root.setlang.editor.paragraph">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path
                         d="M13,4A4,4 0 0,1 17,8A4,4 0 0,1 13,12H11V18H9V4H13M13,10A2,2 0 0,0 15,8A2,2 0 0,0 13,6H11V10H13Z" />
                 </svg>
             </button>
             <button @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
-                :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
+                :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
+                :title="this.$root.setlang.editor.h1">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M14,18V16H16V6.31L13.5,7.75V5.44L16,4H18V16H20V18H14Z" />
                 </svg>
             </button>
             <button @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
-                :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }">
+                :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }"
+                :title="this.$root.setlang.editor.h2">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path
                         d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M21,18H15A2,2 0 0,1 13,16C13,15.47 13.2,15 13.54,14.64L18.41,9.41C18.78,9.05 19,8.55 19,8A2,2 0 0,0 17,6A2,2 0 0,0 15,8H13A4,4 0 0,1 17,4A4,4 0 0,1 21,8C21,9.1 20.55,10.1 19.83,10.83L15,16H21V18Z" />
@@ -88,7 +90,7 @@
             -->
 
 
-            <button @click="addImage">
+            <button @click="addImage" :title="this.$root.setlang.editor.pic">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path
                         d="M13 19C13 19.7 13.13 20.37 13.35 21H5C3.9 21 3 20.11 3 19V5C3 3.9 3.9 3 5 3H19C20.11 3 21 3.9 21 5V13.35C20.37 13.13 19.7 13 19 13V5H5V19H13M13.96 12.29L11.21 15.83L9.25 13.47L6.5 17H13.35C13.75 15.88 14.47 14.91 15.4 14.21L13.96 12.29M20 18V15H18V18H15V20H18V23H20V20H23V18H20Z" />
@@ -103,13 +105,13 @@
     </button>
     -->
             <button @click="editor.chain().focus().toggleBulletList().run()"
-                :class="{ 'is-active': editor.isActive('bulletList') }">
+                :class="{ 'is-active': editor.isActive('bulletList') }" :title="this.$root.setlang.editor.blist">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M3,4H7V8H3V4M9,5V7H21V5H9M3,10H7V14H3V10M9,11V13H21V11H9M3,16H7V20H3V16M9,17V19H21V17H9" />
                 </svg>
             </button>
             <button @click="editor.chain().focus().toggleOrderedList().run()"
-                :class="{ 'is-active': editor.isActive('orderedList') }">
+                :class="{ 'is-active': editor.isActive('orderedList') }" :title="this.$root.setlang.editor.nlist">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path
                         d="M7,13V11H21V13H7M7,19V17H21V19H7M7,7V5H21V7H7M3,8V5H2V4H4V8H3M2,17V16H5V20H2V19H4V18.5H3V17.5H4V17H2M4.25,10A0.75,0.75 0 0,1 5,10.75C5,10.95 4.92,11.14 4.79,11.27L3.12,13H5V14H2V13.08L4,11H2V10H4.25Z" />
@@ -158,7 +160,8 @@
                 </svg>
             </button>
   -->
-            <button @click="this.$root.session.selectedTool = 'planningboard'">
+            <button @click="this.$root.session.selectedTool = 'planningboard'"
+                :title="this.$root.setlang.editor.planningboard">
                 <svg width="24" height="24" viewBox="0 0 24 24">
                     <path
                         d="M22,9V7H20V5A2,2 0 0,0 18,3H4A2,2 0 0,0 2,5V19A2,2 0 0,0 4,21H18A2,2 0 0,0 20,19V17H22V15H20V13H22V11H20V9H22M18,19H4V5H18V19M6,13H11V17H6V13M12,7H16V10H12V7M6,7H11V12H6V7M12,11H16V17H12V11Z">
@@ -166,7 +169,8 @@
                 </svg>
             </button>
 
-            <button @click="this.$root.session.selectedTool = 'distractionfree'" title="Enter Typewriter mode">
+            <button @click="this.$root.session.selectedTool = 'distractionfree'"
+                :title="this.$root.setlang.editor.typewriter">
 
                 <!--
  <svg width="24" height="24" viewBox="0 0 24 24">
@@ -185,7 +189,7 @@
 
 
 
-            <button @click="hilighter = !hilighter" title="Toggle Hilighting">
+            <button @click="hilighter = !hilighter" :title="this.$root.setlang.editor.hilight">
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                     <path
                         d="M7 16C7.55 16 8 16.45 8 17C8 18.1 7.1 19 6 19C5.83 19 5.67 19 5.5 18.95C5.81 18.4 6 17.74 6 17C6 16.45 6.45 16 7 16M18.67 3C18.41 3 18.16 3.1 17.96 3.29L9 12.25L11.75 15L20.71 6.04C21.1 5.65 21.1 5 20.71 4.63L19.37 3.29C19.17 3.09 18.92 3 18.67 3M7 14C5.34 14 4 15.34 4 17C4 18.31 2.84 19 2 19C2.92 20.22 4.5 21 6 21C8.21 21 10 19.21 10 17C10 15.34 8.66 14 7 14Z" />
@@ -221,7 +225,7 @@
 
 -->
 
-            <button @click="wordcountToggle()" title="Exclude this from the wordcount">
+            <button @click="wordcountToggle()" :title="this.$root.setlang.editor.wordcount">
 
 
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24" v-if="!item.excludefromwordcount">
@@ -240,7 +244,7 @@
 
 
         </div>
-        <div class="wordcountdisplay" v-if="item">{{ item.wordcount }} of {{ this.$root.fullWordCount }} </div>
+        <div class="wordcountdisplay" v-if="item">{{ item.wordcount }} / {{ this.$root.fullWordCount }} </div>
 
     </div>
 

@@ -33,13 +33,14 @@ const fileManage = {
 
       this.$swal(
         {
-          title: 'Are you sure?',
-          text: "This will download a copy of your project to your device!",
+          title: this.$root.setlang.confirm.sure,
+          text: this.$root.setlang.confirm.downloadfile,
           icon: 'question',
           showCancelButton: true,
+          cancelButtonText: this.$root.setlang.confirm.filecancel,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, export it!'
+          confirmButtonText: this.$root.setlang.confirm.fileexport
         }).then(async (result) => {
           if (result.isConfirmed) {
             var today = new Date();
@@ -73,8 +74,8 @@ const fileManage = {
             URL.revokeObjectURL(blobUrl);
 
             this.$swal(
-              'Exported!',
-              'Your file has been Exported.',
+              this.$root.setlang.confirm.exportedsuccess,
+              this.$root.setlang.confirm.exportedmessage,
               'success'
             )
           }

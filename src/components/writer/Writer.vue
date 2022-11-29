@@ -21,10 +21,14 @@
         </div>
         <table style="width:100%">
           <tr>
-            <td style="max-width: 200px;">
+            <!--
+      <td style="max-width: 200px;">
               <img src="img/placeholder.png" style="max-width:200px" />
               <p>(1600px X 2500px) (coming soon)</p>
             </td>
+
+            -->
+
             <td>
               <label>{{ this.$root.setlang.tools.name }}</label>
               <input type="text" class="formInput mantitle" v-model="this.$root.session.writer.selected.title"

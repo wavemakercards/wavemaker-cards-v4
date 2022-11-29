@@ -114,18 +114,19 @@ export default {
   methods: {
     deleteFile(index, element) {
 
+
       this.$swal(
         {
-          title: 'Are you sure?',
-          text: "You won't be able to undo this!",
+          title: this.$root.setlang.confirmmodal.confirmdelete,
+          text: this.$root.setlang.confirmmodal.noundo,
           icon: 'question',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: this.$root.setlang.confirmmodal.confirmbtn,
+          cancelButtonText: this.$root.setlang.confirmmodal.cancelbtn
         }).then((result) => {
           if (result.isConfirmed) {
-
             if (this.$root.session.writer.file) {
               if (this.$root.session.writer.file.uuid === element.uuid) {
                 this.$root.session.writer.file = null
@@ -143,15 +144,13 @@ export default {
             this.$root.DeleteRecord("Files", element.uuid)
 
             this.$swal(
-              'Deleted!',
-              'Your file has been deleted.',
+              this.$root.setlang.confirmmodal.success,
+              this.$root.setlang.confirmmodal.successfeedback,
               'success'
             )
           }
         }
         );
-
-
 
     },
     recursiveDelete(list) {

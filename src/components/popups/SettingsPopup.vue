@@ -37,119 +37,119 @@
         <hr />
 
 
-        <h2>Document Preferences</h2>
+        <h2>{{ this.$root.setlang.settings.docprefs }}</h2>
 
-        <label>Alignment</label>
+        <label>{{ this.$root.setlang.settings.alignment }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.align"
           @change="updateSettings">
-          <option value="left">Align Left</option>
-          <option value="center">Align Center</option>
-          <option value="right">Align Right</option>
-          <option value="justify">Justify</option>
+          <option value="left">{{ this.$root.setlang.settings.alignL }}</option>
+          <option value="center"> {{ this.$root.setlang.settings.alignC }}</option>
+          <option value="right"> {{ this.$root.setlang.settings.alignR }}</option>
+          <option value="justify">{{ this.$root.setlang.settings.alignJ }}</option>
         </select>
-        <label>Font Size</label>
+        <label>{{ this.$root.setlang.settings.fontsize }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.fontsize"
           @change="updateSettings">
-          <option value="1rem">Smallest</option>
-          <option value="1.5rem">Small</option>
-          <option value="2rem">Standard</option>
-          <option value="3rem">Big</option>
-          <option value="3.5rem">Biggest</option>
+          <option value="1rem">{{ this.$root.setlang.settings.fontsize1 }}</option>
+          <option value="1.5rem">{{ this.$root.setlang.settings.fontsize2 }}</option>
+          <option value="2rem">{{ this.$root.setlang.settings.fontsize3 }}</option>
+          <option value="3rem">{{ this.$root.setlang.settings.fontsize4 }}</option>
+          <option value="3.5rem">{{ this.$root.setlang.settings.fontsize5 }}</option>
         </select>
-        <label>Line Height</label>
+        <label>{{ this.$root.setlang.settings.lineheight }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.lspacing"
           @change="updateSettings">
-          <option value="3rem">Standard Spacing</option>
-          <option value="4rem">Double Spaced</option>
-          <option value="5rem">2.5 Spaced</option>
-          <option value="6rem">Triple Spaced</option>
+          <option value="3rem">{{ this.$root.setlang.settings.lineheight1 }}</option>
+          <option value="4rem"> {{ this.$root.setlang.settings.lineheight2 }}</option>
+          <option value="5rem"> {{ this.$root.setlang.settings.lineheight3 }}</option>
+          <option value="6rem"> {{ this.$root.setlang.settings.lineheight4 }}</option>
         </select>
-        <label>Paragraph Indentation</label>
+        <label>{{ this.$root.setlang.settings.paragraph }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.indentation"
           @change="updateSettings">
-          <option value="20px">Yes</option>
-          <option value="0px">no</option>
+          <option value="20px">{{ this.$root.setlang.settings.paragraphyes }}</option>
+          <option value="0px">{{ this.$root.setlang.settings.paragraphno }}</option>
         </select>
-        <label>Paragraph Spacing</label>
+        <label>{{ this.$root.setlang.settings.paragraphspacing }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.pspacing"
           @change="updateSettings">
-          <option value="20px">Standard Spacing</option>
-          <option value="30px">1.5x spacing</option>
-          <option value="40px">2x spacing</option>
-          <option value="50px">2.5x spacing</option>
-          <option value="100px">5x spacing</option>
+          <option value="20px"> {{ this.$root.setlang.settings.paragraphspacing1 }}</option>
+          <option value="30px">{{ this.$root.setlang.settings.paragraphspacing2 }}</option>
+          <option value="40px">{{ this.$root.setlang.settings.paragraphspacing3 }}</option>
+          <option value="50px">{{ this.$root.setlang.settings.paragraphspacing4 }}</option>
+          <option value="100px">{{ this.$root.setlang.settings.paragraphspacing5 }}</option>
         </select>
-        <label>Page Width</label>
+        <label>{{ this.$root.setlang.settings.pagewidth }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.page"
           @change="updateSettings">
-          <option value="800px">Page Style</option>
-          <option value="100%">Full Width</option>
+          <option value="800px"> {{ this.$root.setlang.settings.pagestyle }}</option>
+          <option value="100%"> {{ this.$root.setlang.settings.fullwidth }}</option>
         </select>
         <table>
           <tr>
             <td>
-              <label>Text Colour</label>
+              <label>{{ this.$root.setlang.settings.pagetext }}</label>
               <input type="color" v-model="this.$root.session.settings.documentprefs.color" @change="updateSettings">
             </td>
             <td>
-              <label>Page Colour</label>
+              <label>{{ this.$root.setlang.settings.pagecolour }}</label>
               <input type="color" v-model="this.$root.session.settings.documentprefs.bgcolor" @change="updateSettings">
             </td>
           </tr>
         </table>
-        <label>H1 Alignment</label>
+        <label>{{ this.$root.setlang.settings.h1align }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.h1align"
           @change="updateSettings">
-          <option value="left">Align Left</option>
-          <option value="center">Align Center</option>
-          <option value="right">Align Right</option>
-          <option value="justify">Justify</option>
+          <option value="left">{{ this.$root.setlang.settings.alignL }}</option>
+          <option value="center"> {{ this.$root.setlang.settings.alignC }}</option>
+          <option value="right"> {{ this.$root.setlang.settings.alignR }}</option>
+          <option value="justify">{{ this.$root.setlang.settings.alignJ }}</option>
         </select>
 
-        <label>H2 Alignment</label>
+        <label>{{ this.$root.setlang.settings.h2align }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.h2align"
           @change="updateSettings">
-          <option value="left">Align Left</option>
-          <option value="center">Align Center</option>
-          <option value="right">Align Right</option>
-          <option value="justify">Justify</option>
+          <option value="left">{{ this.$root.setlang.settings.alignL }}</option>
+          <option value="center"> {{ this.$root.setlang.settings.alignC }}</option>
+          <option value="right"> {{ this.$root.setlang.settings.alignR }}</option>
+          <option value="justify">{{ this.$root.setlang.settings.alignJ }}</option>
         </select>
 
-        <label>H3 Alignment</label>
+        <label>{{ this.$root.setlang.settings.h3align }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.h3align"
           @change="updateSettings">
-          <option value="left">Align Left</option>
-          <option value="center">Align Center</option>
-          <option value="right">Align Right</option>
-          <option value="justify">Justify</option>
+          <option value="left">{{ this.$root.setlang.settings.alignL }}</option>
+          <option value="center"> {{ this.$root.setlang.settings.alignC }}</option>
+          <option value="right"> {{ this.$root.setlang.settings.alignR }}</option>
+          <option value="justify">{{ this.$root.setlang.settings.alignJ }}</option>
         </select>
 
-        <label>H4 Alignment</label>
+        <label>{{ this.$root.setlang.settings.h4align }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.h4align"
           @change="updateSettings">
-          <option value="left">Align Left</option>
-          <option value="center">Align Center</option>
-          <option value="right">Align Right</option>
-          <option value="justify">Justify</option>
+          <option value="left">{{ this.$root.setlang.settings.alignL }}</option>
+          <option value="center"> {{ this.$root.setlang.settings.alignC }}</option>
+          <option value="right"> {{ this.$root.setlang.settings.alignR }}</option>
+          <option value="justify">{{ this.$root.setlang.settings.alignJ }}</option>
         </select>
 
         <hr />
-        <h2>Typewriter Preferences</h2>
+        <h2>{{ this.$root.setlang.settings.typewriter }}</h2>
 
         <table>
           <tr>
             <td>
-              <label>Text Colour</label>
+              <label>{{ this.$root.setlang.settings.typetext }}</label>
               <input type="color" v-model="this.$root.session.settings.documentprefs.distractionfree_fg"
                 @change="updateSettings" style=" width:30px; height:30px">
             </td>
             <td>
-              <label>Page Colour</label>
+              <label>{{ this.$root.setlang.settings.typepage }}</label>
               <input type="color" v-model="this.$root.session.settings.documentprefs.distractionfree_bg"
                 @change="updateSettings" style=" width:30px; height:30px">
             </td>
             <td>
-              <label>Typewriter sound</label>
+              <label>{{ this.$root.setlang.settings.typesound }}</label>
               <input type="checkbox" v-model="this.$root.session.settings.documentprefs.typesound"
                 style="width:20px; height:20px" />
             </td>
@@ -164,7 +164,7 @@
               d="M13.5 21H6V17H13.5C15.43 17 17 15.43 17 13.5S15.43 10 13.5 10H11V14L4 8L11 2V6H13.5C17.64 6 21 9.36 21 13.5S17.64 21 13.5 21Z" />
           </svg>
 
-          Reset to defaults</button>
+          {{ this.$root.setlang.settings.reset }}</button>
       </div>
 
 

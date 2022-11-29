@@ -1,0 +1,188 @@
+{
+    "tr": {
+        "info": {
+            "name": "Turkish¬ ltr",
+            "textdirection": "Emin misiniz?"
+        },
+        "confirm": {
+            "sure": "Bu, cihazınıza bir dosya indirecektir.",
+            "downloadfile": "Evet, Dışa Aktar!",
+            "fileexport": "İptal",
+            "filecancel": "Dışa Aktarıldı!",
+            "exportedsuccess": "Dosyanız dışa aktarıldı",
+            "exportedmessage": "Proje Ana Sayfası"
+        },
+        "toolbar": {
+            "projecthome": "Kitaplarım",
+            "writer": "Planlama Panolarım",
+            "planningboard": "Zihin Haritalarım",
+            "mindmap": "Kar Tanelerim",
+            "snowflake": "Zaman Çizelgem",
+            "timeline": "Izgara Planlayıcılarım",
+            "gridplanner": "Kartlarım",
+            "cardsdatabase": "Ayarlar",
+            "settings": "Dosyayı Kaydet",
+            "save": "Google Drive",
+            "googledrive": "Hızlı Yükleme",
+            "quick": "Projeyi Kapat",
+            "close": "Yeni Proje"
+        },
+        "welcome": {
+            "getstarted": "Cihazınızdan bir dosya yükleyin",
+            "loadfile": "Google Drive'dan bir dosya yükleyin",
+            "loadgoogle": "Yeni bir dosya oluşturun veya mevcut bir dosyayı yükleyin",
+            "info": "Eski Araçlar",
+            "legacy": "Bir Wavemaker Sürüm 3 dosyasını içe aktarın",
+            "v3import": "Proje Adım"
+        },
+        "start": {
+            "projectlabel": "Wavemaker Sürüm 4'e Hoş Geldiniz",
+            "welcome": "Nasıl yapılacağına ilişkin Yardım ve Kılavuzlar Wavemaker'ı kullanmak için",
+            "help": "Google Drive'da oturum açın"
+        },
+        "google": {
+            "info": "Geçerli Projeyi Kaydet",
+            "saveinfo": "Dosyalarım",
+            "files": "Dosyayı Kaydet",
+            "save": "Dosyaları Ara",
+            "search": "Oturumu Kapat",
+            "logout": "Pencereyi kapat",
+            "close": "Ayarlar"
+        },
+        "settings": {
+            "title": "Bu dosyayı kapat",
+            "close": "Bir Tema Seçin",
+            "themes": "Bir Dil Seçin",
+            "lang": "Bu, projeyi temizleyecektir",
+            "clear": "Belge Tercihler",
+            "docprefs": "Hizala",
+            "alignment": "Sola Hizala",
+            "alignL": "Sağa Hizala",
+            "alignR": "Ortaya Yasla",
+            "alignC": "Yazı Tipi Boyutu",
+            "alignJ": "En Küçük",
+            "fontsize": "Küçük",
+            "fontsize1": "Standart",
+            "fontsize2": "Büyük",
+            "fontsize3": "En Büyük",
+            "fontsize4": "Satır Yüksekliği",
+            "fontsize5": "Standart",
+            "lineheight": "Çift Aralıklı",
+            "lineheight1": "2,5 Aralık",
+            "lineheight2": "Üç Aralıklı",
+            "lineheight3": "Paragraf Girintisi",
+            "lineheight4": "evet",
+            "paragraph": "Hayır",
+            "paragraphyes": "Paragraf Aralık",
+            "paragraphno": "Standart Aralık",
+            "paragraphspacing": "1,5x Aralık",
+            "paragraphspacing1": "2x Aralık",
+            "paragraphspacing2": "2,5x Aralık",
+            "paragraphspacing3": "5x Aralık",
+            "paragraphspacing4": "Sayfa Genişliği",
+            "paragraphspacing5": "Sayfa Stili",
+            "pagewidth": "Tam Genişlik",
+            "pagestyle": "Metin Rengi",
+            "fullwidth": "Sayfa Rengi",
+            "pagetext": "H1 Hizalama",
+            "pagecolour": "H2 Hizalama",
+            "h1align": "H3 Hizalama",
+            "h2align": "H4 Hizalama",
+            "h3align": "Daktilo Tercihleri ​​¬ Metin Rengi",
+            "h4align": "Sayfa Rengi",
+            "typewriter": "Daktilo Sesi",
+            "typetext": "Sıfırla Varsayılanlar",
+            "typepage": "Kitaplarım",
+            "typesound": "Planlama Panolarım",
+            "reset": "Zihin Haritalarım"
+        },
+        "tools": {
+            "writer": "Kar Tanelerim",
+            "planningboard": "Zaman Çizelgem",
+            "mindmap": "Izgara Planlayıcılarım",
+            "snowflake": "Kartlarım",
+            "timeline": "Ad",
+            "gridplanner": "Açıklama (isteğe bağlı)",
+            "cardsdatabase": "Lütfen bir Ad girin",
+            "name": "Kitap Başlığınız",
+            "description": "Yeni Bölüm",
+            "warn": "Yeni Klasör"
+        },
+        "writer": {
+            "settings": "İstiyor musunuz? bu öğeyi silmek için? Oluşturduğunuz tüm kartlar veritabanında kalacaktır",
+            "newfile": "Bu, belgenizin ana sayfasıdır. Seçenekler aşağıdadır.",
+            "newfolder": "Bu taslağın bir .doc dosyasını dışa aktarın",
+            "deletewarn": "Sözcükler",
+            "intro": "Bunu silmek istediğinizden emin misiniz?",
+            "docdownload": "Bunu geri alamayacaksınız.",
+            "words": "Evet, silin!"
+        },
+        "confirmmodal": {
+            "confirmdelete": "İptal",
+            "noundo": "Silindi!",
+            "confirmbtn": "Bu silindi.",
+            "cancelbtn": "İhracat?",
+            "success": "Bu araç dışa aktarılsın mı?",
+            "successfeedback": "Evet, bunu dışa aktarın.",
+            "confirmexport": "Dışa Aktarıldı",
+            "exportmsg": "Başarıyla Dışa Aktarıldı",
+            "exportconfirmbtn": "Kartı Değiştir",
+            "exportsuccess": "Orijinal kartı bu üç kartla değiştirin",
+            "exportsuccessfeedback": "Evet, değiştirin!",
+            "snowconfirm": "Değiştirildi",
+            "snowconfirmtext": "Kart değiştirildi",
+            "snowconfirmbtn": "Kalın",
+            "snowconfirmsuccess": "İtalik",
+            "snowconfirmmsg": "Üstü çizili"
+        },
+        "editor": {
+            "bold": "Paragraf",
+            "italic": "Başlık 1",
+            "strikethrough": "Başlık 2",
+            "paragraph": "Resim Ekle",
+            "h1": "Madde İşaretli Liste",
+            "h2": "Numaralı Liste",
+            "pic": "Planlama panosuna geç",
+            "blist": "Daktilo modu",
+            "nlist": "Metin vurgusu",
+            "planningboard": "Kelime sayısı görünürlüğünü değiştir",
+            "typewriter": "İstiyor musunuz? bu düğümü silmek için?",
+            "hilight": "Başlık",
+            "wordcount": "Bu kartı silmek istediğinizden emin misiniz?"
+        },
+        "mindmap": {
+            "deletenodewarn": "Bu, kartınızı üç yeni kartla değiştirecektir."
+        },
+        "snowflake": {
+            "title": "Tarih/Saat",
+            "deletewarn": "Başlık",
+            "replacewarn": "Yeni Satır"
+        },
+        "timeline": {
+            "date": "Yeni Sütun",
+            "title": "Anahtar kelimelere göre ara"
+        },
+        "gridplanner": {
+            "newrow": "Etiketleri Temizle",
+            "newcol": "Bu sütun silinsin mi?"
+        },
+        "db": {
+            "search": "Bu satır silinsin mi?",
+            "clear": "Yeni Oluştur",
+            "deletecolwarn": "Mevcut Kartın Bağlantısı",
+            "deleterowwarn": "Kart Başlığı"
+        },
+        "cards": {
+            "createnewbtn": "Kart Notları",
+            "linkexisting": "Kart Etiketleri",
+            "cardtitle": "Daha Fazla Ayrıntı",
+            "cardnotes": "Görüntüler (seçmek için bir görüntüye tıklayın)",
+            "cardtags": "Görüntü Yöneticisini Aç",
+            "moredetail": "Kapat",
+            "images": "Kapat",
+            "openimagemanager": "<h1>Sürüm 3 Dönüştürücü</h1>< p>Merhaba, bu, eski <strong>wavemaker sürüm 3</strong> dosyalarınızı yeni sürüme yüklemenizi sağlayan eski bir araçtır.</p><p>Perde arkası veri tabanı oldukça değiştiğinden bu tek yönlü bir işlemdir.</p><p>VERİTABANI dosyanıza ihtiyacınız olacak (wavemaker 3'te logoya tıklayarak ana menüye gidin ve ardından veritabanını dışa aktarın) O zaman ' uzantılı bir dosyanız olmalıdır. .wmdata'</p><p>Yeni sürümde hepsi ayrı olduğu için her projeyi import edip kendi dosyasına kaydetmeniz gerekecek</p>",
+            "close": "Bir wavemaker veri tabanı yükleyin"
+        },
+        "wm3import": {}
+    }
+}

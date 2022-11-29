@@ -88,17 +88,20 @@ export default {
     exportToManuscript() {
       //loop throught the timeline and add all the nodes to a writer object and create the files
 
+
       this.$swal(
         {
-          title: 'Are you sure?',
-          text: "Export your Cards!",
+          title: this.$root.setlang.confirmmodal.confirmexport,
+          text: this.$root.setlang.confirmmodal.exportmsg,
           icon: 'question',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, export it!'
+          confirmButtonText: this.$root.setlang.confirmmodal.exportconfirmbtn,
+          cancelButtonText: this.$root.setlang.confirmmodal.cancelbtn
         }).then((result) => {
           if (result.isConfirmed) {
+
 
             let newWriter = {}
             newWriter.uuid = this.$root.uuid()
@@ -132,13 +135,17 @@ export default {
             this.$root.AddRecord("Writer", newWriter)
 
             this.$swal(
-              'Exported!',
-              'Your file has been Exported.',
+              this.$root.setlang.confirmmodal.exportsuccess,
+              this.$root.setlang.confirmmodal.exportsuccessfeedback,
               'success'
             )
           }
         }
-        )
+        );
+
+
+
+
     },
 
     openflake(flake) {
@@ -162,15 +169,17 @@ export default {
     },
     deleteFlake(index) {
 
+
       this.$swal(
         {
-          title: 'Are you sure?',
-          text: "You won't be able to undo this!",
+          title: this.$root.setlang.confirmmodal.confirmdelete,
+          text: this.$root.setlang.confirmmodal.noundo,
           icon: 'question',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: this.$root.setlang.confirmmodal.confirmbtn,
+          cancelButtonText: this.$root.setlang.confirmmodal.cancelbtn
         }).then((result) => {
           if (result.isConfirmed) {
 
@@ -179,26 +188,27 @@ export default {
             this.updateDatabase()
 
             this.$swal(
-              'Deleted!',
-              'Your file has been deleted.',
+              this.$root.setlang.confirmmodal.success,
+              this.$root.setlang.confirmmodal.successfeedback,
               'success'
             )
           }
         }
-        )
+        );
     },
     replace(flake, index) {
 
 
       this.$swal(
         {
-          title: 'Are you sure?',
-          text: "You won't be able to undo this!",
+          title: this.$root.setlang.confirmmodal.snowconfirm,
+          text: this.$root.setlang.confirmmodal.snowconfirmtext,
           icon: 'question',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, replace it!'
+          confirmButtonText: this.$root.setlang.confirmmodal.snowconfirmbtn,
+          cancelButtonText: this.$root.setlang.confirmmodal.cancelbtn
         }).then((result) => {
           if (result.isConfirmed) {
 
@@ -219,8 +229,8 @@ export default {
 
 
             this.$swal(
-              'Replaced!',
-              'Your card has been replaced with the three new ones.',
+              this.$root.setlang.confirmmodal.snowconfirmsuccess,
+              this.$root.setlang.confirmmodal.snowconfirmmsg,
               'success'
             )
           }

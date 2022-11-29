@@ -79,28 +79,31 @@ export default {
 
     },
     deleteItem(item) {
+
       this.$swal(
         {
-          title: 'Are you sure?',
-          text: "You won't be able to undo this!",
+          title: this.$root.setlang.confirmmodal.confirmdelete,
+          text: this.$root.setlang.confirmmodal.noundo,
           icon: 'question',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: this.$root.setlang.confirmmodal.confirmbtn,
+          cancelButtonText: this.$root.setlang.confirmmodal.cancelbtn
         }).then((result) => {
           if (result.isConfirmed) {
             this.recursiveDelete(item.files)
             this.$root.DeleteRecord("Writer", item.uuid)
 
             this.$swal(
-              'Deleted!',
-              'Your file has been deleted.',
+              this.$root.setlang.confirmmodal.success,
+              this.$root.setlang.confirmmodal.successfeedback,
               'success'
             )
           }
         }
         );
+
     },
     recursiveDelete(list) {
       /// TODO : uhhh as we have the writer ID this could be done with that?? Why did I do this?

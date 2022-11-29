@@ -79,25 +79,27 @@ export default {
       this.updateDatabase()
     },
     deleteNote(index) {
+
       this.$swal(
         {
-          title: 'Are you sure?',
-          text: "You won't be able to undo this!",
+          title: this.$root.setlang.confirmmodal.confirmdelete,
+          text: this.$root.setlang.confirmmodal.noundo,
           icon: 'question',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: this.$root.setlang.confirmmodal.confirmbtn,
+          cancelButtonText: this.$root.setlang.confirmmodal.cancelbtn
         }).then((result) => {
           if (result.isConfirmed) {
+
 
             // eslint-disable-next-line 
             this.parentList.splice(index, 1)
             this.updateDatabase();
-
             this.$swal(
-              'Deleted!',
-              'Your file has been deleted.',
+              this.$root.setlang.confirmmodal.success,
+              this.$root.setlang.confirmmodal.successfeedback,
               'success'
             )
           }

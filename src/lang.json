@@ -4,21 +4,46 @@
          "name": "English",
          "textdirection": "ltr"
       },
+      "confirm": {
+         "sure": "Are You Sure?",
+         "downloadfile": "This will download a file to your device.",
+         "fileexport": "Yes, Export it!",
+         "filecancel": "Cancel",
+         "exportedsuccess": "Exported!",
+         "exportedmessage": "Your file has been exported"
+      },
+      "toolbar": {
+         "projecthome": "Project Home",
+         "writer": "My Books",
+         "planningboard": "My Planning Boards",
+         "mindmap": "My Mindmaps",
+         "snowflake": "My Snowflakes",
+         "timeline": "My Timeline",
+         "gridplanner": "My Grid Planners",
+         "cardsdatabase": "My Cards",
+         "settings": "Settings",
+         "save": "Save File",
+         "googledrive": "Google Drive",
+         "quick": "Quick Upload",
+         "close": "Close Project"
+      },
       "welcome": {
          "getstarted": "New Project",
          "loadfile": "Load a file from your device",
          "loadgoogle": "Load a file from Google Drive",
-         "info": "Create a new file, or load an existing one"
+         "info": "Create a new file, or load an existing one",
+         "legacy": "Legacy Tools",
+         "v3import": "Import a Wavemaker Version 3 file"
       },
       "start": {
-         "projectlabel": "Your Project Name",
+         "projectlabel": "My Project Name",
          "welcome": "Welcome to Wavemaker Version 4",
          "help": "Help & Guides on how to use Wavemaker"
       },
       "google": {
          "info": "Login to Google Drive",
          "saveinfo": "Save Current Project",
-         "files": "Your Files",
+         "files": "My Files",
          "save": "Save File",
          "search": "Search for Files",
          "logout": "Log Out",
@@ -29,27 +54,101 @@
          "close": "Close this file",
          "themes": "Choose a Theme",
          "lang": "Choose a Language",
-         "clear": "This will clear the project"
+         "clear": "This will clear the project",
+         "docprefs": "Document Preferences",
+         "alignment": "Alignment",
+         "alignL": "Align Left",
+         "alignR": "Align Right",
+         "alignC": "Align Center",
+         "alignJ": "Justify",
+         "fontsize": "Font Size",
+         "fontsize1": "Smallest",
+         "fontsize2": "Small",
+         "fontsize3": "Standard",
+         "fontsize4": "Big",
+         "fontsize5": "Biggest",
+         "lineheight": "Line Height",
+         "lineheight1": "Standard",
+         "lineheight2": "Double Spaced",
+         "lineheight3": "2.5 Spacing",
+         "lineheight4": "Triple Spaced",
+         "paragraph": "Paragraph Indentation",
+         "paragraphyes": "yes",
+         "paragraphno": "No",
+         "paragraphspacing": "Paragraph Spacing",
+         "paragraphspacing1": "Standard Spacing",
+         "paragraphspacing2": "1.5x Spacing",
+         "paragraphspacing3": "2x Spacing",
+         "paragraphspacing4": "2.5x Spacing",
+         "paragraphspacing5": "5x Spacing",
+         "pagewidth": "Page Width",
+         "pagestyle": "Page Style",
+         "fullwidth": "Full Width",
+         "pagetext": "Text Colour",
+         "pagecolour": "Page Colour",
+         "h1align": "H1 Alignment",
+         "h2align": "H2 Alignment",
+         "h3align": "H3 Alignment",
+         "h4align": "H4 Alignment",
+         "typewriter": "Typewriter Preferences",
+         "typetext": "Text Colour",
+         "typepage": "Page Colour",
+         "typesound": "Typewriter Sound",
+         "reset": "Reset Defaults"
       },
       "tools": {
-         "writer": "Your Manuscripts",
-         "planningboard": "Your Planning Boards",
-         "mindmap": "Your Mindmaps",
-         "snowflake": "Your Snowflakes",
-         "timeline": "Your Timeline",
-         "gridplanner": "Your Grid Planners",
-         "cardsdatabase": "Your Cards",
+         "writer": "My Books",
+         "planningboard": "My Planning Boards",
+         "mindmap": "My Mindmaps",
+         "snowflake": "My Snowflakes",
+         "timeline": "My Timeline",
+         "gridplanner": "My Grid Planners",
+         "cardsdatabase": "My Cards",
          "name": "Name",
          "description": "Description (optional)",
          "warn": "Please provide a Name"
       },
       "writer": {
-         "settings": "Manuscript Settings",
+         "settings": "Your Book Title",
          "newfile": "New Section",
+         "newfolder": "New Folder",
          "deletewarn": "Do you want to delete this item? Any cards you have created will remain in the database",
          "intro": "This is the main page for your document. Options are below.",
          "docdownload": "Export a .doc file of this manuscript",
          "words": "Words"
+      },
+      "confirmmodal": {
+         "confirmdelete": "Are you sure you want to delete this?",
+         "noundo": "You will not be able to undo this.",
+         "confirmbtn": "Yes, delete it!",
+         "cancelbtn": "Cancel",
+         "success": "Deleted!",
+         "successfeedback": "That has been deleted.",
+         "confirmexport": "Export?",
+         "exportmsg": "Export this tool?",
+         "exportconfirmbtn": "Yes, Export this.",
+         "exportsuccess": "Exported",
+         "exportsuccessfeedback": "Successfully exported",
+         "snowconfirm": "Replace Card",
+         "snowconfirmtext": "Replace the original card with these three",
+         "snowconfirmbtn": "Yes, replace it!",
+         "snowconfirmsuccess": "Replaced",
+         "snowconfirmmsg": "The card has been replaced"
+      },
+      "editor": {
+         "bold": "Bold",
+         "italic": "Italic",
+         "strikethrough": "Strikethrough",
+         "paragraph": "Paragraph",
+         "h1": "Heading 1",
+         "h2": "Heading 2",
+         "pic": "Insert Picture",
+         "blist": "Bullet List",
+         "nlist": "Numbered List",
+         "planningboard": "Switch to Planning board",
+         "typewriter": "Typewriter mode",
+         "hilight": "Text hilight",
+         "wordcount": "Toggle wordcount visibility"
       },
       "mindmap": {
          "deletenodewarn": "Do you want to delete this node?"
@@ -83,28 +182,242 @@
          "images": "Images (click on an image to select it)",
          "openimagemanager": "Open Image Manager",
          "close": "Close"
+      },
+      "wm3import": {
+         "close": "Close",
+         "info": "<h1>Version 3 Converter</h1><p>Hi, this is a legacy tool to allow you to load your old <strong>wavemaker version 3</strong> files into the new version.</p><p>As the behind the scenes database has changed quite a bit this is a one-way process.</p><p>You will need your DATABASE file (go to the main menu by clicking on the logo in wavemaker 3 then export the database) You should then have a file with the extension '.wmdata'</p><p>You will need to import each project and save it to it's own file as they are all seperate in the new version</p>",
+         "upload": "Upload a wavemaker database"
       }
+   },
+   "cy": {
+      "info": {
+         "name": "Cymraeg",
+         "textdirection": "ltr"
+      },
+      "confirm": {
+         "sure": "Ydych chi'n Siwr?",
+         "downloadfile": "Bydd hyn yn lawrlwytho ffeil i'ch dyfais.",
+         "fileexport": "Ydy, Allforio!",
+         "filecancel": "Diddymu",
+         "exportedsuccess": "Wedi'i Allforio!",
+         "exportedmessage": "Allforiwyd eich ffeil"
+      },
+      "toolbar": {
+         "projecthome": "Cartref y Prosiect",
+         "writer": "Fy Llyfrau",
+         "planningboard": "Fy Myrddau Cynllunio",
+         "mindmap": "Fy Mapiau Meddwl",
+         "snowflake": "Fy Plu eira",
+         "timeline": "Fy Llinell Amser",
+         "gridplanner": "Fy Nghynllunwyr Grid",
+         "cardsdatabase": "Fy Nghardiau",
+         "settings": "Gosodiadau",
+         "save": "Cadw Ffeil",
+         "googledrive": "Google Drive",
+         "quick": "Llwythiad Cyflym",
+         "close": "Cau Prosiect"
+      },
+      "welcome": {
+         "getstarted": "Prosiect Newydd",
+         "loadfile": "Llwythwch ffeil o'ch dyfais",
+         "loadgoogle": "Llwythwch ffeil o Google Drive",
+         "info": "Creu ffeil newydd, neu lwythwch un sy'n bodoli",
+         "legacy": "Offer Etifeddiaeth",
+         "v3import": "Mewnforio ffeil Fersiwn 3 Wavemaker"
+      },
+      "start": {
+         "projectlabel": "Fy Enw Prosiect",
+         "welcome": "Croeso i Wavemaker Fersiwn 4",
+         "help": "Cymorth a Chanllawiau ar sut i ddefnyddio Wavemaker"
+      },
+      "google": {
+         "info": "Mewngofnodi i Google Drive",
+         "saveinfo": "Cadw'r Prosiect Presennol",
+         "files": "Fy Ffeiliau",
+         "save": "Cadw Ffeil",
+         "search": "Chwilio am Ffeiliau",
+         "logout": "Allgofnodi",
+         "close": "Cau ffenestr"
+      },
+      "settings": {
+         "title": "Gosodiadau",
+         "close": "Cau'r ffeil hon",
+         "themes": "Dewiswch Thema",
+         "lang": "Dewiswch Iaith",
+         "clear": "Bydd hyn yn clirio'r prosiect",
+         "docprefs": "Dogfen Dewisiadau",
+         "alignment": "Aliniad",
+         "alignL": "Alinio i'r Chwith",
+         "alignR": "Alinio i'r Dde",
+         "alignC": "Alinio'r Ganolfan",
+         "alignJ": "Cyfiawnhau",
+         "fontsize": "Maint y Ffont",
+         "fontsize1": "Lleiaf",
+         "fontsize2": "Bach",
+         "fontsize3": "Safonol",
+         "fontsize4": "Mawr",
+         "fontsize5": "Mwyaf",
+         "lineheight": "Uchder y Llinell",
+         "lineheight1": "Safonol",
+         "lineheight2": "Bylchau Dwbl",
+         "lineheight3": "2.5 Bylchau",
+         "lineheight4": "Gofod Mewn Paragraff",
+         "paragraph": "Gofod Mewn Paragraff",
+         "paragraphyes": "Gofod Mewnol Bylchu",
+         "paragraphno": "Bylchau Safonol",
+         "paragraphspacing": "Bylchu 1.5x",
+         "paragraphspacing1": "2x Bylchu",
+         "paragraphspacing2": "2.5x Bylchu",
+         "paragraphspacing3": "5x Bylchu",
+         "paragraphspacing4": "Lled y Dudalen",
+         "paragraphspacing5": "Arddull y Dudalen",
+         "pagewidth": "Lled Llawn",
+         "pagestyle": "Lliw Testun",
+         "fullwidth": "Lliw y Dudalen",
+         "pagetext": "H1 Aliniad",
+         "pagecolour": "H2 Aliniad",
+         "h1align": "H3 Aliniad",
+         "h2align": "H4 Aliniad",
+         "h3align": "Lliw Teipiadur",
+         "h4align": "Teipiadur Sain",
+         "typewriter": "Lliw Teipiadur Rhagosodiadau",
+         "typetext": "Fy Llyfrau",
+         "typepage": "Fy Myrddau Cynllunio",
+         "typesound": "Fy Mapiau Meddwl",
+         "reset": "Fy Plu eira"
+      },
+      "tools": {
+         "writer": "Fy Llinell Amser",
+         "planningboard": "Fy Nghynllunwyr Grid",
+         "mindmap": "Fy Nghardiau",
+         "snowflake": "Enw",
+         "timeline": "Disgrifiad (dewisol)",
+         "gridplanner": "Rhowch Enw",
+         "cardsdatabase": "Teitl eich Llyfr",
+         "name": "Adran Newydd",
+         "description": "Ffolder Newydd",
+         "warn": "Ydych chi eisiau i ddileu'r eitem hon? Bydd unrhyw gardiau rydych wedi'u creu yn aros yn y gronfa ddata"
+      },
+      "writer": {
+         "settings": "Dyma brif dudalen eich dogfen. Mae'r opsiynau isod.",
+         "newfile": "Allforio ffeil .doc o'r llawysgrif hon",
+         "newfolder": "Geiriau",
+         "deletewarn": "Ydych chi'n siŵr eich bod am ddileu hwn?",
+         "intro": "Ni fyddwch yn gallu dadwneud hyn.",
+         "docdownload": "Ydw, dilëwch ef!",
+         "words": "Diddymu"
+      },
+      "confirmmodal": {
+         "confirmdelete": "Wedi'i ddileu!",
+         "noundo": "Mae hwnnw wedi'i ddileu.",
+         "confirmbtn": "Allforio?",
+         "cancelbtn": "Allforio'r offeryn hwn?",
+         "success": "Ydy, Allforio hwn.",
+         "successfeedback": "Wedi'i Allforio",
+         "confirmexport": "Wedi'i allforio'n llwyddiannus",
+         "exportmsg": "Cerdyn Amnewid",
+         "exportconfirmbtn": "Amnewid y cerdyn gwreiddiol â'r tri hyn",
+         "exportsuccess": "Ydy, yn ei le!",
+         "exportsuccessfeedback": "Wedi'i ddisodli",
+         "snowconfirm": "Mae'r cerdyn wedi'i ddisodli",
+         "snowconfirmtext": "Trwm",
+         "snowconfirmbtn": "Italig",
+         "snowconfirmsuccess": "Taro trwodd",
+         "snowconfirmmsg": "Paragraff"
+      },
+      "editor": {
+         "bold": "Pennawd 1",
+         "italic": "Pennawd 2",
+         "strikethrough": "Mewnosod Llun",
+         "paragraph": "Rhestr Bwled",
+         "h1": "Rhestr wedi'i Rhifo",
+         "h2": "Newid i'r Bwrdd Cynllunio",
+         "pic": "Modd teipiadur",
+         "blist": "Text hilight",
+         "nlist": "Toglo word i ddileu'r nod hwn?",
+         "planningboard": "Teitl",
+         "typewriter": "Ydych chi'n siŵr eich bod am ddileu'r cerdyn hwn?",
+         "hilight": "Bydd hwn yn disodli'ch cerdyn gyda'r tri pheth newydd.",
+         "wordcount": "Dyddiad/Amser"
+      },
+      "mindmap": {
+         "deletenodewarn": "Teitl"
+      },
+      "snowflake": {
+         "title": "Rhes Newydd",
+         "deletewarn": "Colofn Newydd",
+         "replacewarn": "Chwilio yn ôl allweddeiriau"
+      },
+      "timeline": {
+         "date": "Clirio Tagiau",
+         "title": "Dileu’r golofn hon?"
+      },
+      "gridplanner": {
+         "newrow": "Dileu'r rhes hon?",
+         "newcol": "Creu Cyswllt Newydd"
+      },
+      "db": {
+         "search": "Cerdyn Presennol",
+         "clear": "Teitl y Cerdyn",
+         "deletecolwarn": "Nodiadau Cerdyn",
+         "deleterowwarn": "Tagiau Cerdyn"
+      },
+      "cards": {
+         "createnewbtn": "Mwy o Fanylion",
+         "linkexisting": "Delweddau (cliciwch ar lun i'w ddewis)",
+         "cardtitle": "Agor Rheolwr Delwedd",
+         "cardnotes": "Cau",
+         "cardtags": "Cau",
+         "moredetail": "<h1> Trawsnewidydd Fersiwn 3</h1>< p>Helo, mae hwn yn declyn etifeddiaeth i'ch galluogi i lwytho eich hen ffeiliau <strong>wavemaker version 3</strong> i'r fersiwn newydd.</p><p>Gan fod y gronfa ddata tu ôl i'r llenni wedi newid cryn dipyn proses unffordd yw hon.</p><p>Bydd angen eich ffeil CRONFA DDATA (ewch i'r brif ddewislen trwy glicio ar y logo yn wavemaker 3 ac yna allforio'r gronfa ddata) Yna dylech gael ffeil gyda'r estyniad ' .wmdata'</p><p>Bydd angen i chi fewngludo pob prosiect a'i gadw i'w ffeil ei hun gan eu bod i gyd ar wahân yn y fersiwn newydd</p>",
+         "images": "Uwchlwytho cronfa ddata tonmaker"
+      },
+      "wm3import": {}
    },
    "de": {
       "info": {
          "name": "Deutsch",
          "textdirection": "ltr"
       },
+      "confirm": {
+         "sure": "Sind Sie sicher?",
+         "downloadfile": "Dadurch wird eine Datei auf Ihr Gerät heruntergeladen.",
+         "fileexport": "Ja, exportieren!",
+         "filecancel": "Abbrechen",
+         "exportedsuccess": "Exportiert!",
+         "exportedmessage": "Ihre Datei wurde exportiert"
+      },
+      "toolbar": {
+         "projecthome": "Projekt-Startseite",
+         "writer": "Meine Bücher",
+         "planningboard": "Meine Plantafeln",
+         "mindmap": "Meine Mindmaps",
+         "snowflake": "Meine Schneeflocken",
+         "timeline": "Meine Chronik",
+         "gridplanner": "Meine Rasterplaner",
+         "cardsdatabase": "Meine Karten",
+         "settings": "Einstellungen",
+         "save": "Datei speichern",
+         "googledrive": "Google Drive",
+         "quick": "Schnell-Upload",
+         "close": "Projekt schließen"
+      },
       "welcome": {
          "getstarted": "Neues Projekt",
          "loadfile": "Laden Sie eine Datei von Ihrem Gerät",
          "loadgoogle": "Laden Sie eine Datei von Google Drive",
-         "info": "Erstellen Sie eine neue Datei oder laden Sie eine vorhandene"
+         "info": "Erstellen Sie eine neue Datei oder laden Sie eine vorhandene Datei",
+         "legacy": "Ältere Tools",
+         "v3import": "Importieren Sie eine Wavemaker Version 3-Datei"
       },
       "start": {
-         "projectlabel": "Ihr Projektname",
+         "projectlabel": "Mein Projektname",
          "welcome": "Willkommen bei Wavemaker Version 4",
-         "help": "Hilfe und Anleitungen zur Verwendung von Wavemaker"
+         "help": "Hilfe und Anleitungen zur Vorgehensweise um Wavemaker zu verwenden"
       },
       "google": {
          "info": "Bei Google Drive anmelden",
          "saveinfo": "Aktuelles Projekt speichern",
-         "files": "Ihre Dateien",
+         "files": "Meine Dateien",
          "save": "Datei speichern",
          "search": "Nach Dateien suchen",
          "logout": "Abmelden",
@@ -115,30 +428,104 @@
          "close": "Diese Datei schließen",
          "themes": "Design auswählen",
          "lang": "Sprache auswählen",
-         "clear": "Dadurch wird das Projekt gelöscht"
+         "clear": "Dadurch wird das Projekt gelöscht",
+         "docprefs": "Dokument Einstellungen",
+         "alignment": "Ausrichtung",
+         "alignL": "Linksbündig",
+         "alignR": "Rechtsbündig",
+         "alignC": "Zentriert",
+         "alignJ": "Blocksatz",
+         "fontsize": "Schriftgröße",
+         "fontsize1": "Kleinste",
+         "fontsize2": "Klein",
+         "fontsize3": "Standard",
+         "fontsize4": "Groß",
+         "fontsize5": "Größte",
+         "lineheight": "Zeilenhöhe",
+         "lineheight1": "Standard",
+         "lineheight2": "Doppelter Zeilenabstand",
+         "lineheight3": "2,5 Zeilenabstand",
+         "lineheight4": "Dreifacher Zeilenabstand",
+         "paragraph": "Absatzeinzug",
+         "paragraphyes": "Ja",
+         "paragraphno": "Nein",
+         "paragraphspacing": "Absatz Abstand",
+         "paragraphspacing1": "Standardabstand",
+         "paragraphspacing2": "1,5x Abstand",
+         "paragraphspacing3": "2x Abstand",
+         "paragraphspacing4": "2,5x Abstand",
+         "paragraphspacing5": "5x Abstand",
+         "pagewidth": "Seitenbreite",
+         "pagestyle": "Seitenstil",
+         "fullwidth": "Volle Breite",
+         "pagetext": "Textfarbe",
+         "pagecolour": "Seitenfarbe",
+         "h1align": "H1-Ausrichtung",
+         "h2align": "H2-Ausrichtung",
+         "h3align": "H3-Ausrichtung",
+         "h4align": "H4-Ausrichtung",
+         "typewriter": "Schreibmaschineneinstellungen",
+         "typetext": "Textfarbe",
+         "typepage": "Seitenfarbe",
+         "typesound": "Schreibmaschinenton",
+         "reset": "Zurücksetzen Standardeinstellungen"
       },
       "tools": {
-         "writer": "Ihre Manuskripte",
-         "planningboard": "Ihre Plantafeln",
-         "mindmap": "Ihre Mindmaps",
-         "snowflake": "Ihre Schneeflocken",
-         "timeline": "Ihre Zeitleiste",
-         "gridplanner": "Ihre Rasterplaner",
-         "cardsdatabase": "Ihre Karten",
+         "writer": "Meine Bücher",
+         "planningboard": "Meine Plantafeln",
+         "mindmap": "Meine Mindmaps",
+         "snowflake": "Meine Schneeflocken",
+         "timeline": "Meine Zeitleiste",
+         "gridplanner": "Meine Rasterplaner",
+         "cardsdatabase": "Meine Karten",
          "name": "Name",
          "description": "Beschreibung (optional)",
-         "warn": "Bitte geben Sie einen Namen ein"
+         "warn": "Bitte geben Sie einen Namen an"
       },
       "writer": {
-         "settings": "Manuskripteinstellungen",
+         "settings": "Ihr Buchtitel",
          "newfile": "Neuer Abschnitt",
-         "deletewarn": "Möchten Sie dieses Element löschen? Alle von Ihnen erstellten Karten bleiben in der Datenbank",
+         "newfolder": "Neuer Ordner",
+         "deletewarn": "Wollen Sie diesen Artikel löschen? Alle von Ihnen erstellten Karten bleiben in der Datenbank",
          "intro": "Dies ist die Hauptseite für Ihr Dokument. Optionen sind unten.",
          "docdownload": "Exportieren Sie eine .doc-Datei dieses Manuskripts",
          "words": "Wörter"
       },
+      "confirmmodal": {
+         "confirmdelete": "Sind Sie sicher, dass Sie dies löschen möchten?",
+         "noundo": "Sie können dies nicht rückgängig machen.",
+         "confirmbtn": "Ja, löschen!",
+         "cancelbtn": "Abbrechen",
+         "success": "Gelöscht!",
+         "successfeedback": "Das wurde gelöscht.",
+         "confirmexport": "Exportieren?",
+         "exportmsg": "Dieses Tool exportieren?",
+         "exportconfirmbtn": "Ja, exportieren.",
+         "exportsuccess": "Exportiert",
+         "exportsuccessfeedback": "Erfolgreich exportiert",
+         "snowconfirm": "Karte ersetzen",
+         "snowconfirmtext": "Originalkarte durch diese drei ersetzen",
+         "snowconfirmbtn": "Ja, ersetzen!",
+         "snowconfirmsuccess": "Ersetzt",
+         "snowconfirmmsg": "Die Karte wurde ersetzt"
+      },
+      "editor": {
+         "bold": "Fett",
+         "italic": "Kursiv",
+         "strikethrough": "Durchgestrichen",
+         "paragraph": "Absatz",
+         "h1": "Überschrift 1",
+         "h2": "Überschrift 2",
+         "pic": "Bild einfügen",
+         "blist": "Aufzählungszeichen",
+         "nlist": "Nummerierte Liste",
+         "planningboard": "Zur Plantafel wechseln",
+         "typewriter": "Schreibmaschinenmodus",
+         "hilight": "Texthervorhebung",
+         "wordcount": "Sichtbarkeit der Wortanzahl umschalten"
+      },
       "mindmap": {
-         "deletenodewarn": "Möchten Sie diesen Knoten löschen?"
+         "deletenodewarn": "Wollen Sie diesen Knoten löschen?"
       },
       "snowflake": {
          "title": "Titel",
@@ -169,6 +556,11 @@
          "images": "Bilder (klicken Sie auf ein Bild, um es auszuwählen)",
          "openimagemanager": "Bild-Manager öffnen",
          "close": "Schließen"
+      },
+      "wm3import": {
+         "close": "Schließen",
+         "info": "<h1>Version 3 Konverter</h1>< p>Hallo, dies ist ein veraltetes Tool, mit dem Sie Ihre alten <strong>wavemaker Version 3</strong>-Dateien in die neue Version laden können.</p><p>Da sich die Datenbank hinter den Kulissen ziemlich verändert hat dies ist ein einseitiger Prozess.</p><p>Sie benötigen Ihre DATABASE-Datei (gehen Sie zum Hauptmenü, indem Sie auf das Logo in wavemaker 3 klicken, und exportieren Sie dann die Datenbank). Sie sollten dann eine Datei mit der Erweiterung ' .wmdata'</p><p>Sie müssen jedes Projekt importieren und in einer eigenen Datei speichern, da sie in der neuen Version alle separat sind</p>",
+         "upload": "Laden Sie eine Wavemaker-Datenbank hoch"
       }
    },
    "es": {
@@ -176,21 +568,46 @@
          "name": "Español",
          "textdirection": "ltr"
       },
+      "confirm": {
+         "sure": "¿Está seguro?",
+         "downloadfile": "Esto descargará un archivo a su dispositivo.",
+         "fileexport": "¡Sí, exportalo!",
+         "filecancel": "Cancelar",
+         "exportedsuccess": "¡Exportado!",
+         "exportedmessage": "Su archivo ha sido exportado"
+      },
+      "toolbar": {
+         "projecthome": "Inicio del proyecto",
+         "writer": "Mis libros",
+         "planningboard": "Mis tableros de planificación",
+         "mindmap": "Mis mapas mentales",
+         "snowflake": "Mis copos de nieve",
+         "timeline": "Mi línea de tiempo",
+         "gridplanner": "Mis planificadores de cuadrícula",
+         "cardsdatabase": "Mis tarjetas",
+         "settings": "Configuración",
+         "save": "Guardar archivo",
+         "googledrive": "Google Drive",
+         "quick": "Carga rápida",
+         "close": "Cerrar proyecto"
+      },
       "welcome": {
-         "getstarted": "Proyecto nuevo",
-         "loadfile": "Cargar un archivo desde su dispositivo",
-         "loadgoogle": "Cargar un archivo desde Google Drive",
-         "info": "Crear un archivo nuevo o cargar uno existente"
+         "getstarted": "Nuevo proyecto",
+         "loadfile": "Cargue un archivo desde su dispositivo",
+         "loadgoogle": "Cargue un archivo desde Google Drive",
+         "info": "Cree un nuevo archivo o cargue uno existente",
+         "legacy": "Herramientas heredadas",
+         "v3import": "Importe un archivo Wavemaker versión 3"
       },
       "start": {
-         "projectlabel": "Nombre de su proyecto",
-         "welcome": "Bienvenido a la versión 4 de Wavemaker",
-         "help": "Ayuda y guías sobre cómo usar Wavemaker"
+         "projectlabel": "Mi nombre de proyecto",
+         "welcome": "Bienvenido a Wavemaker versión 4",
+         "help": "Ayuda y guías sobre cómo para usar Wavemaker"
       },
       "google": {
          "info": "Iniciar sesión en Google Drive",
          "saveinfo": "Guardar proyecto actual",
-         "files": "Sus archivos",
+         "files": "Mis archivos",
          "save": "Guardar archivo",
          "search": "Buscar archivos",
          "logout": "Cerrar sesión",
@@ -201,30 +618,104 @@
          "close": "Cerrar este archivo",
          "themes": "Elegir un tema",
          "lang": "Elegir un idioma",
-         "clear": "Esto borrará el proyecto"
+         "clear": "Esto borrará el proyecto",
+         "docprefs": "Documento Preferencias",
+         "alignment": "Alineación",
+         "alignL": "Alinear a la izquierda",
+         "alignR": "Alinear a la derecha",
+         "alignC": "Alinear al centro",
+         "alignJ": "Justificar",
+         "fontsize": "Tamaño de fuente",
+         "fontsize1": "Más pequeño",
+         "fontsize2": "Pequeño",
+         "fontsize3": "Estándar",
+         "fontsize4": "Grande",
+         "fontsize5": "Más grande",
+         "lineheight": "Altura de línea",
+         "lineheight1": "Estándar",
+         "lineheight2": "Espaciado doble",
+         "lineheight3": "Espaciado 2,5",
+         "lineheight4": "Espaciado triple",
+         "paragraph": "Sangría de párrafo",
+         "paragraphyes": "Sí",
+         "paragraphno": "No",
+         "paragraphspacing": "Párrafo Espaciado",
+         "paragraphspacing1": "Espaciado estándar",
+         "paragraphspacing2": "Espaciado 1,5x",
+         "paragraphspacing3": "Espaciado 2x",
+         "paragraphspacing4": "Espaciado 2,5x",
+         "paragraphspacing5": "Espaciado 5x",
+         "pagewidth": "Ancho de página",
+         "pagestyle": "Estilo de página",
+         "fullwidth": "Ancho completo",
+         "pagetext": "Color de texto",
+         "pagecolour": "Color de página",
+         "h1align": "Alineación H1",
+         "h2align": "Alineación H2",
+         "h3align": "Alineación H3",
+         "h4align": "Alineación H4",
+         "typewriter": "Preferencias de máquina de escribir",
+         "typetext": "Color de texto",
+         "typepage": "Color de página",
+         "typesound": "Sonido de máquina de escribir",
+         "reset": "Restablecer Valores predeterminados"
       },
       "tools": {
-         "writer": "Sus manuscritos",
-         "planningboard": "Su Tableros de planificación",
-         "mindmap": "Sus mapas mentales",
-         "snowflake": "Sus copos de nieve",
-         "timeline": "Su línea de tiempo",
-         "gridplanner": "Sus planificadores de cuadrícula",
-         "cardsdatabase": "Sus tarjetas",
+         "writer": "Mis libros",
+         "planningboard": "Mis tableros de planificación",
+         "mindmap": "Mis mapas mentales",
+         "snowflake": "Mis copos de nieve",
+         "timeline": "Mi línea de tiempo",
+         "gridplanner": "Mis planificadores de cuadrícula",
+         "cardsdatabase": "Mis tarjetas",
          "name": "Nombre",
          "description": "Descripción (opcional)",
          "warn": "Proporcione un nombre"
       },
       "writer": {
-         "settings": "Configuración del manuscrito",
+         "settings": "Título de su libro",
          "newfile": "Nueva sección",
+         "newfolder": "Nueva carpeta",
          "deletewarn": "¿Desea eliminar este elemento? Todas las tarjetas que haya creado permanecerán en la base de datos",
          "intro": "Esta es la página principal de su documento. Las opciones están abajo.",
          "docdownload": "Exportar un archivo .doc de este manuscrito",
          "words": "Palabras"
       },
+      "confirmmodal": {
+         "confirmdelete": "¿Está seguro de que desea eliminarlo?",
+         "noundo": "No podrás deshacer esto.",
+         "confirmbtn": "¡Sí, bórralo!",
+         "cancelbtn": "Cancelar",
+         "success": "¡Eliminado!",
+         "successfeedback": "Eso ha sido borrado.",
+         "confirmexport": "¿Exportar?",
+         "exportmsg": "¿Exportar esta herramienta?",
+         "exportconfirmbtn": "Sí, exportar esto.",
+         "exportsuccess": "Exportado",
+         "exportsuccessfeedback": "Exportado con éxito",
+         "snowconfirm": "Reemplazar tarjeta",
+         "snowconfirmtext": "Reemplazar la tarjeta original con estas tres",
+         "snowconfirmbtn": "¡Sí, reemplázala!",
+         "snowconfirmsuccess": "Reemplazada",
+         "snowconfirmmsg": "La tarjeta ha sido reemplazada"
+      },
+      "editor": {
+         "bold": "Negrita",
+         "italic": "Cursiva",
+         "strikethrough": "Tachado",
+         "paragraph": "Párrafo",
+         "h1": "Encabezado 1",
+         "h2": "Encabezado 2",
+         "pic": "Insertar imagen",
+         "blist": "Lista de viñetas",
+         "nlist": "Lista numerada",
+         "planningboard": "Cambiar a tablero de planificación",
+         "typewriter": "Modo de máquina de escribir",
+         "hilight": "Resaltar texto",
+         "wordcount": "Alternar visibilidad de recuento de palabras"
+      },
       "mindmap": {
-         "deletenodewarn": "¿Desea eliminar este nodo?"
+         "deletenodewarn": "¿Quieres eliminar este nodo?"
       },
       "snowflake": {
          "title": "Título",
@@ -254,7 +745,12 @@
          "moredetail": "Más detalles",
          "images": "Imágenes (haga clic en una imagen para seleccionarla)",
          "openimagemanager": "Abrir administrador de imágenes",
-         "close": "Cerrar\n"
+         "close": "Cerrar"
+      },
+      "wm3import": {
+         "close": "Cerrar",
+         "info": "<h1>Convertidor de la versión 3</h1>< p>Hola, esta es una herramienta heredada que le permite cargar sus archivos antiguos de <strong>wavemaker versión 3</strong> en la nueva versión.</p><p>Como la base de datos entre bastidores ha cambiado bastante este es un proceso unidireccional.</p><p>Necesitará su archivo de BASE DE DATOS (vaya al menú principal haciendo clic en el logotipo en wavemaker 3 y luego exporte la base de datos) Entonces debería tener un archivo con la extensión ' .wmdata'</p><p>Tendrá que importar cada proyecto y guardarlo en su propio archivo, ya que todos están separados en la nueva versión</p>",
+         "upload": "Cargue una base de datos de wavemaker"
       }
    },
    "fr": {
@@ -262,21 +758,46 @@
          "name": "Français",
          "textdirection": "ltr"
       },
+      "confirm": {
+         "sure": "Êtes-vous sûr ?",
+         "downloadfile": "Ceci téléchargera un fichier sur votre appareil.",
+         "fileexport": "Oui, exportez-le !",
+         "filecancel": "Annuler",
+         "exportedsuccess": "Exporté !",
+         "exportedmessage": "Votre fichier a été exporté"
+      },
+      "toolbar": {
+         "projecthome": "Accueil du projet",
+         "writer": "Mes livres",
+         "planningboard": "Mes tableaux de planification",
+         "mindmap": "Mes Mindmaps",
+         "snowflake": "Mes flocons de neige",
+         "timeline": "Ma chronologie",
+         "gridplanner": "Mes grilles de planification",
+         "cardsdatabase": "Mes cartes",
+         "settings": "Paramètres",
+         "save": "Enregistrer le fichier",
+         "googledrive": "Google Drive",
+         "quick": "Téléchargement rapide",
+         "close": "Fermer le projet"
+      },
       "welcome": {
          "getstarted": "Nouveau projet",
-         "loadfile": "Chargez un fichier depuis votre appareil",
-         "loadgoogle": "Chargez un fichier depuis Google Drive",
-         "info": "Créez un nouveau fichier ou chargez-en un existant"
+         "loadfile": "Charger un fichier depuis votre appareil",
+         "loadgoogle": "Charger un fichier depuis Google Drive",
+         "info": "Créer un nouveau fichier ou charger un fichier existant",
+         "legacy": "Outils hérités",
+         "v3import": "Importer un fichier Wavemaker Version 3"
       },
       "start": {
-         "projectlabel": "Le nom de votre projet",
+         "projectlabel": "Mon nom de projet",
          "welcome": "Bienvenue dans Wavemaker Version 4",
-         "help": "Aide et guides sur l'utilisation de Wavemaker"
+         "help": "Aide et guides sur la façon pour utiliser Wavemaker"
       },
       "google": {
          "info": "Se connecter à Google Drive",
-         "saveinfo": "Enregistrer le projet en cours",
-         "files": "Vos fichiers",
+         "saveinfo": "Enregistrer le projet actuel",
+         "files": "Mes fichiers",
          "save": "Enregistrer le fichier",
          "search": "Rechercher des fichiers",
          "logout": "Se déconnecter",
@@ -287,34 +808,108 @@
          "close": "Fermer ce fichier",
          "themes": "Choisir un thème",
          "lang": "Choisir une langue",
-         "clear": "Cela effacera le projet"
+         "clear": "Ceci effacera le projet",
+         "docprefs": "Document Préférences",
+         "alignment": "Alignement",
+         "alignL": "Aligner à gauche",
+         "alignR": "Aligner à droite",
+         "alignC": "Aligner au centre",
+         "alignJ": "Justifier",
+         "fontsize": "Taille de la police",
+         "fontsize1": "Le plus petit",
+         "fontsize2": "Petit",
+         "fontsize3": "Standard",
+         "fontsize4": "Grand",
+         "fontsize5": "Le plus grand",
+         "lineheight": "Hauteur de ligne",
+         "lineheight1": "Standard",
+         "lineheight2": "Double interligne",
+         "lineheight3": "Espacement 2,5",
+         "lineheight4": "Triple interligne",
+         "paragraph": "Retrait de paragraphe",
+         "paragraphyes": "Oui",
+         "paragraphno": "Non",
+         "paragraphspacing": "Paragraphe Espacement",
+         "paragraphspacing1": "Espacement standard",
+         "paragraphspacing2": "Espacement 1,5x",
+         "paragraphspacing3": "Espacement 2x",
+         "paragraphspacing4": "Espacement 2,5x",
+         "paragraphspacing5": "Espacement 5x",
+         "pagewidth": "Largeur de page",
+         "pagestyle": "Style de page",
+         "fullwidth": "Pleine largeur",
+         "pagetext": "Couleur du texte",
+         "pagecolour": "Couleur de la page",
+         "h1align": "Alignement H1",
+         "h2align": "Alignement H2",
+         "h3align": "Alignement H3",
+         "h4align": "Alignement H4",
+         "typewriter": "Préférences de la machine à écrire",
+         "typetext": "Couleur du texte",
+         "typepage": "Couleur de la page",
+         "typesound": "Son de la machine à écrire",
+         "reset": "Réinitialiser Valeurs par défaut"
       },
       "tools": {
-         "writer": "Vos manuscrits",
-         "planningboard": "Vos Tableaux de planification",
-         "mindmap": "Vos cartes mentales",
-         "snowflake": "Vos flocons de neige",
-         "timeline": "Votre chronologie",
-         "gridplanner": "Vos planificateurs de grille",
-         "cardsdatabase": "Vos cartes",
+         "writer": "Mes livres",
+         "planningboard": "Mes tableaux de planification",
+         "mindmap": "Mes cartes mentales",
+         "snowflake": "Mes flocons de neige",
+         "timeline": "Ma chronologie",
+         "gridplanner": "Mes planificateurs de grille",
+         "cardsdatabase": "Mes cartes",
          "name": "Nom",
          "description": "Description (facultatif)",
          "warn": "Veuillez fournir un nom"
       },
       "writer": {
-         "settings": "Paramètres du manuscrit",
+         "settings": "Titre de votre livre",
          "newfile": "Nouvelle section",
-         "deletewarn": "Voulez-vous supprimer cet élément ? Toutes les cartes que vous avez créées resteront dans la base de données",
+         "newfolder": "Nouveau dossier",
+         "deletewarn": "Voulez-vous supprimer cet article ? Toutes les cartes que vous avez créées resteront dans la base de données",
          "intro": "Il s'agit de la page principale de votre document. Les options sont ci-dessous.",
          "docdownload": "Exporter un fichier .doc de ce manuscrit",
-         "words": "Mots"
+         "words": "Words"
+      },
+      "confirmmodal": {
+         "confirmdelete": "Êtes-vous sûr de vouloir le supprimer ?",
+         "noundo": "Vous ne pourrez pas revenir en arrière.",
+         "confirmbtn": "Oui, supprimez-le !",
+         "cancelbtn": "Annuler",
+         "success": "Supprimé !",
+         "successfeedback": "Cela a été supprimé.",
+         "confirmexport": "Exporter ?",
+         "exportmsg": "Exporter cet outil ?",
+         "exportconfirmbtn": "Oui, exportez ceci.",
+         "exportsuccess": "Exporté",
+         "exportsuccessfeedback": "Exporté avec succès",
+         "snowconfirm": "Remplacer la carte",
+         "snowconfirmtext": "Remplacez la carte d'origine par ces trois",
+         "snowconfirmbtn": "Oui, remplacez-la !",
+         "snowconfirmsuccess": "Remplacé",
+         "snowconfirmmsg": "La carte a été remplacée"
+      },
+      "editor": {
+         "bold": "Gras",
+         "italic": "Italique",
+         "strikethrough": "Barré",
+         "paragraph": "Paragraphe",
+         "h1": "Titre 1",
+         "h2": "Titre 2",
+         "pic": "Insérer une image",
+         "blist": "Liste à puces",
+         "nlist": "Liste numérotée",
+         "planningboard": "Passer au tableau de planification",
+         "typewriter": "Mode machine à écrire",
+         "hilight": "Texte en surbrillance",
+         "wordcount": "Basculer la visibilité du nombre de mots"
       },
       "mindmap": {
-         "deletenodewarn": "Voulez-vous supprimer ce nœud ?"
+         "deletenodewarn": "Voulez-vous supprimer ce nœud ?"
       },
       "snowflake": {
          "title": "Titre",
-         "deletewarn": "Voulez-vous vraiment supprimer cette carte ?",
+         "deletewarn": "Voulez-vous vraiment supprimer cette carte ?",
          "replacewarn": "Cela remplacera votre carte par les trois nouvelles."
       },
       "timeline": {
@@ -328,8 +923,8 @@
       "db": {
          "search": "Recherche par mots clés",
          "clear": "Effacer les balises",
-         "deletecolwarn": "Supprimer cette colonne ?",
-         "deleterowwarn": "Supprimer cette ligne ?"
+         "deletecolwarn": "Supprimer cette colonne ?",
+         "deleterowwarn": "Supprimer cette ligne ?"
       },
       "cards": {
          "createnewbtn": "Créer un nouveau",
@@ -341,92 +936,11 @@
          "images": "Images (cliquez sur une image pour la sélectionner)",
          "openimagemanager": "Ouvrir le gestionnaire d'images",
          "close": "Fermer"
-      }
-   },
-   "cy": {
-      "info": {
-         "name": "Cymraeg",
-         "textdirection": "ltr"
       },
-      "welcome": {
-         "getstarted": "Prosiect Newydd",
-         "loadfile": "Llwytho ffeil o'ch dyfais",
-         "loadgoogle": "Llwytho ffeil o Google Drive",
-         "info": "Creu ffeil newydd, neu lwytho un sy'n bodoli"
-      },
-      "start": {
-         "projectlabel": "Enw eich Prosiect",
-         "welcome": "Croeso i Wavemaker Fersiwn 4",
-         "help": "Cymorth a Chanllawiau ar sut i ddefnyddio Wavemaker"
-      },
-      "google": {
-         "info": "Mewngofnodi i Google Drive",
-         "saveinfo": "Cadw Prosiect Cyfredol",
-         "files": "Eich Ffeiliau",
-         "save": "Cadw Ffeil",
-         "search": "Chwilio am Ffeiliau",
-         "logout": "Allgofnodi",
-         "close": "Cau ffenestr"
-      },
-      "settings": {
-         "title": "Gosodiadau",
-         "close": "Cau'r ffeil",
-         "themes": "Dewis Thema",
-         "lang": "Dewis Iaith",
-         "clear": "Bydd hyn yn clirio'r prosiect"
-      },
-      "tools": {
-         "writer": "Eich Llawysgrifau",
-         "planningboard": "Eich Byrddau Cynllunio",
-         "mindmap": "Eich Mapiau Meddwl",
-         "snowflake": "Eich plu eira",
-         "timeline": "Eich Llinell Amser",
-         "gridplanner": "Eich Cynllunwyr Grid",
-         "cardsdatabase": "Eich Cardiau",
-         "name": "Enw",
-         "description": "Disgrifiad (dewisol)",
-         "warn": "Rhowch Enw"
-      },
-      "writer": {
-         "settings": "Gosodiadau Llawysgrif",
-         "newfile": "Adran Newydd",
-         "deletewarn": "Ydych chi am ddileu'r eitem hon? Bydd unrhyw gardiau rydych wedi'u creu yn aros yn y gronfa ddata",
-         "intro": "Dyma brif dudalen eich dogfen. Mae'r opsiynau isod.",
-         "docdownload": "Allforio ffeil .doc o'r llawysgrif hon",
-         "words": "Geiriau"
-      },
-      "mindmap": {
-         "deletenodewarn": "Ydych chi am ddileu'r nod hwn?"
-      },
-      "snowflake": {
-         "title": "Teitl",
-         "deletewarn": "Ydych chi'n siŵr eich bod am ddileu'r cerdyn hwn?",
-         "replacewarn": "Bydd hwn yn disodli'ch cerdyn gyda'r tri pheth newydd."
-      },
-      "timeline": {
-         "date": "Dyddiad/Amser",
-         "title": "Teitl"
-      },
-      "gridplanner": {
-         "newrow": "Rhes Newydd",
-         "newcol": "Colofn Newydd"
-      },
-      "db": {
-         "search": "Chwilio yn ôl allweddeiriau",
-         "clear": "Clirio Tagiau",
-         "deletecolwarn": "Dileu’r golofn hon?",
-         "deleterowwarn": "Dileu'r rhes hon?"
-      },
-      "cards": {
-         "createnewbtn": "Creu Cyswllt Newydd",
-         "linkexisting": "Cerdyn Presennol",
-         "cardtitle": "Teitl y Cerdyn",
-         "cardnotes": "Nodiadau Cerdyn",
-         "cardtags": "Tagiau Cerdyn",
-         "moredetail": "Mwy o Fanylion",
-         "images": "Delweddau (cliciwch ar ddelwedd i'w ddewis)",
-         "openimagemanager": "Agor Rheolwr Delwedd",
-         "close": "Cau"
+      "wm3import": {
+         "close": "Fermer",
+         "info": "<h1>Version 3 Converter</h1>< p>Bonjour, il s'agit d'un outil hérité qui vous permet de charger vos anciens fichiers <strong>wavemaker version 3</strong> dans la nouvelle version.</p><p>Comme la base de données des coulisses a beaucoup changé c'est un processus à sens unique.</p><p>Vous aurez besoin de votre fichier DATABASE (allez dans le menu principal en cliquant sur le logo dans wavemaker 3 puis exportez la base de données) Vous devriez alors avoir un fichier avec l'extension ' .wmdata'</p><p>Vous devrez importer chaque projet et l'enregistrer dans son propre fichier car ils sont tous séparés dans la nouvelle version</p>",
+         "upload": "Téléchargez une base de données Wavemaker"
       }
    }
 }
