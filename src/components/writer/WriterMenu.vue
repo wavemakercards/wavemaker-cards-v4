@@ -20,7 +20,7 @@
       <hr />
 
       <table style="width: 100%">
-        <tr v-for="(item, index) in toollist" :key="index">
+        <tr v-for="(item, index) in toollist" :key="index" class="listRow">
           <td>
             <div class="title">{{ item.title }}</div>
 
@@ -132,5 +132,14 @@ export default {
   width: 100%;
   margin: 0 auto;
   overflow-y: auto;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+td {
+  padding: 10px;
 }
 </style>

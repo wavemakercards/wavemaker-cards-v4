@@ -88,4 +88,13 @@ export default {
   margin: 0 auto;
   overflow-y: auto;
 }
+
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+td {
+  padding: 10px;
+}
 </style>
