@@ -280,102 +280,103 @@
          "h2align": "Aliniad H2",
          "h3align": "Aliniad H3",
          "h4align": "H4 Aliniad",
-         "typewriter": "Tipysgrifwr Dewisiadau Lliw Testun",
-         "typetext": "Lliw Tudalen",
-         "typepage": "Sain Teipiadur",
-         "typesound": "Ailosod Rhagosodiadau",
-         "reset": "Fy Llyfrau"
+         "typewriter": "Tipysgrifwr Dewisiadau",
+         "typetext": "Lliw Testun",
+         "typepage": "Lliw Tudalen",
+         "typesound": "Sain Teipiadur",
+         "reset": "Ailosod Rhagosodiadau"
       },
       "tools": {
-         "writer": "Fy Myrddau Cynllunio",
-         "planningboard": "Fy Mapiau Meddwl",
-         "mindmap": "Fy Plu Eira",
-         "snowflake": "Fy Llinell Amser",
-         "timeline": "Fy Nghynllunwyr Grid",
-         "gridplanner": "Fy Nghardiau",
-         "cardsdatabase": "Enw",
-         "name": "Disgrifiad (dewisol)",
-         "description": "Rhowch Enw",
-         "warn": "Teitl Eich Llyfr"
+         "writer": "Fy Llyfrau",
+         "planningboard": "Fy Myrddau Cynllunio",
+         "mindmap": "Fy Mapiau Meddwl",
+         "snowflake": "Fy Plu Eira",
+         "timeline": "Fy Llinell Amser",
+         "gridplanner": "Fy Nghynllunwyr Grid",
+         "cardsdatabase": "Fy Nghardiau",
+         "name": "Enw",
+         "description": "Disgrifiad (dewisol)",
+         "warn": "Rhowch Enw"
       },
       "writer": {
-         "settings": "Adran Newydd",
-         "newfile": "Ffolder Newydd",
-         "newfolder": "Ydych chi am ddileu'r eitem hon? Bydd unrhyw gardiau rydych wedi eu creu yn aros yn y bas data",
-         "deletewarn": "Dyma brif dudalen eich dogfen. Mae'r opsiynau isod.",
-         "intro": "Allforio ffeil .doc o'r llawysgrif hon",
-         "docdownload": "Geiriau",
-         "words": "Ydych chi'n siŵr eich bod am ddileu hwn?"
+         "settings": "Teitl Eich Llyfr",
+         "newfile": "Adran Newydd",
+         "newfolder": "Ffolder Newydd",
+         "deletewarn": "Ydych chi am ddileu'r eitem hon? Bydd unrhyw gardiau rydych wedi eu creu yn aros yn y bas data",
+         "intro": "Dyma brif dudalen eich dogfen. Mae'r opsiynau isod.",
+         "docdownload": "Allforio ffeil .doc o'r llawysgrif hon",
+         "words": "Geiriau"
       },
       "confirmmodal": {
-         "confirmdelete": "Ni fyddwch yn gallu dadwneud hyn.",
-         "noundo": "Ie, dilëwch hi !",
-         "confirmbtn": "Canslo",
-         "cancelbtn": "Dileu!",
-         "success": "Mae hwn wedi'i ddileu.",
-         "successfeedback": "Allforio?",
-         "confirmexport": "Allforio'r teclyn hwn?",
-         "exportmsg": "Ie, Allforio hwn.",
-         "exportconfirmbtn": "Allforiwyd",
-         "exportsuccess": "Allforiwyd yn llwyddiannus",
-         "exportsuccessfeedback": " Amnewid y Cerdyn",
-         "snowconfirm": "Amnewid y cerdyn gwreiddiol gyda'r tri hyn",
-         "snowconfirmtext": "Ie, amnewid!",
-         "snowconfirmbtn": "Amnewid",
-         "snowconfirmsuccess": "Mae'r cerdyn wedi'i ddisodli",
-         "snowconfirmmsg": "Bold"
+         "confirmdelete": "Ydych chi'n siŵr eich bod am ddileu hwn?",
+         "noundo": "Ni fyddwch yn gallu dadwneud hyn.",
+         "confirmbtn": "Ie, dilëwch hi !",
+         "cancelbtn": "Canslo",
+         "success": "Dileu!",
+         "successfeedback": "Mae hwn wedi'i ddileu.",
+         "confirmexport": "Allforio?",
+         "exportmsg": "Allforio'r teclyn hwn?",
+         "exportconfirmbtn": "Ie, Allforio hwn.",
+         "exportsuccess": "Allforiwyd",
+         "exportsuccessfeedback": "Allforiwyd yn llwyddiannus",
+         "snowconfirm": " Amnewid y Cerdyn",
+         "snowconfirmtext": "Amnewid y cerdyn gwreiddiol gyda'r tri hyn",
+         "snowconfirmbtn": "Ie, amnewid!",
+         "snowconfirmsuccess": "Amnewid",
+         "snowconfirmmsg": "Mae'r cerdyn wedi'i ddisodli"
       },
       "editor": {
-         "bold": "Italig",
-         "italic": "Streic trwodd",
-         "strikethrough": "Paragraff",
-         "paragraph": "Pennawd 1",
-         "h1": "Pennawd 2",
-         "h2": "Mewnosod Llun",
-         "pic": "Rhestr Bwled",
-         "blist": "Rhestr wedi'i Rhifo",
-         "nlist": "Newid i'r Bwrdd Cynllunio",
-         "planningboard": "Modd teipiadur",
-         "typewriter": "Testun uchafbwynt",
-         "hilight": "Toglo gwelededd cyfrif geiriau",
-         "wordcount": "Do ydych chi am ddileu'r nod hwn?"
+         "bold": "Bold",
+         "italic": "Italig",
+         "strikethrough": "Streic trwodd",
+         "paragraph": "Paragraff",
+         "h1": "Pennawd 1",
+         "h2": "Pennawd 2",
+         "pic": "Mewnosod Llun",
+         "blist": "Rhestr Bwled",
+         "nlist": "Rhestr wedi'i Rhifo",
+         "planningboard": "Newid i'r Bwrdd Cynllunio",
+         "typewriter": "Modd teipiadur",
+         "hilight": "Testun uchafbwynt",
+         "wordcount": "Toglo gwelededd cyfrif geiriau"
       },
       "mindmap": {
-         "deletenodewarn": "Teitl"
+         "deletenodewarn": "Do ydych chi am ddileu'r nod hwn?"
       },
       "snowflake": {
-         "title": "Ydych chi'n siŵr eich bod am ddileu'r cerdyn hwn?",
-         "deletewarn": "Bydd hwn yn disodli'ch cerdyn gyda'r tri pheth newydd.",
-         "replacewarn": "Dyddiad/Amser"
+         "title": "Teitl",
+         "deletewarn": "Ydych chi'n siŵr eich bod am ddileu'r cerdyn hwn?",
+         "replacewarn": "Bydd hwn yn disodli'ch cerdyn gyda'r tri pheth newydd."
       },
       "timeline": {
-         "date": "Teitl",
-         "title": "Rhes Newydd"
+         "date": "Dyddiad/Amser",
+         "title": "Teitl"
       },
       "gridplanner": {
-         "newrow": "Colofn Newydd",
-         "newcol": "Chwilio yn ôl allweddeiriau"
+         "newrow": "Rhes Newydd",
+         "newcol": "Colofn Newydd"
       },
       "db": {
-         "search": "Clirio Tagiau",
-         "clear": "Dileu'r golofn hon?",
-         "deletecolwarn": "Dileu'r rhes hon?",
-         "deleterowwarn": "Creu Newydd"
+         "search": "Chwilio yn ôl allweddeiriau",
+         "clear": "Clirio Tagiau",
+         "deletecolwarn": "Dileu'r golofn hon?",
+         "deleterowwarn": "Dileu'r rhes hon?"
       },
       "cards": {
-         "createnewbtn": "Dolen Cerdyn Presennol ",
-         "linkexisting": "Teitl Cerdyn",
-         "cardtitle": "Nodiadau Cerdyn",
-         "cardnotes": "Tagiau Cerdyn",
-         "cardtags": "Mwy o Fanylion",
-         "moredetail": "Delweddau (cliciwch ar ddelwedd i'w ddewis)",
-         "images": "Rheolwr Delwedd Agored",
-         "openimagemanager": "Cau",
+         "createnewbtn": "Creu Newydd",
+         "linkexisting": "Dolen Cerdyn Presennol ",
+         "cardtitle": "Teitl Cerdyn",
+         "cardnotes": "Nodiadau Cerdyn",
+         "cardtags": "Tagiau Cerdyn",
+         "moredetail": "Mwy o Fanylion",
+         "images": "Delweddau (cliciwch ar ddelwedd i'w ddewis)",
+         "openimagemanager": "Rheolwr Delwedd Agored",
          "close": "Cau"
       },
       "wm3import": {
-         "close": " <h1>Trawsnewidydd Fersiwn 3</h1><p>Helo, mae hwn yn declyn etifeddiaeth i'ch galluogi i lwytho eich hen ffeiliau <strong>wavemaker version 3</strong> i'r fersiwn newydd.</p><p> Gan fod y gronfa ddata tu ôl i'r llenni wedi newid tipyn mae hon yn broses un ffordd.</p><p>Bydd angen eich ffeil CRONFA DDATA (ewch i'r brif ddewislen trwy glicio ar y logo yn wavemaker 3 ac yna allforio'r gronfa ddata ) Yna dylech gael ffeil gyda'r estyniad '.wmdata'</p><p>Bydd angen i chi fewngludo pob prosiect a'i gadw i'w ffeil ei hun gan eu bod i gyd ar wahân yn y fersiwn newydd</p>",
-         "info": "Lanlwytho cronfa ddata wavemaker"
+         "close": "Cau",
+         "info": " <h1>Trawsnewidydd Fersiwn 3</h1><p>Helo, mae hwn yn declyn etifeddiaeth i'ch galluogi i lwytho eich hen ffeiliau <strong>wavemaker version 3</strong> i'r fersiwn newydd.</p><p> Gan fod y gronfa ddata tu ôl i'r llenni wedi newid tipyn mae hon yn broses un ffordd.</p><p>Bydd angen eich ffeil CRONFA DDATA (ewch i'r brif ddewislen trwy glicio ar y logo yn wavemaker 3 ac yna allforio'r gronfa ddata ) Yna dylech gael ffeil gyda'r estyniad '.wmdata'</p><p>Bydd angen i chi fewngludo pob prosiect a'i gadw i'w ffeil ei hun gan eu bod i gyd ar wahân yn y fersiwn newydd</p>",
+         "upload": "Lanlwytho cronfa ddata wavemaker"
       }
    },
    "de": {
