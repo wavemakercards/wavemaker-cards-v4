@@ -184,8 +184,9 @@
             "close": "Cau"
         },
         "wm3import": {
-            "close": " <h1>Trawsnewidydd Fersiwn 3</h1><p>Helo, mae hwn yn declyn etifeddiaeth i'ch galluogi i lwytho eich hen ffeiliau <strong>wavemaker version 3</strong> i'r fersiwn newydd.</p><p> Gan fod y gronfa ddata tu ôl i'r llenni wedi newid tipyn mae hon yn broses un ffordd.</p><p>Bydd angen eich ffeil CRONFA DDATA (ewch i'r brif ddewislen trwy glicio ar y logo yn wavemaker 3 ac yna allforio'r gronfa ddata ) Yna dylech gael ffeil gyda'r estyniad '.wmdata'</p><p>Bydd angen i chi fewngludo pob prosiect a'i gadw i'w ffeil ei hun gan eu bod i gyd ar wahân yn y fersiwn newydd</p>",
-            "info": "Lanlwytho cronfa ddata wavemaker"
+            "close": "Cau",
+            "info": " <h1>Trawsnewidydd Fersiwn 3</h1><p>Helo, mae hwn yn declyn etifeddiaeth i'ch galluogi i lwytho eich hen ffeiliau <strong>wavemaker version 3</strong> i'r fersiwn newydd.</p><p> Gan fod y gronfa ddata tu ôl i'r llenni wedi newid tipyn mae hon yn broses un ffordd.</p><p>Bydd angen eich ffeil CRONFA DDATA (ewch i'r brif ddewislen trwy glicio ar y logo yn wavemaker 3 ac yna allforio'r gronfa ddata ) Yna dylech gael ffeil gyda'r estyniad '.wmdata'</p><p>Bydd angen i chi fewngludo pob prosiect a'i gadw i'w ffeil ei hun gan eu bod i gyd ar wahân yn y fersiwn newydd</p>",
+            "upload": "Lanlwytho cronfa ddata wavemaker"
         }
     }
 }
