@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
     },
     updated() {
       console.log('New content is available; please refresh.')
-      if (alert("Wavemaker has updated,  your browser will now reload")) {
+      if (alert("Wavemaker has updated,  please reload your browser window")) {
         window.location.reload()
       }
     },
