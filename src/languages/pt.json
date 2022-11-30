@@ -1,0 +1,192 @@
+{
+   "pt": {
+      "info": {
+         "name": "Português",
+         "textdirection": "ltr"
+      },
+      "confirm": {
+         "sure": "Tem certeza?",
+         "downloadfile": "Isso baixará um arquivo para o seu dispositivo.",
+         "fileexport": "Sim, exportar!",
+         "filecancel": "Cancelar",
+         "exportedsuccess": "Exportado!",
+         "exportedmessage": "Seu arquivo foi exportado"
+      },
+      "toolbar": {
+         "projecthome": "Início",
+         "writer": "Meus Livros",
+         "planningboard": "Meus Quadros de Planejamento",
+         "mindmap": "Meus Mapas Mentais",
+         "snowflake": "Meus Flocos de Neve",
+         "timeline": "Minhas Linhas do Tempo",
+         "gridplanner": "Meus Planejadores de Grade",
+         "cardsdatabase": "Meus Cartões",
+         "settings": "Configurações",
+         "save": "Salvar Arquivo",
+         "googledrive": "Google Drive",
+         "quick": "Carregamento Rápido",
+         "close": "Fechar Projeto"
+      },
+      "welcome": {
+         "getstarted": "Novo Projeto",
+         "loadfile": "Carregar um arquivo do seu dispositivo",
+         "loadgoogle": "Carregar um arquivo do Google Drive",
+         "info": "Crie um novo arquivo, ou carregue um existente",
+         "legacy": "Ferramentas Legadas",
+         "v3import": "Importar um arquivo de Wavemaker Version 3"
+      },
+      "start": {
+         "projectlabel": "Nome do Meu Projeto",
+         "welcome": "Bem-vindo ao Wavemaker Version 4",
+         "help": "Ajuda & Guias em como usar o Wavemaker"
+      },
+      "google": {
+         "info": "Conectar ao Google Drive",
+         "saveinfo": "Salvar Projeto Atual",
+         "files": "Meus Arquivos",
+         "save": "Salvar Arquivo",
+         "search": "Procurar Arquivos",
+         "logout": "Sair",
+         "close": "Fechar janela"
+      },
+      "settings": {
+         "title": "Configurações",
+         "close": "Fechar este arquivo",
+         "themes": "Escolha um tema",
+         "lang": "Escolha um Idioma",
+         "clear": "Isso limpará o projeto",
+         "docprefs": "Preferências do Documento",
+         "alignment": "Alinhamento",
+         "alignL": "Alinhar à Esquerda",
+         "alignR": "Alinhar à Direita",
+         "alignC": "Centralizar",
+         "alignJ": "Justificar",
+         "fontsize": "Tamanho da Fonte",
+         "fontsize1": "Menor",
+         "fontsize2": "Pequeno",
+         "fontsize3": "Padrão",
+         "fontsize4": "Grande",
+         "fontsize5": "Maior",
+         "lineheight": "Altura de Linha",
+         "lineheight1": "Padrão",
+         "lineheight2": "Duplo",
+         "lineheight3": "Espaçamento 2.5",
+         "lineheight4": "Triplo",
+         "paragraph": "Recuo de Parágrafo",
+         "paragraphyes": "Sim",
+         "paragraphno": "Não",
+         "paragraphspacing": "Espaçamento de Parágrafo",
+         "paragraphspacing1": "Padrão",
+         "paragraphspacing2": "Espaçamento 1.5x",
+         "paragraphspacing3": "Espaçamento 2x",
+         "paragraphspacing4": "Espaçamento 2.5x",
+         "paragraphspacing5": "Espaçamento 5x",
+         "pagewidth": "Largura da Página",
+         "pagestyle": "Estilo da Página",
+         "fullwidth": "Largura Total",
+         "pagetext": "Cor do Texto",
+         "pagecolour": "Cor da Página",
+         "h1align": "Alinhamento Título 1",
+         "h2align": "Alinhamento Título 2",
+         "h3align": "Alinhamento Título 3",
+         "h4align": "Alinhamento Título 4",
+         "typewriter": "Preferências de Máquina de Escrever",
+         "typetext": "Cor do Texto",
+         "typepage": "Cor da Página",
+         "typesound": "Sons de Máquina de Escrever",
+         "reset": "Restaurar ao Padrão"
+      },
+      "tools": {
+         "writer": "Meus Livros",
+         "planningboard": "Meus Quadros de Planejamento",
+         "mindmap": "Meus Mapas Mentais",
+         "snowflake": "Meus Flocos de Neve",
+         "timeline": "Minhas Linhas do Tempo",
+         "gridplanner": "Meus Planejadores de Grade",
+         "cardsdatabase": "Meus Cartões",
+         "name": "Nome",
+         "description": "Descrição (opcional)",
+         "warn": "Por favor definir um Nome"
+      },
+      "writer": {
+         "settings": "Título do Seu Livro",
+         "newfile": "Nova Seção",
+         "newfolder": "Nova Pasta",
+         "deletewarn": "Deseja excluir este item? Quaisquer cartões criados permanecerão no banco de dados",
+         "intro": "Essa é a página principal do seu documento. Opções se encontram abaixo.",
+         "docdownload": "Exportar um arquivo .doc desse manuscrito",
+         "words": "Palavras"
+      },
+      "confirmmodal": {
+         "confirmdelete": "Tem certeze que deseja excluir isto?",
+         "noundo": "Você não poderá desfazer esta ação.",
+         "confirmbtn": "Sim, excluir!",
+         "cancelbtn": "Cancelar",
+         "success": "Excluído!",
+         "successfeedback": "Item excluído com sucesso.",
+         "confirmexport": "Exportar?",
+         "exportmsg": "Exportar esta ferramenta?",
+         "exportconfirmbtn": "Sim, exportar.",
+         "exportsuccess": "Exportar",
+         "exportsuccessfeedback": "Exportado com sucesso",
+         "snowconfirm": "Substituir Cartão",
+         "snowconfirmtext": "Substituir cartão original com estes três",
+         "snowconfirmbtn": "Sim, subsituir!",
+         "snowconfirmsuccess": "Substituído",
+         "snowconfirmmsg": "O cartão foi substituído"
+      },
+      "editor": {
+         "bold": "Negrito",
+         "italic": "Itálico",
+         "strikethrough": "Tachado",
+         "paragraph": "Parágrafo",
+         "h1": "Título 1",
+         "h2": "Título 2",
+         "pic": "Inserir Imagem",
+         "blist": "Lista de Marcadores",
+         "nlist": "Lista Numérica",
+         "planningboard": "Trocar para Quadro de Planejamento",
+         "typewriter": "Modo Máquina de Escrever",
+         "hilight": "Realçar Texto",
+         "wordcount": "Ativar visão de contagem de palavras"
+      },
+      "mindmap": {
+         "deletenodewarn": "Deseja deletar este nódulo?"
+      },
+      "snowflake": {
+         "title": "Título",
+         "deletewarn": "Deseja excluir este cartão?",
+         "replacewarn": "Esta ação substituirá seu cartão com três cartões novos."
+      },
+      "timeline": {
+         "date": "Data/Hora",
+         "title": "Título"
+      },
+      "gridplanner": {
+         "newrow": "Nova Linha",
+         "newcol": "Nova Coluna"
+      },
+      "db": {
+         "search": "Procurar por palavras-chave",
+         "clear": "Limpar Etiquetas",
+         "deletecolwarn": "Excluir esta coluna?",
+         "deleterowwarn": "Excluir esta linha?"
+      },
+      "cards": {
+         "createnewbtn": "Criar Novo",
+         "linkexisting": "Vincular a Cartão Existente",
+         "cardtitle": "Título do Cartão",
+         "cardnotes": "Notas do Cartão",
+         "cardtags": "Etiquetas do Cartão",
+         "moredetail": "Mais Detalhes",
+         "images": "Imagens (clique numa imagem para escolher)",
+         "openimagemanager": "Abrir Gerenciador de Imagens",
+         "close": "Fechar"
+      },
+      "wm3import": {
+         "close": "Fechar",
+         "info": "<h1>Conversor da Versão 3</h1><p>Olá, essa é uma ferranebta legada que permite qye você carregue seus antigos arquivos de <strong>wavemaker versão 3</strong> na nova versão.</p><p>Como o banco de dados nos bastidores foi alterado bastante, este é um processo de mão única.</p><p>Você precisará do seu arquivo de BASE DE DADOS (vá ao menu principal clicando no logo no wavemaker 3, e então exporte o banco de dados). Você então deverá ter um arquivo com a extensão '.wmdata'</p><p>Você precisará importar cada projeto e salvar como seu próprio arquivo, uma vez que eles são objetos separados na nova versão</p>",
+         "upload": "Carregar um banco de dados wavemaker"
+      }
+   }
+}
