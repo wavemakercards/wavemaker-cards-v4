@@ -1,7 +1,7 @@
 {
     "tr": {
         "info": {
-            "name": "Türk",
+            "name": "Türkçe",
             "textdirection": "ltr"
         },
         "confirm": {
@@ -31,7 +31,7 @@
             "getstarted": "Yeni Proje",
             "loadfile": "Cihazınızdan bir dosya yükleyin",
             "loadgoogle": "Google Drive'dan bir dosya yükleyin",
-            "info": "Oluştur yeni bir dosya yükleyin veya mevcut bir dosyayı yükleyin",
+            "info": "Yeni bir dosya oluşturun veya mevcut bir dosyayı yükleyin",
             "legacy": "Eski Araçlar",
             "v3import": "Bir Wavemaker Sürüm 3 dosyasını içe aktarın"
         },
@@ -45,7 +45,7 @@
             "saveinfo": "Mevcut Projeyi Kaydet",
             "files": "Dosyalarım",
             "save": "Dosyayı Kaydet",
-            "search": "Dosyaları Ara",
+            "search": "Dosyalarda Ara",
             "logout": "Oturumu Kapat",
             "close": "Pencereyi Kapat"
         },
@@ -71,7 +71,7 @@
             "lineheight1": "Standart",
             "lineheight2": "Çift Aralıklı",
             "lineheight3": "2,5 Aralık",
-            "lineheight4": "T dalgalanma Aralıklı",
+            "lineheight4": "Üç Aralıklı",
             "paragraph": "Paragraf Girintisi",
             "paragraphyes": "evet",
             "paragraphno": "Hayır",
@@ -151,12 +151,12 @@
             "wordcount": "Kelime sayısı görünürlüğünü değiştir"
         },
         "mindmap": {
-            "deletenodewarn": "Yap bu düğümü silmek istiyor musunuz?"
+            "deletenodewarn": "Bu düğümü silmek istiyor musunuz?"
         },
         "snowflake": {
             "title": "Başlık",
             "deletewarn": "Bu kartı silmek istediğinizden emin misiniz?",
-            "replacewarn": "Bu, kartınızı üç yenisiyle değiştirecek."
+            "replacewarn": "Bu işlem, kartınızı üç yeni kartla değiştirecek."
         },
         "timeline": {
             "date": "Tarih/Saat",
@@ -185,8 +185,8 @@
         },
         "wm3import": {
             "close": "Kapat",
-            "info": " <h1>Sürüm 3 Dönüştürücü</h1><p>Merhaba, bu, eski <strong>wavemaker sürüm 3</strong> dosyalarınızı yeni sürüme yüklemenizi sağlayan eski bir araçtır.</p><p> Sahne arkası veritabanı biraz değiştiği için bu tek yönlü bir işlemdir.</p><p>VERİTABANI dosyanıza ihtiyacınız olacak (wavemaker 3'te logoya tıklayarak ana menüye gidin ve ardından veritabanını dışa aktarın) ) O zaman '.wmdata' uzantılı bir dosyanız olmalı</p><p>Yeni versiyonda hepsi ayrı olduğu için her projeyi import edip kendi dosyasına kaydetmeniz gerekecek</p>",
-            "upload": "Bir dalga oluşturucu veritabanı yükleyin"
+            "info": " <h1>Sürüm 3 Dönüştürücü</h1><p>Merhaba, bu, eski <strong>wavemaker sürüm 3</strong> dosyalarınızı yeni sürüme yüklemenizi sağlayan eski bir araçtır.</p><p> Sahne arkası veritabanı biraz değiştiği için bu tek yönlü bir işlemdir.</p><p>VERİTABANI dosyanıza ihtiyacınız olacak (wavemaker 3'te logoya tıklayarak ana menüye gidin ve ardından veritabanını dışa aktarın) ) O zaman '.wmdata' uzantılı bir dosyanız olmalı</p><p>Yeni versiyonda hepsi ayrı olduğu için her projeyi ayrı ayrı içe aktarıp kendi dosyasına kaydetmeniz gerekecek</p>",
+            "upload": "Bir wavemaker veritabanı yükleyin"
         }
     }
 }
