@@ -150,7 +150,7 @@ export default {
         // chinese so count characters and multiply by 0.7 for esitmate
         str = str.replace(/(<([^>]+)>)/gi, "");
         str.replaceAll(" ", "")
-        count = str.length * 0.7
+        count = parseInt(str.length * 0.7)
       } else {
         str = str.replace(/(<([^>]+)>)/gi, " ");
         count = str.split(" ").filter(function (n) {
