@@ -1,6 +1,6 @@
 <template>
 
-    <EditorContent :editor="editor" class="descriptionEditor" />
+    <EditorContent :editor="editor" class="descriptionEditor" @focusout="doupdate()" />
 
 </template>
 
@@ -32,6 +32,11 @@ export default {
             editor: null,
         }
     },
+    methods: {
+        doupdate() {
+            this.$emit("updated")
+        }
+    },
 
     watch: {
         modelValue(value) {
@@ -60,7 +65,7 @@ export default {
             onUpdate: () => {
                 // HTML
                 this.$emit('update:modelValue', this.editor.getHTML())
-                this.$emit("updated")
+
                 // JSON
                 // this.$emit('update:modelValue', this.editor.getJSON())
             },

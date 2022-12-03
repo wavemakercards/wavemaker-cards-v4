@@ -105,7 +105,7 @@ export default {
     dragOptions() {
       return {
         animation: 200,
-        group: "description",
+        group: "filestystem",
         disabled: false,
         ghostClass: "ghost",
       };

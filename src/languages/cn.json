@@ -1,0 +1,192 @@
+{
+    "cn": {
+        "info": {
+            "name": "中文",
+            "textdirection": "ltr"
+        },
+        "confirm": {
+            "sure": "您确定吗？",
+            "downloadfile": "这将下载一个文件到您的设备。",
+            "fileexport": "是的，导出它！",
+            "filecancel": "取消",
+            "exportedsuccess": "已导出！",
+            "exportedmessage": "您的文件已导出"
+        },
+        "toolbar": {
+            "projecthome": "项目主页",
+            "writer": "我的书",
+            "planningboard": "我的规划板",
+            "mindmap": "我的思维导图",
+            "snowflake": "我的雪花板",
+            "timeline": "我的时间线",
+            "gridplanner": "我的网格规划板",
+            "cardsdatabase": "我的卡片",
+            "settings": "设置",
+            "save": "保存文件",
+            "googledrive": "Google Drive",
+            "quick": "快速上传",
+            "close": "关闭项目"
+        },
+        "welcome": {
+            "getstarted": "新项目",
+            "loadfile": "从您的设备加载文件",
+            "loadgoogle": "从 Google Drive 加载文件",
+            "info": "创建一个新文件，或加载一个现有文",
+            "legacy": "旧版工具",
+            "v3import": "导入一个 Wavemaker 3.0 文件"
+        },
+        "start": {
+            "projectlabel": "我的项目名称",
+            "welcome": "欢迎使用 Wavemaker 4.0",
+            "help": "帮助和指南：如何使用 Wavemaker"
+        },
+        "google": {
+            "info": "登录 Google Drive",
+            "saveinfo": "保存当前项目",
+            "files": "我的文件",
+            "save": "保存文件",
+            "search": "搜索文件",
+            "logout": "登出",
+            "close": "关闭窗口"
+        },
+        "settings": {
+            "title": "设置",
+            "close": "关闭此文件",
+            "themes": "选择主题",
+            "lang": "选择语言",
+            "clear": "这将清除项目",
+            "docprefs": "文档首选项",
+            "alignment": "对齐",
+            "alignL": "向左对齐",
+            "alignR": "向右对齐",
+            "alignC": "居中对齐",
+            "alignJ": "两端对齐",
+            "fontsize": "字体大小",
+            "fontsize1": "最小",
+            "fontsize2": "小",
+            "fontsize3": "标准",
+            "fontsize4": "大",
+            "fontsize5": "最大",
+            "lineheight": "行高",
+            "lineheight1": "标准",
+            "lineheight2": "2 倍行距",
+            "lineheight3": "2.5 倍行距",
+            "lineheight4": "3 倍行距",
+            "paragraph": "段落缩进",
+            "paragraphyes": "是",
+            "paragraphno": "否",
+            "paragraphspacing": "段落间距",
+            "paragraphspacing1": "标准间距",
+            "paragraphspacing2": "1.5 倍间距",
+            "paragraphspacing3": "2 倍间距",
+            "paragraphspacing4": "2.5 倍间距",
+            "paragraphspacing5": "5 倍间距",
+            "pagewidth": "页面宽度",
+            "pagestyle": "页面定宽",
+            "fullwidth": "自适应全宽",
+            "pagetext": "文本颜色",
+            "pagecolour": "页面颜色",
+            "h1align": "H1 对齐",
+            "h2align": "H2 对齐",
+            "h3align": "H3 对齐",
+            "h4align": "H4 对齐",
+            "typewriter": "打字机模式首选项",
+            "typetext": "文本颜色",
+            "typepage": "页面颜色",
+            "typesound": "打字机声音模拟",
+            "reset": "恢复默认设置"
+        },
+        "tools": {
+            "writer": "我的书",
+            "planningboard": "我的规划板",
+            "mindmap": "我的思维导图",
+            "snowflake": "我的雪花板",
+            "timeline": "我的时间线",
+            "gridplanner": "我的网格规划板",
+            "cardsdatabase": "我的卡片",
+            "name": "名称",
+            "description": "描述（可选）",
+            "warn": "请提供一个名称"
+        },
+        "writer": {
+            "settings": "您的书名",
+            "newfile": "新章节",
+            "newfolder": "新文件夹",
+            "deletewarn": "您要删除此对象吗？ 您创建的所有卡片都将保留在数据库中",
+            "intro": "这是您的文档主页。 选项如下。",
+            "docdownload": "导出此稿件的 .doc 文件",
+            "words": "字数"
+        },
+        "confirmmodal": {
+            "confirmdelete": "您确定要删除它吗？",
+            "noundo": "您将无法撤消此操作。",
+            "confirmbtn": "是的，删除它 ！",
+            "cancelbtn": "取消",
+            "success": "已删除！",
+            "successfeedback": "已将它成功删除。",
+            "confirmexport": "导出？",
+            "exportmsg": "导出这个工具？",
+            "exportconfirmbtn": "是，导出它。",
+            "exportsuccess": "已导出",
+            "exportsuccessfeedback": "成功导出",
+            "snowconfirm": "替换卡片",
+            "snowconfirmtext": "用这三个新卡片替换原来的卡片",
+            "snowconfirmbtn": "是的，替换它！",
+            "snowconfirmsuccess": "已替换",
+            "snowconfirmmsg": "卡片已被替换"
+        },
+        "editor": {
+            "bold": "粗体",
+            "italic": "斜体",
+            "strikethrough": "删除线",
+            "paragraph": "段落",
+            "h1": "标题 1",
+            "h2": "标题 2",
+            "pic": "插入图片",
+            "blist": "插入项目列表",
+            "nlist": "插入编号列表",
+            "planningboard": "切换到规划板",
+            "typewriter": "打字机模式",
+            "hilight": "文本高亮",
+            "wordcount": "切换字数统计模式"
+        },
+        "mindmap": {
+            "deletenodewarn": "您想删除这个节点吗？"
+        },
+        "snowflake": {
+            "title": "标题",
+            "deletewarn": "您确定要删除这张卡片吗？",
+            "replacewarn": "这将用三张新卡片替换原来的卡片。"
+        },
+        "timeline": {
+            "date": "日期/时间",
+            "title": "标题"
+        },
+        "gridplanner": {
+            "newrow": "新行",
+            "newcol": "新列"
+        },
+        "db": {
+            "search": "按关键字搜索",
+            "clear": "清除标签",
+            "deletecolwarn": "删除此列？",
+            "deleterowwarn": "删除此行？"
+        },
+        "cards": {
+            "createnewbtn": "新建",
+            "linkexisting": "链接到现有卡片",
+            "cardtitle": "卡片标题",
+            "cardnotes": "卡片注释",
+            "cardtags": "卡片标签",
+            "moredetail": "更多细节",
+            "images": "图片（单击图片进行选择）",
+            "openimagemanager": "打开图片管理器",
+            "close": "关闭"
+        },
+        "wm3import": {
+            "close": "关闭",
+            "info": "<h1>3.0 版本转换器</h1><p>您好，这是一个旧版工具，可让您将旧的<strong>wavemaker 3.0</strong>文件加载到新版本中。</p><p> 由于后台数据库发生了很大变化，这是一个单向过程。</p><p>这将用到您的数据库文件（通过单击 wavemaker 3.0 中的 logo 转到主菜单，然后导出数据库 ) ，而后您应得到一个扩展名为“.wmdata”的文件</p><p>您需要导入每个项目并将其保存到各自的文件中，因为它们在新版本中都是独立的</p>",
+            "upload": "上传 wavemaker 数据库"
+        }
+    }
+}

@@ -145,10 +145,19 @@ export default {
     },
 
     wordCounter(str) {
-      str = str.replace(/(<([^>]+)>)/gi, " ");
-      return str.split(" ").filter(function (n) {
-        return n != "";
-      }).length;
+      let count = 0
+      if (this.lang === "cn") {
+        // chinese so count characters and multiply by 0.7 for esitmate
+        str = str.replace(/(<([^>]+)>)/gi, "");
+        str.replaceAll(" ", "")
+        count = str.length * 0.7
+      } else {
+        str = str.replace(/(<([^>]+)>)/gi, " ");
+        count = str.split(" ").filter(function (n) {
+          return n != "";
+        }).length;
+      }
+      return count
     },
     niceDate(timestamp) {
       var d = new Date(timestamp)

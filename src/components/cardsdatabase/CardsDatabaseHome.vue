@@ -71,35 +71,39 @@ export default {
   },
   computed: {
     CardsArray() {
-      let list = [];
-      if (this.cardList) {
-        this.cardList.forEach((element) => {
-          let qmatch = false
-          if (!this.SearchTerm) {
-            qmatch = true
-          } else {
-            if (
-              element.title.toLowerCase().includes(this.SearchTerm.toLowerCase()) ||
-              element.description.toLowerCase().includes(this.SearchTerm.toLowerCase())
-            ) {
+      if (!this.$root.session.EditCard) {
+        let list = [];
+        if (this.cardList) {
+          this.cardList.forEach((element) => {
+            let qmatch = false
+            if (!this.SearchTerm) {
               qmatch = true
+            } else {
+              if (
+                element.title.toLowerCase().includes(this.SearchTerm.toLowerCase()) ||
+                element.description.toLowerCase().includes(this.SearchTerm.toLowerCase())
+              ) {
+                qmatch = true
+              }
             }
-          }
-          let tmatch = false
-          if (!this.currentTag) {
-            tmatch = true
-          } else {
-            if (element.labels.includes(this.currentTag)) {
+            let tmatch = false
+            if (!this.currentTag) {
               tmatch = true
+            } else {
+              if (element.labels.includes(this.currentTag)) {
+                tmatch = true
+              }
             }
-          }
 
-          if (qmatch && tmatch) {
-            list.push(element);
-          }
-        });
+            if (qmatch && tmatch) {
+              list.push(element);
+            }
+          });
+        }
+        return list;
+      } else {
+        return []
       }
-      return list;
     },
     taglist() {
       let taglist = []
