@@ -123,7 +123,6 @@ export default {
       // ok set this to use english then overwrite with the new language so any missed bits come out as english
       this.setlang = JSON.parse(JSON.stringify(this.$root.language["en"]))
 
-      this.setlang = this.$root.language[this.$root.lang]
       Object.assign(this.setlang, this.$root.language[this.$root.lang])
       /*
 
