@@ -348,7 +348,9 @@ export default {
             extensions: [StarterKit, Typography, Image, Highlight.configure({ multicolor: true })],
             content: '',
             onTransaction: () => {
-                this.repositionEditor()
+                if (this.$root.session.settings.documentprefs.autocenter) {
+                    this.repositionEditor()
+                }
             },
             onUpdate: () => {
                 // HTML

@@ -120,16 +120,23 @@ export default {
       this.updateLang()
     },
     updateLang() {
+      // ok set this to use english then overwrite with the new language so any missed bits come out as english
+      this.setlang = JSON.parse(JSON.stringify(this.$root.language["en"]))
 
       this.setlang = this.$root.language[this.$root.lang]
+      Object.assign(this.setlang, this.$root.language[this.$root.lang])
       /*
-            Object.keys(this.$root.language[this.$root.lang]).forEach((section)=>{
-              Object.keys(section).forEach(item =>{
-                this.setlang[section][item] = this.$root.language[this.$root.lang][section][item]
-              })
-            
-            })
-              */
+
+      Object.keys(this.$root.language[this.$root.lang]).forEach((section) => {
+        Object.keys(section).forEach(item => {
+          this.setlang[section][item] = this.$root.language[this.$root.lang][section][item]
+        })
+
+      })
+      */
+      // old method
+      //      this.setlang = this.$root.language[this.$root.lang]
+
 
     },
 

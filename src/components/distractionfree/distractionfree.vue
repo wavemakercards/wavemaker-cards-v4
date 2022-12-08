@@ -78,7 +78,9 @@ export default {
             extensions: [StarterKit, Typography, Image],
             content: '',
             onTransaction: () => {
-                this.repositionEditor()
+                if (this.$root.session.settings.documentprefs.autocenter) {
+                    this.repositionEditor()
+                }
             },
             onUpdate: () => {
 
