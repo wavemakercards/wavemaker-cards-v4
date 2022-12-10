@@ -50,6 +50,7 @@
          "close": "Close window"
       },
       "settings": {
+         "autocenter": "Toggle Auto Page Centre",
          "title": "Settings",
          "close": "Close this file",
          "themes": "Choose a Theme",

@@ -29,7 +29,8 @@
         </button>
 
         <div v-if="lang" class="dropdown">
-          <button class="myoption" v-for="(k, i) in Object.keys(this.$root.language)" :key="i" @click="language(k)">
+          <button class="myoption" v-for="(k, i) in Object.keys(this.$root.language).sort()" :key="i"
+            @click="language(k)">
             {{ this.$root.language[k].info.name }}
           </button>
         </div>
@@ -38,6 +39,10 @@
 
 
         <h2>{{ this.$root.setlang.settings.docprefs }}</h2>
+        <label>{{ this.$root.setlang.settings.autocenter }}
+          <input type="checkbox" value="true" v-model="this.$root.session.settings.documentprefs.autocenter"
+            style="width:20px; height:20px" @change="updateSettings" />
+        </label>
 
         <label>{{ this.$root.setlang.settings.alignment }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.align"
@@ -191,6 +196,7 @@ export default {
     },
     language(l) {
       this.$root.lang = l
+      console.log(l)
       this.$root.switchLang()
       this.lang = false
     },

@@ -50,6 +50,7 @@
          "close": "Fechar janela"
       },
       "settings": {
+         "autocenter": "Alternar centro de página automática",
          "title": "Configurações",
          "close": "Fechar este arquivo",
          "themes": "Escolha um tema",

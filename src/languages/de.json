@@ -50,6 +50,7 @@
             "close": "Fenster schließen"
         },
         "settings": {
+            "autocenter": "Automatische Seitenmitte umschalten",
             "title": "Einstellungen",
             "close": "Diese Datei schließen",
             "themes": "Design auswählen",

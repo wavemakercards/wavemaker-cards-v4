@@ -50,6 +50,7 @@
             "close": "Pencereyi Kapat"
         },
         "settings": {
+            "autocenter": "Otomatik Sayfa Merkezini Değiştir",
             "title": "Ayarlar",
             "close": "Bu dosyayı kapat",
             "themes": " Bir Tema Seçin",

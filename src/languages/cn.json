@@ -50,6 +50,7 @@
             "close": "关闭窗口"
         },
         "settings": {
+            "autocenter": "切换自动页面中心",
             "title": "设置",
             "close": "关闭此文件",
             "themes": "选择主题",

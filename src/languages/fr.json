@@ -50,6 +50,7 @@
             "close": "Fermer la fenêtre"
         },
         "settings": {
+            "autocenter": "Basculer le centre de page automatique",
             "title": "Paramètres",
             "close": "Fermer ce fichier",
             "themes": "Choisir un thème",

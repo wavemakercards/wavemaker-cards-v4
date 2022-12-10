@@ -50,6 +50,7 @@
             "close": "Cau'r ffenestr"
         },
         "settings": {
+            "autocenter": "Toggle Auto Page Centre",
             "title": "Gosodiadau",
             "close": "Cau'r ffeil hon",
             "themes": " Dewis Thema",
