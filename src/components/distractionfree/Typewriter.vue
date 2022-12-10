@@ -106,6 +106,7 @@ export default {
         }
     }
 };
+// update
 </script>
 <style scoped>
 .distractionfree {

@@ -26,7 +26,7 @@ import SnowFlake from "@/components/snowflake/SnowFlake.vue";
 import TimeLine from "@/components/timeline/TimeLine.vue";
 import MindMapHome from "@/components/mindmap/MindMapHome.vue";
 import GridPlannerHome from "@/components/gridplanner/GridPlannerHome.vue";
-import DistractionFree from "@/components/distractionfree/DistractionFree.vue";
+import DistractionFree from "@/components/distractionfree/Typewriter.vue";
 
 export default {
   name: "StartApp",
