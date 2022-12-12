@@ -111,81 +111,86 @@ export default {
             // this does all the work for the files creation etc and building the array
 
             arr.forEach((f) => {
+                if (!f.data) {
+                    console.log("odd error ", f)
 
-                let file = {
-                    uuid: this.$root.uuid(),
-                    type: "file",
-                };
-                // create and add the FILE
-                let o = {};
-                o.uuid = file.uuid;
-                o.writerid = writerid;
-                /// needs to be converted to html here
-                if (f.data.content) {
-                    let converter = new showdown.Converter();
-                    let html = converter.makeHtml(f.data.content);
-                    o.content = html;
-                    o.wordcount = this.$root.wordCounter(html)
                 } else {
-                    o.content = "";
-                    o.wordcount = 0
-                }
-                o.title = f.title;
-                o.notes = [];
 
-                if (f.data.notes.length) {
-                    f.data.notes.forEach((card) => {
-                        //fix for duff colourn on default
-                        if (parseInt(card.backgroundColor) === 0) {
-                            card.backgroundColor = 1
-                        }
-                        if (parseInt(card.backgroundColor) === 6) {
-                            card.backgroundColor = 5
-                        }
-                        if (!card.backgroundColor) {
-                            card.backgroundColor = 1
-                        }
-                        let cardobj = {};
-                        cardobj.uuid = this.$root.uuid();
-                        cardobj.title = card.title;
-                        cardobj.description = card.content;
-                        cardobj.showdesc = true;
-                        cardobj.content = "";
-                        cardobj.labels = [];
-                        cardobj.images = [];
-                        cardobj.style = "";
-                        cardobj.options = {};
-                        cardobj.color = "--card" + card.backgroundColor;
 
-                        let crd = { uuid: cardobj.uuid }
-                        if (card.completed) {
-                            crd.completed = true
-                        }
-                        o.notes.push(crd);
-
-                        this.$root.AddRecord("Cards", cardobj);
-                    });
-                }
-                this.$root.AddRecord("Files", o);
-
-                // if its a folder then we need to add a folder to the structure and push to that
-                if (f.children) {
-                    let folder = {
+                    let file = {
                         uuid: this.$root.uuid(),
-                        type: "folder",
-                        title: f.title,
-                        children: [],
-                        open: true
+                        type: "file",
                     };
-                    parent.push(folder) // create the folder
-                    folder.children.push(file) // add the contetns of this as a file
-                    if (f.children.length) {
-                        this.loopfiles(f.children, folder.children, writerid);
+                    // create and add the FILE
+                    let o = {};
+                    o.uuid = file.uuid;
+                    o.writerid = writerid;
+                    /// needs to be converted to html here
+                    if (f.data.content) {
+                        let converter = new showdown.Converter();
+                        let html = converter.makeHtml(f.data.content);
+                        o.content = html;
+                        o.wordcount = this.$root.wordCounter(html)
+                    } else {
+                        o.content = "";
+                        o.wordcount = 0
                     }
-                } else {
-                    parent.push(file) // add the file to the file structure
-                }
+                    o.title = f.title;
+                    o.notes = [];
 
+                    if (f.data.notes.length) {
+                        f.data.notes.forEach((card) => {
+                            //fix for duff colourn on default
+                            if (parseInt(card.backgroundColor) === 0) {
+                                card.backgroundColor = 1
+                            }
+                            if (parseInt(card.backgroundColor) === 6) {
+                                card.backgroundColor = 5
+                            }
+                            if (!card.backgroundColor) {
+                                card.backgroundColor = 1
+                            }
+                            let cardobj = {};
+                            cardobj.uuid = this.$root.uuid();
+                            cardobj.title = card.title;
+                            cardobj.description = card.content;
+                            cardobj.showdesc = true;
+                            cardobj.content = "";
+                            cardobj.labels = [];
+                            cardobj.images = [];
+                            cardobj.style = "";
+                            cardobj.options = {};
+                            cardobj.color = "--card" + card.backgroundColor;
+
+                            let crd = { uuid: cardobj.uuid }
+                            if (card.completed) {
+                                crd.completed = true
+                            }
+                            o.notes.push(crd);
+
+                            this.$root.AddRecord("Cards", cardobj);
+                        });
+                    }
+                    this.$root.AddRecord("Files", o);
+
+                    // if its a folder then we need to add a folder to the structure and push to that
+                    if (f.children) {
+                        let folder = {
+                            uuid: this.$root.uuid(),
+                            type: "folder",
+                            title: f.title,
+                            children: [],
+                            open: true
+                        };
+                        parent.push(folder) // create the folder
+                        folder.children.push(file) // add the contetns of this as a file
+                        if (f.children.length) {
+                            this.loopfiles(f.children, folder.children, writerid);
+                        }
+                    } else {
+                        parent.push(file) // add the file to the file structure
+                    }
+                }
             });
         },
         processCards() {
