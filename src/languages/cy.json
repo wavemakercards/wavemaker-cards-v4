@@ -50,7 +50,6 @@
             "close": "Cau'r ffenestr"
         },
         "settings": {
-            "autocenter": "Toggle Auto Page Centre",
             "title": "Gosodiadau",
             "close": "Cau'r ffeil hon",
             "themes": " Dewis Thema",
@@ -95,6 +94,7 @@
             "typetext": "Lliw Testun",
             "typepage": "Lliw Tudalen",
             "typesound": "Sain Teipiadur",
+            "caretfocus": "Caret Auto-focus",
             "reset": "Ailosod Rhagosodiadau"
         },
         "tools": {

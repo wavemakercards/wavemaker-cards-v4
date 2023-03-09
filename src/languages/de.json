@@ -50,7 +50,6 @@
             "close": "Fenster schließen"
         },
         "settings": {
-            "autocenter": "Automatische Seitenmitte umschalten",
             "title": "Einstellungen",
             "close": "Diese Datei schließen",
             "themes": "Design auswählen",
@@ -95,6 +94,7 @@
             "typetext": "Textfarbe",
             "typepage": "Seitenfarbe",
             "typesound": "Schreibmaschinenton",
+            "caretfocus": "Caret Auto-focus",
             "reset": "Zurücksetzen Standardeinstellungen"
         },
         "tools": {

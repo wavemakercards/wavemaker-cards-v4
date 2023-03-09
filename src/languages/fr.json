@@ -50,7 +50,6 @@
             "close": "Fermer la fenêtre"
         },
         "settings": {
-            "autocenter": "Basculer le centre de page automatique",
             "title": "Paramètres",
             "close": "Fermer ce fichier",
             "themes": "Choisir un thème",
@@ -95,6 +94,7 @@
             "typetext": "Couleur de texte",
             "typepage": "Couleur de la page",
             "typesound": "Son de la machine à écrire",
+            "caretfocus": "Caret Auto-focus",
             "reset": "Réinitialiser les valeurs par défaut"
         },
         "tools": {

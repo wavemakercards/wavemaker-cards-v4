@@ -4,7 +4,6 @@ const templateObjects = {
             SettingsTemplate: {
                 documentprefs: {
                     // need to trim a space from the formatted css
-                    autocenter: true,
                     align: this.dotrim(getComputedStyle(document.documentElement).getPropertyValue('--pageEditor-align')),
                     fontsize: this.dotrim(getComputedStyle(document.documentElement).getPropertyValue('--pageEditor-fontsize')),
                     lspacing: this.dotrim(getComputedStyle(document.documentElement).getPropertyValue('--pageEditor-lspacing')),
@@ -21,7 +20,8 @@ const templateObjects = {
                     distractionfree_font: this.dotrim(getComputedStyle(document.documentElement).getPropertyValue('--distractionfree-font')),
                     distractionfree_bg: this.dotrim(getComputedStyle(document.documentElement).getPropertyValue('--distractionfree-bg')),
                     distractionfree_fg: this.dotrim(getComputedStyle(document.documentElement).getPropertyValue('--distractionfree-fg')),
-                    typesound: false
+                    typesound: false,
+                    caretfocus: false
                 }
             }
 

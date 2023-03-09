@@ -50,7 +50,6 @@
             "close": "关闭窗口"
         },
         "settings": {
-            "autocenter": "切换自动页面中心",
             "title": "设置",
             "close": "关闭此文件",
             "themes": "选择主题",
@@ -95,6 +94,7 @@
             "typetext": "文本颜色",
             "typepage": "页面颜色",
             "typesound": "打字机声音模拟",
+            "caretfocus": "Caret Auto-focus",
             "reset": "恢复默认设置"
         },
         "tools": {

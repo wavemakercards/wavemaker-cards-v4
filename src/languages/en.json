@@ -50,7 +50,6 @@
          "close": "Close window"
       },
       "settings": {
-         "autocenter": "Toggle Auto Page Centre",
          "title": "Settings",
          "close": "Close this file",
          "themes": "Choose a Theme",
@@ -95,6 +94,7 @@
          "typetext": "Text Colour",
          "typepage": "Page Colour",
          "typesound": "Typewriter Sound",
+         "caretfocus": "Caret Auto-focus",
          "reset": "Reset Defaults"
       },
       "tools": {

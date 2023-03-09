@@ -50,7 +50,6 @@
             "close": "Pencereyi Kapat"
         },
         "settings": {
-            "autocenter": "Otomatik Sayfa Merkezini Değiştir",
             "title": "Ayarlar",
             "close": "Bu dosyayı kapat",
             "themes": " Bir Tema Seçin",
@@ -95,6 +94,7 @@
             "typetext": " Metin Rengi",
             "typepage": "Sayfa Rengi",
             "typesound": "Daktilo Sesi",
+            "caretfocus": "Caret Auto-focus",
             "reset": "Varsayılanları Sıfırla"
         },
         "tools": {
