@@ -6,8 +6,7 @@
         </div>
 
         <div class="titleBar" v-if="item">
-            <input type="text" :placeholder="this.$root.setlang.writer.newfile" v-model="item.title"
-                @change="changed" />
+            <input type="text" :placeholder="this.$root.setlang.writer.newfile" v-model="item.title" @change="changed" />
         </div>
         <div v-if="editor" class="toolbar" :style="[
             $root.$data.session.writer.lhs ? 'left:40px;' : '',
@@ -20,14 +19,14 @@
                         d="M13.5,15.5H10V12.5H13.5A1.5,1.5 0 0,1 15,14A1.5,1.5 0 0,1 13.5,15.5M10,6.5H13A1.5,1.5 0 0,1 14.5,8A1.5,1.5 0 0,1 13,9.5H10M15.6,10.79C16.57,10.11 17.25,9 17.25,8C17.25,5.74 15.5,4 13.25,4H7V18H14.04C16.14,18 17.75,16.3 17.75,14.21C17.75,12.69 16.89,11.39 15.6,10.79Z" />
                 </svg>
             </button>
-            <button @click="editor.chain().focus().toggleItalic().run()"
-                :class="{ 'is-active': editor.isActive('italic') }" :title="this.$root.setlang.editor.italic">
+            <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }"
+                :title="this.$root.setlang.editor.italic">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M10,4V7H12.21L8.79,15H6V18H14V15H11.79L15.21,7H18V4H10Z" />
                 </svg>
             </button>
-            <button @click="editor.chain().focus().toggleStrike().run()"
-                :class="{ 'is-active': editor.isActive('strike') }" :title="this.$root.setlang.editor.strikethrough">
+            <button @click="editor.chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }"
+                :title="this.$root.setlang.editor.strikethrough">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24" class="strikefix">
                     <path
                         d="M23,12V14H18.61C19.61,16.14 19.56,22 12.38,22C4.05,22.05 4.37,15.5 4.37,15.5L8.34,15.55C8.37,18.92 11.5,18.92 12.12,18.88C12.76,18.83 15.15,18.84 15.34,16.5C15.42,15.41 14.32,14.58 13.12,14H1V12H23M19.41,7.89L15.43,7.86C15.43,7.86 15.6,5.09 12.15,5.08C8.7,5.06 9,7.28 9,7.56C9.04,7.84 9.34,9.22 12,9.88H5.71C5.71,9.88 2.22,3.15 10.74,2C19.45,0.8 19.43,7.91 19.41,7.89Z" />
@@ -58,15 +57,13 @@
                 </svg>
             </button>
             <button @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
-                :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
-                :title="this.$root.setlang.editor.h1">
+                :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }" :title="this.$root.setlang.editor.h1">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M14,18V16H16V6.31L13.5,7.75V5.44L16,4H18V16H20V18H14Z" />
                 </svg>
             </button>
             <button @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
-                :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }"
-                :title="this.$root.setlang.editor.h2">
+                :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }" :title="this.$root.setlang.editor.h2">
                 <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path
                         d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M21,18H15A2,2 0 0,1 13,16C13,15.47 13.2,15 13.54,14.64L18.41,9.41C18.78,9.05 19,8.55 19,8A2,2 0 0,0 17,6A2,2 0 0,0 15,8H13A4,4 0 0,1 17,4A4,4 0 0,1 21,8C21,9.1 20.55,10.1 19.83,10.83L15,16H21V18Z" />
@@ -247,7 +244,6 @@
         <div class="wordcountdisplay" v-if="item">{{ item.wordcount }} / {{ this.$root.fullWordCount }} </div>
 
     </div>
-
 </template>
   
 <script>
@@ -281,7 +277,8 @@ export default {
             this.$root.calcFullWordCount()
         },
         repositionEditor() {
-            if (this.editor && this.item) {
+            console.log("repos", this.$root.session.settings.documentprefs.caretfocus)
+            if (this.editor && this.item && this.$root.session.settings.documentprefs.caretfocus) {
                 this.mypos = this.getCaretPosition()
                 if (this.mypos != 0 && this.$refs.scrolltarget) {
                     let calculatedPosition = parseInt(this.mypos) + this.$refs.scrolltarget.scrollTop - (window.innerHeight / 2)

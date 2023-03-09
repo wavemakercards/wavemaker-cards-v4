@@ -94,6 +94,7 @@
          "typetext": "Text Colour",
          "typepage": "Page Colour",
          "typesound": "Typewriter Sound",
+         "caretfocus": "Caret Auto-focus",
          "reset": "Reset Defaults"
       },
       "tools": {
@@ -284,6 +285,7 @@
          "typetext": "Lliw Testun",
          "typepage": "Lliw Tudalen",
          "typesound": "Sain Teipiadur",
+         "caretfocus": "Caret Auto-focus",
          "reset": "Ailosod Rhagosodiadau"
       },
       "tools": {
@@ -474,6 +476,7 @@
          "typetext": "Textfarbe",
          "typepage": "Seitenfarbe",
          "typesound": "Schreibmaschinenton",
+         "caretfocus": "Caret Auto-focus",
          "reset": "Zurücksetzen Standardeinstellungen"
       },
       "tools": {
@@ -664,6 +667,7 @@
          "typetext": "Color de texto",
          "typepage": "Color de página",
          "typesound": "Sonido de máquina de escribir",
+         "caretfocus": "Caret Auto-focus",
          "reset": "Restablecer Valores predeterminados"
       },
       "tools": {
@@ -854,6 +858,7 @@
          "typetext": "Couleur de texte",
          "typepage": "Couleur de la page",
          "typesound": "Son de la machine à écrire",
+         "caretfocus": "Caret Auto-focus",
          "reset": "Réinitialiser les valeurs par défaut"
       },
       "tools": {
@@ -1044,6 +1049,7 @@
          "typetext": " Metin Rengi",
          "typepage": "Sayfa Rengi",
          "typesound": "Daktilo Sesi",
+         "caretfocus": "Caret Auto-focus",
          "reset": "Varsayılanları Sıfırla"
       },
       "tools": {
@@ -1234,6 +1240,7 @@
          "typetext": "Cor do Texto",
          "typepage": "Cor da Página",
          "typesound": "Sons de Máquina de Escrever",
+         "caretfocus": "Caret Auto-focus",
          "reset": "Restaurar ao Padrão"
       },
       "tools": {
@@ -1424,6 +1431,7 @@
          "typetext": "文本颜色",
          "typepage": "页面颜色",
          "typesound": "打字机声音模拟",
+         "caretfocus": "Caret Auto-focus",
          "reset": "恢复默认设置"
       },
       "tools": {

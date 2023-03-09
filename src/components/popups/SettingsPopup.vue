@@ -40,8 +40,7 @@
         <h2>{{ this.$root.setlang.settings.docprefs }}</h2>
 
         <label>{{ this.$root.setlang.settings.alignment }}</label>
-        <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.align"
-          @change="updateSettings">
+        <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.align" @change="updateSettings">
           <option value="left">{{ this.$root.setlang.settings.alignL }}</option>
           <option value="center"> {{ this.$root.setlang.settings.alignC }}</option>
           <option value="right"> {{ this.$root.setlang.settings.alignR }}</option>
@@ -80,8 +79,7 @@
           <option value="100px">{{ this.$root.setlang.settings.paragraphspacing5 }}</option>
         </select>
         <label>{{ this.$root.setlang.settings.pagewidth }}</label>
-        <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.page"
-          @change="updateSettings">
+        <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.page" @change="updateSettings">
           <option value="800px"> {{ this.$root.setlang.settings.pagestyle }}</option>
           <option value="100%"> {{ this.$root.setlang.settings.fullwidth }}</option>
         </select>
@@ -132,7 +130,10 @@
           <option value="right"> {{ this.$root.setlang.settings.alignR }}</option>
           <option value="justify">{{ this.$root.setlang.settings.alignJ }}</option>
         </select>
-
+        <hr />
+        <label>{{ this.$root.setlang.settings.caretfocus }}</label>
+        <input type="checkbox" v-model="this.$root.session.settings.documentprefs.caretfocus"
+          style="width:20px; height:20px" />
         <hr />
         <h2>{{ this.$root.setlang.settings.typewriter }}</h2>
 
@@ -171,7 +172,6 @@
     </div>
     <div style="clear: both;"></div>
   </div>
-
 </template>
 
 <script>

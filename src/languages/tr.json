@@ -94,6 +94,7 @@
             "typetext": " Metin Rengi",
             "typepage": "Sayfa Rengi",
             "typesound": "Daktilo Sesi",
+            "caretfocus": "Caret Auto-focus",
             "reset": "Varsayılanları Sıfırla"
         },
         "tools": {

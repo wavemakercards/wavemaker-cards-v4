@@ -94,6 +94,7 @@
             "typetext": "Color de texto",
             "typepage": "Color de página",
             "typesound": "Sonido de máquina de escribir",
+            "caretfocus": "Caret Auto-focus",
             "reset": "Restablecer Valores predeterminados"
         },
         "tools": {

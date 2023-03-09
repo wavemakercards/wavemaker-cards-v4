@@ -94,6 +94,7 @@
             "typetext": "文本颜色",
             "typepage": "页面颜色",
             "typesound": "打字机声音模拟",
+            "caretfocus": "Caret Auto-focus",
             "reset": "恢复默认设置"
         },
         "tools": {
