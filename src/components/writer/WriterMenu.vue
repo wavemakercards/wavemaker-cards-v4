@@ -108,7 +108,7 @@ export default {
     recursiveDelete(list) {
       /// TODO : uhhh as we have the writer ID this could be done with that?? Why did I do this?
       list.forEach(element => {
-        if (element.children.length) {
+        if (element.children) {
           this.recursiveDelete(element.children)
         }
         this.$root.DeleteRecord("Files", element.uuid)
