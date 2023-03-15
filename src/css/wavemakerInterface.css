@@ -175,6 +175,9 @@ label {
   width: 5px;
 }
 
+a{
+  color: inherit;
+}
 .wavemakerPopupBlackout {
   position: absolute;
   background-color: var(--popup-block);
