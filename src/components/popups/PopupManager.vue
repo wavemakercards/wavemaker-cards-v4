@@ -13,6 +13,9 @@
       <ApiForm v-if="$root.$data.popup.name === 'ApiForm'" />
       <SettingsPopup v-if="$root.$data.popup.name === 'SettingsPopup'" />
       <GoogleDrive v-if="$root.$data.popup.name === 'GoogleDrive'" />
+<AiHelp v-if="$root.$data.popup.name === 'AiHelp'" />
+
+      
     </div>
   </Transition>
 </template>
@@ -20,12 +23,14 @@
 import ApiForm from '@/components/popups/ApiForm.vue'
 import SettingsPopup from '@/components/popups/SettingsPopup.vue'
 import GoogleDrive from '@/components/popups/GoogleDrive.vue'
+import AiHelp from '@/components/popups/AiHelp.vue'
 export default {
   name: "PopupManager",
   components: {
     ApiForm,
     SettingsPopup,
-    GoogleDrive
+    GoogleDrive,
+    AiHelp
   }
 }
 </script>
