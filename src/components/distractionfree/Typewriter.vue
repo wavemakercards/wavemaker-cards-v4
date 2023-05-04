@@ -36,12 +36,12 @@ export default {
             this.$root.UpdateRecord("Files", this.item.uuid, this.item)
         },
         repositionEditor() {
-            this.mypos = this.getCaretPosition()
-            // console.log(parseInt(this.mypos), this.$refs.scrolltarget.scrollTop, this.$refs.scrolltarget.scrollHeight, window.innerHeight)
-            //console.log(this.$refs.scrolltarget.scrollHeight - (this.$refs.scrolltarget.scrollTop + this.mypos))
-            if (this.mypos != 0) {
-                let calculatedPosition = parseInt(this.mypos) + this.$refs.scrolltarget.scrollTop - (window.innerHeight / 2)
-                this.$refs.scrolltarget.scrollTo({ top: calculatedPosition, behavior: 'smooth' });
+            if (this.editor && this.item && this.$root.session.settings.documentprefs.caretfocus) {
+                this.mypos = this.getCaretPosition()
+                if (this.mypos != 0 && this.$refs.scrolltarget) {
+                    let calculatedPosition = parseInt(this.mypos) + this.$refs.scrolltarget.scrollTop - (window.innerHeight / 2)
+                    this.$refs.scrolltarget.scrollTo({ top: calculatedPosition, behavior: 'smooth' });
+                }
             }
         },
         getCaretPosition() {
