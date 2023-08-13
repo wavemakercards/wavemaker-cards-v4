@@ -8,12 +8,11 @@
 
     <div class="timeline">
 
-      <VueDraggableNext :list="this.$root.$data.session.timeline.selected.content" tag="ul" group="board"
-        :component-data="{
-          tag: 'ul',
-          type: 'transition-group',
-          name: !drag ? 'flip-list' : null,
-        }" handle=".handle" v-bind="dragOptions" @start="drag = true" @end="drag = false" :emptyInsertThreshold="90"
+      <VueDraggableNext :list="this.$root.$data.session.timeline.selected.content" tag="ul" group="board" :component-data="{
+        tag: 'ul',
+        type: 'transition-group',
+        name: !drag ? 'flip-list' : null,
+      }" handle=".handle" v-bind="dragOptions" @start="drag = true" @end="drag = false" :emptyInsertThreshold="90"
         @change="updateDatabase">
         <template v-for="(element, index) in this.$root.session.timeline.selected.content" :key="index">
           <li>
@@ -24,8 +23,8 @@
                     d="M13,6V11H18V7.75L22.25,12L18,16.25V13H13V18H16.25L12,22.25L7.75,18H11V13H6V16.25L1.75,12L6,7.75V11H11V6H7.75L12,1.75L16.25,6H13Z" />
                 </svg>
               </div>
-              <input class="timeText" tabindex="1" :placeholder="this.$root.setlang.timeline.date"
-                v-model="element.event" @change="updateDatabase">
+              <input class="timeText" tabindex="1" :placeholder="this.$root.setlang.timeline.date" v-model="element.event"
+                @change="updateDatabase">
 
               <button @click="deleteTime(index)" class="deleteIconButton">
                 <svg style="width:18px;height:18px" viewBox="0 0 24 24">
@@ -41,6 +40,14 @@
                 <MiniEditor v-model="element.text" tabindex="1" @updated="updateDatabase" />
               </p>
             </div>
+
+            <button @click="addTimeAtIndex(index + 1)" class="addIconButton">
+              <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path
+                  d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z">
+                </path>
+              </svg>
+            </button>
           </li>
         </template>
 
@@ -65,7 +72,6 @@
       </svg>
     </button>
   </div>
-
 </template>
 
 <script>
@@ -94,7 +100,6 @@ export default {
   },
   methods: {
     addTime() {
-      console.log("asdasd")
       let obj = {}
       obj.title = ""
       obj.text = ""
@@ -102,9 +107,15 @@ export default {
       this.$root.session.timeline.selected.content.push(obj)
       this.updateDatabase();
     },
+    addTimeAtIndex(i) {
+      let obj = {}
+      obj.title = ""
+      obj.text = ""
+      obj.event = ""
+      this.$root.session.timeline.selected.content.splice(i, 0, obj);
+      this.updateDatabase();
+    },
     deleteTime(index) {
-
-
       this.$swal(
         {
           title: this.$root.setlang.confirmmodal.confirmdelete,
@@ -573,5 +584,4 @@ h1 div {
     padding-right: 0px !important;
   }
 
-}
-</style>
+}</style>

@@ -175,9 +175,10 @@ label {
   width: 5px;
 }
 
-a{
+a {
   color: inherit;
 }
+
 .wavemakerPopupBlackout {
   position: absolute;
   background-color: var(--popup-block);
@@ -354,10 +355,50 @@ a{
   fill: var(--danger-f) !important;
 }
 
+
+.addIconButton {
+  position: relative;
+  border: 0px;
+  width: 18px;
+  height: 18px;
+  padding: 2px 2px 0px 2px;
+  cursor: pointer;
+  margin: 0px;
+  border-radius: 50%;
+  background: none;
+  transition: all 0.3s ease;
+  background-color: inherit;
+
+}
+
+.addIconButton svg {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  fill: var(--success-f);
+  width: 100%;
+  left: 0px;
+  top: 0px;
+}
+
+.addIconButton:hover,
+.addIconButton:active,
+.addIconButton:focus {
+  background: var(--success);
+  color: var(--success-f);
+}
+
+.addIconButton:hover>svg,
+.addIconButton:active>svg,
+.addIconButton:focus>svg {
+  fill: var(--success-f) !important;
+}
+
+
 .deleteBtn {
-  background-color: var(--danger);
-  color: var(--danger-f);
-  fill: var(--danger-f);
+  background-color: var(--success);
+  color: var(--success-f);
+  fill: var(--success-f);
 }
 
 
