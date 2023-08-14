@@ -17,7 +17,6 @@
   this is used byt the fileManage.js to trigger a file open dialogue
  -->
   <input type="file" id="wavemakerHiddenPicker" name="upload" accept=".wm4" @change="file_load" style="display: none" />
-
 </template>
 
 <script>
@@ -146,16 +145,18 @@ export default {
 
     wordCounter(str) {
       let count = 0
-      if (this.lang === "cn") {
-        // chinese so count characters and multiply by 0.7 for esitmate
-        str = str.replace(/(<([^>]+)>)/gi, "");
-        str.replaceAll(" ", "")
-        count = parseInt(str.length * 0.7)
-      } else {
-        str = str.replace(/(<([^>]+)>)/gi, " ");
-        count = str.split(" ").filter(function (n) {
-          return n != "";
-        }).length;
+      if (str) {
+        if (this.lang === "cn") {
+          // chinese so count characters and multiply by 0.7 for esitmate
+          str = str.replace(/(<([^>]+)>)/gi, "");
+          str.replaceAll(" ", "")
+          count = parseInt(str.length * 0.7)
+        } else {
+          str = str.replace(/(<([^>]+)>)/gi, " ");
+          count = str.split(" ").filter(function (n) {
+            return n != "";
+          }).length;
+        }
       }
       return count
     },
