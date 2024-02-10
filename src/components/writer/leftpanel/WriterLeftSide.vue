@@ -345,6 +345,7 @@ export default {
   width: 100%;
   padding: 0px;
   background-color: inherit;
+  padding-bottom: 140px;
 }
 
 .addbar {
