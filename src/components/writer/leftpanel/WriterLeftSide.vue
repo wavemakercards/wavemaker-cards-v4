@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import WriterNode from "./WriterNode";
+import WriterNode from "./WriterNode.vue";
 export default {
   name: "WriterLeftSide",
   components: {

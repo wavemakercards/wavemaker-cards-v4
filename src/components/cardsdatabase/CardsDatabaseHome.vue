@@ -52,7 +52,7 @@
 
 <script>
 import MasonryWall from '@yeger/vue-masonry-wall'
-import CardViewer from "@/components/universal/CardViewer";
+import CardViewer from "@/components/universal/CardViewer.vue";
 import { useObservable } from "@vueuse/rxjs";
 import { liveQuery } from "dexie";
 import { db } from "@/db.js";

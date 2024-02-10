@@ -1,18 +1,13 @@
 {
-  "name": "wavemakercards-v4",
-  "version": "4.0.2",
+  "name": "wm4-vite",
   "private": true,
-  "description": "Wavemaker cards is software to help you plan and write your novel",
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "electron:build": "vue-cli-service electron:build",
-    "electron:serve": "vue-cli-service electron:serve",
-    "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "main": "background.js",
   "dependencies": {
     "@tiptap/extension-bubble-menu": "^2.0.0-beta.202",
     "@tiptap/extension-dropcursor": "^2.0.0-beta.25",
@@ -26,33 +21,22 @@
     "@vueuse/core": "^9.3.1",
     "@vueuse/rxjs": "^9.3.1",
     "@yeger/vue-masonry-wall": "^3.2.22",
-    "chart.js": "^4.0.1",
     "core-js": "^3.8.3",
     "dexie": "^3.2.2",
     "dexie-export-import": "^1.0.3",
     "dexie-observable": "^3.0.0-beta.11",
-    "merge-webpack-plugin": "^0.2.1",
     "register-service-worker": "^1.7.2",
     "rxjs": "^7.5.7",
     "showdown": "^2.1.0",
     "uuid": "^9.0.0",
-    "vue": "^3.2.41",
+    "vue": "^3.4.15",
     "vue-chartjs": "^4.1.2",
     "vue-draggable-next": "^2.1.1",
-    "vue-draggable-resizable": "^2.3.0",
+    "vue-draggable-resizable": "^3.0.0",
     "vue-sweetalert2": "^5.0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-plugin-pwa": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "electron": "^13.0.0",
-    "electron-devtools-installer": "^3.1.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3",
-    "vue-cli-plugin-electron-builder": "~2.1.1"
+    "@vitejs/plugin-vue": "^5.0.3",
+    "vite": "^5.1.0"
   }
 }

@@ -20,20 +20,20 @@
 </template>
 
 <script>
-import '@/css/wavemakerInterface.css'
-import '@/css/transitions.css'
+import './css/wavemakerInterface.css'
+import './css/transitions.css'
 import myPackage from "../package.json"
-import fileManage from '@/mixins/fileManage.js'
-import dexieDB from '@/mixins/dexieDB.js'
-import templateObjects from '@/mixins/templateObjects.js'
-import GoogleDriveApi from '@/mixins/GoogleDriveApi.js'
+import fileManage from './mixins/fileManage.js'
+import dexieDB from './mixins/dexieDB.js'
+import templateObjects from './mixins/templateObjects.js'
+import GoogleDriveApi from './mixins/GoogleDriveApi.js'
 import PopupManager from '@/components/popups/PopupManager.vue'
 import WelcomeScreen from '@/components/WelcomeScreen.vue'
 import Start from '@/components/Start.vue'
 import { v4 as uuid } from "uuid";
 import Languages from "./lang.json";
-import CardModal from "./components/universal/CardModal.vue"
-import ImageManager from "./components/universal/ImageManager.vue"
+import CardModal from "@/components/universal/CardModal.vue"
+import ImageManager from "@/components/universal/ImageManager.vue"
 import Version3Import from "./utilitystuff/version3Importer.vue"
 export default {
   name: 'App',
