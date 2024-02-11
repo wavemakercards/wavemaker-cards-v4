@@ -7,6 +7,9 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
+      workbox: {
+        cleanupOutdatedCaches: false
+      },
       registerType: "autoUpdate", // Automatically update the service worker
       injectRegister: "auto", // Automatically inject the service worker registration
       devOptions: { enabled: true },
