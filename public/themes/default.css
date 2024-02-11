@@ -155,6 +155,6 @@
 
     --distractionfree-bg: #fafafa;
     --distractionfree-fg: #646464;
-    --distractionfree-font: 'Special Elite', cursive;
+    --distractionfree-font: 'Special Elite', 'Courier New', Courier, monospace;
 
 }

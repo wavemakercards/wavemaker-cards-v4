@@ -216,7 +216,7 @@ export default {
   background-color: inherit;
   color: inherit;
   border: 0px;
-  width: calc(100% -20px);
+  width: calc(100% - 20px);
   outline: none;
   height: 20px;
   margin: 0px;

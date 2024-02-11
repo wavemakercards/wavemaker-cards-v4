@@ -24,8 +24,7 @@ export default {
       console.log("delete", this.myindex)
       this.$root.session.mindmap.selected.content.links.splice(this.myindex, 1)
       this.savechange()
-    }
-  },
+    },
   savechange() {
     console.log("list changed");
     this.$root.UpdateRecord(
@@ -37,6 +36,7 @@ export default {
     );
   }
 }
+  }
 </script>
 
 <style scoped >

@@ -53,6 +53,7 @@
         </svg>
         {{ this.$root.setlang.cards.linkexisting }}
       </button>
+      
 
       <div v-if="showLinkBox" class="LinkBox">
         <div v-if="linkcards.length == 0">

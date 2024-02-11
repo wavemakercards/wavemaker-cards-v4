@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import WriterNode from "./WriterNode";
+import WriterNode from "./WriterNode.vue";
 export default {
   name: "WriterLeftSide",
   components: {
@@ -345,6 +345,7 @@ export default {
   width: 100%;
   padding: 0px;
   background-color: inherit;
+  padding-bottom: 140px;
 }
 
 .addbar {

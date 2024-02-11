@@ -291,11 +291,11 @@ export default {
 /* Tooltip text */
 button .tooltiptext {
   visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
+  width: auto;
+  background-color: #fff;
+  color: #222;
   text-align: center;
-  padding: 5px 0;
+  padding: 5px 10px 5px 10px;
   border-radius: 6px;
   /* Position the tooltip text - see examples below! */
   position: absolute;
@@ -314,10 +314,6 @@ button:focus .tooltiptext {
 }
 
 
-
-
-
-
 @media (min-width:720px) {
   button .tooltiptext {
     left: auto;
@@ -328,7 +324,7 @@ button:focus .tooltiptext {
   .navbar {
     width: 500px;
     position: absolute;
-    top: 00px;
+    top: 0px;
     left: 55px;
     padding-top: 0px;
     padding-bottom: 10px;

@@ -85,7 +85,7 @@
 <script>
 
 import { VueDraggableNext } from "vue-draggable-next";
-import NodeTemplate from "./NodeTemplate"
+import NodeTemplate from "./NodeTemplate.vue"
 export default {
   name: "WriterNode",
   components: {
@@ -412,7 +412,7 @@ same as node - will nee to srot this
   background-color: inherit;
   color: inherit;
   border: 0px;
-  width: calc(100% -20px);
+  width: calc(100% - 20px);
   outline: none;
   height: 20px;
   margin: 0px;

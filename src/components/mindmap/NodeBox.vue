@@ -1,4 +1,6 @@
 <template>
+
+
   <vue-draggable-resizable :parent="false" class="card" :key="uuid" @dragging="onDrag" @resizing="onResize"
     :w="this.$root.session.mindmap.selected.content.nodes[this.uuid].w"
     :h="this.$root.session.mindmap.selected.content.nodes[this.uuid].h"
@@ -64,9 +66,11 @@
       </svg>
     </button>
   </vue-draggable-resizable>
+
 </template>
 
 <script>
+
 import MiniImage from '../universal/MiniImage.vue';
 export default {
   name: "NodeBox",
@@ -366,12 +370,14 @@ textarea {
 }
 
 .card {
+  position: absolute;
   padding: 0px;
   background-color: var(--mm-node);
   color: var(--mm-node-f);
   white-space: pre-line;
   cursor: move;
-  height: auto !important
+  height: auto !important;
+  width: fit-content !important;
 }
 
 .card .inputcontrol {
