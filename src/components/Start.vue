@@ -79,5 +79,6 @@ export default {
   bottom: 0px;
   background-color: inherit;
   color: inherit;
+  overflow-y: auto;
 }
 </style>
