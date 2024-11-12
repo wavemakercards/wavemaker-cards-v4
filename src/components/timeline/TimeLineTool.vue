@@ -175,11 +175,12 @@ export default {
             newWriter.files = []
 
             this.$root.session.timeline.selected.content.forEach(tl => {
+              console.log(tl)
               let uuid = this.$root.uuid()
               let newfile = {}
               newfile.writerid = newWriter.uuid
               newfile.title = tl.event + "-" + tl.title
-              newfile.content = tl.content
+              newfile.content = tl.text
               newfile.notes = []
               newfile.uuid = uuid
               newfile.wordcount = this.$root.wordCounter(tl.content)
