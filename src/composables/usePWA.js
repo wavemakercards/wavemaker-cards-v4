@@ -80,6 +80,70 @@ export function usePWA() {
     markPromptAsShown(SESSION_KEYS.OFFLINE_PROMPT_SHOWN)
   }
 
+  // Force update - clear all caches and reload
+  const forceUpdate = async (options = {}) => {
+    const {
+      clearLocalStorage = false,
+      clearSessionStorage = true,
+      clearIndexedDB = false,
+      clearCaches = true
+    } = options
+
+    try {
+      console.log('Starting force update with options:', options)
+      
+      // Clear service worker caches
+      if (clearCaches && 'caches' in window) {
+        const cacheNames = await caches.keys()
+        console.log('Clearing caches:', cacheNames)
+        await Promise.all(
+          cacheNames.map(cacheName => caches.delete(cacheName))
+        )
+      }
+
+      // Unregister all service workers
+      if ('serviceWorker' in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations()
+        console.log('Unregistering service workers:', registrations.length)
+        await Promise.all(
+          registrations.map(registration => registration.unregister())
+        )
+      }
+
+      // Clear storage selectively
+      if (clearLocalStorage) {
+        localStorage.clear()
+        console.log('LocalStorage cleared')
+      }
+      
+      if (clearSessionStorage) {
+        sessionStorage.clear()
+        console.log('SessionStorage cleared')
+      }
+      
+      // Clear IndexedDB if requested (careful - this contains user data!)
+      if (clearIndexedDB && 'indexedDB' in window) {
+        console.log('IndexedDB clearing requested (implement if needed)')
+        // Implement selective IndexedDB clearing if needed
+      }
+
+      console.log('Force update complete, reloading...')
+      
+      // Force reload from server (bypass cache)
+      if (window.location.reload) {
+        window.location.reload(true)
+      } else {
+        // Fallback for browsers that don't support the reload parameter
+        window.location.href = window.location.href + '?t=' + Date.now()
+      }
+      
+    } catch (error) {
+      console.error('Error during force update:', error)
+      // Fallback: just reload the page
+      window.location.reload(true)
+    }
+  }
+
   onMounted(() => {
     // Listen for install prompt
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
@@ -161,6 +225,7 @@ export function usePWA() {
     closeUpdatePrompt,
     closeInstallPrompt,
     closeOfflinePrompt,
+    forceUpdate,
     initVitePWA
   }
 }
