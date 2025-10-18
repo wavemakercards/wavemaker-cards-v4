@@ -169,9 +169,11 @@ export default {
   background: none;
   padding: 5px;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
-  background-color: var(--writer-side-nav);
+  width: 30px;
+  height: 30px;
+    margin: 5px;
+  background-color: var(--accent);
+  border-radius: 50%;
 
 }
 
@@ -407,7 +409,7 @@ export default {
   position: absolute;
   top: 0px;
   right: 0px;
-  background-color: var(--writer-side-nav);
+
   width: calc(100% - 40px);
   height: 40px;
 
@@ -421,15 +423,17 @@ export default {
   position: absolute;
   right: 40px;
   border: 0px;
-  padding: 5px;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  margin: 5px;
   background-color: var(--writer-side-nav);
 }
 
 .popBtn svg {
   fill: var(--writer-side-nav-f);
+    width:20px !important;
 }
 
 .popBtn:hover,
@@ -465,15 +469,17 @@ export default {
   position: absolute;
   right: 0px;
   border: 0px;
-  padding: 5px;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  margin: 5px;
   background-color: var(--writer-side-nav);
 }
 
 .addBtn svg {
   fill: var(--writer-side-nav-f);
+    width:20px !important;
 }
 
 .addBtn:hover,

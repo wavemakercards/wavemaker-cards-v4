@@ -8,8 +8,8 @@
 --c6: #9e9e9e ;
 --c7: #757575 ;
 --c8: #616161 ;
---c9: #424242 ;
---c10: #212121 ;
+--c9: #2c2c2c ;
+--c10: #e2e2e2 ;
 
   --c0-f: #000;
   --c1-f: #000;
@@ -21,7 +21,7 @@
   --c7-f: #fff;
   --c8-f: #fff;
   --c9-f: #fff;
-  --c10-f: #fff;
+  --c10-f: #000000;
 
 
   --accent: rgb(112, 6, 112);
@@ -32,7 +32,7 @@
   --danger-f: #fff;
   --success: #006400;
   --success-f: #fff;
-  --primary: #191970;
+  --primary: #422b5c;
   --primary-f: #fff;
 
   --window: var(--c10);
@@ -51,8 +51,8 @@
 
   --box-shadow: rgba(255, 255, 255, 0.5);
 
-  --logo-top: var(--c3);
-  --logo-bottom: var(--c5);
+  --logo-top: var(--c1);
+  --logo-bottom: var(--c7);
 
   --webkit-scrollbar-button: var(--c10);
   --webkit-scrollbar-thumb: var(--c7);
@@ -92,8 +92,8 @@
   --planningboard-col: var(--c8);
   --planningboard-col-f: var(--c8-f);
 
-  --db-search-bar: var(--writer-title-bar);
-  --db-search-bar-f: var(--writer-title-bar-f);
+  --db-search-bar: var(--c1);
+  --db-search-bar-f: var(--c1-f);
   --taglist-panel: var(--c8);
   --taglist-panel-f: var(--c8-f);
   --taglist-tag: var(--warning);
@@ -126,18 +126,18 @@
 
   --card1: var(--card);
   --card1-f: var(--card-f);
-  --card2: #f06292;
+  --card2: #e57373;
   --card2-f: #fff;
   --card3: #9575cd;
   --card3-f: #fff;
-  --card4: #4fc3f7;
+  --card4: #64b5f6;
   --card4-f: #fff;
-  --card5: #4db6ac;
+  --card5: #81c784;
   --card5-f: #fff;
   --card6: #fff176;
   --card6-f: #424242;
-  --card7: #ff8a65;
-  --card7-f: #fff;
+  --card7: #ffb74d;
+  --card7-f: #424242;
 
   --pageEditor-align: left;
   --pageEditor-fontsize: 1.5rem;
@@ -157,4 +157,13 @@
   --distractionfree-fg: #646464;
   --distractionfree-font: 'Special Elite', 'Courier New', Courier, monospace;
 
+}
+
+.wavemakerForm{
+  padding: 20px;
+  border-radius: 5px;
+  background-color: var(--c4);
+  border: 2px solid var(--c8);
+  color: var(--c4-f);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }

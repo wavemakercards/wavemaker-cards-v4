@@ -295,7 +295,11 @@ a {
   padding-right: 10px;
   cursor: pointer;
   font-family: var(--sysfont);
+  border-radius: 5px;
   margin-top: 10px;
+  background: var(--primary);
+  fill: var(--button-hover-f) ;
+  color: var(--button-hover-f) ;
 }
 
 .interfaceBtn svg {

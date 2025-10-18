@@ -65,7 +65,9 @@ const GoogleDriveApi = {
             } else {
                 // Skip display of account chooser and consent dialog for an existing session.
                 this.GoogleDriveApi.tokenClient.requestAccessToken({ prompt: '' });
+                
             }
+            this.GoogleDriveListFiles()
         },
         /**
          *  Sign out the user upon button click.

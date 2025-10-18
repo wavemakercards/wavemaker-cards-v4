@@ -29,7 +29,7 @@ export default defineConfig({
         short_name: "Wavemaker",
         description:
           "A comprehensive creative writing and planning tool featuring mind maps, timelines, character development, project management, and distraction-free writing environments. Perfect for authors, screenwriters, and creative professionals.",
-        version: "4.1.0",
+        version: "4.1.5",
         theme_color: "#424242",
         icons: [
           {

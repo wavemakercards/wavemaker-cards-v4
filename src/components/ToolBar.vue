@@ -32,14 +32,14 @@
 
       </button>
 
--->
+
 
 <button @click="$root.$data.popup.name = 'AiHelp'" class="toolbarButton"
         title="AI helper">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>robot</title><path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z" /></svg>
 
 </button>
-
+-->
 
       <button @click="$root.$data.popup.name = 'SettingsPopup'" class="toolbarButton"
         :title="this.$root.setlang.settings.title">
@@ -77,7 +77,7 @@
             <path
               d="M13 19C13 19.34 13.04 19.67 13.09 20H6.5C5 20 3.69 19.5 2.61 18.43C1.54 17.38 1 16.09 1 14.58C1 13.28 1.39 12.12 2.17 11.1S4 9.43 5.25 9.15C5.67 7.62 6.5 6.38 7.75 5.43S10.42 4 12 4C13.95 4 15.6 4.68 16.96 6.04C18.32 7.4 19 9.05 19 11C20.15 11.13 21.1 11.63 21.86 12.5C22.37 13.07 22.7 13.71 22.86 14.42C21.82 13.54 20.5 13 19 13C15.69 13 13 15.69 13 19M16 18H18V22H20V18H22L19 15L16 18Z" />
           </svg>
-          <span class="tooltiptext">{{ this.$root.setlang.toolbar.quickupload }}</span>
+          <span class="tooltiptext">{{ this.$root.setlang.toolbar.quick}}</span>
         </button>
 
         <button class="toolbarButton" v-if="$root.GoogleDriveApi.loading">
@@ -217,7 +217,7 @@ export default {
   width: 50px;
   position: absolute;
   top: 50px;
-  left: 0px;
+  left: 5px;
   padding-top: 0px;
   padding-bottom: 10px;
 
@@ -231,8 +231,9 @@ export default {
   padding: 0px;
   background: none;
   border: 0px;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
+margin: 5px;
   padding-left: 2px;
   cursor: pointer;
 }
@@ -253,8 +254,10 @@ export default {
 .toolbarButton {
   background-color: var(--top-toolbar);
   border: 0px;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
+  margin: 5px 0px;
+  border-radius: 5px;
   cursor: pointer;
   margin-bottom: 0px;
   outline: none;
@@ -270,23 +273,25 @@ export default {
 .toolbarButton:active,
 .toolbarButton:focus {
   background-color: var(--button-hover);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+      color: var(--button-hover-f);
 }
 
 .toolbarButton:hover svg,
 .toolbarButton:active svg,
 .toolbarButton:focus svg {
   fill: var(--button-hover-f);
+        color: var(--button-hover-f);
+
 }
 
 .active {
   background-color: var(--button-hover);
   fill: var(--button-hover-f);
+  color: var(--button-hover-f);
 }
 
 
-.vertical {
-  padding-left: 10px;
-}
 
 /* Tooltip text */
 button .tooltiptext {
@@ -329,5 +334,8 @@ button:focus .tooltiptext {
     padding-top: 0px;
     padding-bottom: 10px;
   }
+.navbar .toolbarButton{
+  margin: 5px 1px; 
+}
 }
 </style>

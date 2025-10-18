@@ -127,7 +127,9 @@ export default {
     },
   },
   mounted() {
-    // this.$root.GoogleDriveSignIn()
+    if(!this.$root.GoogleDriveApi.loggedin){
+     this.$root.GoogleDriveSignIn()
+    }
   }
 };
 </script>
