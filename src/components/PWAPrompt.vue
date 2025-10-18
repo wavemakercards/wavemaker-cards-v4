@@ -9,7 +9,7 @@
       </div>
       <div class="pwa-prompt-actions">
         <button @click="installPWA" class="pwa-btn primary">Install</button>
-        <button @click="canInstall = false" class="pwa-btn secondary">Not now</button>
+        <button @click="closeInstallPrompt" class="pwa-btn secondary">Not now</button>
       </div>
     </div>
   </div>
@@ -38,7 +38,7 @@
         <p>App cached successfully. You can now use Wavemaker Cards offline.</p>
       </div>
       <div class="pwa-prompt-actions">
-        <button @click="offlineReady = false" class="pwa-btn primary">Got it</button>
+        <button @click="closeOfflinePrompt" class="pwa-btn primary">Got it</button>
       </div>
     </div>
   </div>
@@ -53,7 +53,9 @@ const {
   canInstall,
   installPWA,
   updateApp,
-  closeUpdatePrompt
+  closeUpdatePrompt,
+  closeInstallPrompt,
+  closeOfflinePrompt
 } = usePWA()
 </script>
 
