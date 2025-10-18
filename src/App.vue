@@ -11,6 +11,7 @@
 
   <ImageManager v-if="$root.imagemanager" />
   <PopupManager />
+  <PWAPrompt />
   <Version3Import v-if="v3import" />
   <!--
   Hidden File open element
@@ -35,16 +36,23 @@ import Languages from "./lang.json";
 import CardModal from "@/components/universal/CardModal.vue"
 import ImageManager from "@/components/universal/ImageManager.vue"
 import Version3Import from "./utilitystuff/version3Importer.vue"
+import PWAPrompt from "@/components/PWAPrompt.vue"
+import { usePWA } from '@/composables/usePWA.js'
 export default {
   name: 'App',
   mixins: [fileManage, dexieDB, GoogleDriveApi, templateObjects],
+  setup() {
+    const { initVitePWA } = usePWA()
+    return { initVitePWA }
+  },
   components: {
     PopupManager,
     WelcomeScreen,
     Start,
     CardModal,
     ImageManager,
-    Version3Import
+    Version3Import,
+    PWAPrompt
   },
   /*
    watch: {  // for dev
@@ -226,6 +234,9 @@ export default {
     // set the text direction  on load - this looks like it might be a bit buggy for rtl  - will need to run tests
     document.body.dir = this.$root.setlang.textdirection
     this.screensizefixes()
+    
+    // Initialize PWA functionality
+    this.initVitePWA()
   },
   created() {
     window.addEventListener("resize", this.screensizefixes);
