@@ -53,7 +53,7 @@
 
     <div v-if="$root.GoogleDriveApi.files.length">
       <div v-for="(f, i) in $root.GoogleDriveApi.files" :key="i">
-        <button @click="openFile(f)" class="interfaceBtn filebutton file">
+        <button @click="openFile(f)" class="file">
           <svg viewBox="0 0 24 24">
             <defs id="defs8" />
             <path id="path2"
@@ -68,8 +68,8 @@
               style="stroke-width: 0.0139114" />
           </svg>
 
-          <div> {{ f.name }} - ({{ f.size + "bytes" }})</div>
-          <div style="text-decoration:italic;"> {{ f.modifiedTime }}</div>
+          <div> <strong>{{ f.name }}</strong> <span class="smalltext">({{ f.size + "bytes" }})</span></div>
+          <div class="smalltext"> {{ f.modifiedTime }}</div>
         </button>
       </div>
 
@@ -142,17 +142,31 @@ export default {
 
 
 
-
 .file {
   position: relative;
   text-align: left;
-  padding-left: 40px;
+  margin:2px;
+  border-radius: 10px;
   width: 100%;
   background-color: var(--paper);
   color: var(--paper-f);
   fill: var(--paper-f);
+  min-height: 70px;
+  padding-left: 40px;
+  cursor: pointer;
+  vertical-align: top;
 }
-
+.file strong{
+  font-size: 1.4rem;
+  font-weight: normal;
+}
+.file svg{
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left:10px;
+  top:14px
+}
 .file:hover,
 .file:focus,
 .file:active {
@@ -164,5 +178,10 @@ export default {
 .logout {
   width: auto;
   float: right;
+}
+
+.smalltext{
+font-style: italic;
+font-size: 0.7rem;
 }
 </style>
