@@ -161,9 +161,7 @@
 
 .wavemakerForm{
   padding: 20px;
-  border-radius: 5px;
-  background-color: var(--c4);
-  border: 2px solid var(--c8);
+
+  background-color: var(--c10);
   color: var(--c4-f);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
