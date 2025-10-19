@@ -2,6 +2,7 @@
   <div class="wavemaker_info_box">
 
     <table style="width:100%">
+      <tbody>
       <tr>
         <td></td>
         <td style="width:40px;">
@@ -13,6 +14,7 @@
           </button>
         </td>
       </tr>
+      </tbody>
     </table>
 
 

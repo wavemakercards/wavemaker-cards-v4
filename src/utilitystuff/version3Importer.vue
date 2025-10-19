@@ -3,6 +3,7 @@
 
         <div class="window">
             <table style="width:100%">
+                <tbody>
                 <tr>
                     <td style="width:75%"></td>
                     <td><button @click="$root.v3import = false" class="interfaceBtn fullw text-left">
@@ -13,6 +14,7 @@
 
                             {{ this.$root.setlang.wm3import.close }} </button></td>
                 </tr>
+                </tbody>
             </table>
 
             <hr />

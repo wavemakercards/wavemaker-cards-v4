@@ -20,6 +20,7 @@
           </svg>
         </div>
         <table style="width:100%">
+          <tbody>
           <tr>
             <!--
       <td style="max-width: 200px;">
@@ -42,6 +43,7 @@
             </td>
 
           </tr>
+          </tbody>
         </table>
 
 

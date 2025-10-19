@@ -15,11 +15,13 @@
       <!--
         :style="'width:' + TableWidth + 'px'"
       -->
+        <tbody>
       <tr>
         <template v-for="(col, i) in WriterLQ.files" :key="i">
           <PlanningBoardCards :fileId="col.uuid" :FileNode="col" />
         </template>
       </tr>
+      </tbody>
     </table>
 
   </div>

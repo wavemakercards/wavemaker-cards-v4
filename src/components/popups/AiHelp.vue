@@ -14,12 +14,14 @@
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>key</title><path d="M7 14C5.9 14 5 13.1 5 12S5.9 10 7 10 9 10.9 9 12 8.1 14 7 14M12.6 10C11.8 7.7 9.6 6 7 6C3.7 6 1 8.7 1 12S3.7 18 7 18C9.6 18 11.8 16.3 12.6 14H16V18H20V14H23V10H12.6Z" /></svg>
           Show OpenAi Api Key</button>
         <table style="width:100%" v-if="showkey">
+          <tbody>
           <tr>
             <td style="width:75%"><input style="width:100%" class="formInput" type="text" v-model="apikey" /></td>
             <td><button class="interfaceBtn" style="width:100%" @click="saveKey()">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>content-save</title><path d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z" /></svg>
               Save</button></td>
           </tr>
+          </tbody>
         </table>
         
         

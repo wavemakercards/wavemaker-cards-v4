@@ -84,6 +84,7 @@
           <option value="100%"> {{ this.$root.setlang.settings.fullwidth }}</option>
         </select>
         <table>
+          <tbody>
           <tr>
             <td>
               <label>{{ this.$root.setlang.settings.pagetext }}</label>
@@ -94,6 +95,7 @@
               <input type="color" v-model="this.$root.session.settings.documentprefs.bgcolor" @change="updateSettings">
             </td>
           </tr>
+          </tbody>
         </table>
         <label>{{ this.$root.setlang.settings.h1align }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.h1align"
@@ -138,6 +140,7 @@
         <h2>{{ this.$root.setlang.settings.typewriter }}</h2>
 
         <table>
+          <tbody>
           <tr>
             <td>
               <label>{{ this.$root.setlang.settings.typetext }}</label>
@@ -155,6 +158,7 @@
                 style="width:20px; height:20px" />
             </td>
           </tr>
+          </tbody>
         </table>
 
 
