@@ -84,6 +84,7 @@
           <option value="100%"> {{ this.$root.setlang.settings.fullwidth }}</option>
         </select>
         <table>
+          <tbody>
           <tr>
             <td>
               <label>{{ this.$root.setlang.settings.pagetext }}</label>
@@ -94,6 +95,7 @@
               <input type="color" v-model="this.$root.session.settings.documentprefs.bgcolor" @change="updateSettings">
             </td>
           </tr>
+          </tbody>
         </table>
         <label>{{ this.$root.setlang.settings.h1align }}</label>
         <select class="wavemaker-form" v-model="this.$root.session.settings.documentprefs.h1align"
@@ -138,6 +140,7 @@
         <h2>{{ this.$root.setlang.settings.typewriter }}</h2>
 
         <table>
+          <tbody>
           <tr>
             <td>
               <label>{{ this.$root.setlang.settings.typetext }}</label>
@@ -155,6 +158,7 @@
                 style="width:20px; height:20px" />
             </td>
           </tr>
+          </tbody>
         </table>
 
 
@@ -164,8 +168,12 @@
             <path
               d="M13.5 21H6V17H13.5C15.43 17 17 15.43 17 13.5S15.43 10 13.5 10H11V14L4 8L11 2V6H13.5C17.64 6 21 9.36 21 13.5S17.64 21 13.5 21Z" />
           </svg>
+          {{ this.$root.setlang.settings.reset }}
+        </button>
+        
 
-          {{ this.$root.setlang.settings.reset }}</button>
+        
+    
       </div>
 
 
@@ -175,6 +183,8 @@
 </template>
 
 <script>
+
+
 export default {
   name: 'SettingsPopup',
   data() {

@@ -2,6 +2,7 @@
   <div id="ToolHome" v-if="!$root.session.writer.selected">
     <div class="wavemaker_info_box">
       <table style="width: 100%">
+        <tbody>
         <tr>
           <td>
             <h1>{{ this.$root.setlang.tools.writer }}</h1>
@@ -15,11 +16,13 @@
             </button>
           </td>
         </tr>
+        </tbody>
       </table>
 
       <hr />
 
       <table style="width: 100%">
+        <tbody>
         <tr v-for="(item, index) in toollist" :key="index" class="listRow">
           <td>
             <div class="title">{{ item.title }}</div>
@@ -43,6 +46,7 @@
             </button>
           </td>
         </tr>
+        </tbody>
       </table>
     </div>
   </div>

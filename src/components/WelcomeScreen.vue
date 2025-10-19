@@ -68,14 +68,27 @@
           </svg>
           {{ this.$root.setlang.welcome.v3import }}</button>
       </div>
+      <div style="background-color: #fff; padding:10px; border-radius: 5px; margin-top: 10px;">
+    <h2>App Updates</h2>
+        <p style="font-size: 0.9em; color: #212121; margin-bottom: 5px;">
+          Clear all cached data and force reload from server. Use this if you're experiencing issues or want to ensure you have the latest version.
+        </p>
+        <ForceUpdateButton 
+          confirm-message="This will clear all cached app data and reload. Your project data will be preserved. Continue?"
+        />
 
+        </div>
     </div>
   </div>
 </template>
 
 <script>
+import ForceUpdateButton from '@/components/ForceUpdateButton.vue'
 export default {
   name: "welcomeSettings",
+  components:{
+    ForceUpdateButton
+  },
   data() {
     return {
     }

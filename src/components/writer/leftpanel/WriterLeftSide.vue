@@ -238,6 +238,7 @@ export default {
 }
 
 .settingsBtn svg {
+      fill: var(--button-hover-f);
   position: absolute;
   left: 5px;
   top: 5px;
@@ -264,9 +265,11 @@ export default {
   background: none;
   padding: 5px;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
-  background-color: var(--writer-side-nav);
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  background-color: var(--accent);
+  border-radius: 50%;
 }
 
 .pinBtn svg {
@@ -351,23 +354,26 @@ export default {
 .addbar {
   position: absolute;
   top: 0px;
-  background-color: var(--writer-side-nav);
+
   width: calc(100% - 40px);
   height: 40px;
 }
 
 .addbar button {
   border: 0px;
-  padding: 5px;
+
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  margin: 5px;
   background-color: var(--writer-side-nav);
   color: var(--writer-side-nav-f);
 }
 
 .addbar button svg {
   fill: var(--writer-side-nav-f);
+  width:20px !important;
 }
 
 .addbar button:hover,

@@ -2,6 +2,7 @@
   <div id="ToolHome" v-if="!$root.session.timeline.selected">
     <div class="wavemaker_info_box">
       <table style="width: 100%">
+        <tbody>
         <tr>
           <td>
             <h1>{{ this.$root.setlang.tools.timeline }}</h1>
@@ -16,6 +17,7 @@
             </button>
           </td>
         </tr>
+        </tbody>
       </table>
 
       <div v-if="showaddform">
@@ -35,6 +37,7 @@
       <hr />
 
       <table style="width: 100%" v-if="!showaddform">
+        <tbody>
         <tr v-for="(item, index) in Timelines" :key="index">
           <td>
             <div class="title">{{ item.title }}</div>
@@ -57,6 +60,7 @@
             </button>
           </td>
         </tr>
+        </tbody>
       </table>
     </div>
   </div>

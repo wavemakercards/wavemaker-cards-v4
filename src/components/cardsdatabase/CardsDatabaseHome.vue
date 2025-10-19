@@ -178,8 +178,9 @@ export default {
   overflow: hidden;
   overflow-y: auto;
   padding-bottom: 50px;
-  width: 120px;
-  background-color: var(--taglist-panel);
+  min-width: 120px;
+
+
 }
 
 .taglist button {
@@ -196,6 +197,7 @@ export default {
   cursor: pointer;
   word-wrap: break-word;
   white-space: normal;
+  border-radius: 4px;
 }
 
 .taglist button:active,
@@ -220,7 +222,7 @@ export default {
 .toolbar svg {
   position: absolute;
   left: 0px;
-  fill: var(--db-search-bar-f);
+  fill: var(--c9-f);
   top: 8px;
   left: 10px;
 }
@@ -230,7 +232,7 @@ export default {
   margin: 0 auto;
   background-color: none;
   background: none;
-  color: var(--c9-f);
+  color: inherit;
   padding: 10px;
   border: 0px;
   outline: none;
@@ -243,9 +245,17 @@ export default {
   top: 0px;
   margin-top: 0px;
   width: 30px;
-  padding-left: 30px;
-}
 
+height: 30px;
+margin-top: 5px;
+margin-right:5px;
+  padding-left: 25px;
+  
+}
+.toolbar .interfaceBtn svg {
+  width:15px !important;
+    height:15px !important;
+}
 .toolbar .btn {
   top: 5px;
   white-space: nowrap;
