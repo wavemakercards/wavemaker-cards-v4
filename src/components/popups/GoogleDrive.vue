@@ -126,9 +126,9 @@ export default {
       this.$root.popup.name = null
     },
   },
-  mounted() {
+  async mounted() {
     if(!this.$root.GoogleDriveApi.loggedin){
-     this.$root.GoogleDriveSignIn()
+    await this.$root.GoogleDriveSignIn()
     }
   }
 };
