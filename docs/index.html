@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNWLCM181D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+  
+      gtag('config', 'G-FNWLCM181D');
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="icon.ico">
+    <title>
+   wavemaker
+    </title>
+    <link rel="stylesheet" href="themes/wavemaker.css">
+    <link rel="stylesheet" id="themeSwitch" href="themes/wavemaker.css">
+    <script type="module" crossorigin src="./assets/index-Dl6r1ysS.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/vendor-Cv3Y1QpI.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-DO5yBvG6.js">
+    <link rel="modulepreload" crossorigin href="./assets/charts-RtThZEbT.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-CVYNRmoy.css">
+  <link rel="manifest" href="./manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="./registerSW.js"></script></head>
+  <body>
+    <div id="app"></div>
+  
+    
+    <script src="wavemaker.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client"></script>
+  
+    <!-- built files will be auto injected -->
+  
+    <script>
+      window.addEventListener('appinstalled', (event) => {
+        if ('function' === typeof ga) {
+          // Default GA.
+          ga('send', 'event', 'pwa', 'install');
+        } else if ('function' === typeof __gaTracker) {
+          // MonsterInsights.
+          __gaTracker('send', 'event', 'pwa', 'install');
+        }
+      });
+    </script>
+  
+
+    <audio preload="auto" src="/audio/type.mp3"></audio>
+  </body>
+</html>
