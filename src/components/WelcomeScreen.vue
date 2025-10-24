@@ -78,6 +78,8 @@
         />
 
         </div>
+
+        <div style="text-align: center; padding: 10px;"><a href="privacy.html" target="_blank">Privacy Policy</a></div>
     </div>
   </div>
 </template>
